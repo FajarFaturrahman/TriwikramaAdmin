@@ -1,0 +1,137 @@
+body::before{
+    content: "";
+    position: fixed;
+    z-index: -1;
+    background-position: center top;
+    display: block;
+    background: url(/img/ImageTriwikramajpg/background.jpg);
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+    -webkit-filter: brightness(20%);
+}
+
+.nav-link img{
+    height: 20px;
+    width: 20px;
+    /* padding: 20px; */
+}
+
+#navbar-nav{
+    margin: auto;
+}
+
+.nav-link img:hover{    
+    border-radius: 100px;
+    background: white;   
+}
+
+#border{
+    border-radius: 100px;
+    border: solid 2px;
+}
+
+#btnStart{
+    background-color: #D91E18;
+    color: white;
+    border-radius: 100px;
+    padding-right: 35px;
+    padding-left: 35px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.forSearch{
+    width: 300px;
+    vertical-align: middle;
+    white-space: nowrap;
+    position: relative;
+}
+
+.forSearch input#search{
+    width: 50px;
+    height: 50px;
+    background: white;
+    border: none;
+    font-size: 10pt;
+    float: left;
+    color: #262626;
+    padding-left: 35px;
+    -webkit-border-radius: 100px;
+    -moz-border-radius: 100px;
+    border-radius: 100px;
+    color: black;
+
+    -webkit-transition: width .55s ease;
+    -moz-transition: width .55 ease;
+    -ms-transition: width .55s ease;
+    -o-transition: width .55s ease;
+    transition: width .55s ease;
+}
+
+
+.forSearch .icon{
+    position: absolute;
+    top: 50%;
+    margin-left: 17px;
+    margin-top: 13px;
+    z-index: 1;
+    color: black;
+}
+
+.forSearch input#search:focus, .container-2 input#search:active{
+    outline:none;
+    width: 300px;
+  }
+   
+.forSearch:hover input#search{
+  width: 300px;
+  }
+   
+.forSearch:hover .icon{
+    color: #4f5b66;
+}
+
+#tombol{
+    background: #D91E18;
+}
+
+#btnAddTop{
+    background-color: #550E99;
+}
+
+.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #D91E18;
+    overflow: hidden;
+    width: 100%;
+    height: 5%;
+    transition: .5s ease;
+}
+
+#cardOverlay:hover .overlay {
+    height: 30%;
+}
+
+#slideup {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 75%;
+    left: 48%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -130%);
+    
+  }
+
+
+
+
+
+
+
+
