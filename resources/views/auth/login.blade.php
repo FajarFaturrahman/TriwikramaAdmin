@@ -30,7 +30,7 @@
             <div class="col-md-8">
                 <div class="row border-box">
                     <div class="col-sm-6 p-0 bg-right">
-                        <img src="{{ asset('img/ImageTriwikramapng/logoTriwikrama.png') }}" class="img mt-4 mx-auto d-block" alt="">
+                        <img src="{{ asset('img/ImageTriwikramapng/Untitled-2.png') }}" class="img mt-4 mx-auto d-block" alt="">
 
                         <h5 class="text-white p-3 mt-5">welcome to Triwikrama admin panel, please login to use this application. </h5>
                     </div>
@@ -38,7 +38,7 @@
                     <div class="col-sm-6 p-0">
                         <div class="card">
                             <div class="card-header mt-4">
-                                    <h5 class="text-center"><img src="{{ asset('img/IconTriwikramaAppAdmin/logout.png') }}" width="25px" height="25px"alt="">LOGIN PAGE</h5>
+                                    <h5 class="text-center"><img src="{{ asset('img/IconTriwikramaAppAdmin/black/logout.png') }}" width="25px" height="25px"alt="">LOGIN PAGE</h5>
                             </div>
 
                             <div class="card-body">

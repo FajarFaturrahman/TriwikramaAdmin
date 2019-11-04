@@ -4,7 +4,7 @@ body::before{
     z-index: -1;
     background-position: center top;
     display: block;
-    background: url(/img/ImageTriwikramajpg/background.jpg);
+    background: url(/img/ImageTriwikramajpg/compressed/background.jpg);
     background-size: cover;
     width: 100%;
     height: 100%;
@@ -127,6 +127,33 @@ body::before{
     transform: translate(-50%, -130%);
     
   }
+
+  #upload-image{
+      height: 440px;
+      border-bottom-right-radius: 60px;
+      
+  }
+
+  .my-float{
+	width:60px;
+	height:60px;
+	bottom:40px;
+    right:40px;
+    margin-top: 280px;
+    float: right;
+	background-color:#D91E18;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	
+}
+
+.card > .card-header{
+    background: transparent;
+}
+#descAndClient{
+    border-bottom-right-radius: 60px;
+}
 
 
 
