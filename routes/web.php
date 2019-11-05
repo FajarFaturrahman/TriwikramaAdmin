@@ -25,6 +25,8 @@ Route::get('/product', 'productController@index')->name('product');
 
 Route::get('/client', 'ClientController@index')->name('client');
 
+Route::get('/inbox', 'InboxController@index')->name('inbox');
+
 Route::get('/home', 'homeController@index')->name('home');
 Auth::routes();
 

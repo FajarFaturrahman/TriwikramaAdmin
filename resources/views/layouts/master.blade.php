@@ -18,7 +18,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-    
+    <style type="text/css">
+        body{
+            font-family: Fira Sans;
+            src: url('{{ asset('fonts/FiraSans-Regular.tff') }}');
+        }
+    </style>
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>    
@@ -39,45 +44,45 @@
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
                     <!-- Home Button -->
-                    <li class="nav-item ml-5 active">
-                        <a class="nav-link text-light" href="{{ route('home') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/home.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/home3.png') }}';" alt="">
-                        </a>
+                    <li class="nav-item ml-5">
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;"></a>
+                        </div>
                     </li>
                     
                     <!-- Portofolio Button -->
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="{{ route('portofolio') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/list.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('portofolio') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/list.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <!-- Product Button -->
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="{{ route('product') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/graph-line-screen2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/graph-line-screen.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/graph-line-screen2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('product') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/desktop-monitor.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <!-- Inbox Button -->
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="#">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/email.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/email2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('inbox') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/email.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <!-- Client Button -->
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="{{ route('client') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('client') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <!-- Recruitment Button -->
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="#">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png') }}';" alt="" alt="">
-                        </a>
+                       <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="#"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png')}}" alt="" width="20px" height="20px"></a>
+                       </div>
                     </li>
                 </ul>
 
@@ -89,6 +94,12 @@
             </div>
             
         </nav>
+
+        <script>
+        
+            $('document')
+        
+        </script>
 
 
     
