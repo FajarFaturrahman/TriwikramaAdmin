@@ -44,9 +44,9 @@
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
                     <!-- Home Button -->
-                    <li class="nav-item ml-5">
-                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;"></a>
+                    <li class="nav-item ml-5" id="nav-item">
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img">
+                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;" id="nav-img"></a>
                         </div>
                     </li>
                     
@@ -97,7 +97,9 @@
 
         <script>
         
-            $('document')
+            $('document').ready(function(e){
+  
+            });
         
         </script>
 
