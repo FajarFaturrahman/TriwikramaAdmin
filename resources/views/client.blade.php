@@ -4,6 +4,12 @@
 
 @section('content')
 
+@if($message = Session::get('success'))
+<div class="alert alert-success">
+    <p>{{ $message }}</p>    
+</div>
+@endif
+
     <div class="container mt-5">
         <div class="row">
             <div class="box col-md-6">
@@ -111,16 +117,24 @@
         <div class="modal fade" id="modalAddEditClient">
             <div class="modal-dialog modal-lg modal-dialog-centered">
                 <div class="modal-content">
-
+                    @if($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                    @endif
                     <div class="modal-header">
                         <h4 class="modal-title">ADD CLIENT</h4>
                         <button type="button" class="close" data-dismiss="modal" arial-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-
-                    <div class="modal-body">
-                        <form action="">
+                    <form action="{{ route('client.store') }}" method="post" enctype="multipart/form-data">    
+                        <div class="modal-body">                        
+                            @csrf
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="row justify-content-center">
@@ -128,35 +142,32 @@
                                     </div>    
                                     <div class="row justify-content-center">
                                         <div class="form-group">                                        
-                                            <input type="file" class="btn btn-danger font-weight-bold" style="background: #D91E18;" id="file_gambar" name="file_gambar">
+                                            <input type="file" class="btn btn-danger font-weight-bold" style="background: #D91E18;" id="gambar_client" name="image">
                                         </div>                                    
                                     </div>
                                 </div>  
 
-                                <div class="col-md-7">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <label for="nama_client">Client Name</label>
-                                            <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="client_name" id="nama_client">
-                                        </div>
+                                <div class="col-md-7">                                                    
+                                    <div class="form-group">
+                                        <label for="nama_client">Client Name</label>
+                                        <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="nama_client" id="nama_client">
+                                    </div>
 
-                                        <div class="form group">
-                                            <label for="portfolio_info">Portfolio Info</label>
-                                            <div class="row" id="portfolio_info">
-                                                <p class="bg-light mt-3 ml-3" style="border-radius:100px;">Walls Coorporate App</p>
-                                                <p class="bg-light mt-3 ml-3" style="border-radius:100px;">Walls Admin</p>                                        
-                                            </div>
+                                    <div class="form group">
+                                        <label for="portfolio_info">Portfolio Info</label>
+                                        <div class="row" id="portfolio_info">
+                                                                                        
                                         </div>
+                                    </div>
 
-                                        <div class="row float-right mr-3 mt-5">
-                                            <button class="btn btn-link text-dark mr-3">CANCEL</button>
-                                            <button class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white">ADD</button>
-                                        </div>
-                                    </form>
+                                    <div class="row float-right mr-3 mt-5">
+                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
+                                        <input type="submit" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" name="tambah" value="ADD">
+                                    </div>                                    
                                 </div>
                             </div>
-                        </form>    
-                    </div>
+                        </div>
+                    </form>    
                 </div>
             </div>
         </div>
