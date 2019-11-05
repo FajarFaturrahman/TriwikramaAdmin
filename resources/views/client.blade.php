@@ -120,38 +120,42 @@
                     </div>
 
                     <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-5">
-                                <div class="row justify-content-center">
-                                    <img class="bg-light" src="{{ asset('img/IconTriwikramaAppAdmin/black/photo.png') }}" width="100px" height="100px" alt="">
-                                </div>    
-                                <div class="row justify-content-center">
-                                    <button class="btn btn-danger font-weight-bold" style="background: #D91E18;">Open File Location</button>
-                                </div>
-                            </div>  
-
-                            <div class="col-md-7">
-                                <form action="">
-                                    <div class="form-group">
-                                        <label for="client_name">Client Name</label>
-                                        <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="client_name" id="client_name">
+                        <form action="">
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="row justify-content-center">
+                                        <img class="bg-light" src="{{ asset('img/IconTriwikramaAppAdmin/black/photo.png') }}" width="100px" height="100px" alt="">
+                                    </div>    
+                                    <div class="row justify-content-center">
+                                        <div class="form-group">                                        
+                                            <input type="file" class="btn btn-danger font-weight-bold" style="background: #D91E18;" id="file_gambar" name="file_gambar">
+                                        </div>                                    
                                     </div>
+                                </div>  
 
-                                    <div class="form group">
-                                        <label for="portfolio_info">Portfolio Info</label>
-                                        <div class="row" id="portfolio_info">
-                                            <p class="bg-light mt-3 ml-3" style="border-radius:100px;">Walls Coorporate App</p>
-                                            <p class="bg-light mt-3 ml-3" style="border-radius:100px;">Walls Admin</p>                                        
+                                <div class="col-md-7">
+                                    <form action="">
+                                        <div class="form-group">
+                                            <label for="nama_client">Client Name</label>
+                                            <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="client_name" id="nama_client">
                                         </div>
-                                    </div>
 
-                                    <div class="row float-right mr-3 mt-5">
-                                        <button class="btn btn-link text-dark mr-3">CANCEL</button>
-                                        <button class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white">ADD</button>
-                                    </div>
-                                </form>
+                                        <div class="form group">
+                                            <label for="portfolio_info">Portfolio Info</label>
+                                            <div class="row" id="portfolio_info">
+                                                <p class="bg-light mt-3 ml-3" style="border-radius:100px;">Walls Coorporate App</p>
+                                                <p class="bg-light mt-3 ml-3" style="border-radius:100px;">Walls Admin</p>                                        
+                                            </div>
+                                        </div>
+
+                                        <div class="row float-right mr-3 mt-5">
+                                            <button class="btn btn-link text-dark mr-3">CANCEL</button>
+                                            <button class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white">ADD</button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </div>
+                        </form>    
                     </div>
                 </div>
             </div>
