@@ -21,6 +21,14 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
   <!-- font -->
+
+    <style type="text/css">
+        body{
+            font-family: Fira Sans;
+            src: url('{{ asset('fonts/FiraSans-Regular.tff') }}');
+        }
+    </style>
+
   <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'> 
 </head>
 
@@ -30,9 +38,9 @@
             <div class="col-md-8">
                 <div class="row border-box">
                     <div class="col-sm-6 p-0 bg-right">
-                        <img src="{{ asset('img/ImageTriwikramapng/Untitled-2.png') }}" class="img mt-4 mx-auto d-block" alt="">
+                        <img src="{{ asset('img/ImageTriwikramapng/Untitled-2.png') }}" class="img mt-4 mx-auto d-block" alt="" id="logoImage">
 
-                        <h5 class="text-white p-3 mt-5">welcome to Triwikrama admin panel, please login to use this application. </h5>
+                        <h5 class="text-white p-3 mt-5" id="welcomeText">welcome to Triwikrama admin panel, please login to use this application. </h5>
                     </div>
 
                     <div class="col-sm-6 p-0">
@@ -79,5 +87,14 @@
                 </div>
         </div>
     </div>
+
+    <script>
+    
+    $(document).ready(function(){
+            $('#logoImage').hide().fadeIn(1000,"linear");
+            $('#welcomeText').hide().delay(1000).slideDown(1000);
+        });
+    
+    </script>
 </body>
 </html>
