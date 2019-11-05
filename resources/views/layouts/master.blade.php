@@ -39,39 +39,39 @@
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
                     <li class="nav-item ml-5 active">
-                        <a class="nav-link text-light" href="{{ route('home') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/home.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/home3.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
                     
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="{{ route('portofolio') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/list.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                            <a href="{{ route('portofolio') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/list.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="#">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/graph-line-screen2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/graph-line-screen.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/graph-line-screen2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                            <a href="#"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/desktop-monitor.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="#">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/email.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/email2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                            <a href="{{ route('inbox') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/email.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="{{ route('client') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/whte/businessman2.png') }}';" alt="">
-                        </a>
+                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                            <a href="{{ route('client') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png')}}" alt="" width="20px" height="20px"></a>
+                        </div>
                     </li>
 
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="#">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png') }}';" alt="" alt="">
-                        </a>
+                       <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                            <a href="#"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png')}}" alt="" width="20px" height="20px"></a>
+                       </div>
                     </li>
                 </ul>
 
@@ -83,6 +83,12 @@
             </div>
             
         </nav>
+
+        <script>
+        
+            
+        
+        </script>
 
 
     

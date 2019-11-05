@@ -1,6 +1,5 @@
 @extends('layouts.master')
 
-
 @section('title','Triwikrama | Home')
 
 @section('content')
@@ -50,7 +49,7 @@
                                 <img class="card-img-top" src="{{ asset('img/ImageTriwikramajpg/compressed/forInbox.jpg') }}" alt="image 1">
                                 <div class="card-body">
                                     <h4 class="card-title">See Your Inbox</h4>
-                                    <a href="#" class="btn float-right mt-5 font-weight-bold" id="btnStart">START</a>
+                                    <a href="{{ route('inbox') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart">START</a>
                                 </div>
                             </div>
                         </div>
