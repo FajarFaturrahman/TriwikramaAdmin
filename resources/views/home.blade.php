@@ -101,11 +101,3 @@
     
 
 @endsection
-
-
-
-<script>
-
-</script>
-
-

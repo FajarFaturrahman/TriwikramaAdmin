@@ -26,7 +26,8 @@
     </style>
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>    
+    <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>
+
 </head>
 <body>
 
@@ -44,45 +45,57 @@
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
                     <!-- Home Button -->
-                    <li class="nav-item ml-5">
-                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;"></a>
-                        </div>
+                    <li class="nav-item ml-5" id="nav-item">
+                        <a href="{{ route('home' )}}">
+                            <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img">
+                                <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;" id="nav-img">
+                            </div>
+                        </a>
                     </li>
                     
                     <!-- Portofolio Button -->
-                    <li class="nav-item ml-5">
-                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="{{ route('portofolio') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/list.png')}}" alt="" width="20px" height="20px"></a>
-                        </div>
+                    <li class="nav-item ml-5" id="nav-item2">
+                        <a href="{{ route('portofolio') }}">
+                            <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img2">
+                                <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png')}}" alt="" width="20px" height="20px"  id="nav-img2">
+                            </div>
+                        </a>
                     </li>
 
                     <!-- Product Button -->
-                    <li class="nav-item ml-5">
-                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="{{ route('product') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/desktop-monitor.png')}}" alt="" width="20px" height="20px"></a>
-                        </div>
+                    <li class="nav-item ml-5" id="nav-item3">
+                        <a href="{{ route('product') }}">
+                            <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img3">
+                                <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/desktop-monitor2.png')}}" alt="" width="20px" height="20px"  id="nav-img3">
+                            </div>
+                        </a>
                     </li>
 
                     <!-- Inbox Button -->
-                    <li class="nav-item ml-5">
-                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="{{ route('inbox') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/email.png')}}" alt="" width="20px" height="20px"></a>
-                        </div>
+                    <li class="nav-item ml-5" id="nav-item4">
+                        <a href="{{ route('inbox') }}">
+                            <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img4">
+                                <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png')}}" alt="" width="20px" height="20px"  id="nav-img4">
+                            </div>
+                        </a>
                     </li>
 
                     <!-- Client Button -->
-                    <li class="nav-item ml-5">
-                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="{{ route('client') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png')}}" alt="" width="20px" height="20px"></a>
-                        </div>
+                    <li class="nav-item ml-5" id="nav-item5">
+                        <a href="{{ route('client') }}">
+                            <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img5">
+                                <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png')}}" alt="" width="20px" height="20px"  id="nav-img5">
+                            </div>
+                        </a>
                     </li>
 
                     <!-- Recruitment Button -->
-                    <li class="nav-item ml-5">
-                       <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
-                            <a href="#"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png')}}" alt="" width="20px" height="20px"></a>
-                       </div>
+                    <li class="nav-item ml-5" id="nav-item6">
+                        <a href="#">
+                            <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img6">
+                                <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png')}}" alt="" width="20px" height="20px"  id="nav-img6">
+                            </div>
+                        </a>
                     </li>
                 </ul>
 
@@ -110,6 +123,65 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+    
+        $(document).ready(function(){
+            $('#nav-item').mouseenter(function(){
+                $('#nav-container-img').addClass("bg-white");
+                $('#nav-img').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}');
+            });
+            $('#nav-item').mouseleave(function(){
+                $('#nav-container-img').removeClass("bg-white")
+                $('#nav-img').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/home3.png')}}');
+            });
+
+            $('#nav-item2').mouseenter(function(){
+                $('#nav-container-img2').addClass("bg-white");
+                $('#nav-img2').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/black/list.png')}}');
+            });
+            $('#nav-item2').mouseleave(function(){
+                $('#nav-container-img2').removeClass("bg-white");
+                $('#nav-img2').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/list2.png')}}');
+            });
+
+            $('#nav-item3').mouseenter(function(){
+                $('#nav-container-img3').addClass("bg-white");
+                $('#nav-img3').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/black/desktop-monitor.png')}}');
+            });
+            $('#nav-item3').mouseleave(function(){
+                $('#nav-container-img3').removeClass("bg-white");
+                $('#nav-img3').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/desktop-monitor2.png')}}');
+            });
+
+            $('#nav-item4').mouseenter(function(){
+                $('#nav-container-img4').addClass("bg-white");
+                $('#nav-img4').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/black/email.png')}}');
+            });
+            $('#nav-item4').mouseleave(function(){
+                $('#nav-container-img4').removeClass("bg-white");
+                $('#nav-img4').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/email2.png')}}');
+            });
+
+            $('#nav-item5').mouseenter(function(){
+                $('#nav-container-img5').addClass("bg-white");
+                $('#nav-img5').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png')}}');
+            });
+            $('#nav-item5').mouseleave(function(){
+                $('#nav-container-img5').removeClass("bg-white");
+                $('#nav-img5').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png')}}');
+            });
+
+            $('#nav-item6').mouseenter(function(){
+                $('#nav-container-img6').addClass("bg-white");
+                $('#nav-img6').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png')}}');
+            });
+            $('#nav-item6').mouseleave(function(){
+                $('#nav-container-img6').removeClass("bg-white");
+                $('#nav-img6').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png')}}');
+            });
+        });
+
+    </script>
     @yield('js')
     
 </body>

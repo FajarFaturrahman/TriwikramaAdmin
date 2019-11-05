@@ -32,7 +32,7 @@
             <div class="row justify-content-center mt-2">                
                 <div class="rounded-left" id="left-box">
                 </div>
-                <div class="card col-md-11 rounded-right" id="right-box">
+                <div class="card col-md-11 rounded-right" id="inboxCard">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10">
@@ -69,6 +69,23 @@
         </div>
 
     </div>
+
+@endsection
+
+@section('js')
+
+ <script>
+    
+    $(document).ready(function(){
+        $('.card').mouseenter(function(){
+            $(this).animate({marginRight: '+=1%'}, 200);
+        });
+        $('.card').mouseleave(function(){
+            $(this).animate({marginRight: '-=1%'}, 200);
+        });
+    });
+
+</script>
 
 @endsection
 

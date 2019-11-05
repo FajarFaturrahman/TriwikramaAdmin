@@ -204,7 +204,7 @@ body::before{
     background: rgba(217, 30, 24, 0.6);
 }
 
-#right-box{
+#inboxCard{
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
 }
@@ -231,4 +231,8 @@ td{
     padding-left: 30px;
     padding-bottom: 5px;
     padding-top: 20px;    
+}
+
+#inboxCard:hover{
+    box-shadow: 16px 2px 4px rgba(0, 0, 0, 0.2);
 }
