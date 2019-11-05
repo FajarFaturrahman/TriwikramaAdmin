@@ -129,6 +129,38 @@ body::before{
     
   }
 
+
+  @media only screen and (max-width: 758px) {
+    .overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: #D91E18;
+        overflow: hidden;
+        width: 100%;
+        height: 5%;
+        transition: .5s ease;
+    }
+    
+    #cardOverlay:hover .overlay {
+        height: 30%;
+    }
+    
+    #slideup {
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        top: 75%;
+        left: 48%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -110%);
+        
+      }
+}
+
+
   #upload-image{
       height: 440px;
       border-bottom-right-radius: 60px;
@@ -198,15 +230,5 @@ body::before{
 td{
     padding-left: 30px;
     padding-bottom: 5px;
-    padding-top: 20px;
-    font-family:
+    padding-top: 20px;    
 }
-
-
-
-
-
-
-
-
-

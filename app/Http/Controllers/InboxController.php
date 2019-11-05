@@ -8,7 +8,7 @@ class InboxController extends Controller
 {
     public function index(){
         $data['inbox'] = \DB::table('inbox')->get();
-        return view('inbox', $data); 
+        return view('inbox', $data);
     }
 
 

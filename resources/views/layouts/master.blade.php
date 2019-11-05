@@ -94,14 +94,6 @@
             </div>
             
         </nav>
-
-        <script>
-        
-            $('document')
-        
-        </script>
-
-
     
     @yield('content')
 

@@ -92,7 +92,7 @@
     
     $(document).ready(function(){
             $('#logoImage').hide().fadeIn(1000,"linear");
-            $('#welcomeText').hide().delay(1000).slideDown(1000);
+            $('#welcomeText').hide().delay(1000).fadeIn(1000);
         });
     
     </script>
