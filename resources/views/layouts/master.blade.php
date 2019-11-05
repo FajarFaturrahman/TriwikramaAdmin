@@ -18,7 +18,12 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     
-    
+    <style type="text/css">
+        body{
+            font-family: Fira Sans;
+            src: url('{{ asset('fonts/FiraSans-Regular.tff') }}');
+        }
+    </style>
 
     <!-- Fonts -->
     <link href='https://fonts.googleapis.com/css?family=Fira Sans' rel='stylesheet'>    
@@ -38,38 +43,44 @@
             
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
-                    <li class="nav-item ml-5 active">
-                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
-                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px"></a>
+                    <!-- Home Button -->
+                    <li class="nav-item ml-5">
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('home' )}}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/home.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;"></a>
                         </div>
                     </li>
                     
+                    <!-- Portofolio Button -->
                     <li class="nav-item ml-5">
-                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
                             <a href="{{ route('portofolio') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/list.png')}}" alt="" width="20px" height="20px"></a>
                         </div>
                     </li>
 
+                    <!-- Product Button -->
                     <li class="nav-item ml-5">
-                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
-                            <a href="#"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/desktop-monitor.png')}}" alt="" width="20px" height="20px"></a>
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
+                            <a href="{{ route('product') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/desktop-monitor.png')}}" alt="" width="20px" height="20px"></a>
                         </div>
                     </li>
 
+                    <!-- Inbox Button -->
                     <li class="nav-item ml-5">
-                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
                             <a href="{{ route('inbox') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/email.png')}}" alt="" width="20px" height="20px"></a>
                         </div>
                     </li>
 
+                    <!-- Client Button -->
                     <li class="nav-item ml-5">
-                        <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                        <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
                             <a href="{{ route('client') }}"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png')}}" alt="" width="20px" height="20px"></a>
                         </div>
                     </li>
 
+                    <!-- Recruitment Button -->
                     <li class="nav-item ml-5">
-                       <div class="rounded-circle" style="width: 40px; height: 40px; background: #fff; padding: 25%;">
+                       <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; background: #fff; display: flex; align-items: center;">
                             <a href="#"><img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png')}}" alt="" width="20px" height="20px"></a>
                        </div>
                     </li>
@@ -86,7 +97,7 @@
 
         <script>
         
-            
+            $('document')
         
         </script>
 

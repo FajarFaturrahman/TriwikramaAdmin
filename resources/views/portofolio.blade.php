@@ -19,7 +19,7 @@
             </div>
         </div>
         
-        <div class="col-md-12 mt-5">
+        <div class="row mt-5">
             <div class="card">
                 <div class="card-body">
                     <div class="row">
@@ -28,9 +28,9 @@
                         </div>
 
                         <div class="col-md-7">
-                            <h5>USER ACCEPTENCE TEST APP</h5>                                                    
+                            <h5 class="ml-4"><strong>USER ACCEPTENCE TEST APP</strong></h5>
 
-                            <table class="border-0 mt-5">
+                            <table class="border-0 mt-2">
                                 <tr>
                                     <td><strong>Website Type</strong></td>
                                     <td>:</td>
@@ -53,8 +53,8 @@
                                     <td><p class="bg-light mt-3 pl-3 pr-3" style="border-radius:100px;">Active</p></td>
                                 </tr>
                             </table>
-                            <div class="row ml-2 mt-5 float-right">
-                                    <button class="btn btn-danger mr-4">View</button>                                
+                            <div class="row ml-2 float-right">
+                                    <a class="btn btn-danger mr-4" href="{{ route('detailPortofolio') }}">View</a>                                
                             </div>
                         </div>
                     </div>    

@@ -26,6 +26,7 @@
                 </div>
             </div>
         </div>
+        
         <div class="col-md-12 mt-2">
             <div class="row justify-content-center">
                 <div class="rounded-left" id="left-box">

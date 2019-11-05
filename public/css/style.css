@@ -100,6 +100,7 @@ body::before{
     background-color: #550E99;
 }
 
+
 .overlay {
     position: absolute;
     bottom: 0;
@@ -144,8 +145,20 @@ body::before{
 	background-color:#D91E18;
 	color:#FFF;
 	border-radius:50px;
-	text-align:center;
-	
+	text-align:center;	
+}
+
+.my-float2{
+	width:60px;
+	height:60px;
+	bottom:40px;
+    right:40px;
+    margin-top: 250px;
+    float: right;
+	background-color:#D91E18;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;	
 }
 
 .card > .card-header{
@@ -154,7 +167,6 @@ body::before{
 #descAndClient{
     border-bottom-right-radius: 60px;
 }
-
 #left-box{
     width: 10px;
     background: rgba(217, 30, 24, 0.6);
@@ -168,6 +180,26 @@ body::before{
 #buttonSize, #buttonSize2{
     width: 42px;
     height: 42px;
+}
+
+#rounded-btn{
+    width: 50px;
+    height: 50px;
+    border-radius: 100px;
+}
+
+#btnEditPortfolio{
+    background-color: #550E99;
+    width:50px;
+	height:50px;	    
+    border-radius: 100px;
+}
+
+td{
+    padding-left: 30px;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    font-family:
 }
 
 
