@@ -101,7 +101,7 @@
                     <div class="card-body">
                         <div class="col-md-12 mx-auto">
                             <div class="form-group">
-                                <input class="form-control pb-4 pt-4 mt-3 rounded border-0" style="background-color:#EFF2F4;height:150px;" type="text">
+                                <textarea class="form-control pb-4 pt-4 mt-3 rounded border-0" style="background-color:#EFF2F4;height:150px;" type="text"></textarea>
                             </div>
                         </div>
                     </div>
@@ -138,8 +138,8 @@
                                 </div>
 
                                 <div class="row float-right mt-4 mr-3">
-                                    <button class="btn mr-3">Cancel</button>
-                                    <button class="btn pr-3 pl-3" style="border-radius:100px;background:#550E99;color:white">ADD</button>
+                                    <button class="btn btn-link text-dark mr-3">Cancel</button>
+                                    <button class="btn pr-4 pl-4" style="border-radius:100px;background:#550E99;color:white">ADD</button>
                                 </div>
                             </div>
                         </div>    

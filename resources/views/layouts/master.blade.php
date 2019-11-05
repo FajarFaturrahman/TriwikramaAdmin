@@ -38,36 +38,42 @@
             
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
+                    <!-- Home Button -->
                     <li class="nav-item ml-5 active">
                         <a class="nav-link text-light" href="{{ route('home') }}">
                             <img src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/home.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/home3.png') }}';" alt="">
                         </a>
                     </li>
                     
+                    <!-- Portofolio Button -->
                     <li class="nav-item ml-5">
                         <a class="nav-link" href="{{ route('portofolio') }}">
                             <img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/list.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}';" alt="">
                         </a>
                     </li>
 
+                    <!-- Product Button -->
                     <li class="nav-item ml-5">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="{{ route('product') }}">
                             <img src="{{ asset('img/IconTriwikramaAppAdmin/white/graph-line-screen2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/graph-line-screen.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/graph-line-screen2.png') }}';" alt="">
                         </a>
                     </li>
 
+                    <!-- Inbox Button -->
                     <li class="nav-item ml-5">
                         <a class="nav-link" href="#">
                             <img src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/email.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/email2.png') }}';" alt="">
                         </a>
                     </li>
 
+                    <!-- Client Button -->
                     <li class="nav-item ml-5">
                         <a class="nav-link" href="{{ route('client') }}">
-                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/whte/businessman2.png') }}';" alt="">
+                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/businessman.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png') }}';" alt="">
                         </a>
                     </li>
 
+                    <!-- Recruitment Button -->
                     <li class="nav-item ml-5">
                         <a class="nav-link" href="#">
                             <img src="{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png') }}" onmouseover="this.src='{{ asset('img/IconTriwikramaAppAdmin/black/portfolio.png') }}';" onmouseout="this.src='{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png') }}';" alt="" alt="">

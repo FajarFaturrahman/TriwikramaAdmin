@@ -19,6 +19,10 @@ Route::get('/portofolio', 'PortofolioController@index')->name('portofolio');
 
 Route::get('/addPortofolio', 'AddPortofolioController@index')->name('addPortofolio');
 
+Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detailPortofolio');
+
+Route::get('/product', 'productController@index')->name('product');
+
 Route::get('/client', 'ClientController@index')->name('client');
 
 Route::get('/home', 'homeController@index')->name('home');
