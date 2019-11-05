@@ -28,15 +28,16 @@
         </div>
         
         <div class="col-md-12 mt-2">
-            <div class="row justify-content-center">
+            @foreach($inbox as $row)
+            <div class="row justify-content-center mt-2">                
                 <div class="rounded-left" id="left-box">
                 </div>
-                <div class="card col-md-11 rounded-right" id="right-box">
+                <div class="card col-md-11 rounded-right" id="inboxCard">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-10">
-                                <p class="my-auto"><strong>Rashif Malik Ilyasa</strong></p>
-                                <p class="my-auto">malikutama30@gmail.com</p>
+                                <p class="my-auto"><strong>{{ $row->pengirim }}</strong></p>
+                                <p class="my-auto">{{ $row->email }}</p>
                             </div>
                             <div class="col-md-2">
                                 <div class="row float-right">
@@ -46,42 +47,22 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div>               
             </div>
+            @endforeach
         </div>
         
-        <div class="modal fade" id="detailInboxModal" tabindex="-1" role="dialog" aria-labelledby="detailInboxModalTitle" aria-hidden="true">
+        <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="detailInboxModalTitle" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Detail Inbox</h5>
+                        <h5 class="modal-title" id="modalMdTitle">Detail Inbox</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                       <div class="row">
-                           <div class="col-md-2">
-                               <p><strong>Name :</strong></p>
-                           </div>
-                           <div class="col-md-10">
-                               <p>Rashif Malik Ilyasa</p>
-                           </div>
-                       </div>
-                       <div class="row">
-                           <div class="col-md-2">
-                               <p><strong>Email :</strong></p>
-                           </div>
-                           <div class="col-md-10">
-                               <p>malikutama30@gmail.com</p>
-                           </div>
-                       </div>
-                       <p><strong>Message :</strong></p>
-                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-                       <div class="row float-right mr-3 mt-5">
-                           <button class="btn btn-link text-dark mr-3"data-dismiss="modal" aria-label="Close">Cancel</button>
-                           <button class="btn pr-4 pl-4" style="border-radius: 100px; background: #550E99; color: #fff;">Reply</button>
-                       </div>
+                        <div id="modalMdContent"></div>                    
                     </div>
                 </div>
             </div>
@@ -90,3 +71,21 @@
     </div>
 
 @endsection
+
+@section('js')
+
+ <script>
+    
+    $(document).ready(function(){
+        $('.card').mouseenter(function(){
+            $(this).animate({marginRight: '+=1%'}, 200);
+        });
+        $('.card').mouseleave(function(){
+            $(this).animate({marginRight: '-=1%'}, 200);
+        });
+    });
+
+</script>
+
+@endsection
+
