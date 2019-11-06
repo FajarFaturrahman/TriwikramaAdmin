@@ -25,10 +25,10 @@
         </div>
 
         <div class="row mt-5">
-            @foreach($)
+            @foreach($client as $row)
             <div class="col-md-3 mt-2">
                 <div class="card border-0" id="cardOverlay">
-                    <img src="{{ asset('img/ImageTriwikramapng/telkom.png') }}" class="card-img-top" alt="">
+                    <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="card-img-top" alt="">
                     <div class="overlay">
                         <div class="row mx-auto" id="slideup">
                             <div class="col-md-4">
@@ -45,7 +45,8 @@
                         </div>
                     </div>
                 </div>
-            </div>            
+            </div>  
+            @endforeach          
         </div>
     </div>
 

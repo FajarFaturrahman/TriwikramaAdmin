@@ -8,7 +8,8 @@ class clientController extends Controller
 {    
     public function index()
     {
-        return view('client');
+        $data['client'] = \DB::table('client')->get();
+        return view('client', $data);
     }
 
     public function store(Request $request){
