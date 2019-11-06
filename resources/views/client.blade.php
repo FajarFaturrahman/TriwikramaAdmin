@@ -25,6 +25,7 @@
         </div>
 
         <div class="row mt-5">
+            @foreach($)
             <div class="col-md-3 mt-2">
                 <div class="card border-0" id="cardOverlay">
                     <img src="{{ asset('img/ImageTriwikramapng/telkom.png') }}" class="card-img-top" alt="">
@@ -44,70 +45,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-md-3 mt-2">
-                <div class="card border-0" id="cardOverlay">
-                    <img src="{{ asset('img/ImageTriwikramapng/walls.png') }}" class="card-img-top" alt="">
-                    <div class="overlay">
-                        <div class="row mx-auto" id="slideup">
-                            <div class="col-md-4">
-                                <a data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-
-                            <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-
-                            <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mt-2">
-                <div class="card border-0" id="cardOverlay">
-                    <img src="{{ asset('img/ImageTriwikramapng/klhk.png') }}" class="card-img-top" alt="">
-                    <div class="overlay">
-                        <div class="row mx-auto" id="slideup">
-                            <div class="col-md-4">
-                                <a data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-
-                            <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-
-                            <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 mt-2">
-                <div class="card border-0" id="cardOverlay">
-                    <img src="{{ asset('img/ImageTriwikramapng/jungleland.png') }}" class="card-img-top" alt="">
-                    <div class="overlay">
-                        <div class="row mx-auto" id="slideup">
-                            <div class="col-md-4">
-                                <a data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-
-                            <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-
-                            <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            </div>            
         </div>
     </div>
 
