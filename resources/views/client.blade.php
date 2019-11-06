@@ -4,11 +4,11 @@
 
 @section('content')
 
-@if($message = Session::get('success'))
+<!-- @if($message = Session::get('success'))
 <div class="alert alert-success col-md-2">
     <p>{{ $message }}</p>    
 </div>
-@endif
+@endif -->
 
     <div class="container mt-5">
         <div class="row">
