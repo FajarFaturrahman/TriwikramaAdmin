@@ -114,7 +114,7 @@
 
     <footer class="footer mt-4">
         <div class="footer-block author text-light ml-4">
-            Copyright @CV.Triwikrama corp 2019
+            @ 2019 Cv.Triwikrama - All Right Reserved
         </div>
     </footer>
 
