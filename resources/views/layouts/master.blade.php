@@ -16,7 +16,7 @@
 
     <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     
     <style type="text/css">
         body{
@@ -32,21 +32,21 @@
 <body>
 
 
-        <nav class="navbar navbar-expand-lg navbar-light navbar-fixed-top">
+        <nav class="navbar navbar-expand-lg navbar-dark navbar-fixed-top">
             <a class="navbar-brand" href="#">
                 <img src="{{ asset('img/ImageTriwikramapng/Untitled-2.png') }}" width="40" height="40" class="d-inline-block align-top" alt="" style="border-radius:100px;">
                 <h3 class="d-inline-block align-top font-weight-bolder text-light">TRIWIKRAMA</h3>
             </a>
             
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-collapse" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle Navigation">
-                <span class="navbar-toggler-icon text-white"></span>
+                <span class="navbar-toggler-icon"></span>
             </button>
             
             <div id="navbar-collapse" class="collapse navbar-collapse">
                 <ul class="navbar-nav" id="navbar-nav">
                     <!-- Home Button -->
                     <li class="nav-item ml-5" id="nav-item">
-                        <a href="{{ route('home' )}}">
+                        <a href="{{ route('home') }}" data-toggle="tooltip" data-placement="bottom" title="Home">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;" id="nav-img">
                             </div>
@@ -55,7 +55,7 @@
                     
                     <!-- Portofolio Button -->
                     <li class="nav-item ml-5" id="nav-item2">
-                        <a href="{{ route('portofolio') }}">
+                        <a href="{{ route('portofolio') }}" data-toggle="tooltip" data-placement="bottom" title="Portofolio">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img2">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png')}}" alt="" width="20px" height="20px"  id="nav-img2">
                             </div>
@@ -64,7 +64,7 @@
 
                     <!-- Product Button -->
                     <li class="nav-item ml-5" id="nav-item3">
-                        <a href="{{ route('product') }}">
+                        <a href="{{ route('product') }}" data-toggle="tooltip" data-placement="bottom" title="Product">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img3">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/desktop-monitor2.png')}}" alt="" width="20px" height="20px"  id="nav-img3">
                             </div>
@@ -73,7 +73,7 @@
 
                     <!-- Inbox Button -->
                     <li class="nav-item ml-5" id="nav-item4">
-                        <a href="{{ route('inbox') }}">
+                        <a href="{{ route('inbox') }}" data-toggle="tooltip" data-placement="bottom" title="Inbox">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img4">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png')}}" alt="" width="20px" height="20px"  id="nav-img4">
                             </div>
@@ -82,7 +82,7 @@
 
                     <!-- Client Button -->
                     <li class="nav-item ml-5" id="nav-item5">
-                        <a href="{{ route('client') }}">
+                        <a href="{{ route('client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img5">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png')}}" alt="" width="20px" height="20px"  id="nav-img5">
                             </div>
@@ -91,7 +91,7 @@
 
                     <!-- Recruitment Button -->
                     <li class="nav-item ml-5" id="nav-item6">
-                        <a href="#">
+                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="Recruitment">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img6">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png')}}" alt="" width="20px" height="20px"  id="nav-img6">
                             </div>
@@ -120,9 +120,9 @@
 
     <!-- javascript -->
     
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <script>
     
         $(document).ready(function(){
@@ -179,8 +179,10 @@
                 $('#nav-container-img6').removeClass("bg-white");
                 $('#nav-img6').attr('src', '{{ asset('img/IconTriwikramaAppAdmin/white/portfolio2.png')}}');
             });
-        });
 
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+        
     </script>
     @yield('js')
     

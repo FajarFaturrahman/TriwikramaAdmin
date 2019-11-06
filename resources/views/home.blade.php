@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.masterHome')
 
 @section('title','Triwikrama | Home')
 

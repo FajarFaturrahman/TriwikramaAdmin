@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Client;
 use Illuminate\Http\Request;
 
 class clientController extends Controller
@@ -12,13 +12,27 @@ class clientController extends Controller
     }
 
     public function store(Request $request){
-        
-        $this->validate($request, [
+                
+        $request->validate([            
             'nama_client' => 'required',
-            'gambar_client' => 'required|image',
+            'image' => 'required|mimes:jpeg,jpg,png|max:2048',
         ]);
 
-        $gambar = $request->file('gambar_client');
+        $image = $request->file('image');
 
+        $new_name = rand() . '.' .$image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+        $form_data = array(
+            'nama_client' => $request->nama_client,
+            'gambar_client' => $new_name
+        );
+
+        Client::create($form_data);
+
+        return redirect('client')->with('success', 'Data berhasil di Tambah');
     }
+
+
+    
 }
+
