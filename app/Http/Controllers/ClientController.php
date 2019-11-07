@@ -15,22 +15,25 @@ class clientController extends Controller
     
     public function store(Request $request)
     {
-        $validator = Validator::make($request->all(), [
+        $request->validate([            
             'nama_client' => 'required',
-            'gambar_client' => 'required|image|mimes:jpeg,png,jpg,giv,svg|max:2048',
+            'image' => 'required|mimes:jpeg,jpg,png|max:2048',
         ]);
 
+        $image = $request->file('image');
 
-        if($validator->passes()){
-            $input= $request->all();
-            $input['gambar'] = time().'.'.$request->gambar->getClientOriginalExtension();
-            $request->gambar->move(public_path('gambar'), $input['gambar']);
+        $new_name = rand() . '.' .$image->getClientOriginalExtension();
+        $image->move(public_path('images'), $new_name);
+        $form_data = array(
+            'nama_client' => $request->nama_client,
+            'gambar_client' => $new_name
+        );
 
-            Client::create($input);
+            Client::create($form_data);
+            return redirect('client')->with('success', 'Data berhasil di Tambah');
             return response()->json(['success'=>'Berhasil']);
-        }
 
-        return response()->json(['error'=>$validator->errors()->all()]);
+            return response()->json(['error'=>$validator->errors()->all()]);
     }
 }
 
