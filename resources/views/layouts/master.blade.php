@@ -73,7 +73,7 @@
 
                     <!-- Inbox Button -->
                     <li class="nav-item ml-5" id="nav-item4">
-                        <a href="{{ route('inbox') }}" data-toggle="tooltip" data-placement="bottom" title="Inbox">
+                        <a href="{{ url('/inbox') }}" data-toggle="tooltip" data-placement="bottom" title="Inbox">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img4">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png')}}" alt="" width="20px" height="20px"  id="nav-img4">
                             </div>

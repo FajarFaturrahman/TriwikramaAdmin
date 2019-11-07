@@ -39,8 +39,7 @@ Route::patch('/client/{id}', 'ClientController@update')->name('client.update');
 Route::delete('/client/{id}', 'ClientController@destroy')->name('client.destroy');
 
 // inbox
-Route::get('/inbox', 'InboxController@index')->name('inbox');
-Route::get('/inbox/{id}', 'InboxController@show')->name('inbox.show');
+Route::resource('/inbox', 'InboxController');
 
 // home
 Route::get('/home', 'homeController@index')->name('home');

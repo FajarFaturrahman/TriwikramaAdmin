@@ -209,7 +209,7 @@ body::before{
     border-bottom-left-radius: 0px;
 }
 
-#buttonSize, #buttonSize2{
+#show-message, #delete-message{
     width: 42px;
     height: 42px;
 }
