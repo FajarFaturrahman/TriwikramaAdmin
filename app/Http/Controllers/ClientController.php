@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Validator;
 use App\Client;
 use Illuminate\Http\Request;
 
@@ -11,71 +12,25 @@ class clientController extends Controller
         $data['client'] = \DB::table('client')->get();
         return view('client', $data);
     }
-
-    public function store(Request $request){
-                
-        $request->validate([            
+    
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
             'nama_client' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png|max:2048',
+            'gambar_client' => 'required|image|mimes:jpeg,png,jpg,giv,svg|max:2048',
         ]);
 
-        $image = $request->file('image');
 
-        $new_name = rand() . '.' .$image->getClientOriginalExtension();
-        $image->move(public_path('images'), $new_name);
-        $form_data = array(
-            'nama_client' => $request->nama_client,
-            'gambar_client' => $new_name
-        );
+        if($validator->passes()){
+            $input= $request->all();
+            $input['gambar'] = time().'.'.$request->gambar->getClientOriginalExtension();
+            $request->gambar->move(public_path('gambar'), $input['gambar']);
 
-        Client::create($form_data);
-
-        return redirect('client')->with('success', 'Data berhasil di Tambah');
-    }
-
-    public function edit($id){
-        $data['client'] = \DB::table('client')->find($id);
-        return view('client', $data);
-    }
-
-    public function update(Request $request, $id){
-        
-        $image_name = $request->hidden_image;
-        $image = $request->file('image');
-        if($image != ''){
-            $request->validate([
-                'nama_client' => 'required',
-                'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
-            ]);
-
-            $image_name = rand() . '.' . $image->getClientOriginalExtension();
-            $image->move(public_path('images'), $image_name);
-
-        }else{
-            $request->validate([
-                'nama_client' => 'required',
-            ]);
+            Client::create($input);
+            return response()->json(['success'=>'Berhasil']);
         }
 
-        $form_data = array(
-            'nama_client' => $request->nama_client,
-            'gambar_client' => $image_name
-        );
-
-        Client::whereId($id)->update($form_data);
-
-        return redirect('client')->with('success', 'Data Berhasil diubah');
+        return response()->json(['error'=>$validator->errors()->all()]);
     }
-
-    public function destroy(Request $request, $id){
-        $client = Client::find($id);
-        $client->delete();
-
-        return redirect()->route('client')
-                        ->with('success','Product deleted successfully');
-    }
-
-
-    
 }
 

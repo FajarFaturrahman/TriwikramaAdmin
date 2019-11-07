@@ -82,7 +82,7 @@
 
                     <!-- Client Button -->
                     <li class="nav-item ml-5" id="nav-item5">
-                        <a href="{{ route('client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
+                        <a href="{{     url('/client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img5">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png')}}" alt="" width="20px" height="20px"  id="nav-img5">
                             </div>

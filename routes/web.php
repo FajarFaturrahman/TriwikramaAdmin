@@ -28,15 +28,8 @@ Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detai
 Route::get('/product', 'productController@index')->name('product');
 
 // client
-Route::get('/client', 'ClientController@index')->name('client');
+Route::resource('client', 'ClientController');
 
-Route::post('/client', 'ClientController@store')->name('client.store');
-
-Route::get('/client/{id}', 'ClientController@edit')->name('client.edit');
-
-Route::patch('/client/{id}', 'ClientController@update')->name('client.update');
-
-Route::delete('/client/{id}', 'ClientController@destroy')->name('client.destroy');
 
 // inbox
 Route::get('/inbox', 'InboxController@index')->name('inbox');

@@ -28,11 +28,11 @@
             @foreach($client as $row)
             <div class="col-md-3 mt-2">
                 <div class="card border-0" id="cardOverlay">
-                    <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="card-img-top" alt="">
+                    <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="card-img-top" height="240px" alt="">
                     <div class="overlay">
                         <div class="row mx-auto" id="slideup">
                             <div class="col-md-4">
-                                <a href="{{ route('client.edit', $row->id) }}" data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="" data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
                             <div class="col-md-4">
@@ -41,7 +41,7 @@
 
                             <div class="col-md-4">
                                 
-                                <form action="{{ route('client.destroy',$row->id) }}">
+                                <form action="">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""></button>
@@ -50,6 +50,8 @@
                         </div>
                     </div>
                 </div>
+
+                <h3 class="text-center text-white">{{ $row->nama_client }}</h3>
             </div>  
             @endforeach          
         </div>
@@ -60,25 +62,21 @@
 
         <div class="modal fade" id="modalAddEditClient">
             <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    @if($errors->any())
-                    <div class="alert alert-danger">
-                        <ul>
-                            @foreach($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
+                <div class="modal-content">                    
+                    <div class="alert alert-danger print-error-msg" style="display:none">
+                        <ul></ul>
                     </div>
-                    @endif
+                    
                     <div class="modal-header">
                         <h4 class="modal-title">ADD CLIENT</h4>
                         <button type="button" class="close" data-dismiss="modal" arial-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form action="{{ route('client.store') }}" method="post" enctype="multipart/form-data">    
+                    <form action="{{ url('/client') }}" method="post" enctype="multipart/form-data">    
                         <div class="modal-body">                        
                             @csrf
+                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="">
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="row justify-content-center">
@@ -106,7 +104,7 @@
 
                                     <div class="row float-right mr-3 mt-5">
                                         <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
-                                        <input type="submit" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" name="tambah" value="ADD">
+                                        <input type="submit" class="btn pl-4 pr-4 upload-image" style="border-radius:100px;background:#550E99;color:white" name="tambah" value="ADD">
                                     </div>                                    
                                 </div>
                             </div>
@@ -116,4 +114,33 @@
             </div>
         </div>
     <!-- end of modal -->
+@endsection
+
+@section('js')
+    <script src="http://malsup.github.com/jquery.form.js"></script>
+    <script>
+        $('body').on('click', '.upload-image',function(e){
+            $(this).parents('form').ajaxform(options);
+        });
+
+        var options = {
+            complete: function(response){
+                if($.isEmptyObject(response.responseJSON.error)){
+                    $("input[name='nama_client']").val('');
+                    $(".card-img-top").find('img').attr('src','/images/'+responseJSON.gambar_client);
+                        alert('upload Berhasil')
+                }else{
+                    printErrorMsg(response.responseJSON.error);
+                }
+            }
+        };
+
+        function printErrorMsg(msg){
+            $(".print-error-msg").find("ul").html('');
+            $(".print-error-msg").css('display','block');
+            $.each(msg, function(key, value){
+                $("print.error.msg").find("ul").append('<li>'+value+'<li>')
+            });
+        }
+    </script>
 @endsection
