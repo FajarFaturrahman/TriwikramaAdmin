@@ -28,8 +28,10 @@
         </div>
         
         <div class="col-md-12 mt-2">
-            @foreach($inbox as $row)
-            <div class="row justify-content-center mt-2">                
+
+            @foreach($message as $row)
+
+            <div class="row justify-content-center mt-2" id="message_id_{{ $row->id }}">                
                 <div class="rounded-left" id="left-box">
                 </div>
                 <div class="card col-md-11 rounded-right" id="inboxCard">
@@ -41,18 +43,22 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="row float-right">
-                                    <button class="btn btn-light mr-3 mt-1 rounded-circle" id="buttonSize" data-toggle="modal" data-target="#modalMd"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></button>
-                                    <button class="btn btn-danger mt-1 rounded-circle" id="buttonSize2"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></button>
+                                    <button href="javascript:void(0)" class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-target-id="{{ $row->id }}" data-toggle="modal" data-target="#modalMd"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></button>
+                                    <button href="javascript:void(0)" class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-target-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></button>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>               
             </div>
+
             @endforeach
+
         </div>
-        
-        <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="detailInboxModalTitle" aria-hidden="true">
+
+        {{ $message->links() }}
+
+        <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -62,7 +68,11 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="modalMdContent"></div>                    
+                        <div id="modalMdContent">                           
+                            <p id="nama"></p>
+                            <p id="surel"></p>
+                            <p id="pesan"></p>
+                        </div>                    
                     </div>
                 </div>
             </div>
@@ -74,18 +84,43 @@
 
 @section('js')
 
- <script>
+<script>
+
+$(document).ready(function(){
     
-    $(document).ready(function(){
-        $('.card').mouseenter(function(){
-            $(this).animate({marginRight: '+=1%'}, 200);
-        });
-        $('.card').mouseleave(function(){
-            $(this).animate({marginRight: '-=1%'}, 200);
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+    $('body').on('click', '#show-message', function(){
+        var message_id = $('#show-message').data('target_id');
+        $('#modalMdTitle').html('Detail Inbox');
+        $.get('inbox/'+message_id+'/edit', function(data){
+            console.log(data);
+            $('#modalMd').modal('show');
+            $('#nama').html(data.pengirim);
+            $('#surel').html(data.email);
+            $('#pesan').html(data.pesan);
         });
     });
+    $('body').on('click', '#delete-message', function () {
+        var message_id = $('#delete-message').data('target_id');
+        confirm("Are You sure want to delete !");
+
+        $.ajax({
+            type: "DELETE",
+            url: "{{ url('inbox')}}"+'/'+message_id,
+            success: function (data) {
+                $("#message_id_" + message_id).remove();
+            },
+            error: function (data) {
+                console.log('Error:', data);
+            }
+        });
+    }); 
+});
 
 </script>
 
 @endsection
-

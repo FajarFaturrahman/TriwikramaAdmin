@@ -32,7 +32,7 @@ Route::resource('client', 'ClientController');
 
 
 // inbox
-Route::get('/inbox', 'InboxController@index')->name('inbox');
+Route::resource('/inbox', 'InboxController');
 
 // home
 Route::get('/home', 'homeController@index')->name('home');

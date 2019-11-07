@@ -209,7 +209,7 @@ body::before{
     border-bottom-left-radius: 0px;
 }
 
-#buttonSize, #buttonSize2{
+#show-message, #delete-message{
     width: 42px;
     height: 42px;
 }
@@ -234,7 +234,12 @@ td{
 }
 
 #inboxCard:hover{
-    box-shadow: 16px 2px 4px rgba(0, 0, 0, 0.2);
+    box-shadow: 2px 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.tooltip  .tooltip-inner {
+    background-color: #fff; 
+    color: #000;
 }
 
 .footer{
