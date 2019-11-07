@@ -28,6 +28,7 @@ Route::get('/client', 'ClientController@index')->name('client');
 Route::post('/client', 'ClientController@store')->name('client.store');
 
 Route::get('/inbox', 'InboxController@index')->name('inbox');
+Route::get('/inbox/{id}', 'InboxController@show')->name('inbox.show');
 
 Route::get('/home', 'homeController@index')->name('home');
 Auth::routes();

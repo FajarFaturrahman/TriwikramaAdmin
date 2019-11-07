@@ -11,5 +11,11 @@ class InboxController extends Controller
         return view('inbox', $data);
     }
 
+    public function show(Request $request, $id){
+
+        $data['inbox'] = \DB::table('inbox')->where('id_inbox', $id);
+        return view('inbox.show', compact('data'));
+    }
+
 
 }

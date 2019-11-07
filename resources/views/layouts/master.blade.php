@@ -20,7 +20,7 @@
     
     <style type="text/css">
         body{
-            font-family: Fira Sans;
+            font-family: "Fira Sans";
             src: url('{{ asset('fonts/FiraSans-Regular.tff') }}');
         }
     </style>
