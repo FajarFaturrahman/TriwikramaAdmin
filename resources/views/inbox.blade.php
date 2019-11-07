@@ -110,7 +110,7 @@ $(document).ready(function(){
 
         $.ajax({
             type: "DELETE",
-            url: "{{ url('/inbox')}}"+'/'+message_id,
+            url: "{{ url('inbox')}}"+'/'+message_id,
             success: function (data) {
                 $("#message_id_" + message_id).remove();
             },
