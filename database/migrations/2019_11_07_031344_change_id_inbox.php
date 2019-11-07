@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientTable extends Migration
+class ChangeIdInbox extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateClientTable extends Migration
      */
     public function up()
     {
-        Schema::create('client', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama_client', 100);
-            $table->string('gambar_client', 250);
-            $table->timestamps();
+        Schema::table('inbox', function($table){
+            $table->renameColumn('id_inbox', 'id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateClientTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client');
+        Schema::table('inbox', function($table){
+            $table->renameColumn('id', 'id_inbox');
+        });
     }
 }

@@ -71,11 +71,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>    
         <script>
-            $('.autoplay').slick({
-                slidesToShow : 2,
-                slidesToScroll: 1,
-                autoplay: true,
-                autoplaySpeed: 4000,                
+            $(document).ready(function(){
+                if($(window).width() < 960){
+                    $('.autoplay').slick({
+                    slidesToShow : 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+            }else if($(window).width() > 960){
+                    $('.autoplay').slick({
+                        slidesToShow : 3,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                    });
+                }            
             });
+            
+            
         </script>
     @endsection
