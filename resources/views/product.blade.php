@@ -62,10 +62,10 @@
                         </button>
                     </div>
 
-                    <div class="modal-body">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <form action="">
+                    <form action="">
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col-md-7">                                
                                     <div class="form-group">
                                         <label for="product_name">Product Name</label>
                                         <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="product_name" id="product_name">
@@ -74,26 +74,26 @@
                                     <div class="form group">
                                         <label for="description">Description</label>                                        
                                         <textarea class="form-control pb-5 pt-5 mt-3 rounded border-0" style="background-color:#EFF2F4;height:218px;" type="text" id="description"></textarea>
-                                    </div>                                    
-                                </form>
-                            </div>  
+                                    </div>                                                                        
+                                </div>  
 
-                            <div class="col-md-5">
-                                <div class="card border-0">
-                                    <div class="card-body">
-                                        <button class="my-float2">
-                                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">
-                                        </button>
-                                    </div>                                        
-                                </div>
-                                <hr class="">   
-                                <div class="row float-right mr-3 mt-5">
-                                    <button class="btn btn-link text-dark mr-3">CANCEL</button>
-                                    <button class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white">ADD</button>
+                                <div class="col-md-5">
+                                    <div class="card border-0">
+                                        <div class="card-body">
+                                            <button class="my-float2">
+                                                <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">
+                                            </button>
+                                        </div>                                        
+                                    </div>
+                                    <hr class="">   
+                                    <div class="row float-right mr-3 mt-5">
+                                        <button class="btn btn-link text-dark mr-3">CANCEL</button>
+                                        <input class="btn pl-4 pr-4" type="submit" style="border-radius:100px;background:#550E99;color:white" value="ADD">
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </form>    
                 </div>
             </div>
         </div>

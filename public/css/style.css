@@ -236,3 +236,7 @@ td{
 #inboxCard:hover{
     box-shadow: 16px 2px 4px rgba(0, 0, 0, 0.2);
 }
+
+.footer{
+    vertical-align: bottom;
+}

@@ -41,7 +41,7 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="row float-right">
-                                    <button class="btn btn-light mr-3 mt-1 rounded-circle" id="buttonSize" data-toggle="modal" data-target="#detailInboxModal"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></button>
+                                    <button class="btn btn-light mr-3 mt-1 rounded-circle" id="buttonSize" data-toggle="modal" data-target="#modalMd"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></button>
                                     <button class="btn btn-danger mt-1 rounded-circle" id="buttonSize2"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></button>
                                 </div>
                             </div>

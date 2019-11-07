@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateClientTable extends Migration
+class ChangeIdProduct extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateClientTable extends Migration
      */
     public function up()
     {
-        Schema::create('client', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nama_client', 100);
-            $table->string('gambar_client', 250);
-            $table->timestamps();
+        Schema::table('product', function($table){
+            $table->renameColumn('id_product', 'id');
         });
     }
 
@@ -28,6 +25,8 @@ class CreateClientTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('client');
+        Schema::table('product', function($table){
+            $table->renameColumn('id', 'id_product');
+        });
     }
 }

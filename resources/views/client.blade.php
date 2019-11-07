@@ -32,7 +32,7 @@
                     <div class="overlay">
                         <div class="row mx-auto" id="slideup">
                             <div class="col-md-4">
-                                <a data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="{{ route('client.edit', $row->id) }}" data-toggle="modal" data-target="#modalAddEditClient" ><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
                             <div class="col-md-4">
@@ -40,7 +40,12 @@
                             </div>
 
                             <div class="col-md-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""></a>
+                                
+                                <form action="{{ route('client.destroy',$row->id) }}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""></button>
+                                </form>
                             </div>
                         </div>
                     </div>
