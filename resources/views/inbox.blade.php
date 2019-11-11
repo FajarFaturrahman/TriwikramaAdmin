@@ -43,8 +43,8 @@
                             </div>
                             <div class="col-md-2">
                                 <div class="row float-right">
-                                    <button href="javascript:void(0)" class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-target-id="{{ $row->id }}" data-toggle="modal" data-target="#modalMd"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></button>
-                                    <button href="javascript:void(0)" class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-target-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></button>
+                                    <a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></a>
+                                    <a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></a>
                                 </div>
                             </div>
                         </div>
@@ -56,8 +56,6 @@
 
         </div>
 
-        {{ $message->links() }}
-
         <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
                 <div class="modal-content">
@@ -68,10 +66,25 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="modalMdContent">                           
-                            <p id="nama"></p>
-                            <p id="surel"></p>
-                            <p id="pesan"></p>
+                        <div id="modalMdContent">
+                            <div class="col-md-12">
+                                <div class="row">
+                                    <div class="col-md-1"><strong>NAMA</strong></div>
+                                    <div class="col-md-11"><p id="nama"></p></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-1"><strong>EMAIL</strong></div>
+                                    <div class="col-md-11"><p id="surel"></p></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12"><strong>PESAN </strong></div><br>
+                            <div class="col-md-12"><p id="pesan"></p></div>
+                            <div class="col-md-12 float-right">
+                                <div class="row float-right mr-1 mt-4">
+                                    <button class="btn btn-link text-dark mr-2" data-dismiss="modal" aria-label="Close">CANCEL</button>
+                                    <input class="btn pl-4 pr-4" type="submit" style="border-radius:100px;background:#550E99;color:white" value="Reply">
+                                </div>
+                            </div>
                         </div>                    
                     </div>
                 </div>
@@ -86,40 +99,60 @@
 
 <script>
 
-$(document).ready(function(){
-    
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $('body').on('click', '#show-message', function(){
-        var message_id = $('#show-message').data('target_id');
-        $('#modalMdTitle').html('Detail Inbox');
-        $.get('inbox/'+message_id+'/edit', function(data){
-            console.log(data);
-            $('#modalMd').modal('show');
-            $('#nama').html(data.pengirim);
-            $('#surel').html(data.email);
-            $('#pesan').html(data.pesan);
-        });
-    });
-    $('body').on('click', '#delete-message', function () {
-        var message_id = $('#delete-message').data('target_id');
-        confirm("Are You sure want to delete !");
+    $(document).ready(function(){
 
-        $.ajax({
-            type: "DELETE",
-            url: "{{ url('inbox')}}"+'/'+message_id,
-            success: function (data) {
-                $("#message_id_" + message_id).remove();
-            },
-            error: function (data) {
-                console.log('Error:', data);
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-    }); 
-});
+
+        $('body').on('click', '#show-message', function(event){
+            event.preventDefault();
+            var mid = $(this).data('id'); 
+
+            $.ajax({
+                type: "GET",
+                url: "{{ url('inbox') }}" + '/' + mid,
+                data: {id:mid},
+                dataType: "json",
+                success:function(data){
+                    console.log(data);
+                    $('#modalMdTitle').text("Detail Inbox from " + data.pengirim);
+                    $('#nama').text(data.pengirim);
+                    $('#surel').text(data.email);
+                    $('#pesan').text(data.pesan);
+                    $('#modalMd').modal('show');    
+                },
+                error:function(data){
+                    $('.modal-body').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
+                }
+            });
+        });
+
+        $('body').on('click', '#delete-message', function(event){
+            event.preventDefault();
+            var mid = $(this).data('id');
+            confirm("Are You sure want to delete !", false);
+            
+            $.ajax({
+                type: "DELETE",
+                url: "{{ url('inbox') }}" + '/' + mid,
+                data: {id:mid},
+                dataType: "json",
+                success:function(response){
+                    console.log(response);
+                    $('#message_id_' + mid).remove();
+                },
+                error:function(xhr){
+                    console.log(xhr.responseText);
+                }
+            });
+        });
+
+    });
+
+
 
 </script>
 

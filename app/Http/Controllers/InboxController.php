@@ -1,31 +1,91 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Inbox;
+
 use Illuminate\Http\Request;
 
 class InboxController extends Controller
 {
-    public function index(){
-        $data['message'] = Inbox::orderBy('id','asc')->paginate(8);  
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        $data['message'] = \DB::table('inbox')->orderBy('id','asc')->paginate(8);  
         return view('inbox',$data);
     }
 
-    public function edit($id){
-
-        $where = array('id' => $id);
-        $message  = Inbox::where($where)->first();
- 
-        return Response::json($message);
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
     }
 
-    public function destroy($id){
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
 
-        $message = Inbox::where('id',$id)->delete();
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        $data = \DB::table('inbox')->find($id);
+
+        return response()->json($data);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $data = \DB::table('inbox')->where('id',$id)->delete();
    
-        return Response::json($message);
-
+        return response()->json([
+            'success' => 'Record has been deleted successfully!'
+        ]);
     }
-
-
 }
