@@ -17,9 +17,13 @@ Route::get('/', function () {
 
 // portofolio
 Route::get('/portofolio', 'PortofolioController@index')->name('portofolio');
+Route::get('/portofolio/create', 'PortofolioController@create');
+Route::get('/portofolio/{id}/detailPortofolio', 'PortofolioController@show');
+Route::post('/portofolio', 'PortofolioController@store');
+Route::get('/portofolio/{id}/edit', 'PortofolioController@edit');
+Route::patch('/portofolio/{id}', 'PortofolioController@update');
+Route::delete('/portofolio/{id}', 'PortofolioController@destroy');
 
-// add portofolio
-Route::get('/addPortofolio', 'AddPortofolioController@index')->name('addPortofolio');
 
 // detail portofolio
 Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detailPortofolio');
@@ -29,7 +33,8 @@ Route::get('/product', 'productController@index')->name('product');
 
 // client
 Route::resource('client', 'ClientController');
-
+// Route::post('client/update', 'ClientController@update')->name('client.update');
+// Route::get('client/destroy/{id}', 'ClientController@destroy');
 
 // inbox
 Route::resource('/inbox', 'InboxController');

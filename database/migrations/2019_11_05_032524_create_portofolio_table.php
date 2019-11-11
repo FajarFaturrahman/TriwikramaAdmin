@@ -23,6 +23,7 @@ class CreatePortofolioTable extends Migration
             $table->longText('description');        
             $table->integer('id_client')->unsigned();
             $table->foreign('id_client')->references('id_client')->on('client');
+            $table->date('tanggal_dibuat');        
             $table->timestamps();
         });
     }
