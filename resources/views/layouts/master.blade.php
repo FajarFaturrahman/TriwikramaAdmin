@@ -56,7 +56,7 @@
                     
                     <!-- Portofolio Button -->
                     <li class="nav-item ml-5" id="nav-item2">
-                        <a href="{{ route('portofolio') }}" data-toggle="tooltip" data-placement="bottom" title="Portofolio">
+                        <a href="{{ url('/portofolio') }}" data-toggle="tooltip" data-placement="bottom" title="Portofolio">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img2">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png')}}" alt="" width="20px" height="20px"  id="nav-img2">
                             </div>
@@ -83,7 +83,7 @@
 
                     <!-- Client Button -->
                     <li class="nav-item ml-5" id="nav-item5">
-                        <a href="{{ route('client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
+                        <a href="{{  url('/client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img5">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png')}}" alt="" width="20px" height="20px"  id="nav-img5">
                             </div>
@@ -115,7 +115,7 @@
 
     <footer class="footer mt-4">
         <div class="footer-block author text-light ml-4">
-            @ 2019 Cv.Triwikrama - All Right Reserved
+            Copyright @Cv.Triwikrama corp 2019
         </div>
     </footer>
 

@@ -13,20 +13,24 @@
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="row">
-                                    <h4>NAME OF THE PORTFOLIO </h4>                        
+                                    <h4>{{ $portofolio->nama_aplikasi }}</h4>                        
                                     <pre><h4> || </h4></pre>
-                                    <h4 class="text-danger">TYPE OF THE PORFOLIO </h4>
+                                    <h4 class="text-danger">{{ $portofolio->platform }}</h4>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="row float-right mr-2">
-                                    <a href="{{ route('addPortofolio') }}" class="btn mr-2" id="btnEditPortfolio">
+                                    <a href="{{  url('/portofolio/' . $portofolio->id . '/edit') }}" class="btn mr-2" id="btnEditPortfolio">
                                         <img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt="" class="mt-2">
                                     </a>
-                                    <button class="btn btn-danger" id="rounded-btn">
-                                        <img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt="">
-                                    </button>
+                                    <form action="{{ url('/portofolio', $portofolio->id) }}" method="POST">
+				                        @method('DELETE')
+				                        @csrf
+                                        <button class="btn btn-danger" type="submit" id="rounded-btn">
+                                            <img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt="">
+                                        </button>
+				                    </form>                                    
                                 </div>
                             </div>
                         </div>                    
@@ -54,25 +58,25 @@
 
                         <h5 class="mt-5"><strong>COMPANY INFORMATION</strong></h5>
                         <div class="col-md-12 mt-3">
-                            <table class="border-0">
+                            <table class="border-0 p-2">
                                 <tr>
                                     <td><strong>Website Type</strong></td>
-                                    <td>Web App</td>
+                                    <td>{{ $portofolio->tipe_website }}</td>
                                 </tr>
 
                                 <tr>
                                     <td><strong>Domain</strong></td>
-                                    <td>www.user-acceptance-test.com</td>
+                                    <td>{{ $portofolio->domain_portofolio }}</td>
                                 </tr>
 
                                 <tr>
                                     <td><strong>Created At</strong></td>
-                                    <td>24-10-2018</td>
+                                    <td>{{ $portofolio->tanggal_dibuat }}</td>
                                 </tr>
 
                                 <tr>
                                     <td><strong>STATUS</strong></td>
-                                    <td><p class="bg-light mt-3" style="border-radius:100px;">Active</p></td>
+                                    <td><p class="bg-light mt-3" style="border-radius:100px;">{{ $portofolio->status }}</p></td>
                                 </tr>
                             </table>
                         </div>
@@ -80,7 +84,7 @@
                         <h5 class="mt-5"><strong>DESCRIPTION</strong></h5>
                         <div class="row justify-content-center">
                             <div class="col-md-11 mt-3">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>                                
+                                <p>{{ $portofolio->description }}</p>                                
                             </div>
                         </div>                        
                     </div>

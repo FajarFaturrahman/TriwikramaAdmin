@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Validator;
 use App\Client;
 use Illuminate\Http\Request;
 
@@ -11,71 +12,94 @@ class clientController extends Controller
         $data['client'] = \DB::table('client')->get();
         return view('client', $data);
     }
+    
+    public function store(Request $request)
+    {
+        $rules = array(
+            'nama_client'   => 'required',
+            'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
+        );
 
-    public function store(Request $request){
-                
-        $request->validate([            
-            'nama_client' => 'required',
-            'image' => 'required|mimes:jpeg,jpg,png|max:2048',
-        ]);
+        $error  = Validator::make($request->all(), $rules);
 
-        $image = $request->file('image');
+        if($error->fails())
+        {
+            return response()->json(['errors' => $error->errors()->all()]);
+        }
 
-        $new_name = rand() . '.' .$image->getClientOriginalExtension();
+        $image = $request->file('gambar_client');
+
+        $new_name = rand(). '.' . $image->getClientOriginalExtension();
+
         $image->move(public_path('images'), $new_name);
+
         $form_data = array(
-            'nama_client' => $request->nama_client,
+            'nama_client'   => $request->nama_client,
             'gambar_client' => $new_name
         );
 
         Client::create($form_data);
 
-        return redirect('client')->with('success', 'Data berhasil di Tambah');
+        return response()->json(['success' => 'Data Berhasil Ditambah']);
     }
 
     public function edit($id){
-        $data['client'] = \DB::table('client')->find($id);
-        return view('client', $data);
+        if(request()->ajax())
+        {
+            $data = Client::findOrFail($id);
+            return response()->json(['data' => $data]);
+        }
     }
 
-    public function update(Request $request, $id){
-        
+    public function update(Request $request){
         $image_name = $request->hidden_image;
-        $image = $request->file('image');
-        if($image != ''){
-            $request->validate([
-                'nama_client' => 'required',
+        $image = $request->file('gambar_client');
+        if($image != '')
+        {
+            $rules = array(
+                'nama_client'   => 'required',
                 'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
-            ]);
+            );
+            $error = Validator::make($request->all(), $rules);
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
             $image->move(public_path('images'), $image_name);
+        }
+        else
+        {
+            $rules = array(
+                'nama_client'    =>  'required',                
+            );
 
-        }else{
-            $request->validate([
-                'nama_client' => 'required',
-            ]);
+            $error = Validator::make($request->all(), $rules);
+
+            if($error->fails())
+            {
+                return response()->json(['errors' => $error->errors()->all()]);
+            }
         }
 
         $form_data = array(
-            'nama_client' => $request->nama_client,
+            'nama_client'   => $request->nama_client,
             'gambar_client' => $image_name
         );
+        AjaxCrud::whereId($request->hidden_id)->update($form_data);
 
-        Client::whereId($id)->update($form_data);
-
-        return redirect('client')->with('success', 'Data Berhasil diubah');
+        return response()->json(['success' => 'Data is successfully updated']);
     }
 
-    public function destroy(Request $request, $id){
-        $client = Client::find($id);
-        $client->delete();
-
-        return redirect()->route('client')
-                        ->with('success','Product deleted successfully');
+    public function destroy($id)
+    {
+        $client = Client::where('id',$id)->delete();
+   
+        return response()->json([
+            'success' => 'Record has been deleted successfully'
+        ]);
     }
 
-
-    
 }
 

@@ -58,7 +58,7 @@
                     <img class="card-img-top" src="{{ asset('img/ImageTriwikramajpg/compressed/forClient.jpg') }}" alt="image 1">
                     <div class="card-body">
                         <h4 class="card-title">See Your Client</h4>
-                        <a href="{{ route('client') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart">START</a>
+                        <a href="{{ url('/client') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart">START</a>
                     </div>
                 </div>
             </div>

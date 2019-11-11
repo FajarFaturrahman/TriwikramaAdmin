@@ -24,7 +24,7 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <img class="card-img-top" src="{{ asset('img/contoh/ListUser.png') }}" alt="image 1">
+                                <img class="card-img-top" height="260px" width="260px" src="{{ asset('img/contoh/ListUser.png') }}" alt="image 1">
                             </div>
 
                             <div class="col-md-6">
