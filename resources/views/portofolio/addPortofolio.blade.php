@@ -24,7 +24,7 @@
             </ul>
         </div>
         @endif
-        <form action="{{ url('portofolio', @$portofolio->id) }}" method="post" enctype="multipart/form-data">
+        <form id="file-upload-form" action="{{ url('portofolio', @$portofolio->id) }}" class="uploader" method="post" accept-charset="utf-8" enctype="multipart/form-data">
           @csrf
             @if(!empty($portofolio))
 		        @method('PATCH')
@@ -93,9 +93,8 @@
                         </div>
 
                         <div class="card-body">
-                            <button class="my-float">
-                                <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">
-                            </button>
+                            <input type="file" class="form-control" name="gambar_website[]" multiple>                                                         
+                            <!-- <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">                                -->
                         </div>
                     </div>
 
@@ -105,9 +104,7 @@
                         </div>
 
                         <div class="card-body">
-                            <button class="my-float">
-                                <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">
-                            </button>
+                            <input type="file" class="form-control" name="gambar_mobile[]" multiple>
                         </div>
                     </div>
                 </div>
@@ -174,14 +171,32 @@
 
 @endsection
 
-@section('js')
-<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<script>
-        $(function(){
-             $(".input-tanggal").datepicker({
-                dateFormat: "dd-mm-yy"
+<!-- @section('js')
+    <script>
+        $(document).ready(function(){
+            $('#file-input').on('change', function(){ //on file input change
+                if (window.File &amp;&amp; window.FileReader &amp;&amp; window.FileList &amp;&amp; window.Blob) //check File API supported browser
+                {
+                    
+                    var data = $(this)[0].files; //this file data
+                    
+                    $.each(data, function(index, file){ //loop though each file
+                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
+                            var fRead = new FileReader(); //new filereader
+                            fRead.onload = (function(file){ //trigger function on successful read
+                            return function(e) {
+                                var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
+                                $('#thumb-output').append(img); //append image to output element
+                            };
+                            })(file);
+                            fRead.readAsDataURL(file); //URL representing the file's data.
+                        }
+                    });
+                    
+                }else{
+                    alert("Your browser doesn't support File API!"); //if File API is absent
+                }
             });
         });
-    </script> -->
-@endsection    
+    </script>
+@endsection     -->

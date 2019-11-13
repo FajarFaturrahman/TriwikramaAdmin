@@ -9,7 +9,7 @@
             <div class="box col-md-6">
                 <div class="forSearch">
                     <span class="icon"><i class="fa fa-search fa-1x"></i></span>
-                    <input type="search" name="search" id="search" placeholder="search">
+                    <input type="text" name="search" id="search" placeholder="search">
                 </div>
             </div>
             <div class="col-md-5">
@@ -27,7 +27,7 @@
             </div>
         </div>
         
-        <div class="col-md-12 mt-2">
+        <div class="col-md-12 mt-2" id="content">
 
             @foreach($message as $row)
 
@@ -107,6 +107,26 @@
             }
         });
 
+        fetch_inbox();
+
+        function fetch_inbox(query = '')
+        {
+            $.ajax({
+                url: "{{ url('inbox') }}",
+                method: 'GET',
+                data:{query:query},
+                dataType: 'json',
+                success:function(data){
+                    $('#content').html(data.data_inbox);
+                }
+            })
+        }
+
+        $(document).on('keyup', '#search', function(){
+            var query = $(this).val();
+            fetch_inbox(query);
+        });
+
         $('body').on('click', '#show-message', function(event){
             event.preventDefault();
             var mid = $(this).data('id'); 
@@ -149,7 +169,7 @@
                 }
             });
         });
-
+       
     });
 
 

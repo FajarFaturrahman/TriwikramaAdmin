@@ -3,13 +3,15 @@
 namespace App\Http\Controllers;
 use App\Portofolio;
 use App\Client;
+use App\GambarPortofolio;
+use Validator,Redirect,Response,File,DB;
 use Illuminate\Http\Request;
 
 class PortofolioController extends Controller
 {    
     public function index()
     {
-        $data['portofolio'] = \DB::table('portofolio')->join('client', 'portofolio.id_client', '=', 'client.id')->get();
+        $data['portofolio'] = \DB::table('portofolio')->get();
         return view('portofolio.portofolio', $data);
     }
 
@@ -34,9 +36,7 @@ class PortofolioController extends Controller
     	];
 		$this->validate($request,$rule);
 
-    	$input = $request->all();
-    	// unset($input['_token']);
-        // $status = \DB::table('t_kantor')->insert($input);
+    	$input = $request->all();    	
 
         $portofolio = new Portofolio;
         $portofolio->nama_aplikasi      =   $input['nama_aplikasi'];
@@ -51,14 +51,28 @@ class PortofolioController extends Controller
         $status = $portofolio->save();
 
     	if ($status) {
-    		return redirect('/portofolio')->with('success', 'Data berhasil ditambahkan');
+                                        
+            // $images=array();
+            // if($files=$request->file('gambar_website')){
+            //     foreach($files as $file){
+            //         $name=$file->getClientOriginalName();
+            //         $file->move('image',$name);
+            //         $images[]=$name;
+            //         /*Insert your data*/
+            //         DB::table('gambar_product')->insert([
+            //         'gambar_product' => $name
+            //         ]);      
+            //     }        
+            // }    
+            
+            return redirect('/portofolio')->with('success', 'Data berhasil ditambahkan');
     	}else{
     		return redirect('/portofolio/create')->with('error', 'Data gagal ditambahkan');
     	}
     }
 
     public function show($id)
-    {
+    {        
         $data['portofolio'] = \DB::table('portofolio')->find($id);
         return view('portofolio.detailPortofolio', $data);
     }
@@ -68,7 +82,7 @@ class PortofolioController extends Controller
         $client = Client::All();        
         
         $data['portofolio'] = \DB::table('portofolio')->find($id);
-        return view('portofolio.addPortofolio', $data)->with('client', $client);;
+        return view('portofolio.addPortofolio', $data)->with('client', $client);
     }
 
     public function update(Request $request,$id)

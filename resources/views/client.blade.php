@@ -27,7 +27,7 @@
                     <div class="overlay">
                         <div class="row mx-auto" id="slideup">
                             <div class="col-md-4">
-                                <a href="#" type="button" name="edit" id="{{ $row->id }}" class="edit btn-danger"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="#" name="edit" data-id="{{ $row->id }}" class="edit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
                             <div class="col-md-4">
@@ -67,13 +67,12 @@
                             <input type="hidden" name="_token" value="{{ csrf_token() }}" id="">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <div class="row justify-content-center">
-                                        <img class="bg-light" src="{{ asset('img/IconTriwikramaAppAdmin/black/photo.png') }}" width="100px" height="100px" alt="">
+                                    <div class="row justify-content-center">                                        
                                         <span id="store_image"></span>
                                     </div>    
                                     <div class="row justify-content-center">
                                         <div class="form-group">                                        
-                                            <input type="file" class="btn btn-danger font-weight-bold" style="background: #D91E18;" id="gambar_client" name="gambar_client">
+                                            <input type="file" class="btn mt-5 btn-danger font-weight-bold" style="background: #D91E18;" id="gambar_client" name="gambar_client">
                                         </div>                                    
                                     </div>
                                 </div>  
@@ -94,7 +93,7 @@
                                         <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
-                                        <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4 upload-image" style="border-radius:100px;background:#550E99;color:white" value="ADD">
+                                        <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" value="ADD">
                                     </div>                                    
                                 </div>
                             </div>
@@ -112,110 +111,134 @@
         $(document).ready(function(){
             $.ajaxSetup({
                 headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
             });
             
         
 
-        $('#create_data').click(function(){
-            $('.modal-title').text("ADD CLIENT");
-            $('#action_button').val("Add");
-            $('#action').val("Add");
-            $('#formModal').modal('show');
-        });
+            $('#create_data').click(function(){
+                $('.modal-title').text("ADD CLIENT");
+                $('#action_button').val("Add");
+                $('#action').val("Add");
+                $('#formModal').modal('show');
+            });
 
-        $('#sample_form').on('submit', function(event){
-            event.preventDefault();
-            if($('#action').val() == 'Add')
-            {
-                $.ajax({
-                    url : "{{ route('client.store') }}",
-                    method: "POST",
-                    data : new FormData(this),
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType:"json",
-                    success:function(data){
-                        var html = '';
-                        if(data.errors)
-                        {
-                            html = '<div class="alert alert-danger">';
-                            for(var count = 0; count < data.errors.length; count++)
+            $('#sample_form').on('submit', function(event){
+                event.preventDefault();
+                if($('#action').val() == 'Add')
+                {
+                    $.ajax({
+                        url : "{{ route('client.store') }}",
+                        method: "POST",
+                        data : new FormData(this),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        dataType:'json',
+                        success:function(data){
+                            var html = '';
+                            if(data.errors)
                             {
-                                html += '<p>' + data.errors[count] + '</p>';                                
+                                html = '<div class="alert alert-danger">';
+                                for(var count = 0; count < data.errors.length; count++)
+                                {
+                                    html += '<p>' + data.errors[count] + '</p>';                                
+                                }
+                                html += '</div>';
                             }
-                            html += '</div>';
-                        }
-                        if(data.success)
-                        {
-                            html = '<div class="alert alert-success">' + data.success + '</div>';
-                            $('#sample_form')[0].reset();                  
-                            $('#formModal').modal('hide');          
-                            $("#show_client_").load("{{ url('client') }}");
-                        }
-                        $('#form_result').html(html);
-                    }
-                });
-            }
-
-            if($('#action').val()=="Edit")
-            {
-                $.ajax({
-                    url: "{{ url('client') }}",
-                    method: "POST",
-                    data: new FormData(this),
-                    contentType: false,
-                    cache: false,
-                    processData: false,
-                    dataType:"json",
-                    success:function(response)
-                    {
-                        var html ='';
-                        if(response.errors)
-                        {
-                            html = '<div class="alert alert-danger">';
-                            for(var count = 0; count < response.errors.length; count++)
+                            if(data.success)
                             {
-                                html += '<p>' + response.errors[count] + '</p>';
+                                html = '<div class="alert alert-success">' + data.success + '</div>';
+                                $('#sample_form')[0].reset();                  
+                                $('#formModal').modal('hide');          
+                                $("#show_client_").load("{{ url('client') }}");
                             }
-                            html += '</div>';
+                            $('#form_result').html(html);
                         }
-                        if(data.success)
+                    })
+                }
+
+                if($('#action').val() == 'Edit')
+                {
+                    $.ajax({
+                        url: "{{ route('client.update') }}",
+                        method: "POST",
+                        data: new FormData(this),
+                        contentType: false,
+                        cache: false,
+                        processData: false,
+                        dataType: "json",
+                        success:function(response)
                         {
-                            html = '<div class="alert alert-success">' + response.success + '</div>';
-                            $('#sample_form')[0].reset();
-                            $('#store_image').html('');                            
-                            $("#show_client_").load("ClientController.php");
+                            var html ='';
+                            if(response.errors)
+                            {
+                                html = '<div class="alert alert-danger">';
+                                for(var count = 0; count < response.errors.length; count++)
+                                {
+                                    html += '<p>' + response.errors[count] + '</p>';
+                                }
+                                html += '</div>';
+                            }
+                            if(response.success)
+                            {
+                                html = '<div class="alert alert-success">' + response.success + '</div>';
+                                $('#sample_form')[0].reset();
+                                $('#store_image').html('');
+                                $('#formModal').modal('hide');                            
+                                $("#show_client_").html('#show_client_');
+                            }
+                            $('#form_result').html(html);
                         }
-                        $('#form_result').html(html);
-                    }
-                })
-            }
-        });
-
-        $('body').on('click', '#delete', function(event){
-            event.preventDefault();
-            var mid = $(this).data('id');
-            confirm("Are You sure want to delete ?");
-
-            $.ajax({
-                type: "DELETE",
-                url: "{{ url('client') }}" + '/' + mid,
-                data: {id:mid},
-                dataType: 'json',
-                success:function(response){
-                    console.log(response);
-                    $('#show_client_' + mid).remove();
-                },
-                error:function(xhr){
-                    console.log(xhr.responseText);
+                    });
                 }
             });
-        });
 
-    });
+            $(document).on('click', '.edit', function(){
+                var mid = $(this).data('id');            
+                $('#form_result').html('');
+                $.ajax({
+                    url:"/client/"+mid+"/edit",
+                    dataType: 'json',
+                    success:function(html){
+                        console.log(html);
+                        $('#nama_client').val(html.data.nama_client);
+                        $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='120' class='img-thumbnail' />");
+                        $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
+                        $('#hidden_id').val(html.data.id);
+                        $('.modal-title').text('Edit Data Client');
+                        $('#action_button').val('Edit');
+                        $('#action').val('Edit');
+                        $('#formModal').modal('show');
+                    },
+                    error:function(xhr){
+                        console.log(xhr.responseText);
+                    }
+                })
+            });
+
+            $('body').on('click', '#delete', function(event){
+                event.preventDefault();
+                var mid = $(this).data('id');
+                confirm("Are You sure want to delete ?");
+
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{ url('client') }}" + '/' + mid,
+                    data: {id:mid},
+                    dataType: 'json',
+                    success:function(response){
+                        console.log(response);
+                        $('#show_client_' + mid).remove();
+                    },
+                    error:function(xhr){
+                        console.log(xhr.responseText);
+                    }
+                });
+            });
+
+        });
 
     </script>
 @endsection

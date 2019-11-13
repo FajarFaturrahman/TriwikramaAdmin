@@ -40,7 +40,7 @@ class clientController extends Controller
 
         Client::create($form_data);
 
-        return response()->json(['success' => 'Data Berhasil Ditambah']);
+        return response()->json(['success' => 'Data is successfully added']);
     }
 
     public function edit($id){
@@ -87,7 +87,7 @@ class clientController extends Controller
             'nama_client'   => $request->nama_client,
             'gambar_client' => $image_name
         );
-        AjaxCrud::whereId($request->hidden_id)->update($form_data);
+        Client::whereId($request->hidden_id)->update($form_data);
 
         return response()->json(['success' => 'Data is successfully updated']);
     }

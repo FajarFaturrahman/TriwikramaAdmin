@@ -17,7 +17,7 @@
 
     <!-- Bootstrap CSS -->
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">    
     
     <style type="text/css">
         body{
@@ -65,7 +65,7 @@
 
                     <!-- Product Button -->
                     <li class="nav-item ml-5" id="nav-item3">
-                        <a href="{{ route('product') }}" data-toggle="tooltip" data-placement="bottom" title="Product">
+                        <a href="{{ url('/product') }}" data-toggle="tooltip" data-placement="bottom" title="Product">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img3">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/desktop-monitor2.png')}}" alt="" width="20px" height="20px"  id="nav-img3">
                             </div>

@@ -200,6 +200,9 @@ body::before{
 .card > .card-header{
     background: transparent;
 }
+#card-header{
+    background: transparent;
+}
 #descAndClient{
     border-bottom-right-radius: 60px;
 }

@@ -88,4 +88,25 @@ class InboxController extends Controller
             'success' => 'Record has been deleted successfully!'
         ]);
     }
+
+    public function search(Request $request)
+    {
+        if($request->ajax())
+        {           
+           $query = $request->search;
+           if($query != '')
+           {
+                $data = DB::table('inbox')
+                ->where('pengirim', 'like', '%'.$query.'%')
+                ->get();
+           }
+           else
+           {
+            $data = DB::table('inbox')              
+              ->get();
+           }                                           
+
+            echo json_encode($data);
+        }          
+    }
 }

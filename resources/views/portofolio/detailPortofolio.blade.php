@@ -13,6 +13,7 @@
                         <div class="row justify-content-center">
                             <div class="col-md-8">
                                 <div class="row">
+                                    
                                     <h4>{{ $portofolio->nama_aplikasi }}</h4>                        
                                     <pre><h4> || </h4></pre>
                                     <h4 class="text-danger">{{ $portofolio->platform }}</h4>

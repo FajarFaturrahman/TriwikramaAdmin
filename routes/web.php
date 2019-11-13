@@ -29,18 +29,19 @@ Route::delete('/portofolio/{id}', 'PortofolioController@destroy');
 Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detailPortofolio');
 
 // product
-Route::get('/product', 'productController@index')->name('product');
+Route::resource('product', 'ProductController');
+Route::post('product/update', 'ProductController@update')->name('product.update');
 
 // client
 Route::resource('client', 'ClientController');
-// Route::post('client/update', 'ClientController@update')->name('client.update');
+Route::post('client/update', 'ClientController@update')->name('client.update');
 // Route::get('client/destroy/{id}', 'ClientController@destroy');
 
 // inbox
 Route::resource('/inbox', 'InboxController');
-
 // home
 Route::get('/home', 'homeController@index')->name('home');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
