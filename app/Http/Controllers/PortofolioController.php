@@ -9,9 +9,13 @@ use Illuminate\Http\Request;
 
 class PortofolioController extends Controller
 {    
-    public function index()
-    {
-        $data['portofolio'] = \DB::table('portofolio')->get();
+    public function index(Request $request)
+    {   
+        if($request->has('cari')){
+            $data['portofolio'] = Portofolio::where('nama_aplikasi','LIKE','%'.$request->cari.'%')->get();
+        }else{
+            $data['portofolio'] = \DB::table('portofolio')->get();
+        }                
         return view('portofolio.portofolio', $data);
     }
 

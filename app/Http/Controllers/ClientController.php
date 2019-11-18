@@ -7,9 +7,13 @@ use Illuminate\Http\Request;
 
 class clientController extends Controller
 {    
-    public function index()
+    public function index(Request $request)
     {
-        $data['client'] = \DB::table('client')->get();
+        if($request->has('cari')){
+            $data['client'] = Client::where('nama_client','LIKE','%'.$request->cari.'%')->get();
+        }else{
+            $data['client'] = \DB::table('client')->get();            
+        }        
         return view('client', $data);
     }
     
@@ -25,22 +29,21 @@ class clientController extends Controller
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
-        }
+        }else{
 
         $image = $request->file('gambar_client');
 
         $new_name = rand(). '.' . $image->getClientOriginalExtension();
 
         $image->move(public_path('images'), $new_name);
-
-        $form_data = array(
-            'nama_client'   => $request->nama_client,
-            'gambar_client' => $new_name
-        );
-
-        Client::create($form_data);
-
-        return response()->json(['success' => 'Data is successfully added']);
+        
+        $data = new Client;
+            $data->nama_client     = $request->nama_client;
+            $data->gambar_client             = $new_name;
+            
+            $data->save ();
+            return response()->json($data);        
+        }    
     }
 
     public function edit($id){
@@ -83,13 +86,13 @@ class clientController extends Controller
             }
         }
 
-        $form_data = array(
-            'nama_client'   => $request->nama_client,
-            'gambar_client' => $image_name
-        );
-        Client::whereId($request->hidden_id)->update($form_data);
-
-        return response()->json(['success' => 'Data is successfully updated']);
+        
+                $data = Client::find($request->hidden_id);
+                $data->nama_client     = $request->nama_client;
+                $data->gambar_client   = $image_name;
+            
+                $data->save ();
+                return response()->json($data);        
     }
 
     public function destroy($id)

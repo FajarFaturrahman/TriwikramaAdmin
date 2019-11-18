@@ -7,12 +7,16 @@ use Illuminate\Http\Request;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $data['product'] = \DB::table('product')->get();
+        if($request->has('cari')){
+            $data['product'] = Product::where('nama_product','LIKE','%'.$request->cari.'%')->get();
+        }else{
+            $data['product'] = \DB::table('product')->get();            
+        }        
         return view('product', $data);
     }
-
+    
     public function store(Request $request)
     {
         $rules = array(
@@ -25,15 +29,15 @@ class ProductController extends Controller
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
+        }else{        
+        
+            $data = new Product;
+            $data->nama_product     = $request->nama_product;
+            $data->deskripsi             = $request->deskripsi;
+            
+            $data->save ();
+            return response()->json($data);
         }
-
-        $form_data = array(
-            'nama_product'      => $request->nama_product,
-            'deskripsi'         => $request->deskripsi
-        );
-
-        Product::create($form_data);
-        return response()->json(['success' => 'Data Berhasil Ditambah']);
     }
 
     public function edit($id){
@@ -56,16 +60,15 @@ class ProductController extends Controller
         if($error->fails())
         {
             return response()->json(['errors' => $error->errors()->all()]);
+        }else{        
+        
+            $data = Product::find($request->hidden_id);
+            $data->nama_product     = $request->nama_product;
+            $data->deskripsi        = $request->deskripsi;
+            
+            $data->save ();
+            return response()->json($data);
         }
-
-        $form_data = array(
-            'nama_product'      => $request->nama_product,
-            'deskripsi'         => $request->deskripsi
-        );
-
-        Product::whereId($request->hidden_id)->update($form_data);
-
-        return response()->json(['success' => 'Data Berhasil Di Update']);
     }
 
     public function destroy($id){

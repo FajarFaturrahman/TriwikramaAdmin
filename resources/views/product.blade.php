@@ -5,14 +5,17 @@
 @section('content')
 
     <div class="container mt-5">
-        <div class="row">
+        <div class="row">            
             <div class="box col-md-6">
-                <div class="forSearch">
-                    <span class="icon"><i class="fa fa-search fa-1x"></i></span>
-                    <input type="search" name="search" id="search" placeholder="search">
-                </div>
+                    <form action="{{ url('product') }}" method="GET">
+                    <div class="forSearch">
+                        <span class="icon"><i class="fa fa-search fa-1x"></i></span>
+                        <input type="text" name="cari" id="search" placeholder="search">                    
+                    </div>                    
+                </form>    
             </div>
-
+            
+        
             <div class="col-md-6">
                 <button type="button" class="btn float-right text-white" name="btnAddTop" id="btnAddTop"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="20px" height="20px" alt="" class="mr-1">Add Product</button>
             </div>
@@ -118,7 +121,7 @@
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            });                        
+            });         
 
             $('#btnAddTop').click(function(){
                 $('.modal-title').text("ADD PRODUCT");
@@ -150,14 +153,13 @@
                                 }
                                 html += '</div>';
                             }
-                            if(data.success)
-                            {
-                                html = '<div class="alert alert-success">' + data.success + '</div>'
+                            else
+                            {                                
                                 $('#form_add')[0].reset();
                                 $('#modalAddEditProduct').modal('hide');
-                                $("#show_product_").append(data);
+                                $('#tampil').append('<div class="col-md-12 mt-2" id="show_product_'+ data.id +'"><div class="card"><div class="card-body"><div class="row"><div class="col-md-6"><img class="card-img-top" height="260px" width="260px" src="{{ asset("img/contoh/ListUser.png") }}" alt="image 1"></div><div class="col-md-6"><div class="card-header" id="card-header"><div class="row"><div class="col-md-8"><h3>'+ data.nama_product +'</h3></div><div class="col-md-4"><a href="#" id="delete" class="delete btn ml-3 rounded-circle" data-id="'+ data.id +'" style="height:50px;width:50px;background:#D91E18;color:white"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" class="mt-2" width="20px" height="20px" alt=""></a><a href="#" id="edit" class="edit btn ml-2 rounded-circle" data-id="'+ data.id +'" name="edit" style="height:50px;width:50px;background:#550E99;color:white"><img class="mt-2" src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div></div></div><p>'+ data.deskripsi +'</p></div></div></div></div></div>');
                             }
-                            $('#form_result').html(html);                            
+                            $('#form_result').html(html);
                         },
                         error:function(xhr){
                             console.log(xhr.responseText);
@@ -175,25 +177,25 @@
                         cache: false,
                         processData: false,
                         dataType: "json",
-                        success:function(response){
+                        success:function(data){
                             var html='';
-                            if(response.errors)
+                            if(data.errors)
                             {
                                 html = '<div class="alert alert-danger">';
-                                for(var count = 0; count < response.errors.length; count++)
+                                for(var count = 0; count < data.errors.length; count++)
                                 {
-                                    html += '<p>' + response.errors[count] + '</p>';
+                                    html += '<p>' + data.errors[count] + '</p>';
                                 }
                                 html += '</div>';
                             }
-                            if(response.success)
-                            {
-                                html = '<div class="alert alert-success">' + response.success + '</div>';
+                            else                            
+                            {                                
                                 $('#form_add')[0].reset();
                                 $('#modalAddEditProduct').modal('hide');
-                                $("#show_product_").append(response);
+                                $('#show_product_' + data.id).replaceWith('<div class="col-md-12 mt-2" id="show_product_'+ data.id +'"><div class="card"><div class="card-body"><div class="row"><div class="col-md-6"><img class="card-img-top" height="260px" width="260px" src="{{ asset("img/contoh/ListUser.png") }}" alt="image 1"></div><div class="col-md-6"><div class="card-header" id="card-header"><div class="row"><div class="col-md-8"><h3>'+ data.nama_product +'</h3></div><div class="col-md-4"><a href="#" id="delete" class="delete btn ml-3 rounded-circle" data-id="'+ data.id +'" style="height:50px;width:50px;background:#D91E18;color:white"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" class="mt-2" width="20px" height="20px" alt=""></a><a href="#" id="edit" class="edit btn ml-2 rounded-circle" data-id="'+ data.id +'" name="edit" style="height:50px;width:50px;background:#550E99;color:white"><img class="mt-2" src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div></div></div><p>'+ data.deskripsi +'</p></div></div></div></div></div>')
                             }
-                            $('#form_result').html(tampil);
+                            $('#form_result').html(html);
+                            
                         },
                         error:function(xhr){
                             console.log(xhr.responseText);

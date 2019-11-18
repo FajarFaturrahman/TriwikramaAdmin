@@ -6,12 +6,17 @@
 
     <div class="container mt-5">
         <div class="row justify-content-center">
+            
             <div class="box col-md-6">
-                <div class="forSearch">
-                    <span class="icon"><i class="fa fa-search fa-1x"></i></span>
-                    <input type="text" name="search" id="search" placeholder="search">
-                </div>
+                <form action="{{ url('inbox') }}" method="GET">
+                    <div class="forSearch">
+                        <span class="icon"><i class="fa fa-search fa-1x"></i></span>
+                        <input type="text" name="cari" id="search" placeholder="search">                    
+                    </div>                    
+                </form>      
             </div>
+            
+
             <div class="col-md-5">
                 <div class ="row float-right">
                     <p class="text-white mt-3"><strong>SHOW</strong></p>

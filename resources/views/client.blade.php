@@ -7,19 +7,23 @@
 
     <div class="container mt-5">
         <div class="row">
+        
             <div class="box col-md-6">
-                <div class="forSearch">
-                    <span class="icon"><i class="fa fa-search fa-1x"></i></span>
-                    <input type="search" name="search" id="search" placeholder="search">
-                </div>
+                <form action="{{ url('/portofolio') }}" method="GET">
+                    <div class="forSearch">
+                        <span class="icon"><i class="fa fa-search fa-1x"></i></span>
+                        <input type="text" name="cari" id="search" placeholder="search">                    
+                    </div>                    
+                </form>    
             </div>
+            
 
             <div class="col-md-6">
                 <button type="button" class="btn float-right text-white" name="create_data" id="create_data"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="20px" height="20px" alt="" class="mr-1">Add Client</button>
             </div>
         </div>
 
-        <div class="row mt-5">
+        <div class="row mt-5" id="tampil">
             @foreach($client as $row)
             <div class="col-md-3 mt-2" id="show_client_{{ $row->id }}">
                 <div class="card border-0" id="cardOverlay">
@@ -147,14 +151,17 @@
                                 }
                                 html += '</div>';
                             }
-                            if(data.success)
+                            else
                             {
-                                html = '<div class="alert alert-success">' + data.success + '</div>';
+                                
                                 $('#sample_form')[0].reset();                  
                                 $('#formModal').modal('hide');          
-                                $("#show_client_").load("{{ url('client') }}");
+                                $("#tampil").append('<div class="col-md-3 mt-2" id="show_client_'+ data.id +'"><div class="card border-0" id="cardOverlay"><img src="{{ URL::to("/") }}/images/'+ data.gambar_client +'" class="card-img-top" height="240px" alt=""><div class="overlay"><div class="row mx-auto" id="slideup"><div class="col-md-4"><a href="#" name="edit" data-id="'+ data.id +'" class="edit"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/list2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#" id="delete" data-id="'+ data.id +'" class="delete"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" width="20px" height="20px" alt=""><a></div></div></div></div><h5 class="text-center text-white">'+ data.nama_client +'</h5></div>');
                             }
                             $('#form_result').html(html);
+                        },
+                        error:function(xhr){
+                            console.log(xhr.responseText);
                         }
                     })
                 }
@@ -169,27 +176,29 @@
                         cache: false,
                         processData: false,
                         dataType: "json",
-                        success:function(response)
+                        success:function(data)
                         {
                             var html ='';
-                            if(response.errors)
+                            if(data.errors)
                             {
                                 html = '<div class="alert alert-danger">';
-                                for(var count = 0; count < response.errors.length; count++)
+                                for(var count = 0; count < data.errors.length; count++)
                                 {
-                                    html += '<p>' + response.errors[count] + '</p>';
+                                    html += '<p>' + data.errors[count] + '</p>';
                                 }
                                 html += '</div>';
                             }
-                            if(response.success)
-                            {
-                                html = '<div class="alert alert-success">' + response.success + '</div>';
+                            else
+                            {                                
                                 $('#sample_form')[0].reset();
                                 $('#store_image').html('');
                                 $('#formModal').modal('hide');                            
-                                $("#show_client_").html('#show_client_');
+                                $("#show_client_" + data.id).replaceWith('<div class="col-md-3 mt-2" id="show_client_'+ data.id +'"><div class="card border-0" id="cardOverlay"><img src="{{ URL::to("/") }}/images/'+ data.gambar_client +'" class="card-img-top" height="240px" alt=""><div class="overlay"><div class="row mx-auto" id="slideup"><div class="col-md-4"><a href="#" name="edit" data-id="'+ data.id +'" class="edit"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/list2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#" id="delete" data-id="'+ data.id +'" class="delete"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" width="20px" height="20px" alt=""><a></div></div></div></div><h5 class="text-center text-white">'+ data.nama_client +'</h5></div>');
                             }
                             $('#form_result').html(html);
+                        },
+                        error:function(xhr){
+                            console.log(xhr.responseText);
                         }
                     });
                 }
@@ -221,21 +230,23 @@
             $('body').on('click', '#delete', function(event){
                 event.preventDefault();
                 var mid = $(this).data('id');
-                confirm("Are You sure want to delete ?");
+                var conf = confirm("Are You sure want to delete ?");
 
-                $.ajax({
-                    type: "DELETE",
-                    url: "{{ url('client') }}" + '/' + mid,
-                    data: {id:mid},
-                    dataType: 'json',
-                    success:function(response){
-                        console.log(response);
-                        $('#show_client_' + mid).remove();
-                    },
-                    error:function(xhr){
-                        console.log(xhr.responseText);
-                    }
-                });
+                if(conf == true){
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ url('client') }}" + '/' + mid,
+                        data: {id:mid},
+                        dataType: 'json',
+                        success:function(response){
+                            console.log(response);
+                            $('#show_client_' + mid).remove();
+                        },
+                        error:function(xhr){
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }    
             });
 
         });

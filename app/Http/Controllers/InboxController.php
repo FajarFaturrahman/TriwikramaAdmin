@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Inbox;
 class InboxController extends Controller
 {
     /**
@@ -11,9 +11,15 @@ class InboxController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $data['message'] = \DB::table('inbox')->orderBy('id','asc')->paginate(8);  
+        if($request->has('cari')){
+            $data['message'] = Inbox::where('pengirim','LIKE','%'.$request->cari.'%')
+                        ->orWhere('email','LIKE','%'.$request->cari.'%')
+                        ->get();
+        }else{
+            $data['message'] = \DB::table('inbox')->orderBy('id','asc')->paginate(8);  
+        }                    
         return view('inbox',$data);
     }
 
