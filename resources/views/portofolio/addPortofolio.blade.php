@@ -92,9 +92,24 @@
                             <h4>UPLOAD WEB IMAGE</h4>
                         </div>
 
-                        <div class="card-body">
-                            <input type="file" class="form-control" name="gambar_website[]" multiple>                                                         
-                            <!-- <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">                                -->
+                        <div class="card-body">        
+                            <div class="input-group control-group increment1">
+                                <input type="file" name="gambar_website[]" class="form-control">
+                                <input type="hidden" name="hidden_image" value="@$portofolio->gambarWeb">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-success" id="btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                </div>
+                            </div>                                                            
+
+                            <div class="clone1 d-none">
+                                <div class="control-group input-group" style="margin-top:10px">
+                                    <input type="file" name="gambar_website[]" class="form-control">
+                                    <input type="hidden" name="hidden_image" value="">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-danger" id="btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i>Remove</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
@@ -104,7 +119,21 @@
                         </div>
 
                         <div class="card-body">
-                            <input type="file" class="form-control" name="gambar_mobile[]" multiple>
+                            <div class="input-group control-group increment2">
+                                <input type="file" name="gambar_mobile[]" class="form-control">
+                                <div class="input-group-btn">
+                                    <button class="btn btn-success" id="btn-success2" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                </div>
+                            </div>
+
+                            <div class="clone2 d-none">
+                                <div class="control-group input-group" style="margin-top:10px">
+                                    <input type="file" name="gambar_mobile[]" class="form-control">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-danger" id="btn-danger2" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -171,32 +200,28 @@
 
 @endsection
 
-<!-- @section('js')
-    <script>
+@section('js')
+<script type="text/javascript">
         $(document).ready(function(){
-            $('#file-input').on('change', function(){ //on file input change
-                if (window.File &amp;&amp; window.FileReader &amp;&amp; window.FileList &amp;&amp; window.Blob) //check File API supported browser
-                {
-                    
-                    var data = $(this)[0].files; //this file data
-                    
-                    $.each(data, function(index, file){ //loop though each file
-                        if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ //check supported file type
-                            var fRead = new FileReader(); //new filereader
-                            fRead.onload = (function(file){ //trigger function on successful read
-                            return function(e) {
-                                var img = $('<img/>').addClass('thumb').attr('src', e.target.result); //create image element 
-                                $('#thumb-output').append(img); //append image to output element
-                            };
-                            })(file);
-                            fRead.readAsDataURL(file); //URL representing the file's data.
-                        }
-                    });
-                    
-                }else{
-                    alert("Your browser doesn't support File API!"); //if File API is absent
-                }
+
+            $("#btn-success").click(function(){
+                var html = $(".clone1").html();
+                $(".increment1").after(html);
+            });
+
+            $("body").on('click', "#btn-danger", function(){
+                $(this).parents(".control-group").remove();
+            });
+
+            $("#btn-success2").click(function(){
+                var html = $(".clone2").html();
+                $(".increment2").after(html);
+            });
+
+            $("body").on('click', "#btn-danger2", function(){
+                $(this).parents(".control-group").remove();
             });
         });
     </script>
-@endsection     -->
+@endsection    
+

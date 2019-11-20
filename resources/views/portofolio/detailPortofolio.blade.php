@@ -40,20 +40,14 @@
                     <div class="card-body">
                         <h5><strong>IMAGES</strong></h5>
                         <div class="row">
-                            <div class="col-md-3 mt-2">
-                                <img src="{{ asset('img/contoh/Loginuat.png') }}" width="225px" height="140px" alt="">                       
-                            </div>
-                            
-                            <div class="col-md-3 mt-2">
-                                <img src="{{ asset('img/contoh/Dashboarduat.png') }}" width="225px" height="140px" alt="">                       
-                            </div>
-
-                            <div class="col-md-3 mt-2">
-                                <img src="{{ asset('img/contoh/Detailuat.png') }}" width="225px" height="140px" alt="">                       
-                            </div>
-
-                            <div class="col-md-3 mt-2">
-                                <img src="{{ asset('img/contoh/ListUser.png') }}" width="225px" height="140px" alt="">                       
+                            <div class="col-md-12 mt-2">
+                                <div class="autoplay ml-1">                
+                                    @foreach($portofolio->gambarWeb as $gambar)                                    
+                                        <div class="col-md-10">                                           
+                                            <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" height="240px" alt=""> 
+                                        </div>                                
+                                    @endforeach                
+                                </div>
                             </div>                                                        
                         </div>
 
@@ -92,8 +86,32 @@
                 </div>
             </div>            
             
-        </div>
-        
+        </div>        
     </div>
 
+@endsection
+
+@section('js')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>    
+    <script>
+        $(document).ready(function(){
+            if($(window).width() < 960){
+                $('autoplay').slick({
+                slidesToShow: 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+            }else if($(window).width() > 960){
+                $('.autoplay').slick({
+                    slidesToShow: 4,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+            }            
+        });
+    </script>
 @endsection

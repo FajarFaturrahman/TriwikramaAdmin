@@ -29,7 +29,13 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-5">
-                            <img class="card-img-top" height="260px" width="260px" src="{{ asset('img/ImageTriwikramajpg/compressed/forInbox.jpg') }}" alt="image 1">
+                                <div class="autoplay ml-1">                
+                                    @foreach($portofolio->gambarWeb as $gambar)                                    
+                                        <div class="col-md-10">                                           
+                                            <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" height="240px" alt=""> 
+                                        </div>                                
+                                    @endforeach                
+                                </div>     
                             </div>
 
                             <div class="col-md-7">                                
@@ -72,3 +78,28 @@
     </div>
 
 @endsection
+
+@section('js')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        if($(window).width() < 960){
+            $('.autoplay').slick({
+                slidesToShow : 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        }else if($(window).width() > 960){
+            $('.autoplay').slick({
+                slidesToShow : 1,
+                slidesToScroll: 1,
+                autoplay: true,
+                autoplaySpeed: 2000,
+            });
+        }
+    });        
+    </script>
+@endsection    

@@ -28,7 +28,15 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">
-                                    <img class="card-img-top" height="260px" width="260px" src="{{ asset('img/contoh/ListUser.png') }}" alt="image 1">
+                                    <div class="row">
+                                        <div class="autoplay ml-1">                
+                                            @foreach($row->gambarProduct as $gambar)                                    
+                                            <div class="col-md-10">                                           
+                                                    <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_product }}" class="card-img-top" height="240px" alt=""> 
+                                            </div>                                
+                                            @endforeach                
+                                        </div>
+                                    </div>                                        
                                 </div>
 
                                 <div class="col-md-6">
@@ -89,11 +97,26 @@
                                 </div>  
 
                                 <div class="col-md-5">
+                                    <div class="row justify-content-center">                                        
+                                        <span id="store_image"></span>
+                                    </div>
                                     <div class="card border-0">
                                         <div class="card-body">
-                                            <button class="my-float2">
-                                                <img src="{{ asset('img/IconTriwikramaAppAdmin/white/photo2.png') }}" width="20px" height="20px">
-                                            </button>
+                                            <div class="input-group control-group increment">
+                                                <input type="file" name="gambar_product[]" class="form-control">
+                                                <div class="input-group-btn">
+                                                    <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
+                                                </div>
+                                            </div>
+
+                                            <div class="clone d-none">
+                                                <div class="control-group input-group" style="margin-top:10px">
+                                                    <input type="file" name="gambar_product[]" class="form-control">
+                                                    <div class="input-group-btn">
+                                                        <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>                                        
                                     </div>
                                     <hr class="">   
@@ -115,13 +138,41 @@
 @endsection
 
 @section('js')
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
     <script>
         $(document).ready(function(){
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
-            });         
+            });
+
+            if($(window).width() < 960){
+                    $('.autoplay').slick({
+                    slidesToShow : 1,
+                    slidesToScroll: 1,
+                    autoplay: true,
+                    autoplaySpeed: 2000,
+                });
+            }else if($(window).width() > 960){
+                    $('.autoplay').slick({
+                        slidesToShow : 1,
+                        slidesToScroll: 1,
+                        autoplay: true,
+                        autoplaySpeed: 2000,
+                    });
+            }        
+
+            $(".btn-success").click(function(){
+                var html = $(".clone").html();
+                $(".increment").after(html);
+            });
+
+            $("body").on('click', ".btn-danger", function(){
+                $(this).parents(".control-group").remove();
+            })
 
             $('#btnAddTop').click(function(){
                 $('.modal-title').text("ADD PRODUCT");

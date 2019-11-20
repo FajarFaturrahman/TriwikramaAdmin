@@ -17,7 +17,7 @@ class CreateGambarProductTable extends Migration
             $table->increments('id_gambar_product');
             $table->string('gambar_product', 100);
             $table->integer('id_product')->unsigned();
-            $table->foreign('id_product')->references('id_product')->on('product');
+            $table->foreign('id_product')->references('id_product')->on('product')->onDelete('cascade');
             $table->timestamps();
         });
     }

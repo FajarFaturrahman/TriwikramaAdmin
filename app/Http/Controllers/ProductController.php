@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Validator;
 use App\Product;
+use App\GambarProduct;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -12,16 +13,18 @@ class ProductController extends Controller
         if($request->has('cari')){
             $data['product'] = Product::where('nama_product','LIKE','%'.$request->cari.'%')->get();
         }else{
-            $data['product'] = \DB::table('product')->get();            
+            $data = Product::all();        
         }        
-        return view('product', $data);
+        return view('product',['product' => $data] );
     }
     
     public function store(Request $request)
     {
         $rules = array(
-            'nama_product'  => 'required',
-            'deskripsi'     => 'required',
+            'nama_product'      => 'required',
+            'deskripsi'         => 'required',
+            'gambar_product'    => 'required',
+            'gambar_product.*'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -35,9 +38,27 @@ class ProductController extends Controller
             $data->nama_product     = $request->nama_product;
             $data->deskripsi             = $request->deskripsi;
             
-            $data->save ();
-            return response()->json($data);
+            $data->save();
+            
+            if($request->hasFile('gambar_product'))
+            {
+                foreach($request->file('gambar_product') as $image)
+                {
+                    $form = new GambarProduct();
+                    $name = $image->getClientOriginalName();
+                    $image->move(public_path().'/images/', $name);
+                    $datagambar = $name;
+                    $form->product_id = $data->id;
+                    $form->gambar_product=$datagambar;
+                    $form->save();
+                }
+            }
+            
+            return response()->json($data);                        
+            
         }
+
+        
     }
 
     public function edit($id){

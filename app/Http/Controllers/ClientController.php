@@ -38,8 +38,8 @@ class clientController extends Controller
         $image->move(public_path('images'), $new_name);
         
         $data = new Client;
-            $data->nama_client     = $request->nama_client;
-            $data->gambar_client             = $new_name;
+            $data->nama_client                  = $request->nama_client;
+            $data->gambar_client                = $new_name;
             
             $data->save ();
             return response()->json($data);        

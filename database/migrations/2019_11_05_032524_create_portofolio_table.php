@@ -22,7 +22,7 @@ class CreatePortofolioTable extends Migration
             $table->enum('status', ['active','expired']);
             $table->longText('description');        
             $table->integer('id_client')->unsigned();
-            $table->foreign('id_client')->references('id_client')->on('client');
+            $table->foreign('id_client')->references('id_client')->on('client')->onDelete('cascade');
             $table->date('tanggal_dibuat');        
             $table->timestamps();
         });

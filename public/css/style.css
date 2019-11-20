@@ -11,6 +11,10 @@ body::before{
     -webkit-filter: brightness(20%);
 }
 
+.footer{
+    position: fixed;   
+}
+
 .nav-link img{
     height: 20px;
     width: 20px;

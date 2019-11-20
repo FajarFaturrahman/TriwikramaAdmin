@@ -9,7 +9,7 @@
         <div class="row">
         
             <div class="box col-md-6">
-                <form action="{{ url('/portofolio') }}" method="GET">
+                <form action="{{ url('/client') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
                         <input type="text" name="cari" id="search" placeholder="search">                    
