@@ -128,13 +128,15 @@
                         <h4>UPLOAD WEB IMAGE</h4>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body overflow-auto">
                         @foreach($ambilFoto as $aF)
-                        <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
-                            alt="Foto"> &nbsp;
-                        <span data-toggle="modal"
-                            data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}"
-                            class="badge btn btn-primary badge-primary">Edit</span>
+                            <div class="col-12">
+                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
+                                    alt="Foto"> &nbsp;
+                                <span data-toggle="modal"
+                                    data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}"
+                                    class="badge btn btn-danger badge-danger">Delete</span>
+                            </div>        
                         @endforeach
 
                         <div class="input-group control-group increment1">
@@ -164,13 +166,15 @@
                         <h4>UPLOAD MOBILE IMAGE</h4>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body overflow-auto">                        
                         @foreach($ambilFotoMobile as $aFM)
-                        <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
-                            alt="Foto"> &nbsp;
-                        <span data-toggle="modal"
-                            data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}"
-                            class="badge btn btn-primary badge-primary">Edit</span>
+                            <div class="col-12">
+                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
+                                    alt="Foto"> &nbsp;
+                                <span data-toggle="modal"
+                                    data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}"
+                                    class="badge btn btn-danger badge-danger">delete</span>                            
+                            </div>        
                         @endforeach
                         <div class="input-group control-group increment2">
                             <input type="file" name="gambar_mobile[]" class="form-control">
@@ -294,23 +298,13 @@
                                     src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}" alt="Foto"> &nbsp;</td>
                         </tr>
                         <tr>
-                            <td> <i class="fa fa-upload"></i> Upload Gambar</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group control-group increment1">
-                                    <input type="file" name="gambar_website" class="form-control">
-                                    <div class="input-group-btn">
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
+                            <td>Anda Yakin Ingin Menghapus Gambar ?</td>
+                        </tr>                        
                     </table>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Yes</button>
                 </div>
             </div>
         </div>
@@ -352,7 +346,7 @@
                         </tr>
                         <tr>
                             <td>
-                                <div class="input-group control-group increment1">
+                                <div class="input-group control-group">
                                     <input type="file" name="gambar_mobile" class="form-control">
                                     <div class="input-group-btn">
 

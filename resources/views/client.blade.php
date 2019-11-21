@@ -30,15 +30,15 @@
                     <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="card-img-top" height="240px" alt="">
                     <div class="overlay">
                         <div class="row mx-auto" id="slideup">
-                            <div class="col-md-4">
+                            <div class="col-4">
                                 <a href="#" name="edit" data-id="{{ $row->id }}" class="edit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-4">
                                 <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
-                            <div class="col-md-4">                                                            
+                            <div class="col-4">                                                            
                                 <a href="#" id="delete" data-id="{{ $row->id }}" class="delete"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""><a>
                                 
                             </div>

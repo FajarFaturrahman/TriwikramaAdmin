@@ -117,7 +117,7 @@ class PortofolioController extends Controller
 
     public function update_image(Request $request,$id){
         
-        // if(!empty($request->file('gambar_website'))){
+        
             $rule = [
                 'gambar_website' => 'required',
                 'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
@@ -127,19 +127,8 @@ class PortofolioController extends Controller
     
             $gambarWebsite = GambarPortofolio::find($id);        
             $requestAll = $request->all();
-            $updateGambar = $gambarWebsite->fill($requestAll)->save();
-        // }elseif(!empty($request->file('gambar_mobile'))){
-        //     $rule = [
-        //         'gambar_mobile' => 'required',
-        //         'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        //     ];
-    
-        //     $this->validate($request, $rule);
-    
-        //     $gambarMobile = GambarMobilePortofolio::find($id);        
-        //     $requestAll = $request->all();
-        //     $updateGambar = $gambarMobile->fill($requestAll)->save();
-        // }
+            $updateGambar = $gambarWebsite->fill($requestAll)->save();       
+        
 
         return redirect(url()->previous());
     }
