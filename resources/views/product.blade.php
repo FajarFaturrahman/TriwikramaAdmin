@@ -27,16 +27,14 @@
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-md-6">
-                                    <div class="row">
-                                        <div class="autoplay ml-1">                
-                                            @foreach($row->gambarProduct as $gambar)                                    
+                                <div class="col-md-6">                                    
+                                    <div class="autoplay ml-1">                
+                                        @foreach($row->gambarProduct as $gambar)                                    
                                             <div class="col-md-10">                                           
-                                                    <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_product }}" class="card-img-top" height="240px" alt=""> 
+                                                <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_product }}" class="card-img-top" height="240px" alt=""> 
                                             </div>                                
-                                            @endforeach                
-                                        </div>
-                                    </div>                                        
+                                        @endforeach                
+                                    </div>                                                                
                                 </div>
 
                                 <div class="col-md-6">
@@ -267,6 +265,8 @@
                         $('#nama_product').val(html.data.nama_product);
                         $('#deskripsi').val(html.data.deskripsi);
                         $('#hidden_id').val(html.data.id);
+                        $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_website + " width='120' class='img-thumbnail' />");
+                        $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_website + "'>");
                         $('.modal-title').text('Edit Data Product');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');

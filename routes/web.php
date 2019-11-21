@@ -20,6 +20,8 @@ Route::get('/portofolio', 'PortofolioController@index')->name('portofolio');
 Route::get('/portofolio/create', 'PortofolioController@create');
 Route::get('/portofolio/{id}/detailPortofolio', 'PortofolioController@show');
 Route::post('/portofolio', 'PortofolioController@store');
+Route::patch('/portofolio/update/image/{id}', 'PortofolioController@update_image')->name('update_image_portofolio');
+Route::patch('/portofolio/update/image2/{id}', 'PortofolioController@update_image2')->name('update_image_portofolio2');
 Route::get('/portofolio/{id}/edit', 'PortofolioController@edit');
 Route::patch('/portofolio/{id}', 'PortofolioController@update');
 Route::delete('/portofolio/{id}', 'PortofolioController@destroy');

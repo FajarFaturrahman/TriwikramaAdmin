@@ -23,7 +23,7 @@ class PortofolioController extends Controller
     public function create()
     {
         $client = Client::All();
-    	return view('portofolio.addPortofolio')->with('client', $client);
+    	return view('portofolio.createPortofolio')->with('client', $client);
     }
 
     public function store(Request $request)
@@ -107,11 +107,61 @@ class PortofolioController extends Controller
 
     public function edit(Request $request, $id)
     {
+        $ambilFoto = GambarPortofolio::where('portofolio_id',$id)->get();
+        $ambilFotoMobile = GambarMobilePortofolio::where('portofolio_id',$id)->get();
         $client = Client::All();        
         
         $data = Portofolio::all()->find($id);
-        return view('portofolio.addPortofolio', ['portofolio' => $data])->with('client', $client);
+        return view('portofolio.addPortofolio', ['portofolio' => $data,'ambilFoto' => $ambilFoto, 'ambilFotoMobile' => $ambilFotoMobile])->with('client', $client);
     }
+
+    public function update_image(Request $request,$id){
+        
+        // if(!empty($request->file('gambar_website'))){
+            $rule = [
+                'gambar_website' => 'required',
+                'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ];
+    
+            $this->validate($request, $rule);
+    
+            $gambarWebsite = GambarPortofolio::find($id);        
+            $requestAll = $request->all();
+            $updateGambar = $gambarWebsite->fill($requestAll)->save();
+        // }elseif(!empty($request->file('gambar_mobile'))){
+        //     $rule = [
+        //         'gambar_mobile' => 'required',
+        //         'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        //     ];
+    
+        //     $this->validate($request, $rule);
+    
+        //     $gambarMobile = GambarMobilePortofolio::find($id);        
+        //     $requestAll = $request->all();
+        //     $updateGambar = $gambarMobile->fill($requestAll)->save();
+        // }
+
+        return redirect(url()->previous());
+    }
+
+    public function update_image2(Request $request,$id){
+        
+        
+        $rule = [
+            'gambar_mobile' => 'required',
+            'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ];
+    
+        $this->validate($request, $rule);
+    
+        $gambarMobile = GambarMobilePortofolio::find($id);        
+        $requestAll = $request->all();
+        $updateGambar = $gambarMobile->fill($requestAll)->save();
+        
+
+        return redirect(url()->previous());
+    }
+
 
     public function update(Request $request,$id)
     {

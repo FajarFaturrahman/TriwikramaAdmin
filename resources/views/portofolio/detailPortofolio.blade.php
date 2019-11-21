@@ -44,7 +44,7 @@
                                 <div class="autoplay ml-1">                
                                     @foreach($portofolio->gambarWeb as $gambar)                                    
                                         <div class="col-md-10">                                           
-                                            <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" height="240px" alt=""> 
+                                            <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" width="240px" alt=""> 
                                         </div>                                
                                     @endforeach                
                                 </div>

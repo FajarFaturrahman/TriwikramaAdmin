@@ -13,8 +13,8 @@ class ProductController extends Controller
         if($request->has('cari')){
             $data['product'] = Product::where('nama_product','LIKE','%'.$request->cari.'%')->get();
         }else{
-            $data = Product::all();        
-        }        
+            $data = Product::all();
+        }
         return view('product',['product' => $data] );
     }
     
@@ -64,7 +64,7 @@ class ProductController extends Controller
     public function edit($id){
         if(request()->ajax())
         {
-            $data = Product::findOrFail($id);
+            $data = Product::all()->find($id);
             return response()->json(['data' => $data]);
         }
     }
@@ -88,6 +88,22 @@ class ProductController extends Controller
             $data->deskripsi        = $request->deskripsi;
             
             $data->save ();
+
+            $image_name = $request->hidden_image;
+            if($request->hasFile('gambar_product'))
+            {
+                foreach($request->file('gambar_product') as $image)
+                {
+                    $form = new GambarProduct();
+                    $image_name = $image->getClientOriginalName();
+                    $image->move(public_path().'/images/', $image_name);
+                    $datagambar = $image_name;
+                    $form->product_id = $data->id;
+                    $form->gambar_product=$datagambar;
+                    $form->save();
+                }
+            }
+
             return response()->json($data);
         }
     }

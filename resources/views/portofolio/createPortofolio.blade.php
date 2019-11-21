@@ -129,13 +129,6 @@
                     </div>
 
                     <div class="card-body">
-                        @foreach($ambilFoto as $aF)
-                        <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
-                            alt="Foto"> &nbsp;
-                        <span data-toggle="modal"
-                            data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}"
-                            class="badge btn btn-primary badge-primary">Edit</span>
-                        @endforeach
 
                         <div class="input-group control-group increment1">
                             <input type="file" name="gambar_website[]" class="form-control">
@@ -165,13 +158,6 @@
                     </div>
 
                     <div class="card-body">
-                        @foreach($ambilFotoMobile as $aFM)
-                        <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
-                            alt="Foto"> &nbsp;
-                        <span data-toggle="modal"
-                            data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}"
-                            class="badge btn btn-primary badge-primary">Edit</span>
-                        @endforeach
                         <div class="input-group control-group increment2">
                             <input type="file" name="gambar_mobile[]" class="form-control">
                             <div class="input-group-btn">
@@ -267,111 +253,6 @@
 
 <!-- Modal Edit Gambar Website -->
 
-@foreach($ambilFoto as $aF)
-<div class="modal fade" id="ModalUpdateGambar{{ isset($EditModal) ? ++$EditModal : $EditModal=1 }}" tabindex="-1"
-    role="dialog" aria-labelledby="ModalUpdateGambarLabel" aria-hidden="true">
-    <form action="{{ route('update_image_portofolio', $aF->id) }}" method="post">
-        @csrf
-        @if(!empty($portofolio))
-        @method('PATCH')
-        @endif
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Gambar (ID :
-                        {{ $aF->id }})</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table>
-                        <tr>
-                            <td> <i class="fa fa-eye"></i> Views</td>
-                        </tr>
-                        <tr>
-                            <td><img class="mb-3" width="100"
-                                    src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}" alt="Foto"> &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td> <i class="fa fa-upload"></i> Upload Gambar</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group control-group increment1">
-                                    <input type="file" name="gambar_website" class="form-control">
-                                    <div class="input-group-btn">
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-@endforeach
-
-<!-- End Of Edit Gambar Website -->
-
-<!-- Modal Edit Gambar Mobile -->
-@foreach($ambilFotoMobile as $aFM)
-<div class="modal fade" id="ModalUpdateGambarMobile{{ isset($EditModal22) ? ++$EditModal22 : $EditModal22=1 }}" tabindex="-1"
-    role="dialog" aria-labelledby="ModalUpdateGambarLabel" aria-hidden="true"> 
-    <form action="{{ route('update_image_portofolio2', $aFM->id) }}" method="post">
-        @csrf
-        @if(!empty($portofolio))
-        @method('PATCH')
-        @endif
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Gambar (ID :
-                        {{ $aFM->id }})</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table>
-                        <tr>
-                            <td> <i class="fa fa-eye"></i> Views</td>
-                        </tr>
-                        <tr>
-                            <td><img class="mb-3" width="100"
-                                    src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}" alt="Foto"> &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td> <i class="fa fa-upload"></i> Upload Gambar</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group control-group increment1">
-                                    <input type="file" name="gambar_mobile" class="form-control">
-                                    <div class="input-group-btn">
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
-@endforeach
-<!-- End Of Edit Gambar Mobile -->
 
 @endsection
 
