@@ -20,14 +20,19 @@
             <div class="col-md-5">
                 <div class ="row float-right">
                     <p class="text-white mt-3"><strong>SHOW</strong></p>
-                    <div class="dropdown">
+                    <select name="filter" id="" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
+                        <option value="">All</option>
+                        <option value="">Readed</option>
+                        <option value="">Not Readed</option>
+                    </select>
+                    <!-- <div class="dropdown">
                         <button class="btn m-2 pl-5 pr-5 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:100px; background: #fff; color:#0f0f0f;"><strong>All</strong></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <a class="dropdown-item" href="#">All</a>
                             <a class="dropdown-item" href="#">Readed</a>
                             <a class="dropdown-item" href="#">Not Readed</a>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
