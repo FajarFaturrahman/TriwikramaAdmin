@@ -67,7 +67,7 @@ class ProductController extends Controller
             $output = "";
             $ambilFoto = GambarProduct::where('product_id',$id)->get();
             foreach($ambilFoto as $foto){
-                $output .= '<img src="/images/'. $foto->gambar_product .'" width="120" class="img-thumbnail" />';
+                $output .= '<img src="/images/'. $foto->gambar_product .'" width="120" class="img-thumbnail m-2" />';
             }
             $data = Product::all()->find($id);
             return response()->json(['data' => $data, 'ambilFoto' =>$output]);
