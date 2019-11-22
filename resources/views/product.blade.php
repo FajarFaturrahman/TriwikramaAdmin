@@ -277,14 +277,10 @@
                     dataType: 'json',
                     success:function(html){
                         console.log(html);
-                        var images = html.ambilFoto
                         $('#nama_product').val(html.data.nama_product);
                         $('#deskripsi').val(html.data.deskripsi);
                         $('#hidden_id').val(html.data.id);
-                        for(var i = 0, j = images.length; i < j; i++){
-                            $('#store_image').html("<img src={{ URL::to('/') }}/images/" + images[i] + " width='120' class='img-thumbnail' />");
-                            $('#store_image').append("<input type='hidden' name='hidden_image' value='" + images[i] + "'>");
-                        }                        
+                        $('#store_image').html(html.ambilFoto);
                         $('.modal-title').text('Edit Data Product');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');

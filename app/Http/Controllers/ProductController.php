@@ -64,10 +64,13 @@ class ProductController extends Controller
     public function edit($id){
         if(request()->ajax())
         {
-            $ambilFoto[] = GambarProduct::where('product_id',$id)->get();
-
+            $output = "";
+            $ambilFoto = GambarProduct::where('product_id',$id)->get();
+            foreach($ambilFoto as $foto){
+                $output .= '<img src="/images/'. $foto->gambar_product .'" width="120" class="img-thumbnail" />';
+            }
             $data = Product::all()->find($id);
-            return response()->json(['data' => $data, 'ambilFoto' =>$ambilFoto]);
+            return response()->json(['data' => $data, 'ambilFoto' =>$output]);
         }
     }
 

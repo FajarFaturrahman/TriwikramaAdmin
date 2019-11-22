@@ -10,6 +10,7 @@ class InboxController extends Controller
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     * @param  \Illuminate\Http\Request  $request
      */
     public function index(Request $request)
     {
@@ -90,9 +91,7 @@ class InboxController extends Controller
     {
         $data = \DB::table('inbox')->where('id',$id)->delete();
    
-        return response()->json([
-            'success' => 'Record has been deleted successfully!'
-        ]);
+        return response()->json(['success' => 'Record has been deleted successfully!']);
     }
 
     public function search(Request $request)

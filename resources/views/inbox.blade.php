@@ -28,42 +28,21 @@
                     <!-- <div class="dropdown">
                         <button class="btn m-2 pl-5 pr-5 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:100px; background: #fff; color:#0f0f0f;"><strong>All</strong></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                            <a class="dropdown-item" href="#">All</a>
-                            <a class="dropdown-item" href="#">Readed</a>
-                            <a class="dropdown-item" href="#">Not Readed</a>
+                            <input type="submit" class="dropdown-item" name="all" value="all" id="all">
+                            <input type="submit" class="dropdown-item" name="readed" value="readed" id="readed">
+                            <input type="submit" class="dropdown-item" name="not-readed" value="not-readed" id="not">
                         </div>
                     </div> -->
                 </div>
             </div>
         </div>
         
-        <div class="col-md-12 mt-2" id="content">
+        <div class="col-md-12 mt-2 message-container">
+            @include('message')
+        </div>
 
-            @foreach($message as $row)
-
-            <div class="row justify-content-center mt-2" id="message_id_{{ $row->id }}">                
-                <div class="rounded-left" id="left-box">
-                </div>
-                <div class="card col-md-11 rounded-right" id="inboxCard">
-                    <div class="card-body">
-                        <div class="row">
-                            <div class="col-md-10">
-                                <p class="my-auto"><strong>{{ $row->pengirim }}</strong></p>
-                                <p class="my-auto">{{ $row->email }}</p>
-                            </div>
-                            <div class="col-md-2">
-                                <div class="row float-right">
-                                    <a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px"></a>
-                                    <a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>               
-            </div>
-
-            @endforeach
-
+        <div class="row justify-content-center mt-4">
+            {{ $message->links() }}
         </div>
 
         <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">
@@ -111,6 +90,7 @@
 
     $(document).ready(function(){
 
+        //Token Ajax
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -119,7 +99,7 @@
 
         fetch_inbox();
 
-        function fetch_inbox(query = '')
+        function fetch_inbox(query = '');
         {
             $.ajax({
                 url: "{{ url('inbox') }}",
@@ -129,7 +109,7 @@
                 success:function(data){
                     $('#content').html(data.data_inbox);
                 }
-            })
+            });
         }
 
         $(document).on('keyup', '#search', function(){
@@ -159,24 +139,47 @@
                 }
             });
         });
-
+        
+        //Delete Ajax
         $('body').on('click', '#delete-message', function(event){
             event.preventDefault();
             var mid = $(this).data('id');
-            confirm("Are You sure want to delete !", false);
-            
+            var r = confirm("Are You sure want to delete !");
+            if(r == true){
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{ url('inbox') }}" + '/' + mid,
+                    data: {id:mid},
+                    dataType: "json",
+                    success:function(response){
+                        console.log(response);
+                        $('#message_id_' + mid).remove();
+                    },
+                    error:function(xhr){
+                        console.log(xhr.responseText);
+                    }
+                });
+            } else{
+                
+            }
+        });
+        
+        //Search Data Ajax
+        $('body').on('keyup', '#search', function(event){
+            event.preventDefault();
+            var sd = $('#search').val();
+
             $.ajax({
-                type: "DELETE",
-                url: "{{ url('inbox') }}" + '/' + mid,
-                data: {id:mid},
+                type: "GET",
+                url: "{{ url('inbox/search') }}",
+                data: {search:sd},
                 dataType: "json",
-                success:function(response){
-                    console.log(response);
-                    $('#message_id_' + mid).remove();
+                success: function(data){
+                    console.log(data)
                 },
-                error:function(xhr){
-                    console.log(xhr.responseText);
-                }
+                error: function(tr){
+                    console.log(tr.responseText);
+                } 
             });
         });
        
