@@ -12,7 +12,7 @@ class clientController extends Controller
         if($request->has('cari')){
             $data['client'] = Client::where('nama_client','LIKE','%'.$request->cari.'%')->get();
         }else{
-            $data['client'] = \DB::table('client')->get();            
+            $data['client'] = \DB::table('client')->paginate(12);            
         }        
         return view('client', $data);
     }

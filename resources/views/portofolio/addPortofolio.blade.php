@@ -130,13 +130,13 @@
 
                     <div class="card-body overflow-auto">
                         @foreach($ambilFoto as $aF)
-                            <div class="col-12">
-                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
-                                    alt="Foto"> &nbsp;
-                                <span data-toggle="modal"
-                                    data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}"
-                                    class="badge btn btn-danger badge-danger">Delete</span>
-                            </div>        
+                        <div class="col-12">
+                            <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
+                                alt="Foto"> &nbsp;
+                            <span data-toggle="modal"
+                                data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}"
+                                class="badge btn btn-danger badge-danger">Delete</span>
+                        </div>
                         @endforeach
 
                         <div class="input-group control-group increment1">
@@ -166,15 +166,15 @@
                         <h4>UPLOAD MOBILE IMAGE</h4>
                     </div>
 
-                    <div class="card-body overflow-auto">                        
+                    <div class="card-body overflow-auto">
                         @foreach($ambilFotoMobile as $aFM)
-                            <div class="col-12">
-                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
-                                    alt="Foto"> &nbsp;
-                                <span data-toggle="modal"
-                                    data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}"
-                                    class="badge btn btn-danger badge-danger">delete</span>                            
-                            </div>        
+                        <div class="col-12">
+                            <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
+                                alt="Foto"> &nbsp;
+                            <span data-toggle="modal"
+                                data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}"
+                                class="badge btn btn-danger badge-danger">delete</span>
+                        </div>
                         @endforeach
                         <div class="input-group control-group increment2">
                             <input type="file" name="gambar_mobile[]" class="form-control">
@@ -247,11 +247,12 @@
                                 <div class="form-check">
                                     <input type="radio" class="form-check-input" name="status" value="active"
                                         id="active"
-                                        {{ old('status', @$portofolio->status) == 'active' ? 'checked' : '' }}>
+                                        {{old('status', @$portofolio->status) == 'active' ? 'checked' : ''}}>
                                     <label for="active" class="form-check-label mr-5">Active</label>
 
                                     <input type="radio" class="form-check-input" name="status" value="expired"
-                                        id="expired">
+                                        id="expired"
+                                        {{old('status', @$portofolio->status) == 'expired' ? 'checked' : ''}}>
                                     <label for="Expired" class="form-check-label">Expired</label>
                                 </div>
 
@@ -274,41 +275,39 @@
 @foreach($ambilFoto as $aF)
 <div class="modal fade" id="ModalUpdateGambar{{ isset($EditModal) ? ++$EditModal : $EditModal=1 }}" tabindex="-1"
     role="dialog" aria-labelledby="ModalUpdateGambarLabel" aria-hidden="true">
-    <form action="{{ route('update_image_portofolio', $aF->id) }}" method="post">
-        @csrf
-        @if(!empty($portofolio))
-        @method('PATCH')
-        @endif
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Gambar (ID :
-                        {{ $aF->id }})</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table>
-                        <tr>
-                            <td> <i class="fa fa-eye"></i> Views</td>
-                        </tr>
-                        <tr>
-                            <td><img class="mb-3" width="100"
-                                    src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}" alt="Foto"> &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td>Anda Yakin Ingin Menghapus Gambar ?</td>
-                        </tr>                        
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Gambar (ID :
+                    {{ $aF->id }})</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td> <i class="fa fa-eye"></i> Views</td>
+                    </tr>
+                    <tr>
+                        <td><img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
+                                alt="Foto"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td>Anda Yakin Ingin Menghapus Gambar ?</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="{{ route('delete_image_portofolio', $aF->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
                     <button type="submit" class="btn btn-primary">Yes</button>
-                </div>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 @endforeach
 
@@ -316,53 +315,41 @@
 
 <!-- Modal Edit Gambar Mobile -->
 @foreach($ambilFotoMobile as $aFM)
-<div class="modal fade" id="ModalUpdateGambarMobile{{ isset($EditModal22) ? ++$EditModal22 : $EditModal22=1 }}" tabindex="-1"
-    role="dialog" aria-labelledby="ModalUpdateGambarLabel" aria-hidden="true"> 
-    <form action="{{ route('update_image_portofolio2', $aFM->id) }}" method="post">
-        @csrf
-        @if(!empty($portofolio))
-        @method('PATCH')
-        @endif
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Gambar (ID :
-                        {{ $aFM->id }})</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <table>
-                        <tr>
-                            <td> <i class="fa fa-eye"></i> Views</td>
-                        </tr>
-                        <tr>
-                            <td><img class="mb-3" width="100"
-                                    src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}" alt="Foto"> &nbsp;</td>
-                        </tr>
-                        <tr>
-                            <td> <i class="fa fa-upload"></i> Upload Gambar</td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <div class="input-group control-group">
-                                    <input type="file" name="gambar_mobile" class="form-control">
-                                    <div class="input-group-btn">
-
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Update</button>
-                </div>
+<div class="modal fade" id="ModalUpdateGambarMobile{{ isset($EditModal22) ? ++$EditModal22 : $EditModal22=1 }}"
+    tabindex="-1" role="dialog" aria-labelledby="ModalUpdateGambarLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Gambar (ID :
+                    {{ $aFM->id }})</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td> <i class="fa fa-eye"></i>Views</td>
+                    </tr>
+                    <tr>
+                        <td><img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
+                                alt="Foto"> &nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td> <i class="fa fa-upload"></i>Anda Yakin Ingin Menghapus Gambar ?</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="{{ route('delete_image_portofolio2', $aFM->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Yes</button>
+                </form>
             </div>
         </div>
-    </form>
+    </div>
 </div>
 @endforeach
 <!-- End Of Edit Gambar Mobile -->

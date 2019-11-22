@@ -24,55 +24,68 @@
         </div>
         
         <div class="row mt-5">
-            @foreach($portofolio as $portofolio)
-                <div class="card">
+            @foreach($portofolio as $portofolios)
+                <div class="card mt-4">
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md-5">
-                                <div class="autoplay ml-1">                
-                                    @foreach($portofolio->gambarWeb as $gambar)                                    
-                                        <div class="col-md-10">                                           
-                                            <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" height="240px" alt=""> 
+                                <div class="autoplay ml-3 mr-2">                
+                                    @foreach($portofolios->gambarWeb as $gambar)                                    
+                                        <div class="col-md-12">
+                                            <div class="row justify-content-center">
+                                                <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" width="280px" alt=""> 
+                                            </div>                                           
                                         </div>                                
-                                    @endforeach                
-                                </div>     
+                                    @endforeach
+
+                                    @foreach($portofolios->gambarMobile as $mobile)                                    
+                                        <div class="col-md-12">
+                                            <div class="row justify-content-center">
+                                                <img src="{{ URL::to('/') }}/images/{{ $mobile->gambar_mobile }}" width="280px" alt=""> 
+                                            </div>
+                                        </div>                                
+                                    @endforeach 
+                                </div>  
                             </div>
 
                             <div class="col-md-7">                                
-                                <h5 class="ml-4"><strong>{{ $portofolio->nama_aplikasi }}</strong></h5>                                
+                                <h5 class="ml-4"><strong>{{ $portofolios->nama_aplikasi }}</strong></h5>                                
 
                                 <table class="border-0 mt-2">
                                     <tr>
                                         <td><strong>Website Type</strong></td>
                                         <td>:</td>
-                                        <td>{{ $portofolio->tipe_website }}</td>
+                                        <td>{{ $portofolios->tipe_website }}</td>
                                     </tr>
 
                                     <tr>
                                         <td><strong>Domain</strong></td>
                                         <td>:</td>
-                                        <td>{{ $portofolio->domain_portofolio }}</td>
+                                        <td>{{ $portofolios->domain_portofolio }}</td>
                                     </tr>
 
                                     <tr>
                                         <td><strong>Created At</strong></td>
                                         <td>:</td>
-                                        <td>{{ $portofolio->tanggal_dibuat }}</td>
+                                        <td>{{ $portofolios->tanggal_dibuat }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong class="">Status</strong></td>
-                                        <td><p class="bg-light mt-3 pl-3 pr-3" style="border-radius:100px;">{{ $portofolio->status }}</p></td>
+                                        <td><p class="bg-light mt-3 pl-3 pr-3" style="border-radius:100px;">{{ $portofolios->status }}</p></td>
                                     </tr>
                                 </table>
                                 <div class="row ml-2 float-right">
-                                        <a class="btn btn-danger mr-4" href="{{ url('/portofolio/' . $portofolio->id . '/detailPortofolio') }}">View</a>                                
+                                        <a class="btn btn-danger mr-4" href="{{ url('/portofolio/' . $portofolios->id . '/detailPortofolio') }}">View</a>                                
                                 </div>
                             </div>
                         </div>    
                     </div>
-                </div>
-                <br>
+                </div>                
             @endforeach                
+        </div>
+
+        <div class="row justify-content-center">
+        {{ $portofolio->links() }}
         </div>
         
     </div>
@@ -91,6 +104,9 @@
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,
+                arrows: true,
+                prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
             });
         }else if($(window).width() > 960){
             $('.autoplay').slick({
@@ -98,6 +114,9 @@
                 slidesToScroll: 1,
                 autoplay: true,
                 autoplaySpeed: 2000,
+                arrows: true,
+                prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
             });
         }
     });        

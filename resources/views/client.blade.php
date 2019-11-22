@@ -49,7 +49,11 @@
                 <h5 class="text-center text-white">{{ $row->nama_client }}</h5>
             </div>  
             @endforeach          
-        </div>        
+        </div>
+        
+        <div class="row justify-content-center">
+            {{ $client->links() }}
+        </div>    
     </div>
 
 
@@ -156,7 +160,7 @@
                                 
                                 $('#sample_form')[0].reset();                  
                                 $('#formModal').modal('hide');          
-                                $("#tampil").append('<div class="col-md-3 mt-2" id="show_client_'+ data.id +'"><div class="card border-0" id="cardOverlay"><img src="{{ URL::to("/") }}/images/'+ data.gambar_client +'" class="card-img-top" height="240px" alt=""><div class="overlay"><div class="row mx-auto" id="slideup"><div class="col-md-4"><a href="#" name="edit" data-id="'+ data.id +'" class="edit"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/list2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#" id="delete" data-id="'+ data.id +'" class="delete"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" width="20px" height="20px" alt=""><a></div></div></div></div><h5 class="text-center text-white">'+ data.nama_client +'</h5></div>');
+                                $("#tampil").append( '<div class="col-md-3 mt-2" id="show_client_'+ data.id +'"><div class="card border-0" id="cardOverlay"><img src="{{ URL::to("/") }}/images/'+ data.gambar_client +'" class="card-img-top" height="240px" alt=""><div class="overlay"><div class="row mx-auto" id="slideup"><div class="col-md-4"><a href="#" name="edit" data-id="'+ data.id +'" class="edit"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/list2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#" id="delete" data-id="'+ data.id +'" class="delete"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" width="20px" height="20px" alt=""><a></div></div></div></div><h5 class="text-center text-white">'+ data.nama_client +'</h5></div>');
                             }
                             $('#form_result').html(html);
                         },
@@ -207,11 +211,11 @@
             $(document).on('click', '.edit', function(){
                 var mid = $(this).data('id');            
                 $('#form_result').html('');
-                $.ajax({
+                $.ajax({                    
                     url:"/client/"+mid+"/edit",
                     dataType: 'json',
                     success:function(html){
-                        console.log(html);
+                        console.log(html);                        
                         $('#nama_client').val(html.data.nama_client);
                         $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='120' class='img-thumbnail' />");
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");

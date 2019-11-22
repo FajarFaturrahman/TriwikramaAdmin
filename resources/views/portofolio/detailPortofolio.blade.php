@@ -41,12 +41,18 @@
                         <h5><strong>IMAGES</strong></h5>
                         <div class="row">
                             <div class="col-md-12 mt-2">
-                                <div class="autoplay ml-1">                
+                                <div class="autoplay ml-2 mr-2">                
                                     @foreach($portofolio->gambarWeb as $gambar)                                    
                                         <div class="col-md-10">                                           
                                             <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" width="240px" alt=""> 
                                         </div>                                
-                                    @endforeach                
+                                    @endforeach
+
+                                    @foreach($portofolio->gambarMobile as $mobile)                                    
+                                        <div class="col-md-10">                                           
+                                            <img src="{{ URL::to('/') }}/images/{{ $mobile->gambar_mobile }}" class="card-img-top" width="240px" alt=""> 
+                                        </div>                                
+                                    @endforeach                                                   
                                 </div>
                             </div>                                                        
                         </div>
@@ -102,7 +108,10 @@
                 slidesToShow: 1,
                 slidesToScroll: 1,
                 autoplay: true,
-                autoplaySpeed: 2000,
+                autoplaySpeed: 2000,arrows: true,
+                arrows: true,
+                prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
             });
             }else if($(window).width() > 960){
                 $('.autoplay').slick({
@@ -110,6 +119,9 @@
                     slidesToScroll: 1,
                     autoplay: true,
                     autoplaySpeed: 2000,
+                    arrows: true,
+                    prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                    nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
                 });
             }            
         });

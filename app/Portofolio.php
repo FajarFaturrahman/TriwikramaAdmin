@@ -17,4 +17,9 @@ class Portofolio extends Model
     public function gambarMobile(){
         return $this->hasMany('App\GambarMobilePortofolio');
     }
+
+    public function client()
+    {
+        return $this->belongsTo('App\Client');
+    }
 }

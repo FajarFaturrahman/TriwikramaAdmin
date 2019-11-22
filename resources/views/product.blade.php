@@ -23,15 +23,17 @@
 
         <div class="row mt-5" id="tampil">
             @foreach($product as $row)
-                <div class="col-md-12 mt-2" id="show_product_{{ $row->id }}">
+                <div class="col-md-12 mt-4" id="show_product_{{ $row->id }}">
                     <div class="card">
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-md-6">                                    
-                                    <div class="autoplay ml-1">                
+                                    <div class="autoplay ml-5 mr-5">                
                                         @foreach($row->gambarProduct as $gambar)                                    
-                                            <div class="col-md-10">                                           
-                                                <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_product }}" class="card-img-top" height="240px" alt=""> 
+                                            <div class="col-md-12">           
+                                                <div class="row justify-content-center">
+                                                    <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_product }}" width="280px" height="200px" alt=""> 
+                                                </div>                                
                                             </div>                                
                                         @endforeach                
                                     </div>                                                                
@@ -54,13 +56,19 @@
                                             </div>
                                         </div>                                    
                                     </div>                                
-                                    <p>{{ $row->deskripsi }}</p>                                
+                                    <p class="mt-3">{{ $row->deskripsi }}</p>                                
                                 </div>
                             </div>
                         </div>
                     </div>                        
                 </div>                                    
             @endforeach    
+        </div>
+
+        <div class="row justify-content-center">
+        {{ $product->links() }}
+        </div>
+
         </div>
     </div>
 
@@ -100,6 +108,7 @@
                                     </div>
                                     <div class="card border-0">
                                         <div class="card-body">
+                                            
                                             <div class="input-group control-group increment">
                                                 <input type="file" name="gambar_product[]" class="form-control">
                                                 <div class="input-group-btn">
@@ -153,6 +162,9 @@
                     slidesToScroll: 1,
                     autoplay: true,
                     autoplaySpeed: 2000,
+                    arrows: true,
+                prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
                 });
             }else if($(window).width() > 960){
                     $('.autoplay').slick({
@@ -160,6 +172,9 @@
                         slidesToScroll: 1,
                         autoplay: true,
                         autoplaySpeed: 2000,
+                        arrows: true,
+                prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
+                nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
                     });
             }        
 
@@ -257,16 +272,19 @@
             $(document).on('click', '.edit', function(){
                 var mid = $(this).data('id');
                 $('#form_result').html('');
-                $.ajax({
+                $.ajax({                    
                     url: "/product/"+mid+"/edit",
                     dataType: 'json',
                     success:function(html){
                         console.log(html);
+                        var images = html.ambilFoto
                         $('#nama_product').val(html.data.nama_product);
                         $('#deskripsi').val(html.data.deskripsi);
                         $('#hidden_id').val(html.data.id);
-                        $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_website + " width='120' class='img-thumbnail' />");
-                        $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_website + "'>");
+                        for(var i = 0, j = images.length; i < j; i++){
+                            $('#store_image').html("<img src={{ URL::to('/') }}/images/" + images[i] + " width='120' class='img-thumbnail' />");
+                            $('#store_image').append("<input type='hidden' name='hidden_image' value='" + images[i] + "'>");
+                        }                        
                         $('.modal-title').text('Edit Data Product');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');

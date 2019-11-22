@@ -15,7 +15,7 @@ class PortofolioController extends Controller
         if($request->has('cari')){
             $data['portofolio'] = Portofolio::where('nama_aplikasi','LIKE','%'.$request->cari.'%')->get();
         }else{
-            $data = Portofolio::all();
+            $data = Portofolio::paginate(5);
         }                
         return view('portofolio.portofolio',['portofolio' => $data] );
     }
@@ -113,44 +113,7 @@ class PortofolioController extends Controller
         
         $data = Portofolio::all()->find($id);
         return view('portofolio.addPortofolio', ['portofolio' => $data,'ambilFoto' => $ambilFoto, 'ambilFotoMobile' => $ambilFotoMobile])->with('client', $client);
-    }
-
-    public function update_image(Request $request,$id){
-        
-        
-            $rule = [
-                'gambar_website' => 'required',
-                'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            ];
-    
-            $this->validate($request, $rule);
-    
-            $gambarWebsite = GambarPortofolio::find($id);        
-            $requestAll = $request->all();
-            $updateGambar = $gambarWebsite->fill($requestAll)->save();       
-        
-
-        return redirect(url()->previous());
-    }
-
-    public function update_image2(Request $request,$id){
-        
-        
-        $rule = [
-            'gambar_mobile' => 'required',
-            'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-        ];
-    
-        $this->validate($request, $rule);
-    
-        $gambarMobile = GambarMobilePortofolio::find($id);        
-        $requestAll = $request->all();
-        $updateGambar = $gambarMobile->fill($requestAll)->save();
-        
-
-        return redirect(url()->previous());
-    }
-
+    }    
 
     public function update(Request $request,$id)
     {
@@ -231,5 +194,64 @@ class PortofolioController extends Controller
             return redirect('/portofolio/detailPortofolio')->with('error','Data gagal dihapus');
         }
     }
+
+    public function delete_image(Request $request,$id){
+        
+        $gambarWebsite = GambarPortofolio::find($id);                 
+        $status = $gambarWebsite->delete();
+        
+    
+
+        return redirect(url()->previous());
+    }
+
+    public function delete_image2(Request $request,$id){
+            
+        $gambarMobile = GambarMobilePortofolio::find($id);            
+        $status = $gambarMobile->delete();
+    
+
+        return redirect(url()->previous());
+    }
 }
 
+
+
+
+
+
+// public function update_image(Request $request,$id){
+        
+        
+    //         $rule = [
+    //             'gambar_website' => 'required',
+    //             'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //         ];
+    
+    //         $this->validate($request, $rule);
+    
+    //         $gambarWebsite = GambarPortofolio::find($id);        
+    //         $requestAll = $request->all();
+    //         $updateGambar = $gambarWebsite->fill($requestAll)->save();       
+        
+
+    //     return redirect(url()->previous());
+    // }
+
+    // public function update_image2(Request $request,$id){
+        
+        
+    //     $rule = [
+    //         'gambar_mobile' => 'required',
+    //         'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+    //     ];
+    
+    //     $this->validate($request, $rule);
+    
+    //     $gambarMobile = GambarMobilePortofolio::find($id);        
+    //     $requestAll = $request->all();
+    //     $updateGambar = $gambarMobile->fill($requestAll)->save();
+        
+
+    //     return redirect(url()->previous());
+    // }

@@ -13,7 +13,7 @@ class ProductController extends Controller
         if($request->has('cari')){
             $data['product'] = Product::where('nama_product','LIKE','%'.$request->cari.'%')->get();
         }else{
-            $data = Product::all();
+            $data = Product::paginate(5);
         }
         return view('product',['product' => $data] );
     }
@@ -64,8 +64,10 @@ class ProductController extends Controller
     public function edit($id){
         if(request()->ajax())
         {
+            $ambilFoto[] = GambarProduct::where('product_id',$id)->get();
+
             $data = Product::all()->find($id);
-            return response()->json(['data' => $data]);
+            return response()->json(['data' => $data, 'ambilFoto' =>$ambilFoto]);
         }
     }
 
