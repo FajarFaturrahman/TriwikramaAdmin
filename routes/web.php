@@ -33,6 +33,7 @@ Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detai
 // product
 Route::resource('product', 'ProductController');
 Route::post('product/update', 'ProductController@update')->name('product.update');
+Route::delete('product/delete/{id}', 'ProductController@destroyImage')->name('product.delete');
 
 // client
 Route::resource('client', 'ClientController');

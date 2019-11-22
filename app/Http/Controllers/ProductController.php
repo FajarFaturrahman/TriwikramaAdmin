@@ -67,7 +67,7 @@ class ProductController extends Controller
             $output = "";
             $ambilFoto = GambarProduct::where('product_id',$id)->get();
             foreach($ambilFoto as $foto){
-                $output .= '<img src="/images/'. $foto->gambar_product .'" width="120" class="img-thumbnail" />';
+                $output .= '<div  id="img_thumbnail_'. $foto->id .'"><img src="/images/'. $foto->gambar_product .'" width="120" class="img-thumbnail"/><a href="#" id="delete_image" class="btn btn-danger ml-1" data-id="'. $foto->id .'">delete</a></div>';
             }
             $data = Product::all()->find($id);
             return response()->json(['data' => $data, 'ambilFoto' =>$output]);
@@ -115,6 +115,12 @@ class ProductController extends Controller
 
     public function destroy($id){
         $product = Product::where('id', $id)->delete();
+
+        return response()->json(['success' => 'Record has been deleted successfully']);
+    }
+
+    public function destroyImage($id){
+        $datagambar = GambarProduct::where('id', $id)->delete();
 
         return response()->json(['success' => 'Record has been deleted successfully']);
     }
