@@ -25,14 +25,12 @@ class InboxController extends Controller
          return view('inbox', $data);
     }
 
-    public function filter(Request $request, $status = ""){
-            $filter = $request->filter;
-            $filter = $status;
+    public function filter($status = ""){
             $output = "";
-            if($status != ""){
-                $data = Inbox::where('status', $status)->get();
+            if($status == "semua"){
+                $data = \DB::table('inbox')->orderBy('id','desc')->paginate(8);
             } else{
-                $data = \DB::table('inbox')->orderBy('id','desc')->get();
+                $data = Inbox::where('status', $status)->get();
             }
             foreach($data as $dataFilter){
 

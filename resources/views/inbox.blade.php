@@ -24,7 +24,7 @@
                     </div>
                     <div class="col-8">
                         <select class="form-control" name="filter[]" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
-                            <option value="">All</option>
+                            <option value="semua">All</option>
                             <option value="readed">Readed</option>
                             <option value="not-readed">Not Readed</option>
                         </select>
@@ -170,7 +170,8 @@
         $('body').on('change', '#filter', function(e){
             e.preventDefault();
             var filter = $(this).val();
-            $.ajax({
+
+             $.ajax({
                 type: "post",
                 data: {status:filter},
                 url: "{{ url('inbox/filter') }}" + '/' + filter,
@@ -185,7 +186,7 @@
                 error: function(xhr){
                     console.log(xhr.responseText);
                 }
-            });
+            });         
         });
         
     });
