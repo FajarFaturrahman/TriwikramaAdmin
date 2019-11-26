@@ -21,7 +21,7 @@
             </div>
         </div>
 
-        <div class="row mt-5" id="tampil">
+        <div class="row mt-3" id="tampil">
             @foreach($product as $row)
                 <div class="col-md-12 mt-4" id="show_product_{{ $row->id }}">
                     <div class="card">
@@ -66,13 +66,11 @@
         </div>
 
         <div class="row justify-content-center">
-        {{ $product->links() }}
-        </div>
-
-        </div>
+            {{ $product->links() }}
+        </div>        
     </div>
 
-        <!-- Modal For Add/Edit Client -->
+    <!-- Modal For Add/Edit Client -->
 
         <div class="modal fade" id="modalAddEditProduct" role="dialog">
             <div class="modal-dialog modal-lg modal-dialog-centered">
@@ -221,7 +219,7 @@
                             {                                
                                 $('#form_add')[0].reset();
                                 $('#modalAddEditProduct').modal('hide');
-                                $('#tampil').append('<div class="col-md-12 mt-2" id="show_product_'+ data.id +'"><div class="card"><div class="card-body"><div class="row"><div class="col-md-6"><img class="card-img-top" height="260px" width="260px" src="{{ asset("img/contoh/ListUser.png") }}" alt="image 1"></div><div class="col-md-6"><div class="card-header" id="card-header"><div class="row"><div class="col-md-8"><h3>'+ data.nama_product +'</h3></div><div class="col-md-4"><a href="#" id="delete" class="delete btn ml-3 rounded-circle" data-id="'+ data.id +'" style="height:50px;width:50px;background:#D91E18;color:white"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" class="mt-2" width="20px" height="20px" alt=""></a><a href="#" id="edit" class="edit btn ml-2 rounded-circle" data-id="'+ data.id +'" name="edit" style="height:50px;width:50px;background:#550E99;color:white"><img class="mt-2" src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div></div></div><p>'+ data.deskripsi +'</p></div></div></div></div></div>');
+                                location.reload();
                             }
                             $('#form_result').html(html);
                         },
@@ -256,7 +254,7 @@
                             {                                
                                 $('#form_add')[0].reset();
                                 $('#modalAddEditProduct').modal('hide');
-                                $('#show_product_' + data.id).replaceWith('<div class="col-md-12 mt-2" id="show_product_'+ data.id +'"><div class="card"><div class="card-body"><div class="row"><div class="col-md-6"><img class="card-img-top" height="260px" width="260px" src="{{ asset("img/contoh/ListUser.png") }}" alt="image 1"></div><div class="col-md-6"><div class="card-header" id="card-header"><div class="row"><div class="col-md-8"><h3>'+ data.nama_product +'</h3></div><div class="col-md-4"><a href="#" id="delete" class="delete btn ml-3 rounded-circle" data-id="'+ data.id +'" style="height:50px;width:50px;background:#D91E18;color:white"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" class="mt-2" width="20px" height="20px" alt=""></a><a href="#" id="edit" class="edit btn ml-2 rounded-circle" data-id="'+ data.id +'" name="edit" style="height:50px;width:50px;background:#550E99;color:white"><img class="mt-2" src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div></div></div><p>'+ data.deskripsi +'</p></div></div></div></div></div>')
+                                location.reload();
                             }
                             $('#form_result').html(html);
                             

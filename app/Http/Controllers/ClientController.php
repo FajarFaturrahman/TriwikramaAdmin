@@ -10,11 +10,11 @@ class clientController extends Controller
     public function index(Request $request)
     {
         if($request->has('cari')){
-            $data['client'] = Client::where('nama_client','LIKE','%'.$request->cari.'%')->get();
+            $data = Client::where('nama_client','LIKE','%'.$request->cari.'%')->paginate(12);
         }else{
-            $data['client'] = \DB::table('client')->paginate(12);            
-        }        
-        return view('client', $data);
+            $data = Client::paginate(12);
+        }
+        return view('client',['client' => $data] );
     }
     
     public function store(Request $request)

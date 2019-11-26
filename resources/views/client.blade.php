@@ -7,9 +7,8 @@
 
     <div class="container mt-5">
         <div class="row">
-        
             <div class="box col-md-6">
-                <form action="{{ url('/client') }}" method="GET">
+                    <form action="{{ url('client') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
                         <input type="text" name="cari" id="search" placeholder="search">                    
@@ -23,9 +22,9 @@
             </div>
         </div>
 
-        <div class="row mt-2" id="tampil">
+        <div class="row mt-3" id="tampil">
             @foreach($client as $row)
-            <div class="col-md-3 mt-2" id="show_client_{{ $row->id }}">
+            <div class="col-md-3 mt-4" id="show_client_{{ $row->id }}">
                 <div class="card border-0" id="cardOverlay">
                     <div class="row justify-content-center" style="height: 240px;">
                         <div class="col-12">
@@ -165,7 +164,7 @@
                                 
                                 $('#sample_form')[0].reset();                  
                                 $('#formModal').modal('hide');          
-                                $("#tampil").append( '<div class="col-md-3 mt-2" id="show_client_'+ data.id +'"><div class="card border-0" id="cardOverlay"><div class="row justify-content-center" style="height: 240px;"><div class="col-12"><img src="{{ URL::to("/") }}/images/'+ data.gambar_client +'" class="img-fluid mx-auto d-block card-img-top" alt="" style="padding: 60px;"></div></div><div class="overlay"><div class="row mx-auto" id="slideup"><div class="col-md-4"><a href="#" name="edit" data-id="'+ data.id +'" class="edit"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/list2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#" id="delete" data-id="'+ data.id +'" class="delete"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" width="20px" height="20px" alt=""><a></div></div></div></div><p class="text-center text-white mt-4" style="font-size:18px;">{{ $row->nama_client }}</p></div>');
+                                location.reload();
                             }
                             $('#form_result').html(html);
                         },
@@ -202,7 +201,7 @@
                                 $('#sample_form')[0].reset();
                                 $('#store_image').html('');
                                 $('#formModal').modal('hide');                            
-                                $("#show_client_" + data.id).replaceWith('<div class="col-md-3 mt-2" id="show_client_'+ data.id +'"><div class="card border-0" id="cardOverlay"><div class="row justify-content-center" style="height: 240px;"><div class="col-12"><img src="{{ URL::to("/") }}/images/'+ data.gambar_client +'" class="img-fluid mx-auto d-block card-img-top" alt="" style="padding: 60px;"></div></div><div class="overlay"><div class="row mx-auto" id="slideup"><div class="col-md-4"><a href="#" name="edit" data-id="'+ data.id +'" class="edit"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/list2.png") }}" width="20px" height="20px" alt=""></a></div><div class="col-md-4"><a href="#" id="delete" data-id="'+ data.id +'" class="delete"><img src="{{ asset("img/IconTriwikramaAppAdmin/white/rubbish-bin2.png") }}" width="20px" height="20px" alt=""><a></div></div></div></div><p class="text-center text-white mt-4" style="font-size: 18px;">{{ $row->nama_client }}</p></div>');
+                                location.reload()
                             }
                             $('#form_result').html(html);
                         },

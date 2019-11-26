@@ -20,10 +20,10 @@
             <div class="col-md-5">
                 <div class ="row float-right">
                     <p class="text-white mt-3"><strong>SHOW</strong></p>
-                    <select name="filter" id="" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
+                    <select name="filter" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
                         <option value="">All</option>
-                        <option value="">Readed</option>
-                        <option value="">Not Readed</option>
+                        <option value="readed">Readed</option>
+                        <option value="not readed">Not Readed</option>
                     </select>
                     <!-- <div class="dropdown">
                         <button class="btn m-2 pl-5 pr-5 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:100px; background: #fff; color:#0f0f0f;"><strong>All</strong></button>
@@ -41,9 +41,7 @@
             @include('message')
         </div>
 
-        <div class="row justify-content-center mt-4">
-            {{ $message->links() }}
-        </div>
+
 
         <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -97,25 +95,25 @@
             }
         });
 
-        fetch_inbox();
+        // fetch_inbox();
 
-        function fetch_inbox(query = '');
-        {
-            $.ajax({
-                url: "{{ url('inbox') }}",
-                method: 'GET',
-                data:{query:query},
-                dataType: 'json',
-                success:function(data){
-                    $('#content').html(data.data_inbox);
-                }
-            });
-        }
+        // function fetch_inbox(query = '')
+        // {
+        //     $.ajax({
+        //         url: "{{ url('inbox') }}",
+        //         method: 'GET',
+        //         data:{query:query},
+        //         dataType: 'json',
+        //         success:function(data){
+        //             $('#content').html(data.data_inbox);
+        //         }
+        //     });
+        // }
 
-        $(document).on('keyup', '#search', function(){
-            var query = $(this).val();
-            fetch_inbox(query);
-        });
+        // $(document).on('keyup', '#search', function(){
+        //     var query = $(this).val();
+        //     fetch_inbox(query);
+        // });
 
         $('body').on('click', '#show-message', function(event){
             event.preventDefault();
