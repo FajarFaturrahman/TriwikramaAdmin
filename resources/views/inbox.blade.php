@@ -45,9 +45,7 @@
             @include('message')
         </div>
 
-        <div class="row justify-content-center mt-4">
-            {{ $message->links() }}
-        </div>
+
 
         <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">
             <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
@@ -100,8 +98,27 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-        
-        //Show Data in Modal with Ajax
+
+        // fetch_inbox();
+
+        // function fetch_inbox(query = '')
+        // {
+        //     $.ajax({
+        //         url: "{{ url('inbox') }}",
+        //         method: 'GET',
+        //         data:{query:query},
+        //         dataType: 'json',
+        //         success:function(data){
+        //             $('#content').html(data.data_inbox);
+        //         }
+        //     });
+        // }
+
+        // $(document).on('keyup', '#search', function(){
+        //     var query = $(this).val();
+        //     fetch_inbox(query);
+        // });
+
         $('body').on('click', '#show-message', function(event){
             event.preventDefault();
             var mid = $(this).data('id'); 

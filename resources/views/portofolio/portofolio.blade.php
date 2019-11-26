@@ -23,7 +23,7 @@
             </div>
         </div>
         
-        <div class="row mt-5">
+        <div class="row mt-3">
             @foreach($portofolio as $portofolios)
                 <div class="card mt-4">
                     <div class="card-body">

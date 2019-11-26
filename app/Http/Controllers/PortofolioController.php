@@ -13,7 +13,7 @@ class PortofolioController extends Controller
     public function index(Request $request)
     {   
         if($request->has('cari')){
-            $data['portofolio'] = Portofolio::where('nama_aplikasi','LIKE','%'.$request->cari.'%')->get();
+            $data = Portofolio::where('nama_aplikasi','LIKE','%'.$request->cari.'%')->paginate(5);
         }else{
             $data = Portofolio::paginate(5);
         }                

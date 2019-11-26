@@ -11,7 +11,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if($request->has('cari')){
-            $data['product'] = Product::where('nama_product','LIKE','%'.$request->cari.'%')->get();
+            $data = Product::where('nama_product','LIKE','%'.$request->cari.'%')->paginate(5);
         }else{
             $data = Product::paginate(5);
         }

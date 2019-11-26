@@ -18,9 +18,9 @@ class InboxController extends Controller
         if($request->has('cari')){
             $data['message'] = Inbox::where('pengirim','LIKE','%'.$request->cari.'%')
                         ->orWhere('email','LIKE','%'.$request->cari.'%')
-                        ->get();        
+                        ->paginate(8);        
         }else{
-            $data['message'] = \DB::table('inbox')->orderBy('id','asc')->paginate(8);  
+            $data['message'] = \DB::table('inbox')->orderBy('id','desc')->paginate(8);  
         }                    
          return view('inbox', $data);
     }
