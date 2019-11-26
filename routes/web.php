@@ -42,7 +42,7 @@ Route::post('client/update', 'ClientController@update')->name('client.update');
 
 // inbox
 Route::resource('/inbox', 'InboxController');
-Route::get('/inbox/filter', 'InboxController@filter')->name('inbox.filter');
+Route::post('/inbox/filter/{status}', 'InboxController@filter')->name('inbox.filter');
 // home
 Route::get('/home', 'homeController@index')->name('home');
 

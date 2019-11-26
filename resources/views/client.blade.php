@@ -18,7 +18,7 @@
             
 
             <div class="col-md-6">
-                <button type="button" class="btn float-right text-white" name="create_data" id="create_data"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="20px" height="20px" alt="" class="mr-1">Add Client</button>
+                <button type="button" class="btn float-right text-white btn-add" name="create_data" id="create_data" style="width: 150px; height: 40px; border-radius: 100px; margin-top: 10px; font-size: 14px;"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="16px" height="16px" alt="" class="mr-2">ADD CLIENT</button>
             </div>
         </div>
 
@@ -80,12 +80,13 @@
                             <div class="row">
                                 <div class="col-md-5">
                                     <div class="row justify-content-center">                                        
-                                        <span id="store_image"></span>
-                                    </div>    
+                                        <span id="store_image"><img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" /></span>
+                                    </div>
+                                        
                                     <div class="row justify-content-center">
                                         <div class="form-group">                                        
-                                            <input type="file" class="btn mt-5 btn-danger font-weight-bold" style="background: #D91E18;" id="gambar_client" name="gambar_client">
-                                        </div>                                    
+                                            <input type="file" class=" font-weight-bold" id="gambar_client" name="gambar_client">
+                                        </div>
                                     </div>
                                 </div>  
 
@@ -127,8 +128,6 @@
                 }
             });
             
-        
-
             $('#create_data').click(function(){
                 $('.modal-title').text("ADD CLIENT");
                 $('#action_button').val("Add");
@@ -221,7 +220,7 @@
                     success:function(html){
                         console.log(html);                        
                         $('#nama_client').val(html.data.nama_client);
-                        $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='120' class='img-thumbnail' />");
+                        $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='160' class='img-thumbnail p-4' />");
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
                         $('#hidden_id').val(html.data.id);
                         $('.modal-title').text('Edit Data Client');

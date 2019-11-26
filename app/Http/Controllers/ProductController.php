@@ -124,4 +124,10 @@ class ProductController extends Controller
 
         return response()->json(['success' => 'Record has been deleted successfully']);
     }
+
+    public function show($id){
+        $data = \DB::table('product')->find($id);
+
+        return response()->json($data);
+    }
 }
