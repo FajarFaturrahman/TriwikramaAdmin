@@ -313,6 +313,28 @@
                     });
                 }
             });
+
+            $('body').on('click', '#delete_image', function(event){
+                event.preventDefault();
+                var id = $(this).data('id');
+                var conf = confirm("Are You sure want to delete ?");
+
+                if(conf == true){
+                    $.ajax({
+                        type: "DELETE",
+                        url: "{{ url('product/delete') }}" + '/' + id,
+                        data: {id:id},
+                        dataType: "json",
+                        success:function(response){
+                            console.log(response);
+                            $('#img_thumbnail_' + id).remove();
+                        },
+                        error:function(xhr){
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }
+            });
         });
     </script>
 

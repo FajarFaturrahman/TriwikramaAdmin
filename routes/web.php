@@ -33,6 +33,7 @@ Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detai
 // product
 Route::resource('product', 'ProductController');
 Route::post('product/update', 'ProductController@update')->name('product.update');
+Route::delete('product/delete/{id}', 'ProductController@destroyImage')->name('product.delete');
 
 // client
 Route::resource('client', 'ClientController');
@@ -41,6 +42,7 @@ Route::post('client/update', 'ClientController@update')->name('client.update');
 
 // inbox
 Route::resource('/inbox', 'InboxController');
+Route::get('/inbox/filter', 'InboxController@filter')->name('inbox.filter');
 // home
 Route::get('/home', 'homeController@index')->name('home');
 

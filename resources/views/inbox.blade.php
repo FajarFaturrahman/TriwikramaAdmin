@@ -20,14 +20,19 @@
             <div class="col-md-5">
                 <div class ="row float-right">
                     <p class="text-white mt-3"><strong>SHOW</strong></p>
-                    <div class="dropdown">
+                    <select name="filter[]" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
+                        <option value="">All</option>
+                        <option value="readed">Readed</option>
+                        <option value="not-readed">Not Readed</option>
+                    </select>
+                    <!-- <div class="dropdown">
                         <button class="btn m-2 pl-5 pr-5 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:100px; background: #fff; color:#0f0f0f;"><strong>All</strong></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
                             <input type="submit" class="dropdown-item" name="all" value="all" id="all">
                             <input type="submit" class="dropdown-item" name="readed" value="readed" id="readed">
                             <input type="submit" class="dropdown-item" name="not-readed" value="not-readed" id="not">
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -91,27 +96,8 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-
-        fetch_inbox();
-
-        function fetch_inbox(query = '');
-        {
-            $.ajax({
-                url: "{{ url('inbox') }}",
-                method: 'GET',
-                data:{query:query},
-                dataType: 'json',
-                success:function(data){
-                    $('#content').html(data.data_inbox);
-                }
-            });
-        }
-
-        $(document).on('keyup', '#search', function(){
-            var query = $(this).val();
-            fetch_inbox(query);
-        });
-
+        
+        //Show Data in Modal with Ajax
         $('body').on('click', '#show-message', function(event){
             event.preventDefault();
             var mid = $(this).data('id'); 
@@ -158,29 +144,27 @@
                 
             }
         });
-        
-        //Search Data Ajax
-        $('body').on('keyup', '#search', function(event){
-            event.preventDefault();
-            var sd = $('#search').val();
 
+        //Filter Data With Ajax
+        $('body').on('change', '#filter', function(e){
+            e.preventDefault();
             $.ajax({
-                type: "GET",
-                url: "{{ url('inbox/search') }}",
-                data: {search:sd},
+                url: "{{ url('inbox/filter') }}",
                 dataType: "json",
-                success: function(data){
-                    console.log(data)
+                beforeSend: function(){
+                    $("#message-container").html('<div clas="row justify content center">Reload data ... </div>');
                 },
-                error: function(tr){
-                    console.log(tr.responseText);
-                } 
+                success: function(response){
+                    console.log(response);
+                    $("#message-container").html(response);
+                },
+                error: function(xhr){
+                    console.log(xhr.responseText);
+                }
             });
         });
-       
+        
     });
-
-
 
 </script>
 

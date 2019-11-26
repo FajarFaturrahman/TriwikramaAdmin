@@ -17,11 +17,29 @@ class InboxController extends Controller
         if($request->has('cari')){
             $data['message'] = Inbox::where('pengirim','LIKE','%'.$request->cari.'%')
                         ->orWhere('email','LIKE','%'.$request->cari.'%')
-                        ->get();
+                        ->get();        
         }else{
             $data['message'] = \DB::table('inbox')->orderBy('id','asc')->paginate(8);  
         }                    
-        return view('inbox',$data);
+         return view('inbox', $data);
+    }
+
+    public function filter(Request $request){
+            $filter = "";
+            $output = "";
+            if($filter != ""){
+                $data = Inbox::where('status', $filter)->get();
+            } else{
+                $data = Inbox::all();
+            }
+            foreach($data as $dataFilter){
+
+                $output .= '<div class="row justify-content-center mt-2" id="message_id_'. $dataFilter->id .'"><div class="rounded-left" id="left-box"></div><div class="card col-md-11 rounded-right" id="inboxCard"><div class="card-body"><div class="row"><div class="col-md-10"><p class="my-auto"><strong>'. $dataFilter->pengirim .'</strong></p><p class="my-auto">'. $dataFilter->email .'</p></div><div class="col-md-2"><div class="row float-right"><a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="'. $dataFilter->id .'"><img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/read.png" alt="" width="20px" heigth="20px"></a><a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="'. $dataFilter->id .'"><img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/white/rubbish-bin2.png" alt="" width="20px" heigth="20px"></a></div></div></div></div></div></div>';
+            
+            }
+
+            echo json_encode($data); 
+            
     }
 
     /**
@@ -92,26 +110,5 @@ class InboxController extends Controller
         $data = \DB::table('inbox')->where('id',$id)->delete();
    
         return response()->json(['success' => 'Record has been deleted successfully!']);
-    }
-
-    public function search(Request $request)
-    {
-        if($request->ajax())
-        {           
-           $query = $request->search;
-           if($query != '')
-           {
-                $data = DB::table('inbox')
-                ->where('pengirim', 'like', '%'.$query.'%')
-                ->get();
-           }
-           else
-           {
-            $data = DB::table('inbox')              
-              ->get();
-           }                                           
-
-            echo json_encode($data);
-        }          
     }
 }
