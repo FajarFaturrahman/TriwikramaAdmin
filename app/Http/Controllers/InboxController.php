@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use App\Inbox;
 class InboxController extends Controller
 {
@@ -24,13 +25,14 @@ class InboxController extends Controller
          return view('inbox', $data);
     }
 
-    public function filter(Request $request){
-            $filter = "";
+    public function filter(Request $request, $status = ""){
+            $filter = $request->filter;
+            $filter = $status;
             $output = "";
-            if($filter != ""){
-                $data = Inbox::where('status', $filter)->get();
+            if($status != ""){
+                $data = Inbox::where('status', $status)->get();
             } else{
-                $data = Inbox::all();
+                $data = \DB::table('inbox')->orderBy('id','desc')->get();
             }
             foreach($data as $dataFilter){
 
@@ -38,8 +40,7 @@ class InboxController extends Controller
             
             }
 
-            echo json_encode($data); 
-            
+            return Response::json($output);          
     }
 
     /**

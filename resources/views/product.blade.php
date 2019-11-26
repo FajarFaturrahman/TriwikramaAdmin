@@ -56,7 +56,12 @@
                                             </div>
                                         </div>                                    
                                     </div>                                
-                                    <p class="mt-3">{{ $row->deskripsi }}</p>                                
+                                    <p class="mt-3 p-des">
+                                    {{ str_limit(strip_tags($row->deskripsi), 200) }}
+                                        @if (strlen(strip_tags($row->deskripsi)) > 50)
+                                        ... <button class="btn btn-link p-0" style="color: rgb(217, 30, 24)" id="read-more" data-id="{{ $row->id }}">Read More</button>
+                                        @endif
+                                    </p>                                
                                 </div>
                             </div>
                         </div>
@@ -177,6 +182,24 @@
                 nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
                     });
             }        
+
+            $('body').on('click', '#read-more', function(event){
+                event.preventDefault();
+                var mid = $(this).data('id'); 
+
+                $.ajax({
+                    type: "GET",
+                    url: "{{ url('product') }}" + '/' + mid,
+                    dataType: "json",
+                    success:function(data){
+                        console.log(data);
+                        $(".p-des").html(data.deskripsi);
+                    },
+                    error:function(data){
+                        $('.modal-body').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
+                    }
+                });
+            });
 
             $(".btn-success").click(function(){
                 var html = $(".clone").html();

@@ -19,12 +19,16 @@
 
             <div class="col-md-5">
                 <div class ="row float-right">
-                    <p class="text-white mt-3"><strong>SHOW</strong></p>
-                    <select name="filter[]" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
-                        <option value="">All</option>
-                        <option value="readed">Readed</option>
-                        <option value="not-readed">Not Readed</option>
-                    </select>
+                    <div class="col-4">
+                        <p class="text-white mt-2"><strong>SHOW</strong></p>
+                    </div>
+                    <div class="col-8">
+                        <select class="form-control" name="filter[]" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
+                            <option value="">All</option>
+                            <option value="readed">Readed</option>
+                            <option value="not-readed">Not Readed</option>
+                        </select>
+                    </div>
                     <!-- <div class="dropdown">
                         <button class="btn m-2 pl-5 pr-5 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:100px; background: #fff; color:#0f0f0f;"><strong>All</strong></button>
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
@@ -148,15 +152,18 @@
         //Filter Data With Ajax
         $('body').on('change', '#filter', function(e){
             e.preventDefault();
+            var filter = $(this).val();
             $.ajax({
-                url: "{{ url('inbox/filter') }}",
+                type: "post",
+                data: {status:filter},
+                url: "{{ url('inbox/filter') }}" + '/' + filter,
                 dataType: "json",
                 beforeSend: function(){
-                    $("#message-container").html('<div clas="row justify content center">Reload data ... </div>');
+                    $(".message-container").html('<center><div class="text-white">Reload data ... </div></center>');
                 },
-                success: function(response){
-                    console.log(response);
-                    $("#message-container").html(response);
+                success: function(data){
+                    console.log(data);
+                    $(".message-container").html(data);
                 },
                 error: function(xhr){
                     console.log(xhr.responseText);
