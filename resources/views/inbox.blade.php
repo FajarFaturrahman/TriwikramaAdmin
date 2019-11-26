@@ -20,17 +20,10 @@
             <div class="col-md-5">
                 <div class ="row float-right">
                     <p class="text-white mt-3"><strong>SHOW</strong></p>
-<<<<<<< HEAD
                     <select name="filter" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
                         <option value="">All</option>
                         <option value="readed">Readed</option>
                         <option value="not readed">Not Readed</option>
-=======
-                    <select name="filter[]" id="filter" class="btn m-2 pl-5 pr-5" style="border-radius:100px; background: #fff; color:#0f0f0f;">
-                        <option value="">All</option>
-                        <option value="readed">Readed</option>
-                        <option value="not-readed">Not Readed</option>
->>>>>>> 15f048c20635ec8b3d89ed2b6a0e5cc810fdd2d5
                     </select>
                     <!-- <div class="dropdown">
                         <button class="btn m-2 pl-5 pr-5 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border-radius:100px; background: #fff; color:#0f0f0f;"><strong>All</strong></button>
@@ -101,7 +94,6 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
-<<<<<<< HEAD
 
         // fetch_inbox();
 
@@ -123,10 +115,6 @@
         //     fetch_inbox(query);
         // });
 
-=======
-        
-        //Show Data in Modal with Ajax
->>>>>>> 15f048c20635ec8b3d89ed2b6a0e5cc810fdd2d5
         $('body').on('click', '#show-message', function(event){
             event.preventDefault();
             var mid = $(this).data('id'); 
