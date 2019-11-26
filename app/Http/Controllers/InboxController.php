@@ -26,13 +26,11 @@ class InboxController extends Controller
     }
 
     public function filter(Request $request, $status = ""){
-            $filter = $request->filter;
-            $filter = $status;
             $output = "";
-            if($status != ""){
-                $data = Inbox::where('status', $status)->get();
-            } else{
+            if($status == "semua"){
                 $data = \DB::table('inbox')->orderBy('id','desc')->get();
+            } else{                
+                $data = Inbox::where('status', $status)->get();
             }
             foreach($data as $dataFilter){
 

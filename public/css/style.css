@@ -284,3 +284,18 @@ td{
     height: 2.2rem; }
 .file-field.big .file-path-wrapper .file-path {
     height: 2rem; }
+
+
+.hide_content{
+    display: none;
+}
+
+.read-more-show{
+    color: #D91E18;
+    cursor: pointer;
+}
+
+.read-more-hide{
+    color: #D91E18;
+    cursor: pointer;
+}
