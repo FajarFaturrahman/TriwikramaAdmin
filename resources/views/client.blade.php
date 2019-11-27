@@ -109,7 +109,7 @@
                                     </div>
 
                                     <div class="row float-right mr-3 mb-0 mt-5">                                        
-                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal" id="btn-cancel">CANCEL</button>
+                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
                                         <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" value="ADD">
@@ -140,13 +140,6 @@
                 $('#file-selected').html(filename);
                 $('#store_image').html('<img src="'+fileimage+'" width="160" class="img-thumbnail p-4"/>');
 
-            });
-
-            $('#btn-cancel').click(function(){
-                $('nama_client').val("");
-                $('file-selected').html("");
-                $('store_image').html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
-                $('#gambar_client').val("");
             });
 
             $('#create_data').click(function(){
