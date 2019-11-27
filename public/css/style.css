@@ -280,12 +280,6 @@ td{
 .slick-next{
     border-radius: 100px;
 }
-.file-field.big .file-path-wrapper {
-    height: 2.2rem; }
-.file-field.big .file-path-wrapper .file-path {
-    height: 2rem; }
-
-
 .hide_content{
     display: none;
 }
@@ -299,3 +293,28 @@ td{
     color: #D91E18;
     cursor: pointer;
 }
+.btn-file-lab {
+    cursor: pointer;
+    background: rgb(217, 30, 24);
+    padding: 1rem 53px;
+    margin-top: 20px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 4px;
+ }
+ .btn-file-lab:hover{
+     border-radius: 60px;
+     background: rgb(217, 30, 44);
+     transition: .4s;
+ }
+ 
+ #gambar-client {
+    opacity: 0;
+    position: absolute;
+    z-index: -1;
+ }
+
+
+
+    
+    

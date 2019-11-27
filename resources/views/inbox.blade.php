@@ -170,7 +170,8 @@
         $('body').on('change', '#filter', function(e){
             e.preventDefault();
             var filter = $(this).val();
-            $.ajax({
+
+             $.ajax({
                 type: "post",
                 data: {status:filter},
                 url: "{{ url('inbox/filter') }}" + '/' + filter,
@@ -185,7 +186,7 @@
                 error: function(xhr){
                     console.log(xhr.responseText);
                 }
-            });
+            });         
         });
         
     });

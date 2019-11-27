@@ -84,8 +84,11 @@
                                     </div>
                                         
                                     <div class="row justify-content-center">
-                                        <div class="form-group">                                        
-                                            <input type="file" class=" font-weight-bold" id="gambar_client" name="gambar_client">
+                                        <div class="form-group">
+                                        <label class="btn-file-lab" id="con">
+                                            Browse <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
+                                        </label>                                        
+                                            <!-- <input type="file" class="font-weight-bold" id="gambar_client" name="gambar_client"> -->
                                         </div>
                                     </div>
                                 </div>  
@@ -127,7 +130,12 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
-            
+
+            $('#gambar_client').on('change', function(){
+                var filename = $('#gambar_client').val();
+                $('#con').html(filename + '<input type="file" style="display: none;" id="gambar_client" name="gambar_client">');
+            });
+
             $('#create_data').click(function(){
                 $('.modal-title').text("ADD CLIENT");
                 $('#action_button').val("Add");
