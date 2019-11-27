@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="col-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="{{ url('/portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
                             <div class="col-4">                                                            
@@ -231,7 +231,7 @@
                         $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='160' class='img-thumbnail p-4' />");
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
                         $('#hidden_id').val(html.data.id);                        
-                        $('#portfolio_info').html(html.ambilPortofolio);
+                        $('#store_portofolio').html(html.ambilPortofolio);
                         $('.modal-title').text('Edit Data Client');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');
