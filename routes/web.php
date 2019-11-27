@@ -27,9 +27,6 @@ Route::delete('/portofolio/delete/image2/{id}', 'PortofolioController@delete_ima
 Route::delete('/portofolio/{id}', 'PortofolioController@destroy');
 
 
-// detail portofolio
-Route::get('/detailPortofolio', 'DetailPortofolioController@index')->name('detailPortofolio');
-
 // product
 Route::resource('product', 'ProductController');
 Route::post('product/update', 'ProductController@update')->name('product.update');
@@ -38,6 +35,7 @@ Route::delete('product/delete/{id}', 'ProductController@destroyImage')->name('pr
 // client
 Route::resource('client', 'ClientController');
 Route::post('client/update', 'ClientController@update')->name('client.update');
+Route::get('/portofolio/{id}/portofolio', 'ClientController@showPortofolio');
 // Route::get('client/destroy/{id}', 'ClientController@destroy');
 
 // inbox

@@ -57,10 +57,14 @@
                                         </div>                                    
                                     </div>                                
                                     <p class="mt-3 p-des">
-                                    {{ str_limit(strip_tags($row->deskripsi), 200) }}
-                                        @if (strlen(strip_tags($row->deskripsi)) > 50)
-                                        ... <button class="btn btn-link p-0" style="color: rgb(217, 30, 24)" id="read-more" data-id="{{ $row->id }}">Read More</button>
-                                        @endif
+                                    @if(strlen($row->deskripsi) > 200)
+                                        {{substr($row->deskripsi,0,200)}}
+                                        <span class="read-more-show hide_content">Read More <i class="fa fa-angle-down"></i></span>
+                                        <span class="read-more-content"> {{substr($row->deskripsi,200,strlen($row->deskripsi))}} 
+                                        <span class="read-more-hide hide_content">Read Less <i class="fa fa-angle-up"></i></span> </span>
+                                        @else
+                                        {{$row->deskripsi}}
+                                    @endif                                        
                                     </p>                                
                                 </div>
                             </div>
@@ -158,6 +162,22 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            $('.read-more-content').addClass('hide_content');
+            $('.read-more-show, .read-more-hide').removeClass('hide_content');
+
+            $('.read-more-show').on('click', function(e) {
+                $(this).next('.read-more-content').removeClass('hide_content');
+                $(this).addClass('hide_content');
+                e.preventDefault();
+            });
+
+            $('.read-more-hide').on('click', function(e){
+                var p = $(this).parent('.read-more-content');
+                p.addClass('hide_content');
+                p.prev('.read-more-show').removeClass('hide_content');
+                e.preventDefault();
+            })
 
             if($(window).width() < 960){
                     $('.autoplay').slick({

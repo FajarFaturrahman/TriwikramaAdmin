@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Validator;
 use App\Client;
+use App\Portofolio;
 use Illuminate\Http\Request;
 
 class clientController extends Controller
@@ -46,11 +47,24 @@ class clientController extends Controller
         }    
     }
 
+    public function showPortofolio($id)
+    {
+        $ambilPortofolio = Portofolio::where('id_client', $id)->paginate(5);
+        $data = Client::all()->find($id);
+        return view('portofolio.portofolio', ['portofolio' => $ambilPortofolio, 'client' => $data]);
+    }
+
     public function edit($id){
         if(request()->ajax())
         {
-            $data = Client::findOrFail($id);
-            return response()->json(['data' => $data]);
+            $output = "";
+            $ambilPortofolio = Portofolio::where('id_client', $id)->get();
+            foreach($ambilPortofolio as $port){
+                $output .= '<div class="d-inline-flex ml-2" id="portofolio_'. $port->id .'"><p class="rounded p-1 ml-2" style="background-color:#EFF2F4;">'. $port->nama_aplikasi.'</p></div>';                
+            }
+
+            $data = Client::all()->find($id);
+            return response()->json(['data' => $data, 'ambilPortofolio' => $output]);
         }
     }
 

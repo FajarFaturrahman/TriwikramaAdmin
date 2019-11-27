@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="col-4">
-                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="{{ url('/portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
                             <div class="col-4">                                                            
@@ -104,9 +104,9 @@
 
                                     <div class="form group">
                                         <label for="portfolio_info">Portfolio Info</label>
-                                        <div class="row" id="portfolio_info">                                           
+                                        <div class="row">                                        
+                                            <span id="store_portofolio"></span>
                                         </div>
-                                    </div>
 
                                     <div class="row float-right mr-3 mb-0 mt-5">                                        
                                         <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
@@ -236,7 +236,8 @@
                         $('#nama_client').val(html.data.nama_client);
                         $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='160' class='img-thumbnail p-4' />");
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
-                        $('#hidden_id').val(html.data.id);
+                        $('#hidden_id').val(html.data.id);                        
+                        $('#store_portofolio').html(html.ambilPortofolio);
                         $('.modal-title').text('Edit Data Client');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');

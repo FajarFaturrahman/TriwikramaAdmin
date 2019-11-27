@@ -280,6 +280,19 @@ td{
 .slick-next{
     border-radius: 100px;
 }
+.hide_content{
+    display: none;
+}
+
+.read-more-show{
+    color: #D91E18;
+    cursor: pointer;
+}
+
+.read-more-hide{
+    color: #D91E18;
+    cursor: pointer;
+}
 .btn-file-lab {
     cursor: pointer;
     background: rgb(217, 30, 24);
