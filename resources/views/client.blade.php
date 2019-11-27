@@ -28,7 +28,7 @@
                 <div class="card border-0" id="cardOverlay">
                     <div class="row justify-content-center" style="height: 240px;">
                         <div class="col-12">
-                            <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="mx-auto d-block card-img-top" style="width: 160px; heigth: 160px; margin: 40px;" alt="">
+                            <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block card-img-top" style="padding: 60px;" alt="">
                         </div>
                     </div>
 
@@ -39,7 +39,7 @@
                             </div>
 
                             <div class="col-4">
-                                <a href="{{ url('/portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="#"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
 
                             <div class="col-4">                                                            
@@ -83,15 +83,12 @@
                                         <span id="store_image"><img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" /></span>
                                     </div>
                                         
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label class="btn-file-lab p-3 mt-2" id="con">
-                                                <img id="img-client" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/photo2.png" width="25px" alt="">
-                                                <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
-                                            </label>
-                                        </div>
-                                        <div class="col-9 p-4">
-                                            <span id="file-selected" class=""></span>
+                                    <div class="row justify-content-center">
+                                        <div class="form-group">
+                                        <label class="btn-file-lab" id="con">
+                                            Browse <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
+                                        </label>                                        
+                                            <!-- <input type="file" class="font-weight-bold" id="gambar_client" name="gambar_client"> -->
                                         </div>
                                     </div>
                                 </div>  
@@ -104,12 +101,12 @@
 
                                     <div class="form group">
                                         <label for="portfolio_info">Portfolio Info</label>
-                                        <div class="row">                                        
+                                        <div class="row justify-content-center">                                        
                                             <span id="store_portofolio"></span>
                                         </div>
 
-                                    <div class="row float-right mr-3 mb-0 mt-5">                                        
-                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal" id="btn-cancel">CANCEL</button>
+                                    <div class="row float-right mr-3 mt-5">                                        
+                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
                                         <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" value="ADD">
@@ -134,19 +131,9 @@
                 }
             });
 
-            $('#gambar_client').bind('change', function(e){
-                var filename = e.target.files[0].name;
-                var fileimage =  URL.createObjectURL(event.target.files[0]);
-                $('#file-selected').html(filename);
-                $('#store_image').html('<img src="'+fileimage+'" width="160" class="img-thumbnail p-4"/>');
-
-            });
-
-            $('#btn-cancel').click(function(){
-                $('nama_client').val("");
-                $('file-selected').html("");
-                $('store_image').html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
-                $('#gambar_client').val("");
+            $('#gambar_client').on('change', function(){
+                var filename = $('#gambar_client').val();
+                $('#con').html(filename + '<input type="file" style="display: none;" id="gambar_client" name="gambar_client">');
             });
 
             $('#create_data').click(function(){
@@ -244,7 +231,7 @@
                         $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='160' class='img-thumbnail p-4' />");
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
                         $('#hidden_id').val(html.data.id);                        
-                        $('#store_portofolio').html(html.ambilPortofolio);
+                        $('#portfolio_info').html(html.ambilPortofolio);
                         $('.modal-title').text('Edit Data Client');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');
