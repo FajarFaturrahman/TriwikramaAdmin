@@ -28,7 +28,7 @@
                 <div class="card border-0" id="cardOverlay">
                     <div class="row justify-content-center" style="height: 240px;">
                         <div class="col-12">
-                            <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block card-img-top" style="padding: 60px;" alt="">
+                            <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="mx-auto d-block card-img-top" style="width: 160px; heigth: 160px; margin: 40px;" alt="">
                         </div>
                     </div>
 
@@ -83,12 +83,15 @@
                                         <span id="store_image"><img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" /></span>
                                     </div>
                                         
-                                    <div class="row justify-content-center">
-                                        <div class="form-group">
-                                        <label class="btn-file-lab" id="con">
-                                            Browse <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
-                                        </label>                                        
-                                            <!-- <input type="file" class="font-weight-bold" id="gambar_client" name="gambar_client"> -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="btn-file-lab p-3 mt-2" id="con">
+                                                <img id="img-client" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/photo2.png" width="25px" alt="">
+                                                <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
+                                            </label>
+                                        </div>
+                                        <div class="col-9 p-4">
+                                            <span id="file-selected" class=""></span>
                                         </div>
                                     </div>
                                 </div>  
@@ -105,8 +108,8 @@
                                         </div>
                                     </div>
 
-                                    <div class="row float-right mr-3 mt-5">                                        
-                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
+                                    <div class="row float-right mr-3 mb-0 mt-5">                                        
+                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal" id="btn-cancel">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
                                         <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" value="ADD">
@@ -131,9 +134,19 @@
                 }
             });
 
-            $('#gambar_client').on('change', function(){
-                var filename = $('#gambar_client').val();
-                $('#con').html(filename + '<input type="file" style="display: none;" id="gambar_client" name="gambar_client">');
+            $('#gambar_client').bind('change', function(e){
+                var filename = e.target.files[0].name;
+                var fileimage =  URL.createObjectURL(event.target.files[0]);
+                $('#file-selected').html(filename);
+                $('#store_image').html('<img src="'+fileimage+'" width="160" class="img-thumbnail p-4"/>');
+
+            });
+
+            $('#btn-cancel').click(function(){
+                $('nama_client').val("");
+                $('file-selected').html("");
+                $('store_image').html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
+                $('#gambar_client').val("");
             });
 
             $('#create_data').click(function(){
