@@ -45,6 +45,9 @@
             @include('message')
         </div>
 
+        <div class="row justify-content-center mt-3">
+            {{ $message->links() }}
+        </div>
 
 
         <div class="modal fade" id="modalMd" tabindex="-1" role="dialog" aria-labelledby="myModalLable" aria-hidden="true">

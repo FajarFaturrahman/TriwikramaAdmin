@@ -68,7 +68,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">ADD CLIENT</h4>
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" arial-label="Close" id="iconCancel">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>                    
@@ -91,7 +91,7 @@
                                             </label>
                                         </div>
                                         <div class="col-9 p-4">
-                                            <span id="file-selected" class=""></span>
+                                            <span id="file-selected" class="">click the button to add a file</span>
                                         </div>
                                     </div>
                                 </div>  
@@ -109,7 +109,7 @@
                                         </div>
 
                                     <div class="row float-right mr-3 mb-0 mt-5">                                        
-                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
+                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal" id="buttonCancel">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
                                         <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" value="ADD">
@@ -139,7 +139,18 @@
                 var fileimage =  URL.createObjectURL(event.target.files[0]);
                 $('#file-selected').html(filename);
                 $('#store_image').html('<img src="'+fileimage+'" width="160" class="img-thumbnail p-4"/>');
+            });
 
+            $("#buttonCancel").click(function(){
+                $("#sample_form")[0].reset();
+                $("#store_image").html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
+                $("#file-selected").html('click the button to add a file');
+            });
+
+            $("#iconCancel").click(function(){
+                $("#sample_form")[0].reset();
+                $("#store_image").html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
+                $("#file-selected").html('click the button to add a file');
             });
 
             $('#create_data').click(function(){

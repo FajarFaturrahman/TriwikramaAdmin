@@ -311,6 +311,41 @@ td{
     z-index: -1;
  }
 
+ ::-webkit-scrollbar{
+     width: 8px;
+ }
+
+ ::-webkit-scrollbar-track{
+     display: none;
+ }
+
+ ::-webkit-scrollbar-thumb{
+     background-color: rgba(86, 14, 153,0.6);
+     border-radius: 4px;
+     padding: 2px;
+ }
+
+ ::-webkit-scrollbar-button{
+    display: none;
+ }
+
+ ::-webkit-scrollbar-corner{
+     background-color: #000;
+ }
+
+ .jspTrack{
+     background: #550E99;
+     position: relative;
+ }
+
+ .jspDrag{
+     background: rgba(0, 0, 0, 0.2);
+     position: relative;
+     top: 0;
+     left: 0;
+     cursor: pointer;
+ }
+
 
 
     

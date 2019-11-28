@@ -28,9 +28,9 @@ class InboxController extends Controller
     public function filter(Request $request, $status = ""){
             $output = "";
             if($status == "semua"){
-                $data = \DB::table('inbox')->orderBy('id','desc')->get();
+                $data = \DB::table('inbox')->orderBy('id','desc')->paginate(8);
             } else{                
-                $data = Inbox::where('status', $status)->get();
+                $data = Inbox::where('status', $status)->paginate(8);
             }
             foreach($data as $dataFilter){
 

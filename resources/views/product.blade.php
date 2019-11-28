@@ -82,7 +82,7 @@
     <!-- Modal For Add/Edit Client -->
 
         <div class="modal fade" id="modalAddEditProduct" role="dialog">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">ADD PRODUCT</h4>
