@@ -110,7 +110,7 @@
                                 </div>  
 
                                 <div class="col-md-5">
-                                    <div class="row justify-content-center">                                        
+                                    <div class="row ml-5">                                        
                                         <span id="store_image"></span>
                                     </div>
                                     <div class="card border-0">
@@ -124,7 +124,7 @@
                                             </div>
 
                                             <div class="clone d-none">
-                                                <div class="control-group input-group" style="margin-top:10px">
+                                                <div class="control-group input-group" style="margin-top:10px">            
                                                     <input type="file" name="gambar_product[]" class="form-control">
                                                     <div class="input-group-btn">
                                                         <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
@@ -219,10 +219,14 @@
                 });
             });
 
+            //EDIT
+
             $(".btn-success").click(function(){
                 var html = $(".clone").html();
                 $(".increment").after(html);
             });
+
+            // EDIT
 
             $("body").on('click', ".btn-danger", function(){
                 $(this).parents(".control-group").remove();
@@ -310,6 +314,8 @@
 
             });
 
+            // EDIT
+
             $(document).on('click', '.edit', function(){
                 var mid = $(this).data('id');
                 $('#form_result').html('');
@@ -354,6 +360,8 @@
                     });
                 }
             });
+            
+            // EDIT
 
             $('body').on('click', '#delete_image', function(event){
                 event.preventDefault();
