@@ -83,12 +83,15 @@
                                         <span id="store_image"><img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" /></span>
                                     </div>
                                         
-                                    <div class="row justify-content-center">
-                                        <div class="form-group">
-                                        <label class="btn-file-lab" id="con">
-                                            Browse <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
-                                        </label>                                        
-                                            <!-- <input type="file" class="font-weight-bold" id="gambar_client" name="gambar_client"> -->
+                                    <div class="row">
+                                        <div class="col-3">
+                                            <label class="btn-file-lab p-3 mt-2" id="con">
+                                                <img id="img-client" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/photo2.png" width="25px" alt="">
+                                                <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
+                                            </label>
+                                        </div>
+                                        <div class="col-9 p-4">
+                                            <span id="file-selected" class=""></span>
                                         </div>
                                     </div>
                                 </div>  

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Client;
 use App\Portofolio;
+use Image;
 use Illuminate\Http\Request;
 
 class clientController extends Controller
@@ -32,13 +33,20 @@ class clientController extends Controller
             return response()->json(['errors' => $error->errors()->all()]);
         }else{
 
-        $image = $request->file('gambar_client');
+            $image = $request->file('gambar_client');
 
-        $new_name = rand(). '.' . $image->getClientOriginalExtension();
+            $new_name = rand(). '.' . $image->getClientOriginalExtension();
 
-        $image->move(public_path('images'), $new_name);
+            $image->move(public_path('images'), $new_name);
+
+
+            $image = $request->file('image');
+            $nameImage = $request->file('image')->getClientOriginalName();
+            $thumbImage = Image::make($image->getRealPath())->resize(100, 100);
+            $thumbPath = public_path() . '/thumbnail_images/' . $nameImage;
+            $thumbImage = Image::make($thumbImage)->save($thumbPath);
         
-        $data = new Client;
+            $data = new Client;
             $data->nama_client                  = $request->nama_client;
             $data->gambar_client                = $new_name;
             
