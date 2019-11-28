@@ -105,7 +105,7 @@
                                             <span id="store_portofolio"></span>
                                         </div>
 
-                                    <div class="row float-right mr-3 mt-5">                                        
+                                    <div class="row float-right mr-3 mb-0 mt-5">                                        
                                         <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
@@ -131,9 +131,12 @@
                 }
             });
 
-            $('#gambar_client').on('change', function(){
-                var filename = $('#gambar_client').val();
-                $('#con').html(filename + '<input type="file" style="display: none;" id="gambar_client" name="gambar_client">');
+            $('#gambar_client').bind('change', function(e){
+                var filename = e.target.files[0].name;
+                var fileimage =  URL.createObjectURL(event.target.files[0]);
+                $('#file-selected').html(filename);
+                $('#store_image').html('<img src="'+fileimage+'" width="160" class="img-thumbnail p-4"/>');
+
             });
 
             $('#create_data').click(function(){
