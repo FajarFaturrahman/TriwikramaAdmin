@@ -130,12 +130,14 @@
 
                     <div class="card-body overflow-auto">
                         @foreach($ambilFoto as $aF)
-                        <div class="col-12">
-                            <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
-                                alt="Foto"> &nbsp;
-                            <span data-toggle="modal"
-                                data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}"
-                                class="badge btn btn-danger badge-danger">Delete</span>
+                        <div class="row mt-1">
+                            <div style="padding: 4px;background: #EFF2F4;border-radius: 4px;">
+                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
+                                    alt="Foto">
+                            </div>        
+                            <a href="#" class="mt-3" data-toggle="modal" stye="width: 20px; height:20px; padding:6px" data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}">
+                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
+                            </a>
                         </div>
                         @endforeach
 
@@ -168,12 +170,14 @@
 
                     <div class="card-body overflow-auto">
                         @foreach($ambilFotoMobile as $aFM)
-                        <div class="col-12">
-                            <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
-                                alt="Foto"> &nbsp;
-                            <span data-toggle="modal"
-                                data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}"
-                                class="badge btn btn-danger badge-danger">delete</span>
+                        <div class="row mt-1">
+                            <div style="padding: 4px;background: #EFF2F4;border-radius: 4px;">
+                                <img class="mb-3"  width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
+                                alt="Foto">
+                            </div>    
+                                <a href="#" class="mt-3" data-toggle="modal" style="width: 20px; height:20px; padding:6px" data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}">
+                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
+                            </a>
                         </div>
                         @endforeach
                         <div class="input-group control-group increment2">

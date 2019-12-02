@@ -32,7 +32,7 @@
                                         @foreach($row->gambarProduct as $gambar)                                    
                                             <div class="col-md-12">           
                                                 <div class="row justify-content-center">
-                                                    <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_product }}" width="280px" height="200px" alt=""> 
+                                                    <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_product }}" width="280px" height="200px" alt=""> 
                                                 </div>                                
                                             </div>                                
                                         @endforeach                
@@ -199,25 +199,7 @@
                 prevArrow:"<button type='button' class='slick-prev pull-left bg-dark'><i class='fa fa-angle-left' aria-hidden='true'></i></button>",
                 nextArrow:"<button type='button' class='slick-next pull-right bg-dark'><i class='fa fa-angle-right' aria-hidden='true'></i></button>"
                     });
-            }        
-
-            $('body').on('click', '#read-more', function(event){
-                event.preventDefault();
-                var mid = $(this).data('id'); 
-
-                $.ajax({
-                    type: "GET",
-                    url: "{{ url('product') }}" + '/' + mid,
-                    dataType: "json",
-                    success:function(data){
-                        console.log(data);
-                        $(".p-des").html(data.deskripsi);
-                    },
-                    error:function(data){
-                        $('.modal-body').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
-                    }
-                });
-            });
+            }                   
 
             //EDIT
 

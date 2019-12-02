@@ -28,7 +28,7 @@
                 <div class="card border-0" id="cardOverlay">
                     <div class="row justify-content-center" style="height: 240px;">
                         <div class="col-12">
-                            <img src="{{ URL::to('/') }}/images/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block card-img-top" style="padding: 60px;" alt="">
+                            <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block card-img-top" style="padding: 60px;" alt="">
                         </div>
                     </div>
 
@@ -245,7 +245,7 @@
                     success:function(html){
                         console.log(html);                        
                         $('#nama_client').val(html.data.nama_client);
-                        $('#store_image').html("<img src={{ URL::to('/') }}/images/" + html.data.gambar_client + " width='160' class='img-thumbnail p-4' />");
+                        $('#store_image').html("<img src={{ URL::to('/') }}/resizedImages/" + html.data.gambar_client + " width='160' class='img-thumbnail p-4' />");
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
                         $('#hidden_id').val(html.data.id);                        
                         $('#store_portofolio').html(html.ambilPortofolio);

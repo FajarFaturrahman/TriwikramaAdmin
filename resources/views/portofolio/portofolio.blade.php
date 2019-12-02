@@ -33,7 +33,7 @@
                                     @foreach($portofolios->gambarWeb as $gambar)                                    
                                         <div class="col-md-12">
                                             <div class="row justify-content-center">
-                                                <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" width="280px" alt=""> 
+                                                <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_website }}" width="280px" alt=""> 
                                             </div>                                           
                                         </div>                                
                                     @endforeach
@@ -41,7 +41,7 @@
                                     @foreach($portofolios->gambarMobile as $mobile)                                    
                                         <div class="col-md-12">
                                             <div class="row justify-content-center">
-                                                <img src="{{ URL::to('/') }}/images/{{ $mobile->gambar_mobile }}" width="280px" alt=""> 
+                                                <img src="{{ URL::to('/') }}/resizedImages/{{ $mobile->gambar_mobile }}" width="280px" alt=""> 
                                             </div>
                                         </div>                                
                                     @endforeach 

@@ -6,6 +6,8 @@ use App\Client;
 use App\GambarPortofolio;
 use App\GambarMobilePortofolio;
 use Validator,Redirect,Response,File,DB;
+
+use Image;
 use Illuminate\Http\Request;
 
 class PortofolioController extends Controller
@@ -39,7 +41,7 @@ class PortofolioController extends Controller
             'id_client' => 'required',
             'tanggal_dibuat' => 'required',
             'gambar_website' => 'required',
-            'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20480',
             // 'gambar_mobile'  => 'required',
             // 'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     	];
@@ -67,7 +69,13 @@ class PortofolioController extends Controller
                 {                    
                     $gambarPort = new GambarPortofolio();
                     $nameImage = $imageWebsite->getClientOriginalName();
+
+                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(100,100);
+                    $thumbPath = public_path() . '/resizedImages/' . $nameImage;
+                    $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+
                     $imageWebsite->move(public_path().'/images/', $nameImage);
+
                     $dataImage = $nameImage;
                     $gambarPort->portofolio_id = $portofolio->id;
                     $gambarPort->gambar_website = $dataImage;
@@ -82,6 +90,12 @@ class PortofolioController extends Controller
                         {                    
                             $gambarMobilePort = new GambarMobilePortofolio();
                             $nameImageMobile = $imageMobile->getClientOriginalName();
+
+                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(100,100);
+                            $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
+                            $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+                                                                                    
+                    
                             $imageMobile->move(public_path().'/images/', $nameImageMobile);
                             $dataImage = $nameImageMobile;
                             $gambarMobilePort->portofolio_id = $portofolio->id;
@@ -152,6 +166,11 @@ class PortofolioController extends Controller
                 {                    
                     $gambarPort = new GambarPortofolio();
                     $nameImage = $imageWebsite->getClientOriginalName();
+
+                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(100,100);
+                    $thumbPath = public_path() . '/resizedImages/' . $nameImage;
+                    $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+
                     $imageWebsite->move(public_path().'/images/', $nameImage);
                     $dataImage = $nameImage;
                     $gambarPort->portofolio_id = $portofolio->id;
@@ -167,6 +186,11 @@ class PortofolioController extends Controller
                         {                    
                             $gambarMobilePort = new GambarMobilePortofolio();
                             $nameImageMobile = $imageMobile->getClientOriginalName();
+
+                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(100,100);
+                            $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
+                            $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+
                             $imageMobile->move(public_path().'/images/', $nameImageMobile);
                             $dataImage = $nameImageMobile;
                             $gambarMobilePort->portofolio_id = $portofolio->id;

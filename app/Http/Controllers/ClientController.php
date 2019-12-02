@@ -23,7 +23,7 @@ class clientController extends Controller
     {
         $rules = array(
             'nama_client'   => 'required',
-            'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
+            'gambar_client' => 'required|mimes:jpeg,jpg,png|max:100000',
         );
 
         $error  = Validator::make($request->all(), $rules);
@@ -35,17 +35,14 @@ class clientController extends Controller
 
             $image = $request->file('gambar_client');
 
-            $new_name = rand(). '.' . $image->getClientOriginalExtension();
+            $new_name = $image->getClientOriginalName();
+
+            $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+            $thumbPath = public_path() . '/resizedImages/' . $new_name;
+            $thumbImage = Image::make($thumbImage)->save($thumbPath);
 
             $image->move(public_path('images'), $new_name);
 
-
-            $image = $request->file('image');
-            $nameImage = $request->file('image')->getClientOriginalName();
-            $thumbImage = Image::make($image->getRealPath())->resize(100, 100);
-            $thumbPath = public_path() . '/thumbnail_images/' . $nameImage;
-            $thumbImage = Image::make($thumbImage)->save($thumbPath);
-        
             $data = new Client;
             $data->nama_client                  = $request->nama_client;
             $data->gambar_client                = $new_name;
@@ -83,7 +80,7 @@ class clientController extends Controller
         {
             $rules = array(
                 'nama_client'   => 'required',
-                'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
+                'gambar_client' => 'required|mimes:jpeg,jpg,png|max:100000',
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())
@@ -91,7 +88,12 @@ class clientController extends Controller
                 return response()->json(['errors' => $error->errors()->all()]);
             }
 
-            $image_name = rand() . '.' . $image->getClientOriginalExtension();
+            $image_name = $image->getClientOriginalName();
+
+            $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+            $thumbPath = public_path() . '/resizedImages/' . $image_name;
+            $thumbImage = Image::make($thumbImage)->save($thumbPath);
+
             $image->move(public_path('images'), $image_name);
         }
         else

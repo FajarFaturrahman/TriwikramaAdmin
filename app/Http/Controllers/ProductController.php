@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Product;
 use App\GambarProduct;
+
+use Image;
+
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -46,7 +49,13 @@ class ProductController extends Controller
                 {
                     $form = new GambarProduct();
                     $name = $image->getClientOriginalName();
+
+                    $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+                    $thumbPath = public_path() . '/resizedImages/' . $name;
+                    $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+
                     $image->move(public_path().'/images/', $name);
+
                     $datagambar = $name;
                     $form->product_id = $data->id;
                     $form->gambar_product=$datagambar;
@@ -111,7 +120,13 @@ class ProductController extends Controller
                 {
                     $form = new GambarProduct();
                     $image_name = $image->getClientOriginalName();
+                    
+                    $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+                    $thumbPath = public_path() . '/resizedImages/' . $image_name;
+                    $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+
                     $image->move(public_path().'/images/', $image_name);
+
                     $datagambar = $image_name;
                     $form->product_id = $data->id;
                     $form->gambar_product=$datagambar;
