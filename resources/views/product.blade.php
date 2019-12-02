@@ -5,7 +5,7 @@
 @section('content')
 
     <div class="container mt-5">
-        <div class="row">            
+        <div class="row">
             <div class="box col-md-6">
                     <form action="{{ url('product') }}" method="GET">
                     <div class="forSearch">
@@ -15,12 +15,12 @@
                 </form>    
             </div>
             
-        
+
             <div class="col-md-6">
-                <button type="button" class="btn float-right text-white" name="btnAddTop" id="btnAddTop"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="20px" height="20px" alt="" class="mr-1">Add Product</button>
+                <button type="button" class="btn float-right text-white btn-add" name="btnAddTop" id="btnAddTop" style="width: 150px; height: 40px; border-radius: 100px; margin-top: 10px; font-size: 14px;"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="16px" height="16px" alt="" class="mr-2">ADD PRODUCT</button>
             </div>
         </div>
-
+        
         <div class="row mt-3" id="tampil">
             @foreach($product as $row)
                 <div class="col-md-12 mt-4" id="show_product_{{ $row->id }}">
@@ -86,7 +86,7 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">ADD PRODUCT</h4>
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close">
+                        <button type="button" class="close" data-dismiss="modal" arial-label="Close" id="icon-close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
@@ -117,25 +117,62 @@
                                         <div class="card-body">
                                             
                                             <div class="input-group control-group increment">
-                                                <input type="file" name="gambar_product[]" class="form-control">
+                                                <div class="row button-con">
+                                                    <div class="col-10">
+                                                        <input type="file" style="max-width: 250px;" id="gambar_product" name="gambar_product[]">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <a style="width: 20px; height: 20px; padding: 6px; display: none;" id="delete_file">
+                                                            <img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-2" width="10px"/>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <!-- <div class="row">
+                                                    <div class="col-3">
+                                                        <label class="btn-file-lab p-2 mt-2" id="con">
+                                                            <img id="img-client" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/photo2.png" width="25px" alt="">
+                                                            <input type="file" style="display: none;" id="gambar_product" name="gambar_product[]">
+                                                        </label>
+                                                    </div>
+                                                    <div class="col-9 pt-2" style="text-align: left;">
+                                                        <span id="file-selected">click the button to add a file</span>
+                                                    </div>
+                                                </div> -->
+                                                <!-- <input type="file" name="gambar_product[]" class="form-control">
                                                 <div class="input-group-btn">
                                                     <button class="btn btn-success" type="button"><i class="glyphicon glyphicon-plus"></i>Add</button>
-                                                </div>
+                                                </div> -->
                                             </div>
 
                                             <div class="clone d-none">
-                                                <div class="control-group input-group" style="margin-top:10px">            
+                                                <div class="row button-con">
+                                                    <div class="col-10">
+                                                        <input type="file" style="max-width: 250px;" id="gambar_product" name="gambar_product[]">
+                                                    </div>
+                                                    <div class="col-2">
+                                                        <a style="width: 20px; height: 20px; padding: 6px;" id="delete_files">
+                                                            <img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-2" width="10px"/>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                                <br>
+                                                <!-- <div class="control-group input-group" style="margin-top:10px">            
                                                     <input type="file" name="gambar_product[]" class="form-control">
                                                     <div class="input-group-btn">
                                                         <button class="btn btn-danger" type="button"><i class="glyphicon glyphicon-remove"></i> Remove</button>
                                                     </div>
-                                                </div>
+                                                </div> -->
+                                            </div>
+
+                                            <div class="row justify-content-center mt-4">
+                                                <button id="button-add-more-image" class="btn" style="background: #550E99; color: #fff;" type="button"><img class="mr-2" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/add2.png" width="14px" />Add More Image</button>
                                             </div>
                                         </div>                                        
                                     </div>
                                     <hr class="">   
                                     <div class="row float-right mr-3 mt-5">
-                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal">CANCEL</button>
+                                        <button class="btn btn-link text-dark mr-3" data-dismiss="modal" id="btn-cancel">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
                                         <input type="submit" name="action_button" id="action_button" class="btn pl-4 pr-4" style="border-radius:100px;background:#550E99;color:white" value="ADD">
@@ -162,6 +199,17 @@
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+
+            $("#btn-cancel").click(function(){
+                $("#form_add")[0].reset();
+                location.reload();
+            });
+
+            $("#icon-close").click(function(){
+                $("#form_add")[0].reset();
+                location.reload();
+            });
+
 
             $('.read-more-content').addClass('hide_content');
             $('.read-more-show, .read-more-hide').removeClass('hide_content');
@@ -203,16 +251,20 @@
 
             //EDIT
 
-            $(".btn-success").click(function(){
+            $("#button-add-more-image").click(function(){
                 var html = $(".clone").html();
                 $(".increment").after(html);
             });
 
             // EDIT
 
-            $("body").on('click', ".btn-danger", function(){
-                $(this).parents(".control-group").remove();
-            })
+            $("body").on('click', "#delete_file", function(){
+                $(this).parents(".button-con").remove();
+            });
+
+            $("body").on('click', "#delete_files", function(){
+                $(this).parents(".button-con").remove();
+            });
 
             $('#btnAddTop').click(function(){
                 $('.modal-title').text("ADD PRODUCT");

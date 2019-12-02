@@ -145,6 +145,7 @@
                 $("#sample_form")[0].reset();
                 $("#store_image").html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
                 $("#file-selected").html('click the button to add a file');
+                $("#store-portofolio").html('');
             });
 
             $("#iconCancel").click(function(){

@@ -78,14 +78,15 @@ class ProductController extends Controller
             foreach($ambilFoto as $foto){
                 $output .= '<div id="img_thumbnail_'. $foto->id .'" class="mt-2">
                                 <div class="row">
-                                    <div style="padding: 4px; background: #EFF2F4; border-radius: 4px;">
+                                    <div class="mr-2" style="padding: 4px; background: #EFF2F4; border-radius: 4px;">
                                         <img src="/images/'. $foto->gambar_product .'" width="40"/>
                                     </div>
-                                    <span class="mt-3 ml-2">Image Name</span>
+                                    <span class="mt-3 ml-2">'. $foto->gambar_product .'</span>
                                     <a href="#" style="width: 20px; height: 20px; padding: 6px;" id="delete_image" data-id="'. $foto->id .'">
                                         <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
                                     </a>
                                 </div>
+                                <hr>
                             </div>';
             }
             $data = Product::all()->find($id);
