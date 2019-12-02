@@ -7,6 +7,21 @@
 
     <div class="container mt-5">
         <div class="row">
+            <div class="box col-md-6">
+                    <form action="{{ url('/portofolio') }}" method="GET">
+                    <div class="forSearch">
+                        <span class="icon"><i class="fa fa-search fa-1x"></i></span>
+                        <input type="text" name="cari" id="search" placeholder="search">                    
+                    </div>                    
+                </form>    
+            </div>
+            
+
+            <div class="col-md-6">
+                <a href="{{ url('/portofolio/create') }}" class="btn float-right text-white btn-add" name="btnAddTop" id="btnAddTop" style="width: 200px; height: 40px; border-radius: 100px; margin-top: 10px; font-size: 14px;"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="16px" height="16px" alt="" class="mr-2">ADD PORTOFOLIO</a>
+            </div>
+        </div>
+        <!-- <div class="row">
             
             <div class="box col-md-6">
                 <form action="{{ url('/portofolio') }}" method="GET">
@@ -21,7 +36,7 @@
             <div class="col-md-6">
                 <a class="btn float-right text-white" href="{{ url('/portofolio/create') }}" id="btnAddTop"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="20px" height="20px" alt="" class="mr-1">Add Portofolio</a>
             </div>
-        </div>
+        </div> -->
         
         <div class="row mt-3">
             @foreach($portofolio as $portofolios)
