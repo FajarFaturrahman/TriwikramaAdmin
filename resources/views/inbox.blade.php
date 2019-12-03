@@ -41,8 +41,37 @@
             </div>
         </div>
         
-        <div class="col-md-12 mt-2 message-container">
-            @include('message')
+        <div class="col-md-12 mt-2">
+            <div class="reload-data"></div>
+            <div class="store-row">
+                @foreach($message as $row)
+                    <div class="row justify-content-center mt-2" id="message_id_{{ $row->id }}">
+                        <div class="rounded-left" id="left-box">
+                        </div>
+                        <div class="card col-md-11 rounded-right" id="inboxCard">
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        <p class="my-auto"><strong>{{ $row->pengirim }}</strong></p>
+                                        <p class="my-auto">{{ $row->email }}</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="row float-right">
+                                            <a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="{{ $row->id }}">
+                                            @if($row->status == "readed") 
+                                            <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
+                                            @else
+                                            <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/not-readed.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
+                                            @endif
+                                            <a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
         </div>
 
         <div class="row justify-content-center mt-3">
@@ -137,7 +166,9 @@
                     $('#nama').text(data.pengirim);
                     $('#surel').text(data.email);
                     $('#pesan').text(data.pesan);
-                    $('#modalMd').modal('show');    
+                    $('#modalMd').modal('show'); 
+                    
+                       
                 },
                 error:function(data){
                     $('.modal-body').html('<i class="glyphicon glyphicon-info-sign"></i> Something went wrong, Please try again...');
@@ -180,11 +211,12 @@
                 url: "{{ url('inbox/filter') }}" + '/' + filter,
                 dataType: "json",
                 beforeSend: function(){
-                    $(".message-container").html('<center><div class="text-white">Reload data ... </div></center>');
+                    $(".reload-data").html('<center><div class="text-white">Reload data ... </div></center>');
                 },
                 success: function(data){
                     console.log(data);
-                    $(".message-container").html(data);
+                    $(".store-row").html(data);
+                    $(".reload-data").html("");
                 },
                 error: function(xhr){
                     console.log(xhr.responseText);

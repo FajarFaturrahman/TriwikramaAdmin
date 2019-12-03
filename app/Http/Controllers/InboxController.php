@@ -29,13 +29,39 @@ class InboxController extends Controller
     public function filter(Request $request, $status = ""){
             $output = "";
             if($status == "semua"){
-                $data = \DB::table('inbox')->orderBy('id','desc')->paginate(8);
+                $data = \DB::table('inbox')->orderBy('id','desc')->get();
             } else{                
-                $data = Inbox::where('status', $status)->paginate(8);
+                $data = Inbox::where('status', $status)->get();
             }
             foreach($data as $dataFilter){
 
-                $output .= '<div class="row justify-content-center mt-2" id="message_id_'. $dataFilter->id .'"><div class="rounded-left" id="left-box"></div><div class="card col-md-11 rounded-right" id="inboxCard"><div class="card-body"><div class="row"><div class="col-md-10"><p class="my-auto"><strong>'. $dataFilter->pengirim .'</strong></p><p class="my-auto">'. $dataFilter->email .'</p></div><div class="col-md-2"><div class="row float-right"><a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="'. $dataFilter->id .'"><img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/read.png" alt="" width="20px" heigth="20px"></a><a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="'. $dataFilter->id .'"><img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/white/rubbish-bin2.png" alt="" width="20px" heigth="20px"></a></div></div></div></div></div></div>';
+                $output .= '<div class="row justify-content-center mt-2" id="message_id_'. $dataFilter->id .'">
+                                <div class="rounded-left" id="left-box">
+                                </div>
+                                <div class="card col-md-11 rounded-right" id="inboxCard">
+                                    <div class="card-body">
+                                        <div class="row">
+                                            <div class="col-md-10">
+                                                <p class="my-auto"><strong>'. $dataFilter->pengirim .'</strong></p>
+                                                <p class="my-auto">'. $dataFilter->email .'</p>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <div class="row float-right">
+                                                    <a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="'. $dataFilter->id .'">';
+                                                    if($dataFilter->status == "readed"){
+                                                        $output .= '<img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/read.png" alt="" width="20px" heigth="20px" style="opacity: 60%;">';
+                                                    } else{
+                                                        $output .= '<img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/not-readed.png" alt="" width="20px" heigth="20px" style="opacity: 60%;">';
+                                                    }
+
+                                                    $output .= '</a>
+                                                    <a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="'. $dataFilter->id .'"><img class="img-fluid mx-auto my-auto" src="/img/IconTriwikramaAppAdmin/white/rubbish-bin2.png" alt="" width="20px" heigth="20px"></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>';
             
             }
 
@@ -96,7 +122,11 @@ class InboxController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $data = Inbox::find($id);
+        $data->status = "readed";
+        $data->update();
+
+        return response(['success' => "Message Readed"]);
     }
 
     /**
