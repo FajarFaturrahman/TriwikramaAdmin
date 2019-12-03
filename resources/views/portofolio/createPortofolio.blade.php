@@ -128,7 +128,7 @@
                         <h4>UPLOAD WEB IMAGE</h4>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body overflow-auto">
 
                         <div class="input-group control-group increment1">
                             <input type="file" name="gambar_website[]" class="form-control">
@@ -157,7 +157,7 @@
                         <h4>UPLOAD MOBILE IMAGE</h4>
                     </div>
 
-                    <div class="card-body">
+                    <div class="card-body overflow-auto">
                         <div class="input-group control-group increment2">
                             <input type="file" name="gambar_mobile[]" class="form-control">
                             <div class="input-group-btn">

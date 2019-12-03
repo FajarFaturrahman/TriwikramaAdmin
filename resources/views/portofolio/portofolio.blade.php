@@ -56,7 +56,7 @@
                                     @foreach($portofolios->gambarMobile as $mobile)                                    
                                         <div class="col-md-12">
                                             <div class="row justify-content-center">
-                                                <img src="{{ URL::to('/') }}/resizedImages/{{ $mobile->gambar_mobile }}" width="280px" alt=""> 
+                                                <img src="{{ URL::to('/') }}/resizedImages/{{ $mobile->gambar_mobile }}" width="100px" alt=""> 
                                             </div>
                                         </div>                                
                                     @endforeach 
@@ -99,7 +99,7 @@
             @endforeach                
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-2">
         {{ $portofolio->links() }}
         </div>
         

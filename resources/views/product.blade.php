@@ -116,7 +116,7 @@
                                     <div class="card border-0">
                                         <div class="card-body">
                                             
-                                            <div class="input-group control-group increment">
+                                            <div class="input-group control-group increment mb-3">
                                                 <div class="row button-con">
                                                     <div class="col-10">
                                                         <input type="file" style="max-width: 250px;" id="gambar_product" name="gambar_product[]">
@@ -127,7 +127,7 @@
                                                         </a>
                                                     </div>
                                                 </div>
-                                                <br>
+                                                
                                                 <!-- <div class="row">
                                                     <div class="col-3">
                                                         <label class="btn-file-lab p-2 mt-2" id="con">
@@ -146,7 +146,7 @@
                                             </div>
 
                                             <div class="clone d-none">
-                                                <div class="row button-con">
+                                                <div class="row button-con mb-3">
                                                     <div class="col-10">
                                                         <input type="file" style="max-width: 250px;" id="gambar_product" name="gambar_product[]">
                                                     </div>
@@ -155,8 +155,7 @@
                                                             <img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-2" width="10px"/>
                                                         </a>
                                                     </div>
-                                                </div>
-                                                <br>
+                                                </div>                                                
                                                 <!-- <div class="control-group input-group" style="margin-top:10px">            
                                                     <input type="file" name="gambar_product[]" class="form-control">
                                                     <div class="input-group-btn">

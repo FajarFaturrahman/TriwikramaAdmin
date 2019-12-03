@@ -44,13 +44,13 @@
                                 <div class="autoplay ml-2 mr-2">                
                                     @foreach($portofolio->gambarWeb as $gambar)                                    
                                         <div class="col-md-10">                                           
-                                            <img src="{{ URL::to('/') }}/images/{{ $gambar->gambar_website }}" class="card-img-top" width="240px" alt=""> 
+                                            <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_website }}" class="card-img-top" width="240px" alt=""> 
                                         </div>                                
                                     @endforeach
 
                                     @foreach($portofolio->gambarMobile as $mobile)                                    
                                         <div class="col-md-10">                                           
-                                            <img src="{{ URL::to('/') }}/images/{{ $mobile->gambar_mobile }}" class="card-img-top" width="240px" alt=""> 
+                                            <img src="{{ URL::to('/') }}/resizedImages/{{ $mobile->gambar_mobile }}" width="100px" alt=""> 
                                         </div>                                
                                     @endforeach                                                   
                                 </div>

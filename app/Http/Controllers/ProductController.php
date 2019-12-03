@@ -15,6 +15,7 @@ class ProductController extends Controller
     {
         if($request->has('cari')){
             $data = Product::where('nama_product','LIKE','%'.$request->cari.'%')->paginate(5);
+            $data->appends(['cari' => $request->cari]);
         }else{
             $data = Product::paginate(5);
         }
@@ -27,7 +28,7 @@ class ProductController extends Controller
             'nama_product'      => 'required',
             'deskripsi'         => 'required',
             'gambar_product'    => 'required',
-            'gambar_product.*'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_product.*'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:20480',
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -48,9 +49,9 @@ class ProductController extends Controller
                 foreach($request->file('gambar_product') as $image)
                 {
                     $form = new GambarProduct();
-                    $name = $image->getClientOriginalName();
+                    $name = rand() . '.' . $image->getClientOriginalExtension();
 
-                    $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+                    $thumbImage = Image::make($image->getRealPath())->resize(225,150);
                     $thumbPath = public_path() . '/resizedImages/' . $name;
                     $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 
@@ -120,9 +121,9 @@ class ProductController extends Controller
                 foreach($request->file('gambar_product') as $image)
                 {
                     $form = new GambarProduct();
-                    $image_name = $image->getClientOriginalName();
+                    $image_name = rand() . '.' . $image->getClientOriginalExtension();
                     
-                    $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+                    $thumbImage = Image::make($image->getRealPath())->resize(225,150);
                     $thumbPath = public_path() . '/resizedImages/' . $image_name;
                     $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 

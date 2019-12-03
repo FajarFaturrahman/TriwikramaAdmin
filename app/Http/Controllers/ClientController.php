@@ -13,6 +13,7 @@ class clientController extends Controller
     {
         if($request->has('cari')){
             $data = Client::where('nama_client','LIKE','%'.$request->cari.'%')->paginate(12);
+            $data->appends(['cari' => $request->cari]);
         }else{
             $data = Client::paginate(12);
         }
@@ -35,9 +36,9 @@ class clientController extends Controller
 
             $image = $request->file('gambar_client');
 
-            $new_name = $image->getClientOriginalName();
+            $new_name = rand() . '.' . $image->getClientOriginalExtension();
 
-            $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+            $thumbImage = Image::make($image->getRealPath())->resize(225,150);
             $thumbPath = public_path() . '/resizedImages/' . $new_name;
             $thumbImage = Image::make($thumbImage)->save($thumbPath);
 
@@ -88,9 +89,9 @@ class clientController extends Controller
                 return response()->json(['errors' => $error->errors()->all()]);
             }
 
-            $image_name = $image->getClientOriginalName();
+            $image_name = rand() . '.' . $image->getClientOriginalExtension();
 
-            $thumbImage = Image::make($image->getRealPath())->resize(100,100);
+            $thumbImage = Image::make($image->getRealPath())->resize(225,150);
             $thumbPath = public_path() . '/resizedImages/' . $image_name;
             $thumbImage = Image::make($thumbImage)->save($thumbPath);
 
