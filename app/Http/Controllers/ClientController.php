@@ -115,7 +115,7 @@ class clientController extends Controller
                 $data->nama_client     = $request->nama_client;
                 $data->gambar_client   = $image_name;
             
-                $data->save ();
+                $data->save();
                 return response()->json($data);        
     }
 
