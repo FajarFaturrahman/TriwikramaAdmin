@@ -147,9 +147,9 @@
                 processData: false,
                 dataType: "json",
                 success:function(data)
-                {
-                    $('#show_message').html('<img class="img-fluid mx-auto my-auto" src="{{ asset("img/IconTriwikramaAppAdmin/read.png") }}" alt="" width="20px" heigth="20px" style="opacity: 60%;">');
+                {                
                     $('#modalMd').modal('hide');                    
+                    $('#show-message').html('<img class="img-fluid mx-auto my-auto" src="{{ asset("img/IconTriwikramaAppAdmin/read.png") }}" alt="" width="20px" heigth="20px" style="opacity: 60%;">');
                 },
                 error:function(xhr){
                     console.log(xhr.responseText);
