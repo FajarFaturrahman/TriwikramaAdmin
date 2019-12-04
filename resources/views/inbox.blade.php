@@ -55,13 +55,13 @@
                                         <p class="my-auto"><strong>{{ $row->pengirim }}</strong></p>
                                         <p class="my-auto">{{ $row->email }}</p>
                                     </div>
-                                    <div class="col-md-2">
+                                    <div class="col-md-2">   
                                         <div class="row float-right">
                                             <a class="btn btn-light mr-3 mt-1 rounded-circle" id="show-message" data-id="{{ $row->id }}">
                                             @if($row->status == "readed") 
                                             <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
                                             @else
-                                        <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/not-readed.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
+                                            <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/not-readed.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
                                             @endif
                                             <a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></a>
                                         </div>
@@ -134,6 +134,13 @@
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
         });
+        
+        var pageUrl;
+        $(document).ready(function(){
+            $("button").click(function(){
+                pageURL = $(location).attr("href");
+            });
+        });
 
         $('#sample_form').on('submit', function(event){
             event.preventDefault();
@@ -147,9 +154,9 @@
                 processData: false,
                 dataType: "json",
                 success:function(data)
-                {                
-                    $('#modalMd').modal('hide');                    
-                    $('#show-message').html('<img class="img-fluid mx-auto my-auto" src="{{ asset("img/IconTriwikramaAppAdmin/read.png") }}" alt="" width="20px" heigth="20px" style="opacity: 60%;">');
+                {
+                    $('#modalMd').modal('hide');
+                    location.reload(pageUrl);                    
                 },
                 error:function(xhr){
                     console.log(xhr.responseText);

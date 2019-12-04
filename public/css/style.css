@@ -4,11 +4,11 @@ body::before{
     z-index: -1;
     background-position: center top;
     display: block;
-    background: url(/img/ImageTriwikramajpg/bg.jpg);
+    background: url(/img/ImageTriwikramajpg/compressed/background.jpg);
     background-size: cover;
     width: 100%;
     height: 100%;
-    -webkit-filter: brightness(20%);
+    -webkit-filter: brightness(30%);
 }
 
 .footer{
