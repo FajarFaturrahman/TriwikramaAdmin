@@ -40,6 +40,7 @@ Route::get('/portofolio/{id}/portofolio', 'ClientController@showPortofolio');
 
 // inbox
 Route::resource('/inbox', 'InboxController');
+Route::post('inbox/update', 'InboxController@update')->name('inbox.update');
 Route::post('/inbox/filter/{status}', 'InboxController@filter')->name('inbox.filter');
 // home
 Route::get('/home', 'homeController@index')->name('home');

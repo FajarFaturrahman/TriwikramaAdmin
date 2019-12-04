@@ -61,7 +61,7 @@
                                             @if($row->status == "readed") 
                                             <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/read.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
                                             @else
-                                            <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/not-readed.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
+                                        <img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/not-readed.png') }}" alt="" width="20px" heigth="20px" style="opacity: 60%;"></a>
                                             @endif
                                             <a class="btn btn-danger mt-1 rounded-circle" id="delete-message" data-id="{{ $row->id }}"><img class="img-fluid mx-auto my-auto" src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" alt="" width="20px" heigth="20px"></a>
                                         </div>
@@ -89,26 +89,30 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div id="modalMdContent">
-                            <div class="col-md-12">
-                                <div class="row">
-                                    <div class="col-md-1"><strong>NAMA</strong></div>
-                                    <div class="col-md-11"><p id="nama"></p></div>
+                        <form  method="post" id="sample_form">
+                            <div id="modalMdContent">
+                                <div class="col-md-12">
+                                    <div class="row">
+                                        <div class="col-md-1"><strong>NAMA</strong></div>
+                                        <div class="col-md-11"><p id="nama"></p></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-1"><strong>EMAIL</strong></div>
+                                        <div class="col-md-11"><p id="surel"></p></div>
+                                    </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-md-1"><strong>EMAIL</strong></div>
-                                    <div class="col-md-11"><p id="surel"></p></div>
+                                <div class="col-md-12"><strong>PESAN </strong></div><br>
+                                <div class="col-md-12"><p id="pesan"></p></div>
+                                <div class="col-md-12 float-right">
+                                    <div class="row float-right mr-1 mt-4">                                                                                
+                                        <input type="hidden" name="action" id="action">
+                                        <input type="hidden" name="hidden_id" id="hidden_id">
+                                        <input class="btn btn-link text-dark mr-2" name="action_button" id="action_button" type="submit" value="Close">
+                                        <button class="btn pl-4 pr-4" type="submit" style="border-radius:100px;background:#550E99;color:white">Reply</button>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="col-md-12"><strong>PESAN </strong></div><br>
-                            <div class="col-md-12"><p id="pesan"></p></div>
-                            <div class="col-md-12 float-right">
-                                <div class="row float-right mr-1 mt-4">
-                                    <button class="btn btn-link text-dark mr-2" data-dismiss="modal" aria-label="Close">CANCEL</button>
-                                    <input class="btn pl-4 pr-4" type="submit" style="border-radius:100px;background:#550E99;color:white" value="Reply">
-                                </div>
-                            </div>
-                        </div>                    
+                        </form>                    
                     </div>
                 </div>
             </div>
@@ -131,25 +135,27 @@
             }
         });
 
-        // fetch_inbox();
+        $('#sample_form').on('submit', function(event){
+            event.preventDefault();
 
-        // function fetch_inbox(query = '')
-        // {
-        //     $.ajax({
-        //         url: "{{ url('inbox') }}",
-        //         method: 'GET',
-        //         data:{query:query},
-        //         dataType: 'json',
-        //         success:function(data){
-        //             $('#content').html(data.data_inbox);
-        //         }
-        //     });
-        // }
-
-        // $(document).on('keyup', '#search', function(){
-        //     var query = $(this).val();
-        //     fetch_inbox(query);
-        // });
+            $.ajax({
+                url: "{{ route('inbox.update') }}",
+                method: "POST",
+                data: new FormData(this),
+                contentType: false,
+                cache: false,
+                processData: false,
+                dataType: "json",
+                success:function(data)
+                {
+                    $('#show_message').html('<img class="img-fluid mx-auto my-auto" src="{{ asset("img/IconTriwikramaAppAdmin/read.png") }}" alt="" width="20px" heigth="20px" style="opacity: 60%;">');
+                    $('#modalMd').modal('hide');                    
+                },
+                error:function(xhr){
+                    console.log(xhr.responseText);
+                }
+            })
+        });
 
         $('body').on('click', '#show-message', function(event){
             event.preventDefault();
@@ -166,6 +172,9 @@
                     $('#nama').text(data.pengirim);
                     $('#surel').text(data.email);
                     $('#pesan').text(data.pesan);
+                    $('#hidden_id').val(data.id);
+                    $('#action_button').val('close');
+                    $('#action').val('close');
                     $('#modalMd').modal('show'); 
                     
                        

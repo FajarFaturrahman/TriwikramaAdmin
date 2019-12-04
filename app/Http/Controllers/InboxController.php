@@ -95,12 +95,7 @@ class InboxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        $data = \DB::table('inbox')->find($id);
-
-        return response()->json($data);
-    }
+   
 
     /**
      * Show the form for editing the specified resource.
@@ -120,11 +115,21 @@ class InboxController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function show($id)
     {
-        $data = Inbox::find($id);
-        $data->status = "readed";
-        $data->update();
+        $data = \DB::table('inbox')->find($id);
+
+        return response()->json($data);
+    }
+    
+    public function update(Request $request)
+    {
+        $data = Inbox::find($request->hidden_id);
+
+        $status = "readed";
+        $data->status = $status;
+        $data->save();
 
         return response(['success' => "Message Readed"]);
     }
