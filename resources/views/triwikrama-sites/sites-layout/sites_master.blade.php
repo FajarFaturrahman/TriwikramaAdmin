@@ -160,7 +160,7 @@ img {
 	<script src="{{ asset('theme-1/plugin/aos-master/dist/aos.js') }}"></script>
 
     <script src="{{ asset('theme-1/js/animation.js') }}"></script>
-    <script src="{{ asset(' theme-1/js/bottom.js') }}"></script>
+    <script src="{{ asset('theme-1/js/bottom.js') }}"></script>
 
   <script type="text/javascript">
   </script>

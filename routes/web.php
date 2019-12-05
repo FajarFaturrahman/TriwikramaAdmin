@@ -70,5 +70,6 @@ Route::get('/sites-about', 'SitesAboutUsController@index')->name('sitesAbout');
 Route::get('/sites-client', 'SitesClientController@index')->name('sitesClient');
 Route::get('/sites-portofolio', 'SitesPortofolioController@index')->name('sitesPortofolio');
 Route::get('/sites-product', 'SitesProductController@index')->name('sitesProduct');
+Route::get('/sites-product/{id}', 'SitesProductController@show')->name('sitesProduct.show');
 Route::get('/sites-contact', 'SitesContactUsController@index')->name('sitesContact');
 Route::post('/sites-contact', 'SitesContactUsController@store')->name('sitesContact.store');
