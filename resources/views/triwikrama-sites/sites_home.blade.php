@@ -1,7 +1,7 @@
+@extends('triwikrama-sites.sites-layout.sites_master')
 
 
-
-
+@section('content')
 <div id="service" >
   <div class="owl-carousel">
       <div class="section" id="web-custom" data-hash="webcustom">
@@ -12,12 +12,12 @@
               <p class="txt1">The needs of websites in various business areas would be different needs and purposes, be it a regular information website or an integrated website. Therefore Triwikrama provides website creation services in accordance with the needs and objectives of the desired business field ranging from features to the desired design can be appropriate for the purpose of supporting the right target. In order for a website that has been built will not be in vain.</p>
             </div>
             <div class="col-sm-12 col-md-6 col-sec">
-              <img src="{{ asset('theme-1/img/service/alldevice.png')" class="mx-auto d-block img1 }}">
+              <img src="{{ asset('theme-1/img/service/alldevice.png') }}" class="mx-auto d-block img1">
               <ul class="list-inline webcos-logo">
                 <li class="list-inline-item"><img src="{{ asset('theme-1/img/service/e-commerce.png') }}"></li>
                 <li class="list-inline-item"><img src="{{ asset('theme-1/img/service/company.png') }}"></li>
                 <li class="list-inline-item"><img src="{{ asset('theme-1/img/service/bootstrap.png') }}"></li>
-                <li class="list-inline-item"><img src="{{ asset('theme-1/img/service/google+.png') }}"></li>
+                <li class="list-inline-item"><img src="{{ asset('theme-1/img/service/google-plus.png') }}"></li>
                 <li class="list-inline-item"><img src="{{ asset('theme-1/img/service/domain.png') }}"></li>
               </ul>
             </div>
@@ -60,3 +60,4 @@
 
   </ul>
 </div>
+@endsection

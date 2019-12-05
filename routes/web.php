@@ -65,4 +65,4 @@ Route::get('login', '\App\Http\Controllers\Auth\LoginController@index')->name('l
 
 //sites route
 
-Route::get('/sites-home', 'Sites')
+Route::get('/sites-home', 'SitesHomeController@index')->name('sitesHome');
