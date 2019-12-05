@@ -1,5 +1,6 @@
+@extends('triwikrama-sites.sites-layout.sites-master')
 
-
+@section('content')
 
 <section class="section" id="client">
   <div class="container">
@@ -98,3 +99,6 @@
     </center>
   </div>
 </section>
+
+
+@endsection

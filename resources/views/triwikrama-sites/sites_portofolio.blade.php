@@ -1,3 +1,7 @@
+@extends('triwikrama-sites.sites-layout.sites-master')
+
+@section('content')
+
 <section class="section" id="portfolio">
   <div class="container-fluid">
     <div class="row">
@@ -94,3 +98,5 @@
     </div>
   </div>
 </section>
+
+@endsection

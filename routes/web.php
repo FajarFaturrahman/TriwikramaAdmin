@@ -66,3 +66,8 @@ Route::get('login', '\App\Http\Controllers\Auth\LoginController@index')->name('l
 //sites route
 
 Route::get('/sites-home', 'SitesHomeController@index')->name('sitesHome');
+Route::get('/sites-about', 'SitesAboutUsController@index')->name('sitesAbout');
+Route::get('/sites-client', 'SitesClientController@index')->name('sitesClient');
+Route::get('/sites-portofolio', 'SitesPortofolioController@index')->name('sitesPortofolio');
+Route::get('/sites-product', 'SitesProductController@index')->name('sitesProduct');
+Route::get('/sites-contact', 'SitesContactUsController@index')->name('sitesContact');
