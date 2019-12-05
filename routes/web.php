@@ -11,9 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth/login');
-});
+// Route::get('/', function () {
+//     return view('auth/login');
+// });
+
+
+//Admin Route
 
 // portofolio
 Route::get('/portofolio', 'PortofolioController@index')->name('portofolio');
@@ -51,3 +54,15 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 // Logout
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+
+//login
+Route::get('login', '\App\Http\Controllers\Auth\LoginController@index')->name('login');
+
+//end of admin route
+
+
+
+
+//sites route
+
+Route::get('/sites-home', 'Sites')
