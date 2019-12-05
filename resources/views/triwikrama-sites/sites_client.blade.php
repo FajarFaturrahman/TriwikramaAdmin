@@ -6,34 +6,15 @@
   <div class="container">
     <h2 class="client-title text-center">Our Clients</h2>
     <ul class="list-inline myclient row">
+    
+      @foreach($client as $row)
       <li>
         <a href="#/">
-          <img src="{{ asset('theme-1/img/logo/beacukai.png') }}">
+          <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}">
         </a>
-        <h4>DJ bea dan cukai</h4>
-        <h5>KPPBC TMP A Bandung</h5>
-        <h5>KPPBC TMP C Amamapare</h5>
+        <h4>{{ $row->nama_client }}</h4>        
       </li>
-      <li>
-        <a href="#/">
-          <img src="{{ asset('theme-1/img/logo/telkom.png') }}">
-        </a>
-        <h4>Telkom Indonesia</h4>
-      </li>      
-
-      <li>
-        <a href="#/">
-          <img src="{{ asset('theme-1/img/logo/telkom.png') }}">
-        </a>
-        <h4>Telkom Indonesia</h4>
-      </li>      
-
-      <li>
-        <a href="#/">
-          <img src="{{ asset('theme-1/img/logo/telkom.png') }}">
-        </a>
-        <h4>Telkom Indonesia</h4>
-      </li>      
+      @endforeach
 
 
 

@@ -1,31 +1,49 @@
-@extends('sites-layout.sites-master')
+@extends('triwikrama-sites.sites-layout.sites_master')
 
 @section('content')
 
-<div id="main">
+<div id="main" class="product">
   <div class="slide-section">
     <div class="swiper-container">
       <div class="swiper-container gallery-thumbs">
-        <h1 class="text-xs-center">OUR PRODUCT</h1>
-        <p class="text-xs-center">
-          OUR PRODUCTS EVER MADE
+        <h1 class="text-center">Our Products</h1>
+        <p class="text-center">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua.
         </p>
         <div class="swiper-wrapper">
-            <a href="#wistart" class="swiper-slide page-scroll" data-title="Wi-Start" style="background-image:url({{ asset('img/product/wi-start-ss.png') }})"></a>
-            <a href="#" class="swiper-slide" data-title="Geepos" style="background-image:url(<?php echo$assets;?>img/product/geepos-ss.png)"></a>
-            <a href="#" class="swiper-slide" data-title="Kopi Komunikasi" style="background-image:url(<?php echo$assets;?>img/product/kopikom-ss.png)"></a>
-            <a href="#" class="swiper-slide" data-title="Klinik Umum" style="background-image:url(<?php echo$assets;?>img/product/klinik-umum-ss.png)"></a>
-            <a href="#" class="swiper-slide" data-title="Skin Care" style="background-image:url(<?php echo$assets;?>img/product/skincare-ss.png)"></a>
-            <a href="#" class="swiper-slide" data-title="Klinik Gigi" style="background-image:url(<?php echo$assets;?>img/product/klinik-gigi-ss.png)"></a>
-            <a href="#" class="swiper-slide" data-title="Laboratorium" style="background-image:url(<?php echo$assets;?>img/product/laboratorium-ss.png)"></a>
-            <a href="#" class="swiper-slide" data-title="Inventory" style="background-image:url(<?php echo$assets;?>img/product/inventory-ss.jpg)"></a>
-            <a href="#" class="swiper-slide" data-title="POS" style="background-image:url(<?php echo$assets;?>img/product/pos-ss.jpg)"></a>
-            <a href="#" class="swiper-slide" data-title="AirPOS" style="background-image:url(<?php echo$assets;?>img/product/airpos-ss.JPG)"></a>
+          @foreach($product as $row)
+            @foreach($row->gambarProduct as $gambar)                                                                                                             
+              <a href="#wistart" class="swiper-slide page-scroll" data-title="{{ $row->nama_product }}" style="background-image:url({{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_product }})"></a>
+            @endforeach              
+          @endforeach  
         </div>
         <div class="swiper-button-next swiper-button-white"></div>
         <div class="swiper-button-prev swiper-button-white"></div>
       </div>
-
+      <div class="swiper-container gallery-top">
+          <div class="swiper-wrapper">
+                <div class="swiper-slide product-content" id="wistart">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-sm col-img">
+                          <img src="http://triwikrama.co.id/theme-1/img/material1.png">
+                        </div>
+                        <div class="col-sm col-desc">
+                          <h2 class="display-3">Wi-Start</h2>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                          <a href="#" class="btn btn-danger">Pelajari lebih lanjut</a>
+                        </div>
+                      </div>
+                    </div>
+                </div>                
+          </div>
+      </div>
       <!-- Add Pagination -->
       <div class="swiper-pagination"></div>
     </div>
