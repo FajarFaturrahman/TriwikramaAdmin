@@ -26,3 +26,12 @@
 </section>
 
 @endsection
+
+@section('js')
+<script type="text/javascript">
+        $(document).ready(function() {
+        aniAbout();
+      });
+  
+  </script>
+@endsection

