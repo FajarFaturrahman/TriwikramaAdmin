@@ -7,7 +7,9 @@
     <div class="row">
       <div class="col-md-3 left-con">
         <div class="col-left">
-          <h2 class="ttl1">ABOUT US <br><small>ALL ABOUT OUR COMPANY</small></h2>
+          <div class="fl-left">
+            <h2 class="ttl1">ABOUT US <br><small>ALL ABOUT OUR COMPANY</small></h2>
+          </div>
         </div>
       </div>
       <div class="col-md-9 right-con">
@@ -22,6 +24,5 @@
     </div>
   </div>
 </section>
-
 
 @endsection

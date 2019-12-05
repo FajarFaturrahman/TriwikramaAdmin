@@ -64,9 +64,10 @@
 
 
 
-	<script src="{{ asset('theme-1/js/less.js') }}"></script>    
+	  <script src="{{ asset('theme-1/js/less.js') }}"></script>    
     <script src="{{ asset('theme-1/js/jquery.js') }}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
     <script src="{{ asset('theme-1/js/bootstrap.min.js') }}"></script>
 
@@ -92,7 +93,7 @@ img {
 
 </style>
 
-<body>
+<body data-spy="scroll" data-target="#menunav" data-offset="0">
 
     <nav class="navbar navbar-light  affix" id="menunav" role="navigation">
 		<div class="container-fluid side-bar">

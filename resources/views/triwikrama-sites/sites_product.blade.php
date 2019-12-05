@@ -1,4 +1,4 @@
-@extends('triwikrama-sites.sites-layout.sites-master')
+@extends('sites-layout.sites-master')
 
 @section('content')
 
@@ -11,7 +11,7 @@
           OUR PRODUCTS EVER MADE
         </p>
         <div class="swiper-wrapper">
-            <a href="#wistart" class="swiper-slide page-scroll" data-title="Wi-Start" style="background-image:url(<?php echo$assets;?>img/product/wi-start-ss.png)"></a>
+            <a href="#wistart" class="swiper-slide page-scroll" data-title="Wi-Start" style="background-image:url({{ asset('img/product/wi-start-ss.png') }})"></a>
             <a href="#" class="swiper-slide" data-title="Geepos" style="background-image:url(<?php echo$assets;?>img/product/geepos-ss.png)"></a>
             <a href="#" class="swiper-slide" data-title="Kopi Komunikasi" style="background-image:url(<?php echo$assets;?>img/product/kopikom-ss.png)"></a>
             <a href="#" class="swiper-slide" data-title="Klinik Umum" style="background-image:url(<?php echo$assets;?>img/product/klinik-umum-ss.png)"></a>

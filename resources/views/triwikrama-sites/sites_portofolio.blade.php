@@ -1,4 +1,4 @@
-@extends('triwikrama-sites.sites-layout.sites-master')
+@extends('triwikrama-sites.sites-layout.sites_master')
 
 @section('content')
 
