@@ -22,8 +22,8 @@
     <title>Triwikrama - Professional IT Solutions</title>
     
     <!-- Bootstrap Core CSS -->
-     <link href="{{ asset('theme-1/css/bootstrap-grid.min.css') }}" rel="stylesheet">
-     <link href="{{ asset('theme-1/css/bootstrap-flex.min.css') }}" rel="stylesheet">
+     <!-- <link href="{{ asset('theme-1/css/bootstrap-grid.min.css') }}" rel="stylesheet">
+     <link href="{{ asset('theme-1/css/bootstrap-flex.min.css') }}" rel="stylesheet"> -->
      <link href="{{ asset('theme-1/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Plugin CSS -->        
