@@ -12,18 +12,19 @@
 
           <div class="col-md-6">
             <h4><strong>Input your question below for information about our company:</strong></h4>
-
-            <div class="input-group">
-              <input type="text" class="form-control" id="Name" placeholder="Name">
-            </div>
-            <div class="input-group">
-              <input type="email" class="form-control" id="Email" placeholder="Email">
-            </div>
-            <div class="input-group">
-              <textarea class="form-control" placeholder="Message"></textarea>
-            </div>
-            <button class="btn btn-inverse col-md-12 wow flipInX" data-wow-delay="3s" type="submit">Submit</button>
-
+            <form action="{{ url('sites-contact') }}" method="post">
+            @csrf
+              <div class="input-group">
+                <input type="text" class="form-control" name="name" id="name" placeholder="Name">
+              </div>
+              <div class="input-group">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+              </div>
+              <div class="input-group">
+                <textarea class="form-control" name="message" placeholder="message"></textarea>
+              </div>
+              <button class="btn btn-inverse col-md-12 wow flipInX" data-wow-delay="3s" type="submit">Submit</button>
+            </form>
           </div>
 
           <div class="col-md-6">
