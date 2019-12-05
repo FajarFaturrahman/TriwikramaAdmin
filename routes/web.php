@@ -80,7 +80,11 @@ Route::get('/sites-portofolio/{id}', 'SitesPortofolioController@show');
 
 //product
 Route::get('/sites-product', 'SitesProductController@index')->name('sitesProduct');
+<<<<<<< HEAD
 
 //contact
+=======
+Route::get('/sites-product/{id}', 'SitesProductController@show')->name('sitesProduct.show');
+>>>>>>> 66cbb46877302e6af25caecdcbd8048283ec8dd8
 Route::get('/sites-contact', 'SitesContactUsController@index')->name('sitesContact');
 Route::post('/sites-contact', 'SitesContactUsController@store')->name('sitesContact.store');
