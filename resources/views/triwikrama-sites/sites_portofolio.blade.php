@@ -74,19 +74,11 @@
 
                 </div>
 
-                <div class="responsive-slide" id="resImg">                                  
-                
+                <div class="responsive-slide" id="resImg">                                                 
                 </div>
               </div>
 
-              <div id="port2" class="owl-carousel owl-theme hidden port2">                
-                @foreach($portofolio as $row)
-                  @foreach($row->gambarWeb as $gambarPort)
-                    <div class="item">                                      
-                      <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarPort->gambar_website }}" alt="">                    
-                    </div>
-                  @endforeach
-                @endforeach                              
+              <div id="port2" class="owl-carousel owl-theme hidden port2">                                 
               </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 col-last">
@@ -143,11 +135,12 @@
         dataType: "json",
         success:function(data){
           console.log(data);
-          $('#namaApp').text(data.nama_aplikasi);
-          $('#websiteType').text(data.tipe_website);
-          $('#domain').text(data.domain_portofolio);
-          $('#projectCreated').text(data.tanggal_dibuat)
-          $('#deskripsi').text(data.description)
+          $('#namaApp').text(data.data.nama_aplikasi);
+          $('#port2').html(data.ambilFoto);
+          $('#websiteType').text(data.data.tipe_website);
+          $('#domain').text(data.data.domain_portofolio);
+          $('#projectCreated').text(data.data.tanggal_dibuat);
+          $('#deskripsi').text(data.data.description);
           $('#pModal').modal('show');
         },
         error:function(xhr){

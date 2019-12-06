@@ -14,9 +14,17 @@ class SitesPortofolioController extends Controller
     }
 
     public function show($id){        
-            
-            // $ambilFoto = GambarPortofolio::where('product_id',$id)->get();
+        if(request()->ajax())
+        {
+        
+            $output = "";
+            $ambilFoto = GambarPortofolio::where('portofolio_id',$id)->get();
+            foreach($ambilFoto as $foto)
+            {
+                $output .='<div class="item"><img src="/resizedImages/'. $foto->gambar_website .'" alt=""></div>';
+            }
             $data= Portofolio::all()->find($id);
-            return response()->json($data);
+            return response()->json(['data' => $data, 'ambilFoto' =>$output]);
+        }        
     }
 }
