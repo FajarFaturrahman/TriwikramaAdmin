@@ -25,6 +25,7 @@
       <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 right-con">
         <div class="col-right">
           <div class="row myPortofolio">
+            
             @foreach($portofolio as $row)        
 	          	<div class="col-md-3 col-sm-4 col-xs-12 p-con web-app list">
 	              <a href="#" id="show" class="p-col" data-id="{{ $row->id }}" role="button">
@@ -33,6 +34,7 @@
 	              <span>{{ $row->nama_aplikasi }}</span>
 	            </div>
             @endforeach
+            
           </div>
           <center class="c-div">
             <button class="btn btn-default btn-loadmore" data-totalResult="{{ App\Portofolio::count() }}">
