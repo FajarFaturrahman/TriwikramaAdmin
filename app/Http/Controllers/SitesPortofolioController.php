@@ -9,7 +9,7 @@ class SitesPortofolioController extends Controller
 {
     public function index(){
 
-        $data = Portofolio::all();
+        $data = Portofolio::take(8)->get();
         return view('triwikrama-sites.sites_portofolio', ['portofolio' => $data]);
     }
 
@@ -26,5 +26,18 @@ class SitesPortofolioController extends Controller
             $data= Portofolio::all()->find($id);
             return response()->json(['data' => $data, 'ambilFoto' =>$output]);
         }        
+    }
+
+    public function more_data(Request $request)
+    {
+        if(request()->ajax())
+        {
+            $skip = $request->skip;
+            $take = 4;
+            $portofolio = Portofolio::skip($skip)->take($take)->get();
+            return response()->json($portofolio);
+        }else{
+            return response()->json('Direct Access Not Allowed!!');
+        }
     }
 }

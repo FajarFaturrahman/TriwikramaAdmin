@@ -78,6 +78,7 @@ Route::get('load-more-data','SitesClientController@more_data');
 //portofolio
 Route::get('/sites-portofolio', 'SitesPortofolioController@index')->name('sitesPortofolio');
 Route::get('/sites-portofolio/{id}', 'SitesPortofolioController@show');
+Route::get('load-more-data-port','SitesPortofolioController@more_data');
 
 //product
 Route::get('/sites-product', 'SitesProductController@index')->name('sitesProduct');

@@ -24,18 +24,18 @@
       </div>
       <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 right-con">
         <div class="col-right">
-          <div class="row">
-              @foreach($portofolio as $row)        
-	          	<div class="col-md-3 col-sm-4 col-xs-12 p-con web-app">
+          <div class="row myPortofolio">
+            @foreach($portofolio as $row)        
+	          	<div class="col-md-3 col-sm-4 col-xs-12 p-con web-app list">
 	              <a href="#" id="show" class="p-col" data-id="{{ $row->id }}" role="button">
 	                <img src="http://triwikrama.co.id/images/project.png" alt="">
 	              </a>
 	              <span>{{ $row->nama_aplikasi }}</span>
 	            </div>
-              @endforeach
+            @endforeach
           </div>
           <center class="c-div">
-            <button class="btn btn-default btn-loadmore">
+            <button class="btn btn-default btn-loadmore" data-totalResult="{{ App\Portofolio::count() }}">
               More Project
             </button>
           </center>
@@ -118,36 +118,75 @@
 @section('js')
 <script type="text/javascript">
         $(document).ready(function() {
-        aniPortfolio();        
-      });  
-</script>
 
-<script>
-  $(document).ready(function(){
-    $('body').on('click', '#show', function(event){
-      event.preventDefault();
-      var mid = $(this).data('id');
+          $('body').on('click', '#show', function(event){
+            event.preventDefault();
+            var mid = $(this).data('id');
 
-      $.ajax({
-        type: "GET",
-        url: "{{ url('/sites-portofolio') }}" + '/' +mid,
-        data: {id:mid},
-        dataType: "json",
-        success:function(data){
-          console.log(data);
-          $('#namaApp').text(data.data.nama_aplikasi);
-          $('#port2').html(data.ambilFoto);
-          $('#websiteType').text(data.data.tipe_website);
-          $('#domain').text(data.data.domain_portofolio);
-          $('#projectCreated').text(data.data.tanggal_dibuat);
-          $('#deskripsi').text(data.data.description);
-          $('#pModal').modal('show');
-        },
-        error:function(xhr){
-            console.log(xhr.responseText);
-        }
-      });
-    });
-  });
+            $.ajax({
+              type: "GET",
+              url: "{{ url('/sites-portofolio') }}" + '/' +mid,
+              data: {id:mid},
+              dataType: "json",
+              success:function(data){
+                console.log(data);
+                $('#namaApp').text(data.data.nama_aplikasi);
+                $('#port2').html(data.ambilFoto);
+                $('#websiteType').text(data.data.tipe_website);
+                $('#domain').text(data.data.domain_portofolio);
+                $('#projectCreated').text(data.data.tanggal_dibuat);
+                $('#deskripsi').text(data.data.description);
+                $('#pModal').modal('show');
+              },
+              error:function(xhr){
+                  console.log(xhr.responseText);
+              }
+            });
+          });
+
+          $('body').on('click', '.btn-loadmore', function(e){
+          e.preventDefault();
+          var _totalCurrentResult = $('.list').length;
+          var main_site="{{ url('/') }}";
+          $.ajax({
+            url: main_site + "/load-more-data-port",
+            type: "GET",
+            data: {
+              skip:_totalCurrentResult
+            },
+            beforeSend:function(){
+              $('.btn-loadmore').html('loading...');
+            },
+            success:function(response){
+              var _html = "";
+              $.each(response, function(index, value){
+                _html += '<div class="col-md-3 col-sm-4 col-xs-12 p-con web-app list">';
+                  _html += '<a href="#" id="show" class="p-col" data-id="'+ value.id +'" role="button">';
+                    _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
+                  _html += '</a>';
+                  _html += '<span>'+ value.nama_aplikasi +'</span>';
+                _html += '</div>';
+              });
+
+              
+              $('.myPortofolio').append(_html);
+              var _totalCurrentResult = $('.list').length;
+              var _totalResult = parseInt($(".btn-loadmore").attr('data-totalResult'));
+              console.log(_totalCurrentResult);
+              console.log(_totalResult);
+              if(_totalCurrentResult == _totalResult){
+                $('.btn-loadmore').remove();
+              }else{
+                $('.btn-loadmore').html('Load More');
+              }
+            },
+            error:function(xhr){
+              console.log(xhr.responseText);
+            }
+          })
+        });
+
+        aniPortfolio();
+        });  
 </script>
-@endsection
+@endsection	            
