@@ -35,7 +35,7 @@
                 <div class="col-sm col-desc">
                   <h2 class="display-3">{{ $row2->nama_product }}</h2>
                   <p>{{ $row2->deskripsi }}</p>
-                  <a href="#" class="btn btn-danger">Pelajari lebih lanjut</a>
+                  <a href="#" class="btn btn-danger">Back to Top</a>
                 </div>
               </div>
             </div>

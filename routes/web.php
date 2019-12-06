@@ -73,6 +73,7 @@ Route::get('/sites-about', 'SitesAboutUsController@index')->name('sitesAbout');
 
 //client
 Route::get('/sites-client', 'SitesClientController@index')->name('sitesClient');
+Route::get('load-more-data','SitesClientController@more_data');
 
 //portofolio
 Route::get('/sites-portofolio', 'SitesPortofolioController@index')->name('sitesPortofolio');
