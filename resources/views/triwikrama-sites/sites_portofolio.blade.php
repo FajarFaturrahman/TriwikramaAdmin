@@ -165,7 +165,7 @@
                     _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
                   _html += '</a>';
                   _html += '<span>'+ value.nama_aplikasi +'</span>';
-                _html += '</div>';
+                _html += '</div>'
               });
 
               
