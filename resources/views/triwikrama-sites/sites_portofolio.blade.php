@@ -23,37 +23,36 @@
           </div>
         </div>
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 right-con">
-          <div class="col-right">
+          <div class="col-right">            
             <div class="row myPortofolio">
-              
-              @foreach($portofolio as $row)        
-                <div class="col-md-3 col-sm-4 col-xs-12 p-con web-app list">
-                  <a href="#pModal-{{ $row->id }}" id="show" class="p-col" data-toggle="modal" data-target="#pModal-{{ $row->id }}" role="button">
-                    <img src="http://triwikrama.co.id/images/project.png" alt="">
-                  </a>
-                  <span>{{ $row->nama_aplikasi }}</span>
-                </div>
-              @endforeach
-              
+                @foreach($portofolio as $row)                                  
+                    <div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5 mr-4" style="width:50px;flex: 0 0 22%;">
+                      <a href="#" id="show" data-id="{{ $row->id }}">
+                        <img src="http://triwikrama.co.id/images/project.png" alt="">
+                      </a>
+                      <span class="mt-4">{{ $row->nama_aplikasi }}</span>
+                    </div>                  
+                @endforeach                
             </div>
+            
             <center class="c-div">
-              <button class="btn btn-default btn-loadmore" data-totalResult="{{ App\Portofolio::count() }}">
-                More Project
-              </button>
-            </center>
+                  <button class="btn btn-default btn-loadmore" data-totalResult="{{ App\Portofolio::count() }}">
+                    More Project
+                  </button>
+                </center>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  @foreach($portofolio as $row2)
-  <div class="modal fade modal-portfolio" id="pModal-{{ $row2->id }}">
+  
+  <div class="modal fade modal-portfolio" id="pModal" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title"></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <button id="btn-close" type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
@@ -61,48 +60,39 @@
           <div class="container-fluid">
             <div class="row">
               <div class="col-md-6 col-sm-12 col-xs-12 col-first">
-                <div class="portfolio-slide">
-                  <div id="port1" class="owl-carousel owl-theme port1">
-                  @foreach($row2->gambarWeb as $gambar)
-                    <div class="item">
-                      <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_website }}" alt="">
-                    </div>
-                  @endforeach    
-
+                <div id="owl-con1" class="portfolio-slide">
+                  <div id="port1" class="owl-carousel owl-theme port1">                     
                   </div>
 
                   <div class="responsive-slide" id="resImg">                                                                   
                   </div>
                 </div>
-
-                <div id="port2" class="owl-carousel owl-theme hidden port2">
-                  @foreach($row2->gambarWeb as $gambar)
-                    <div class="item">
-                      <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_website }}" alt="">
-                    </div>
-                  @endforeach 
+                <div class="owl-con">
+                  <div id="port2" class="owl-carousel owl-theme hidden port2">
+                    
+                  </div>
 
                 </div>
               </div>
               <div class="col-md-6 col-sm-12 col-xs-12 col-last">
                 <h5 class="top">WEBSITE</h5>
-                <h4 class="top" id="namaApp">{{ $row2->nama_aplikasi }}</h4>
+                <h4 class="top" id="namaApp"></h4>
                 <br>
                 <div class="attribut clearfix">
                 </div>
                 <h6>Company Information</h6>
                 <div class="row">
                   <div class="col-4">Website Type</div>
-                  <div class="col-8" id="websiteType">: {{ $row2->tipe_website }}</div>
+                  <div class="col-8" id="websiteType">: </div>
                   <div class="col-4">Domain</div>
-                  <div class="col-8" id="domain">: {{ $row2->domain_portofolio }}</div>
+                  <div class="col-8" id="domain">: </div>
                   <div class="col-4">Project Created</div>
-                  <div class="col-8" id="projectCreated">: {{ $row2->tanggal_dibuat }}</div>
+                  <div class="col-8" id="projectCreated">: </div>
 
                 </div>
                 <br>
                 <h6>Description</h6>
-                <p id="deskripsi"> {{ $row2->description }}</p>
+                <p id="deskripsi"></p>
 
                 <a href="#" class="btn btn-danger">Visit Website</a>
               </div>
@@ -114,7 +104,7 @@
       </div>
     </div>
   </div>
-  @endforeach  
+  
 
 
 @endsection
@@ -122,54 +112,104 @@
 @section('js')
 
     <script>
-
         $(document).ready(function(){
-              $('body').on('click', '.btn-loadmore', function(e){
-          e.preventDefault();          
-          var _totalCurrentResult = $('.list').length;
-          var main_site="{{ url('/') }}";
-          $.ajax({
-            url: main_site + "/load-more-data-port",
-            type: "GET",
-            data: {
-              skip:_totalCurrentResult
-            },
-            beforeSend:function(){
-              $('.btn-loadmore').html('loading...');
-            },
-            success:function(response){
-              var _html = "";
-              $.each(response, function(index, value){
-                _html += '<div class="col-md-3 col-sm-4 col-xs-12 p-con web-app list">';
-                  _html += '<a href="#" id="show" class="p-col" data-id="'+ value.id +'" role="button">';
-                    _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
-                  _html += '</a>';
-                  _html += '<span>'+ value.nama_aplikasi +'</span>';
-                _html += '</div>'
-              });
 
-              
-              $('.myPortofolio').append(_html);
-              var _totalCurrentResult = $('.list').length;
-              var _totalResult = parseInt($(".btn-loadmore").attr('data-totalResult'));
-              console.log(_totalCurrentResult);
-              console.log(_totalResult);
-              if(_totalCurrentResult == _totalResult){
-                $('.btn-loadmore').remove();
-              }else{
-                $('.btn-loadmore').html('Load More');
+          aniPortfolio();
+
+          $('body').on('click', '#btn-close', function(){
+            $('#port2').html("");
+            $('#port1').html("");
+          });
+
+          $('body').on('click', '.btn-loadmore', function(e){
+            e.preventDefault();
+            
+            var _totalCurrentResult = $('.list').length;
+            var main_site="{{ url('/') }}";
+            $.ajax({
+              url: main_site + "/load-more-data-port",
+              type: "GET",
+              data: {
+                skip:_totalCurrentResult
+              },
+              beforeSend:function(){
+                $('.btn-loadmore').html('loading...');
+              },
+              success:function(response){
+                var _html = "";
+                $.each(response, function(index, value){
+                  
+                    _html += '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5 mr-4" style="width:50px;flex: 0 0 22%;">';
+                      _html += '<a href="#" id="show" data-id="'+ value.id +'">';
+                        _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
+                      _html += '</a>';
+                      _html += '<span class="mt-4">'+ value.nama_aplikasi +'</span>';
+                    _html += '</div>';
+                  
+                });
+
+                
+                $('.myPortofolio').append(_html);
+                var _totalCurrentResult = $('.list').length;
+                var _totalResult = parseInt($(".btn-loadmore").attr('data-totalResult'));
+                console.log(_totalCurrentResult);
+                console.log(_totalResult);
+                if(_totalCurrentResult == _totalResult){
+                  $('.btn-loadmore').remove();
+                }else{
+                  $('.btn-loadmore').html('Load More');
+                }
+              },
+              error:function(xhr){
+                console.log(xhr.responseText);
               }
-            },
-            error:function(xhr){
-              console.log(xhr.responseText);
-            }
-          })
-        });       
+            })
+          });        
+
+          $('body').on('click', '#show', function(event){
+            event.preventDefault();
+            var mid = $(this).data('id');
+            $('#owl-con1').html('<div id="port1" class="owl-carousel owl-theme port1"></div>');
+            $('.owl-con').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
+
+            $.ajax({
+              type: "GET",
+              url: "{{ url('/sites-portofolio') }}" + '/' +mid,
+              data: {id:mid},
+              dataType: "json",
+              success:function(data){
+                console.log(data);
+                $('#namaApp').text(data.data.nama_aplikasi);
+                $('#port2').html(data.ambilFoto);
+                $('#port1').html(data.ambilFoto);
+                var slidercode;
+                var owl = $("#port2");
+                owl.owlCarousel({
+                  autoplayTimeout:1000,
+                  autoplay: true,
+                  items: data.jumlah,
+                  navigation: true
+                });   
+                $('#websiteType').text(data.data.tipe_website);
+                $('#domain').text(data.data.domain_portofolio);
+                $('#projectCreated').text(data.data.tanggal_dibuat);
+                $('#deskripsi').text(data.data.description);
+                $('#pModal').modal('show');
+                
+              },
+              error:function(xhr){
+                console.log(xhr.responseText);
+              }
+            });
+
+          });
+          
+          
         });
+              
+        
     </script>
-    <script>
-        aniPortfolio();
-    </script>
+
 @endsection
 
 

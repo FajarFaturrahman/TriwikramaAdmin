@@ -168,8 +168,8 @@ $("#pModal").on('shown.bs.modal',function(){
   port1.on('changed.owl.carousel',function(property){
     var current = property.item.index;
     var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src');
-    var str_sub = src.substr(src.lastIndexOf(".jpg"));
-    var res = src.replace(str_sub, "-r.jpg");
+    // var str_sub = src.substr(src.lastIndexOf(".jpg"));
+    // var res = src.replace(str_sub, "-r.jpg");
     var image = $("#resImg img");
     // alert(res);
     image.fadeOut('fast', function () {

