@@ -48,7 +48,7 @@
                                     @foreach($portofolios->gambarWeb as $gambar)                                    
                                         <div class="col-md-12">
                                             <div class="row justify-content-center">
-                                                <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_website }}" width="280px" alt=""> 
+                                                <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_website }}" class="card-img-top" width="100px" alt=""> 
                                             </div>                                           
                                         </div>                                
                                     @endforeach
