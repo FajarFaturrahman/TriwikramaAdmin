@@ -18,7 +18,7 @@ class PortofolioController extends Controller
             $data = Portofolio::where('nama_aplikasi','LIKE','%'.$request->cari.'%')->paginate(5);
             $data->appends(['cari' => $request->cari]);
         }else{
-            $data = Portofolio::paginate(5);
+            $data = Portofolio::orderBy('id','desc')->paginate(5);
         }                
         return view('portofolio.portofolio',['portofolio' => $data] );
     }
@@ -71,7 +71,9 @@ class PortofolioController extends Controller
                     $gambarPort = new GambarPortofolio();
                     $nameImage = rand() . '.' . $imageWebsite->getClientOriginalExtension();
 
-                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(225,150);
+                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(null, 400, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
                     $thumbPath = public_path() . '/resizedImages/' . $nameImage;
                     $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 
@@ -92,7 +94,9 @@ class PortofolioController extends Controller
                             $gambarMobilePort = new GambarMobilePortofolio();
                             $nameImageMobile = rand() . '.' . $imageMobile->getClientOriginalExtension();
 
-                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(100,150);
+                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(null, 400, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
                             $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
                             $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
                                                                                     
@@ -113,7 +117,9 @@ class PortofolioController extends Controller
                             $gambarMobilePort = new GambarMobilePortofolio();
                             $nameImageMobile = rand() . '.' . $imageMobile->getClientOriginalExtension();
 
-                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(100,170);
+                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(null, 400, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
                             $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
                             $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 
@@ -187,7 +193,9 @@ class PortofolioController extends Controller
                     $gambarPort = new GambarPortofolio();
                     $nameImage = rand() . '.' . $imageWebsite->getClientOriginalExtension();
 
-                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(225,150);
+                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(null, 400, function ($constraint) {
+                        $constraint->aspectRatio();
+                    });
                     $thumbPath = public_path() . '/resizedImages/' . $nameImage;
                     $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 
@@ -207,7 +215,9 @@ class PortofolioController extends Controller
                             $gambarMobilePort = new GambarMobilePortofolio();
                             $nameImageMobile = rand() . '.' . $imageMobile->getClientOriginalExtension();
 
-                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(100,170);
+                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(null, 400, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
                             $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
                             $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 
@@ -227,7 +237,9 @@ class PortofolioController extends Controller
                             $gambarMobilePort = new GambarMobilePortofolio();
                             $nameImageMobile = rand() . '.' . $imageMobile->getClientOriginalExtension();
 
-                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(100,170);
+                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(null, 400, function ($constraint) {
+                                $constraint->aspectRatio();
+                            });
                             $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
                             $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
 

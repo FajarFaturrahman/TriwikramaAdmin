@@ -38,7 +38,9 @@ class clientController extends Controller
 
             $new_name = rand() . '.' . $image->getClientOriginalExtension();
 
-            $thumbImage = Image::make($image->getRealPath())->resize(225,150);
+            $thumbImage = Image::make($image->getRealPath())->resize(null, 400, function ($constraint) {
+                $constraint->aspectRatio();
+            });
             $thumbPath = public_path() . '/resizedImages/' . $new_name;
             $thumbImage = Image::make($thumbImage)->save($thumbPath);
 
@@ -91,7 +93,9 @@ class clientController extends Controller
 
             $image_name = rand() . '.' . $image->getClientOriginalExtension();
 
-            $thumbImage = Image::make($image->getRealPath())->resize(225,150);
+            $thumbImage = Image::make($image->getRealPath())->resize(null, 400, function ($constraint) {
+                $constraint->aspectRatio();
+            });
             $thumbPath = public_path() . '/resizedImages/' . $image_name;
             $thumbImage = Image::make($thumbImage)->save($thumbPath);
 

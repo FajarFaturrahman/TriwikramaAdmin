@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Portofolio;
 use App\GambarPortofolio;
@@ -9,7 +9,7 @@ class SitesPortofolioController extends Controller
 {
     public function index(){
 
-        $data = Portofolio::take(4)->get();
+        $data = Portofolio::take(8)->orderBy('id,desc')->get();
         return view('triwikrama-sites.sites_portofolio', ['portofolio' => $data]);
     }
 
@@ -39,5 +39,25 @@ class SitesPortofolioController extends Controller
         }else{
             return response()->json('Direct Access Not Allowed!!');
         }
+    }
+
+    public function filter(Request $request, $status = ""){
+        $output = "";
+        if($status == "semua"){
+            $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
+        } else{                
+            $data = Portofolio::where('tipe_website', $status)->get();
+        }
+        foreach($data as $dataFilter){
+
+            $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
+                            <a href="#" id="show" data-id="'. $dataFilter->id .'">
+                                <img src="http://triwikrama.co.id/images/project.png" alt="">
+                            </a>
+                            <span class="mt-4">'. $dataFilter->nama_aplikasi .'</span>
+                        </div>';        
+        }
+
+        return Response::json($output);          
     }
 }

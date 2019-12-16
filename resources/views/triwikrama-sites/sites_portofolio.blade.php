@@ -10,13 +10,13 @@
             <div class="fl-left">
               <h2 class="ttl1">PORTFOLIO <br><small>THE PROJECT WE'VE DONE</small></h2>
               <div class="fselect">
-                <select name="pfilter" id="pfilter" class="form-control btn-filter" onchange="pFilter($(this))">
+                <select name="filter[]" id="pfilter" class="form-control btn-filter">
                   <option value="*" disabled selected>-- Filter --</option>
-                  <option value="*">All</option>
-                  <option value=".corporate">Corporate</option>
-                  <option value=".e-commerce">E-Commerce</option>
-                  <option value=".web-app">Web App</option>
-                  <option value=".mobile-app">Mobile App</option>
+                  <option value="semua">All</option>
+                  <option value="Corporate">Corporate</option>
+                  <option value="E-Commerce">E-Commerce</option>
+                  <option value="Web App">Web App</option>
+                  <option value="Mobile App">Mobile App</option>
                 </select>
               </div>
             </div>
@@ -26,7 +26,7 @@
           <div class="col-right">            
             <div class="row myPortofolio">
                 @foreach($portofolio as $row)                                  
-                    <div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5 mr-4" style="width:50px;flex: 0 0 22%;">
+                    <div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
                       <a href="#" id="show" data-id="{{ $row->id }}">
                         <img src="http://triwikrama.co.id/images/project.png" alt="">
                       </a>
@@ -114,7 +114,14 @@
     <script>
         $(document).ready(function(){
 
-          aniPortfolio();
+           //Token Ajax
+          $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+          });
+           
+          aniPortfolio();          
 
           $('body').on('click', '#btn-close', function(){
             $('#port2').html("");
@@ -139,7 +146,7 @@
                 var _html = "";
                 $.each(response, function(index, value){
                   
-                    _html += '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5 mr-4" style="width:50px;flex: 0 0 22%;">';
+                    _html += '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">';
                       _html += '<a href="#" id="show" data-id="'+ value.id +'">';
                         _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
                       _html += '</a>';
@@ -203,6 +210,29 @@
             });
 
           });
+
+          //Filter Data With Ajax
+          $('body').on('change', '#pfilter', function(e){
+            e.preventDefault();
+            var filter = $(this).val();
+            $.ajax({
+                type: "post",
+                data: {status:filter},
+                url: "{{ url('/sites-portofolio/filter') }}" + '/' + filter,
+                dataType: "json",
+                beforeSend: function(){
+                    $(".reload-data").html('<center><div class="text-white">Reload data ... </div></center>');
+                },
+                success: function(data){
+                    console.log(data);
+                    $(".myPortofolio").html(data);
+                    
+                },
+                error: function(xhr){
+                    console.log(xhr.responseText);
+                }
+            });         
+        });
           
           
         });

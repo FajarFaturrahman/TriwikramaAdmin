@@ -1344,7 +1344,7 @@ section, .section {
 			top: auto;
 			transform: none;
 			margin-top: 0;
-			.p-col {
+			.p-col {				
 				height: 150px;
 				width: 100%;
 				border: 1px solid #ccc;
@@ -1359,6 +1359,10 @@ section, .section {
 						color: @flatred;
 					}
 				}
+				@media (max-width: 574px) and (min-width: 401px) {
+				width: 50%;
+				flex: 0 0 50%;
+			}
 
 				img {
 					height: 100%;

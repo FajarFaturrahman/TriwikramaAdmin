@@ -1,5 +1,5 @@
-var $grid = $('#portfolio .right-con .row').isotope({
-  itemSelector: '.p-con',
+var $grid = $('.myPortfolio .right-con .row').isotope({
+  itemSelector: '.p-col',
   layoutMode: 'fitRows'
 });
 var filterFns = {
