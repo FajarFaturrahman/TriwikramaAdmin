@@ -102,6 +102,11 @@
                                         <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="nama_client" id="nama_client">
                                     </div>
 
+                                    <div class="form-group">                                        
+                                        <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" value="1" name="client_highlight" id="highlight">
+                                        <label for="highlight">Highlight</label>
+                                    </div>
+
                                     <div class="form group">
                                         <label for="portfolio_info">Portfolio Info</label>
                                         <div class="row justify-content-center">                                        
@@ -250,6 +255,7 @@
                         $('#store_image').append("<input type='hidden' name='hidden_image' value='" + html.data.gambar_client + "'>");
                         $('#hidden_id').val(html.data.id);                        
                         $('#store_portofolio').html(html.ambilPortofolio);
+                        $('#highlight').prop("checked", html.data.client_highlight);
                         $('.modal-title').text('Edit Data Client');
                         $('#action_button').val('Edit');
                         $('#action').val('Edit');

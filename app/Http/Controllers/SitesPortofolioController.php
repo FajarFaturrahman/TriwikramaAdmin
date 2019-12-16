@@ -9,7 +9,7 @@ class SitesPortofolioController extends Controller
 {
     public function index(){
 
-        $data = Portofolio::take(8)->orderBy('id,desc')->get();
+        $data = Portofolio::take(8)->orderBy('portofolio_highlight','desc')->orderBy('id','desc')->get();
         return view('triwikrama-sites.sites_portofolio', ['portofolio' => $data]);
     }
 

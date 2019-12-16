@@ -8,7 +8,7 @@ class SitesClientController extends Controller
 {
     public function index(){
 
-        $data = Client::take(12)->get();
+        $data = Client::take(12)->orderBy('client_highlight','desc')->orderBy('id','desc')->get();
         return view('triwikrama-sites.sites_client', ['client' => $data]);
     }
 

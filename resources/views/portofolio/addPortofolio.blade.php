@@ -132,7 +132,7 @@
                         @foreach($ambilFoto as $aF)
                         <div class="row mt-1">
                             <div style="padding: 4px;background: #EFF2F4;border-radius: 4px;">
-                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/images/{{ $aF->gambar_website }}"
+                                <img class="mb-3" width="100" src="{{ URL::to('../') }}/resizedImages/{{ $aF->gambar_website }}"
                                     alt="Foto">
                             </div>        
                             <a href="#" class="mt-3" data-toggle="modal" stye="width: 20px; height:20px; padding:6px" data-target="#ModalUpdateGambar{{ isset($EditModal1) ? ++$EditModal1 : $EditModal1=1 }}">
@@ -172,7 +172,7 @@
                         @foreach($ambilFotoMobile as $aFM)
                         <div class="row mt-1">
                             <div style="padding: 4px;background: #EFF2F4;border-radius: 4px;">
-                                <img class="mb-3"  width="100" src="{{ URL::to('../') }}/images/{{ $aFM->gambar_mobile }}"
+                                <img class="mb-3"  width="100" src="{{ URL::to('../') }}/resizedImages/{{ $aFM->gambar_mobile }}"
                                 alt="Foto">
                             </div>    
                                 <a href="#" class="mt-3" data-toggle="modal" style="width: 20px; height:20px; padding:6px" data-target="#ModalUpdateGambarMobile{{ isset($EditModal2) ? ++$EditModal2 : $EditModal2=1 }}">
@@ -258,6 +258,10 @@
                                         id="expired"
                                         {{old('status', @$portofolio->status) == 'expired' ? 'checked' : ''}}>
                                     <label for="Expired" class="form-check-label">Expired</label>
+                                </div>
+                                <div class="form-group">                                        
+                                    <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" value="1" {{ old('portofolio_highlight', @$portofolio->portofolio_highlight) ? 'checked="checked"' : '' }} name="portofolio_highlight" id="highlight">
+                                    <label for="highlight">Highlight</label>
                                 </div>
 
                                 <div class="row float-right mt-4 mr-3">

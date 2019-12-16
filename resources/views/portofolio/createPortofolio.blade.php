@@ -236,6 +236,10 @@
                                         id="expired">
                                     <label for="Expired" class="form-check-label">Expired</label>
                                 </div>
+                                <div class="form-group">                                        
+                                    <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" value="1" {{ old('portofolio_highlight') ? 'checked="checked"' : '' }} name="portofolio_highlight" id="highlight">
+                                    <label for="highlight">Highlight</label>
+                                </div>
 
                                 <div class="row float-right mt-4 mr-3">
                                     <button class="btn btn-link text-dark mr-3">Cancel</button>

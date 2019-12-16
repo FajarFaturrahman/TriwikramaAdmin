@@ -15,7 +15,7 @@ class clientController extends Controller
             $data = Client::where('nama_client','LIKE','%'.$request->cari.'%')->paginate(12);
             $data->appends(['cari' => $request->cari]);
         }else{
-            $data = Client::paginate(12);
+            $data = Client::orderBy('client_highlight','desc')->orderBy('id','desc')->paginate(12);
         }
         return view('client',['client' => $data] );
     }
@@ -49,6 +49,7 @@ class clientController extends Controller
             $data = new Client;
             $data->nama_client                  = $request->nama_client;
             $data->gambar_client                = $new_name;
+            $data->client_highlight             = $request->client_highlight;
             
             $data->save ();
             return response()->json($data);        
@@ -117,8 +118,9 @@ class clientController extends Controller
 
         
                 $data = Client::find($request->hidden_id);
-                $data->nama_client     = $request->nama_client;
-                $data->gambar_client   = $image_name;
+                $data->nama_client          = $request->nama_client;
+                $data->gambar_client        = $image_name;
+                $data->client_highlight     = $request->client_highlight;
             
                 $data->save();
                 return response()->json($data);        

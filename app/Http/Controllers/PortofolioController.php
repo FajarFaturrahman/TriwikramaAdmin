@@ -18,7 +18,7 @@ class PortofolioController extends Controller
             $data = Portofolio::where('nama_aplikasi','LIKE','%'.$request->cari.'%')->paginate(5);
             $data->appends(['cari' => $request->cari]);
         }else{
-            $data = Portofolio::orderBy('id','desc')->paginate(5);
+            $data = Portofolio::orderBy('portofolio_highlight','desc')->orderBy('id','desc')->paginate(5);
         }                
         return view('portofolio.portofolio',['portofolio' => $data] );
     }
@@ -51,14 +51,15 @@ class PortofolioController extends Controller
     	$input = $request->all();    	
 
         $portofolio = new Portofolio;
-        $portofolio->nama_aplikasi      =   $input['nama_aplikasi'];
-        $portofolio->tipe_website       =   $input['tipe_website'];
-        $portofolio->platform           =   $input['platform'];
-        $portofolio->domain_portofolio  =   $input['domain_portofolio'];
-        $portofolio->status             =   $input['status'];
-        $portofolio->description        =   $input['description'];
-        $portofolio->id_client          =   $input['id_client'];
-        $portofolio->tanggal_dibuat     =   $input['tanggal_dibuat'];        
+        $portofolio->nama_aplikasi              =   $input['nama_aplikasi'];
+        $portofolio->tipe_website               =   $input['tipe_website'];
+        $portofolio->platform                   =   $input['platform'];
+        $portofolio->domain_portofolio          =   $input['domain_portofolio'];
+        $portofolio->status                     =   $input['status'];
+        $portofolio->description                =   $input['description'];
+        $portofolio->id_client                  =   $input['id_client'];
+        $portofolio->tanggal_dibuat             =   $input['tanggal_dibuat'];        
+        $portofolio->portofolio_highlight       =   $input['portofolio_highlight'];
 
         $status = $portofolio->save();
 
@@ -173,14 +174,15 @@ class PortofolioController extends Controller
     	$input = $request->all();    	
 
         $portofolio = Portofolio::find($id);
-        $portofolio->nama_aplikasi      =   $input['nama_aplikasi'];
-        $portofolio->tipe_website       =   $input['tipe_website'];
-        $portofolio->platform           =   $input['platform'];
-        $portofolio->domain_portofolio  =   $input['domain_portofolio'];
-        $portofolio->status             =   $input['status'];
-        $portofolio->description        =   $input['description'];
-        $portofolio->id_client          =   $input['id_client'];
-        $portofolio->tanggal_dibuat     =   $input['tanggal_dibuat'];        
+        $portofolio->nama_aplikasi              =   $input['nama_aplikasi'];
+        $portofolio->tipe_website               =   $input['tipe_website'];
+        $portofolio->platform                   =   $input['platform'];
+        $portofolio->domain_portofolio          =   $input['domain_portofolio'];
+        $portofolio->status                     =   $input['status'];
+        $portofolio->description                =   $input['description'];
+        $portofolio->id_client                  =   $input['id_client'];
+        $portofolio->tanggal_dibuat             =   $input['tanggal_dibuat'];
+        $portofolio->portofolio_highlight       =   $input['portofolio_highlight'];              
 
         $status = $portofolio->update();
 
