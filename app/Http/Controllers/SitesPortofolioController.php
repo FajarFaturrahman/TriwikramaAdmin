@@ -51,11 +51,23 @@ class SitesPortofolioController extends Controller
         foreach($data as $dataFilter){
 
             $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
-                            <a href="#" id="show" data-id="'. $dataFilter->id .'">
-                                <img src="http://triwikrama.co.id/images/project.png" alt="">
-                            </a>
-                            <span class="mt-4">'. $dataFilter->nama_aplikasi .'</span>
-                        </div>';        
+                            <a href="#" id="show" data-id="'. $dataFilter->id .'">';
+                                if($dataFilter->platform == "Mobile Application"){
+                                    $output .= '<div class="portfolio-mobile">';
+                                        foreach($dataFilter->GambarMobile->take(1) as $gambarm){
+                                            $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$gambarm->gambar_mobile.' }}" alt="">';
+                                        }
+                                    $output .= '</div>';
+                                } else{
+                                    $output .= '<div class="portfolio-item">';
+                                        foreach($dataFilter->GambarWeb->take(1) as $gambarw){
+                                            $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$gambarw->gambar_website.' }}" alt="">';
+                                        }
+                                    $output .= '</div>';
+                                }
+                $output .= '</a>';                
+                $output .= '<span class="mt-4">'. $dataFilter->nama_aplikasi .'</span>';            
+            $output .= '</div>';        
         }
 
         return Response::json($output);          

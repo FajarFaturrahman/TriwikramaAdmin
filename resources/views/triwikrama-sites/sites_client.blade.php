@@ -9,10 +9,10 @@
     
       @foreach($client as $row)
       <li class="list">
-        <a href="#/">
-          <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}">
+        <a href="#" style="text-align: center;">
+            <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}">
         </a>
-        <h4>{{ $row->nama_client }}</h4>        
+        <h4 class="mt-5">{{ $row->nama_client }}</h4>        
       </li>
       @endforeach
 
@@ -43,13 +43,14 @@
             $('.btn-loadmore').html('loading...');
           },
           success:function(response){
+            console.log(response);
             var _html = "";
             $.each(response, function(index, value){
               _html += '<li class="list">';
                 _html += '<a href="#/">'
                   _html += '<img src="{{ URL::to("/") }}/resizedImages/'+value.gambar_client+'">';
                 _html += '</a>';
-                _html += '<h4>'+value.nama_client+'</h4>';
+                _html += '<h4 class="mt-5">'+value.nama_client+'</h4>';
               _html += '</li>'
             });
             $('.myclient').append(_html);
