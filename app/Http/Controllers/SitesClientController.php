@@ -16,7 +16,7 @@ class SitesClientController extends Controller
         if($request->ajax()){
             $skip=$request->skip;
             $take=6;
-            $client=Client::skip($skip)->take($take)->get();
+            $client=Client::skip($skip)->take($take)->orderBy('client_highlight','desc')->orderBy('id','desc')->get();
             return response()->json($client);
         }else{
             return response()->json('Direct Access Not Allowed!!');

@@ -855,10 +855,12 @@ section, .section {
 	}
 	.c-div {
 		margin: 30px 0;
+		margin-top: -50px;
 		position: relative;
 		width: 100%;
 		overflow: hidden;
 		display: block;
+		z-index: 10;
 		&:before {
 			content: '';
 			position: absolute;
@@ -905,7 +907,7 @@ section, .section {
 			display: block;
 			float: left;
 			width: 16.6666666667%;
-			height: 250px;
+			height: 240px;
 
 			position: relative;
 			z-index: 9;
@@ -1346,12 +1348,13 @@ section, .section {
 			margin-top: 0;
 			.p-col {				
 				height: 150px;
-				width: 100%;
+				width: 200px;
 				border: 1px solid #ccc;
 				border-radius: 20px;
 				margin: 15px 0;
 				display: block;
 				padding: 10px;
+				padding-bottom: 30px;
 				.transition;
 				&:hover {
 					border-color: @flatred;
@@ -1362,7 +1365,7 @@ section, .section {
 				@media (max-width: 574px) and (min-width: 401px) {
 				width: 50%;
 				flex: 0 0 50%;
-			}
+				}
 
 				img {
 					height: 100%;
@@ -1370,6 +1373,43 @@ section, .section {
 					max-width: 100%;
 					display: block;
 					margin: auto;
+				}
+				.portfolio-item{
+					height: 120px;
+					background: url('http://triwikrama.co.id/theme-1/img/plain.png') no-repeat center top;
+					background-size: 90% auto;
+					padding-left: 14px;
+					padding-right: 14px;
+					padding-top: 5px;
+					max-width: 100%;
+					// overflow: hidden;
+					position: relative;
+					@media (max-width: 450px) {
+						height: 130px;
+					}
+					img{
+						width: 502px;
+						height: auto;
+					}
+				}
+				.portfolio-mobile {
+					height: 120px;
+					background: url('http://triwikrama.co.id/theme-1/img/hp.png') no-repeat center top;
+					background-size: 36% auto;
+					z-index: 99;
+					padding-left: 12px;
+					padding-right: 12px;
+					padding-top: 6px;
+					padding-bottom: 12px;
+					max-width: 100%;
+					position: relative;
+					@media (max-width: 450px) {
+
+					}
+					img {
+						width: 60px;
+						height: 100%;
+					}
 				}
 			}
 			span {

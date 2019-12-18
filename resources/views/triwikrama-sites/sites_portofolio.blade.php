@@ -27,20 +27,31 @@
             <div class="reload-data"></div>            
             <div class="row myPortofolio">
                 @foreach($portofolio as $row)                                  
-                    <div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
+                    <div class="p-col list mt-5 mr-3">
                       <a href="#" id="show" data-id="{{ $row->id }}">
-                        <img src="http://triwikrama.co.id/images/project.png" alt="">
+                        @if($row->platform == "Mobile Application")
+                          <div class="portfolio-mobile">
+                            @foreach($row->GambarMobile->take(1) as $gambarm)
+                              <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarm->gambar_mobile }}" alt="">
+                            @endforeach
+                          </div>
+                        @else
+                          <div class="portfolio-item">
+                            @foreach($row->GambarWeb->take(1) as $gambarw)
+                              <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
+                            @endforeach
+                          </div>
+                        @endif
                       </a>
-                      <span class="mt-4">{{ $row->nama_aplikasi }}</span>
-                    </div>                  
+                      <span class="mt-4">{{ $row->nama_aplikasi }}</span>                      
+                    </div>                 
                 @endforeach                
             </div>
-            
-            <center class="c-div">
-                  <button class="btn btn-default btn-loadmore" data-totalResult="{{ App\Portofolio::count() }}">
-                    More Project
-                  </button>
-                </center>
+            <center class="c-div" style="margin-top: 40px;">
+              <button class="btn btn-default btn-loadmore" data-totalResult="{{ App\Portofolio::count() }}">
+                More Project
+              </button>
+            </center>
           </div>
         </div>
       </div>
@@ -147,7 +158,7 @@
                 var _html = "";
                 $.each(response, function(index, value){
                   
-                    _html += '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">';
+                    _html += '<div class="col-3 p-col list mt-5">';
                       _html += '<a href="#" id="show" data-id="'+ value.id +'">';
                         _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
                       _html += '</a>';
