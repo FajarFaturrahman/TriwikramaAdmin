@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Portofolio;
+use App\TipeAplikasiPortofolio;
 use App\GambarPortofolio;
 class SitesPortofolioController extends Controller
 {
@@ -46,7 +47,7 @@ class SitesPortofolioController extends Controller
         if($status == "semua"){
             $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
         } else{                
-            $data = $dataw = \DB::table('portofolio')
+            $data = \DB::table('portofolio')
             ->join('gambar_portofolio', 'gambar_portofolio.portofolio_id', '=', 'portofolio.id')
             ->join('gambar_mobile_portofolio', 'gambar_mobile_portofolio.portofolio_id', '=', 'portofolio.id')
             ->select('portofolio.id', 'portofolio.tipe_website', 'portofolio.platform', 'portofolio.nama_aplikasi', 'gambar_portofolio.gambar_website', 'gambar_mobile_portofolio.gambar_mobile')
@@ -55,7 +56,7 @@ class SitesPortofolioController extends Controller
         }
         foreach($data as $dataFilter){
 
-            $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
+                $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
                             <a href="#" id="show" data-id="'. $dataFilter->id .'">';
                                 if($dataFilter->platform == "Mobile Application"){
                                     $output .= '<div class="portfolio-mobile">';
@@ -68,9 +69,9 @@ class SitesPortofolioController extends Controller
                                 }
                 $output .= '</a>';                
                 $output .= '<span class="mt-4">'. $dataFilter->nama_aplikasi .'</span>';            
-            $output .= '</div>';        
+                $output .= '</div>';                  
         }
 
-        return Response::json($output);          
+        return Response::json($data);          
     }
 }

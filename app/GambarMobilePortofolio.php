@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class GambarMobilePortofolio extends Model
 {
     protected $table = 'gambar_mobile_portofolio';
-    protected $fillable = ['gambar_mobile', 'portofolio_id'];
+    protected $fillable = ['gambar_mobile'];
 
     public function portofolio()
     {

@@ -62,7 +62,11 @@
                             <table class="border-0 p-2">
                                 <tr>
                                     <td><strong>Website Type</strong></td>
-                                    <td>{{ $portofolio->tipe_website }}</td>
+                                    <td class="row justify-content-center">
+                                        @foreach($portofolio->tipeAplikasi as $tipe)                                        
+                                        <p class=" mt-3 ml-3" style="border-radius:100px;">{{$tipe->tipe_website}}</p>
+                                        @endforeach
+                                    </td>
                                 </tr>
 
                                 <tr>
