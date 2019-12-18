@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Http\Request;
 use App\Portofolio;
+use App\TipeAplikasiPortofolio;
 use App\GambarPortofolio;
 class SitesPortofolioController extends Controller
 {
@@ -44,7 +45,7 @@ class SitesPortofolioController extends Controller
     public function filter(Request $request, $status = ""){
         $output = "";
 
-        $data = Portofolio::where('tipe_website', $status)->get();        
+        $data = TipeAplikasiPoertofolio::where('tipe_website', $status)->get();        
         foreach($data as $dataFilter){
 
             $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">

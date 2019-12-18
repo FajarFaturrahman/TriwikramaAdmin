@@ -81,7 +81,7 @@
                                     <h5>Application type</h5>
                                 </label>
                                 <select class="form-control input-group rounded border-0 pb-2 pt-2 mt-3 increment3"
-                                    style="background-color:#EFF2F4;height:50px" multiple="multiple" name="tipe_website[]" id="tipe_website">
+                                    style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
                                     <option value=""
                                         {{ old('tipe_website', @$portofolio->tipe_website) == '' ? 'selected' : '' }}>
                                         Choose Type</option>
@@ -269,8 +269,8 @@
                                         id="expired">
                                     <label for="Expired" class="form-check-label">Expired</label>
                                 </div>
-                                <div class="form-group">                                        
-                                    <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" value="1" {{ old('portofolio_highlight') ? 'checked="checked"' : '' }} name="portofolio_highlight" id="highlight">
+                                <div class="form-group">                                                                                                                
+                                    <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" name="portofolio_highlight" id="highlight" value="1" {{ old('portofolio_highlight') ? 'checked="checked"' : '' }} >
                                     <label for="highlight">Highlight</label>
                                 </div>
 
