@@ -45,10 +45,10 @@ class SitesPortofolioController extends Controller
     public function filter(Request $request, $status = ""){
         $output = "";
 
-        $data = TipeAplikasiPoertofolio::where('tipe_website', $status)->get();        
-        foreach($data as $dataFilter){
-
-            $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
+        $data = TipeAplikasiPortofolio::where('tipe_website', $status)->get();        
+        foreach($data as $row){
+            foreach($row->portofolio2 as $dataFilter){
+                $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
                             <a href="#" id="show" data-id="'. $dataFilter->id .'">';
                                 if($dataFilter->platform == "Mobile Application"){
                                     $output .= '<div class="portfolio-mobile">';
@@ -65,7 +65,8 @@ class SitesPortofolioController extends Controller
                                 }
                 $output .= '</a>';                
                 $output .= '<span class="mt-4">'. $dataFilter->nama_aplikasi .'</span>';            
-            $output .= '</div>';        
+                $output .= '</div>';
+            }                    
         }
 
         return Response::json($output);          

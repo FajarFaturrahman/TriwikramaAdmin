@@ -14,4 +14,8 @@ class TipeAplikasiPortofolio extends Model
         return $this->belongsTo('App\Portofolio');
     }
 
+    public function portofolio2()
+    {
+        return $this->hasOne('App\Portofolio', 'id');
+    }
 }
