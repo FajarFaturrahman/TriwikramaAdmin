@@ -46,7 +46,12 @@ class SitesPortofolioController extends Controller
         if($status == "semua"){
             $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
         } else{                
-            $data = Portofolio::where('tipe_website', $status)->get();
+            $data = $dataw = \DB::table('portofolio')
+            ->join('gambar_portofolio', 'gambar_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->join('gambar_mobile_portofolio', 'gambar_mobile_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->select('portofolio.id', 'portofolio.tipe_website', 'portofolio.platform', 'portofolio.nama_aplikasi', 'gambar_portofolio.gambar_website', 'gambar_mobile_portofolio.gambar_mobile')
+            ->where('portofolio.tipe_website', $status)
+            ->get();
         }
         foreach($data as $dataFilter){
 
@@ -54,15 +59,11 @@ class SitesPortofolioController extends Controller
                             <a href="#" id="show" data-id="'. $dataFilter->id .'">';
                                 if($dataFilter->platform == "Mobile Application"){
                                     $output .= '<div class="portfolio-mobile">';
-                                        foreach($dataFilter->GambarMobile->take(1) as $gambarm){
-                                            $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$gambarm->gambar_mobile.' }}" alt="">';
-                                        }
+                                        $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$dataFilter->gambar_mobile->take(1).' }}" alt="">';
                                     $output .= '</div>';
                                 } else{
                                     $output .= '<div class="portfolio-item">';
-                                        foreach($dataFilter->GambarWeb->take(1) as $gambarw){
-                                            $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$gambarw->gambar_website.' }}" alt="">';
-                                        }
+                                        $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$dataFilter->gambar_website->take(1).' }}" alt="">';
                                     $output .= '</div>';
                                 }
                 $output .= '</a>';                
