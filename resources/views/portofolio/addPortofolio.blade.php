@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 
-@section('title','Triwikrama | Add Portfolio')
+@section('title','Triwikrama | Edit Portfolio')
 
 @section('content')
 

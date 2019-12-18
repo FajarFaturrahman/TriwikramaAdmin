@@ -80,8 +80,8 @@
                                 <label for="tipe_website">
                                     <h5>Application type</h5>
                                 </label>
-                                <select class="form-control rounded border-0 pb-2 pt-2 mt-3"
-                                    style="background-color:#EFF2F4;height:50px" name="tipe_website" id="tipe_website">
+                                <select class="form-control input-group rounded border-0 pb-2 pt-2 mt-3 increment3"
+                                    style="background-color:#EFF2F4;height:50px" multiple="multiple" name="tipe_website[]" id="tipe_website">
                                     <option value=""
                                         {{ old('tipe_website', @$portofolio->tipe_website) == '' ? 'selected' : '' }}>
                                         Choose Type</option>
@@ -96,8 +96,40 @@
                                         Mobile App</option>
                                     <option value="Web App"
                                         {{ old('tipe_website', @$portofolio->tipe_website) == 'Web App' ? 'selected' : '' }}>
-                                        Web App</option>
+                                        Web App</option>                                        
                                 </select>
+
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-success mt-2" id="btn-success3" type="button"><i class="glyphicon glyphicon-plus"></i>Add More Type</button>
+                                    </div>
+
+                                <div class="clone3 d-none">
+                                    <div class="control-group input-group" style="margin-top:10px">
+                                        <select class="form-control rounded border-0 pb-2 pt-2 mt-3 control-group"
+                                            style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
+                                            <option value=""
+                                                {{ old('tipe_website', @$portofolio->tipe_website) == '' ? 'selected' : '' }}>
+                                                Choose Type</option>
+                                            <option value="Corporate"
+                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'Corporate' ? 'selected' : '' }}>
+                                                Corporate</option>
+                                            <option value="E-Commerce"
+                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'E-Commerce' ? 'selected' : '' }}>
+                                                E-Commerce</option>
+                                            <option value="Mobile App"
+                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'Mobile App' ? 'selected' : '' }}>
+                                                Mobile App</option>
+                                            <option value="Web App"
+                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'Web App' ? 'selected' : '' }}>
+                                                Web App</option>
+                                        </select>
+                                        <div class="input-group-btn">
+                                            <button class="btn btn-danger mt-3" id="btn-danger" type="button">
+                                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
+                                            </button>
+                                        </div>
+                                    </div>                                    
+                                </div>
                             </div>
 
                             <div class="form-group mt-4">
@@ -141,7 +173,8 @@
 
                         <div class="clone1 d-none">
                             <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="gambar_website[]" class="form-control">
+                                <input type="file" name="gambar_website[]" class="form-con
+                                trol">
                                 <input type="hidden" name="hidden_image" value="">
                                 <div class="input-group-btn">
                                     <button class="btn btn-danger" id="btn-danger" type="button"><i
@@ -279,6 +312,15 @@
         });
 
         $("body").on('click', "#btn-danger2", function () {
+            $(this).parents(".control-group").remove();
+        });
+
+        $("#btn-success3").click(function () {
+            var html = $(".clone3").html();
+            $(".increment3").after(html);
+        });
+
+        $("body").on('click', "#btn-danger3", function () {
             $(this).parents(".control-group").remove();
         });
     });

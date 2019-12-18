@@ -4,13 +4,14 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class GambarPortofolio extends Model
+class TipeAplikasiPortofolio extends Model
 {
-    protected $table = 'gambar_portofolio';
-    protected $fillable = ['gambar_website'];
+    protected $table = 'tipe_aplikasi_portofolio';
+    protected $fillable = ['tipe_website'];
 
     public function portofolio()
     {
         return $this->belongsTo('App\Portofolio');
     }
+
 }

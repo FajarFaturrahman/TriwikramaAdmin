@@ -12,7 +12,7 @@
         <a href="#/">
           <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}">
         </a>
-        <h4>{{ $row->nama_client }}</h4>        
+        <h4 class="mt-5">{{ $row->nama_client }}</h4>        
       </li>
       @endforeach
 
@@ -49,7 +49,7 @@
                 _html += '<a href="#/">'
                   _html += '<img src="{{ URL::to("/") }}/resizedImages/'+value.gambar_client+'">';
                 _html += '</a>';
-                _html += '<h4>'+value.nama_client+'</h4>';
+                _html += '<h4 class="mt-5">'+value.nama_client+'</h4>';
               _html += '</li>'
             });
             $('.myclient').append(_html);

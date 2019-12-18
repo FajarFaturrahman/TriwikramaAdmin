@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Portofolio;
 use App\Client;
+use App\TipeAplikasiPortofolio;
 use App\GambarPortofolio;
 use App\GambarMobilePortofolio;
 use Validator,Redirect,Response,File,DB;
@@ -34,7 +35,7 @@ class PortofolioController extends Controller
 
         $rule = [
             'nama_aplikasi' => 'required|string',
-            'tipe_website' => 'required',
+            
             'platform' => '',
     		'domain_portofolio' => 'required',
             'status' => 'required',
@@ -51,8 +52,7 @@ class PortofolioController extends Controller
     	$input = $request->all();    	
 
         $portofolio = new Portofolio;
-        $portofolio->nama_aplikasi              =   $input['nama_aplikasi'];
-        $portofolio->tipe_website               =   $input['tipe_website'];
+        $portofolio->nama_aplikasi              =   $input['nama_aplikasi'];        
         $portofolio->platform                   =   $input['platform'];
         $portofolio->domain_portofolio          =   $input['domain_portofolio'];
         $portofolio->status                     =   $input['status'];
@@ -64,52 +64,68 @@ class PortofolioController extends Controller
         $status = $portofolio->save();
 
     	if ($status) {
-                                        
-            if($request->hasFile('gambar_website'))
-            {                
-                foreach($request->file('gambar_website') as $imageWebsite)
+            
+            if($request->tipe_website){
+
+                foreach($request->tipe_website as $tipeWebsite)
                 {                    
-                    $gambarPort = new GambarPortofolio();
-                    $nameImage = rand() . '.' . $imageWebsite->getClientOriginalExtension();
-
-                    $thumbImage = Image::make($imageWebsite->getRealPath())->resize(null, 400, function ($constraint) {
-                        $constraint->aspectRatio();
-                    });
-                    $thumbPath = public_path() . '/resizedImages/' . $nameImage;
-                    $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
-
-                    $imageWebsite->move(public_path().'/images/', $nameImage);
-
-                    $dataImage = $nameImage;
-                    $gambarPort->portofolio_id = $portofolio->id;
-                    $gambarPort->gambar_website = $dataImage;
-                    $success = $gambarPort->save();
+                    $tipePort = new TipeAplikasiPortofolio();
+                    $nameTipe = $tipeWebsite;
+                    
+                    $dataTipe = $nameTipe;
+                    $tipePort->portofolio_id = $portofolio->id;
+                    $tipePort->tipe_website = $dataTipe;
+                    $berhasil = $tipePort->save();
                 }
-                
-                if($success){
-
-                    if($request->hasFile('gambar_mobile'))
+                if($berhasil){
+                    if($request->hasFile('gambar_website'))
                     {                
-                        foreach($request->file('gambar_mobile') as $imageMobile)
+                        foreach($request->file('gambar_website') as $imageWebsite)
                         {                    
-                            $gambarMobilePort = new GambarMobilePortofolio();
-                            $nameImageMobile = rand() . '.' . $imageMobile->getClientOriginalExtension();
+                            $gambarPort = new GambarPortofolio();
+                            $nameImage = rand() . '.' . $imageWebsite->getClientOriginalExtension();
 
-                            $thumbImage = Image::make($imageMobile->getRealPath())->resize(null, 400, function ($constraint) {
+                            $thumbImage = Image::make($imageWebsite->getRealPath())->resize(null, 400, function ($constraint) {
                                 $constraint->aspectRatio();
                             });
-                            $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
+                            $thumbPath = public_path() . '/resizedImages/' . $nameImage;
                             $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
-                                                                                    
-                    
-                            $imageMobile->move(public_path().'/images/', $nameImageMobile);
-                            $dataImage = $nameImageMobile;
-                            $gambarMobilePort->portofolio_id = $portofolio->id;
-                            $gambarMobilePort->gambar_mobile = $dataImage;
-                            $gambarMobilePort->save();
-                        }                            
+
+                            $imageWebsite->move(public_path().'/images/', $nameImage);
+
+                            $dataImage = $nameImage;
+                            $gambarPort->portofolio_id = $portofolio->id;
+                            $gambarPort->gambar_website = $dataImage;
+                            $success = $gambarPort->save();
+                        }
+                        
+                        if($success){
+
+                            if($request->hasFile('gambar_mobile'))
+                            {                
+                                foreach($request->file('gambar_mobile') as $imageMobile)
+                                {                    
+                                    $gambarMobilePort = new GambarMobilePortofolio();
+                                    $nameImageMobile = rand() . '.' . $imageMobile->getClientOriginalExtension();
+
+                                    $thumbImage = Image::make($imageMobile->getRealPath())->resize(null, 400, function ($constraint) {
+                                        $constraint->aspectRatio();
+                                    });
+                                    $thumbPath = public_path() . '/resizedImages/' . $nameImageMobile;
+                                    $thumbImage2 = Image::make($thumbImage)->save($thumbPath);
+                                                                                            
+                            
+                                    $imageMobile->move(public_path().'/images/', $nameImageMobile);
+                                    $dataImage = $nameImageMobile;
+                                    $gambarMobilePort->portofolio_id = $portofolio->id;
+                                    $gambarMobilePort->gambar_mobile = $dataImage;
+                                    $gambarMobilePort->save();
+                                }                            
+                            }
+                        }
                     }
                 }
+                
             }else{
                 if($request->hasFile('gambar_mobile'))
                     {                

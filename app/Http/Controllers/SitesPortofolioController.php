@@ -43,11 +43,8 @@ class SitesPortofolioController extends Controller
 
     public function filter(Request $request, $status = ""){
         $output = "";
-        if($status == "semua"){
-            $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
-        } else{                
-            $data = Portofolio::where('tipe_website', $status)->get();
-        }
+
+        $data = Portofolio::where('tipe_website', $status)->get();        
         foreach($data as $dataFilter){
 
             $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">

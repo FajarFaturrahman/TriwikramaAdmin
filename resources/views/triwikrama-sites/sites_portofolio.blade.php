@@ -23,7 +23,8 @@
           </div>
         </div>
         <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12 right-con">
-          <div class="col-right">            
+          <div class="col-right">
+            <div class="reload-data"></div>            
             <div class="row myPortofolio">
                 @foreach($portofolio as $row)                                  
                     <div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
@@ -215,23 +216,33 @@
           $('body').on('change', '#pfilter', function(e){
             e.preventDefault();
             var filter = $(this).val();
-            $.ajax({
+
+            if(filter == "semua"){
+              location.reload();
+            }else{
+              $.ajax({
                 type: "post",
                 data: {status:filter},
                 url: "{{ url('/sites-portofolio/filter') }}" + '/' + filter,
                 dataType: "json",
                 beforeSend: function(){
-                    $(".reload-data").html('<center><div class="text-white">Reload data ... </div></center>');
+                    $(".reload-data").html('<div class="row justify-content-center"><div class="text-dark">Reload data ... </div></div>');
+                    $(".myPortofolio").html("");
                 },
                 success: function(data){
                     console.log(data);
                     $(".myPortofolio").html(data);
+                    $(".c-div").html("");
+                    $(".reload-data").html("");
+                    
                     
                 },
                 error: function(xhr){
                     console.log(xhr.responseText);
                 }
-            });         
+              });        
+            }
+             
         });
           
           
