@@ -47,7 +47,7 @@ class SitesPortofolioController extends Controller
         if($status == "semua"){
             $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
         } else{                
-            $data = \DB::table('portofolio')->;
+            $data = \DB::table('portofolio');
         }
         foreach($data as $dataFilter){
 
