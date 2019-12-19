@@ -65,7 +65,7 @@ class PortofolioController extends Controller
         $status = $portofolio->save();
 
     	if ($status) {
-            if($request->has('tipe_website')){
+            if($request->has('tipe_website', false)){
 
                 $types = $request->input('tipe_website', false);
                 foreach($types as $tipeWebsite)
@@ -163,10 +163,11 @@ class PortofolioController extends Controller
     {
         $ambilFoto = GambarPortofolio::where('portofolio_id',$id)->get();
         $ambilFotoMobile = GambarMobilePortofolio::where('portofolio_id',$id)->get();
+        $ambilTipe = TipeAplikasiPortofolio::where('portofolio_id',$id)->get();
         $client = Client::All();        
         
         $data = Portofolio::all()->find($id);
-        return view('portofolio.addPortofolio', ['portofolio' => $data,'ambilFoto' => $ambilFoto, 'ambilFotoMobile' => $ambilFotoMobile])->with('client', $client);
+        return view('portofolio.addPortofolio', ['portofolio' => $data, 'ambilFoto' => $ambilFoto, 'ambilFotoMobile' => $ambilFotoMobile, 'ambilTipe' => $ambilTipe])->with('client', $client);
     }    
 
     public function update(Request $request,$id)
@@ -200,13 +201,13 @@ class PortofolioController extends Controller
     	if ($status) {
             if($request->has('tipe_website')){
 
-                $types = $request->input('tipe_website');
+                $types = $request->input('tipe_website', false);
                 foreach($types as $tipeWebsite)
                 {                    
                     $tipePort = new TipeAplikasiPortofolio();
                                                             
                     $tipePort->tipe_website = $tipeWebsite;
-                    $tipePort->portofolio_id = $portofolio->id;                    
+                    $tipePort->portofolio_id = $portofolio->id;                   
                     $berhasil = $tipePort->save();
                 }
 
