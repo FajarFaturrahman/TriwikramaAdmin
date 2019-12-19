@@ -82,7 +82,7 @@
                                 </label>
                                 <select class="form-control input-group rounded border-0 pb-2 pt-2 mt-3 increment3"
                                     style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
-                                    <option value="">Choose Type</option>
+                                    <option value="*" disabled selected>-- Choose Type --</option>
                                     <option value="Corporate"
                                         {{ old('tipe_website', @$portofolio->tipe_website) == 'Corporate' ? 'selected' : '' }}>
                                         Corporate</option>
@@ -105,7 +105,7 @@
                                     <div class="control-group input-group" style="margin-top:10px">
                                         <select class="form-control rounded border-0 pb-2 pt-2 mt-3 control-group"
                                             style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
-                                            <option value="">Choose Type</option>
+                                            <option value="*" disabled selected>-- Choose Type --</option>
                                             <option value="Corporate"
                                                 {{ old('tipe_website', @$portofolio->tipe_website) == 'Corporate' ? 'selected' : '' }}>
                                                 Corporate</option>
