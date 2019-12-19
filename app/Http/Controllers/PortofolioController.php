@@ -65,7 +65,7 @@ class PortofolioController extends Controller
         $status = $portofolio->save();
 
     	if ($status) {
-            if($request->has('tipe_website')){
+            if($request->has('tipe_website', false)){
 
                 $types = $request->input('tipe_website', false);
                 foreach($types as $tipeWebsite)
