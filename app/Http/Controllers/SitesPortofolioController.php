@@ -47,12 +47,7 @@ class SitesPortofolioController extends Controller
         if($status == "semua"){
             $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
         } else{                
-            $data = \DB::table('portofolio')
-            ->join('gambar_portofolio', 'gambar_portofolio.portofolio_id', '=', 'portofolio.id')
-            ->join('gambar_mobile_portofolio', 'gambar_mobile_portofolio.portofolio_id', '=', 'portofolio.id')
-            ->select('portofolio.id', 'portofolio.tipe_website', 'portofolio.platform', 'portofolio.nama_aplikasi', 'gambar_portofolio.gambar_website', 'gambar_mobile_portofolio.gambar_mobile')
-            ->where('portofolio.tipe_website', $status)
-            ->get();
+            $data = \DB::table('portofolio')->;
         }
         foreach($data as $dataFilter){
 

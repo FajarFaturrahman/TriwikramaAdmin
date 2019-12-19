@@ -66,27 +66,26 @@
                             <div class="col-md-7">                                
                                 <h5 class="ml-4"><strong>{{ $portofolios->nama_aplikasi }}</strong></h5>                                
 
-                                <table class="border-0 mt-2">
+                                <table class="border-0 mt-4">
                                     <tr>
                                         <td><strong>Website Type</strong></td>
-                                        <td>:</td>
-                                        <td>{{ $portofolios->tipe_website }}</td>
+                                        @foreach($portofolios->tipeAplikasi as $tipe)
+                                            <td>{{ $tipe->tipe_website}}</td>
+                                        @endforeach
                                     </tr>
 
                                     <tr>
                                         <td><strong>Domain</strong></td>
-                                        <td>:</td>
                                         <td>{{ $portofolios->domain_portofolio }}</td>
                                     </tr>
 
                                     <tr>
                                         <td><strong>Created At</strong></td>
-                                        <td>:</td>
                                         <td>{{ $portofolios->tanggal_dibuat }}</td>
                                     </tr>
                                     <tr>
                                         <td><strong class="">Status</strong></td>
-                                        <td><p class="bg-light mt-3 pl-3 pr-3" style="border-radius:100px;">{{ $portofolios->status }}</p></td>
+                                        <td>{{ $portofolios->status }}</td>
                                     </tr>
                                 </table>
                                 <div class="row ml-2 float-right">
