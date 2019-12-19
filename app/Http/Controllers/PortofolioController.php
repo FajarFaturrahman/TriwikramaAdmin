@@ -200,7 +200,7 @@ class PortofolioController extends Controller
     	if ($status) {
             if($request->has('tipe_website')){
 
-                $types = $request->input('tipe_website');
+                $types = $request->input('tipe_website', false);
                 foreach($types as $tipeWebsite)
                 {                    
                     $tipePort = new TipeAplikasiPortofolio();
