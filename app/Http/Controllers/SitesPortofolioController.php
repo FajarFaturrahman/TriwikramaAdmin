@@ -45,9 +45,17 @@ class SitesPortofolioController extends Controller
     public function filter(Request $request, $status = ""){
         $output = "";
         if($status == "semua"){
-            $data = \DB::table('portofolio')->orderBy('id','asc')->take(8)->get();
+            $data = \DB::table('portofolio')->orderBy('id','asc')->get();
         } else{                
-            $data = \DB::table('portofolio');
+            $data = \DB::table('portofolio')
+            ->leftJoin('gambar_portofolio', 'gambar_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->leftJoin('gambar_mobile_portofolio', 'gambar_mobile_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->leftJoin('tipe_aplikasi_portofolio', 'tipe_aplikasi_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->select('portofolio.id', 'portofolio.nama_aplikasi', 'portofolio.platform', 'gambar_portofolio.gambar_website', 'gambar_mobile_portofolio.gambar_mobile', 'tipe_aplikasi_portofolio.tipe_website')
+            ->where(['tipe_aplikasi_portofolio.tipe_website' => $status])
+            ->get();
+
+            return Response::json($data);
         }
         foreach($data as $dataFilter){
 
@@ -67,6 +75,6 @@ class SitesPortofolioController extends Controller
                 $output .= '</div>';                  
         }
 
-        return Response::json($data);          
+        return Response::json($output);          
     }
 }
