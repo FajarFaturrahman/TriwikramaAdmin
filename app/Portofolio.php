@@ -11,15 +11,15 @@ class Portofolio extends Model
 
     public function gambarWeb()
     {
-        return $this->hasMany('App\GambarPortofolio');
+        return $this->hasMany('App\GambarPortofolio', 'portofolio_id', 'id');
     }
 
     public function gambarMobile(){
-        return $this->hasMany('App\GambarMobilePortofolio');
+        return $this->hasMany('App\GambarMobilePortofolio', 'portofolio_id', 'id');
     }
 
     public function tipeAplikasi(){
-        return $this->hasMany('App\TipeAplikasiPortofolio');
+        return $this->hasMany('App\TipeAplikasiPortofolio', 'portofolio_id', 'id');
     }
 
     public function client()
