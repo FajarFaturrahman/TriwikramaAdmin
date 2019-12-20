@@ -50,7 +50,7 @@ class SitesPortofolioController extends Controller
         if($request->ajax()){
             $skip=$request->skip;
             $take=4;
-            $portofolio=Portofolio::skip($skip)->take($take)->get();
+            $portofolio=Portofolio::skip($skip)->take($take)->orderBy('portofolio_highlight','desc')->orderBy('id','desc')->get();
             return response()->json($portofolio);
         }else{
             return response()->json('Direct Access Not Allowed!!');
@@ -75,18 +75,20 @@ class SitesPortofolioController extends Controller
         }
         foreach($data as $dataFilter){
 
-                $output .= '<div class="p-col list mt-5 mr-3">
-                            <a href="#" id="show" data-id="'. $dataFilter->id .'">';
+                $output .= '<div class="p-col list mt-5 mr-3">';
                                 if($dataFilter->platform == "Mobile Application"){
-                                    $output .= '<div class="portfolio-mobile">';
-                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_mobile.'" alt="">';
-                                    $output .= '</div>';
+                                    $output .= '<a href="#" id="show2" data-id="'. $dataFilter->id .'">';
+                                        $output .= '<div class="portfolio-mobile">';
+                                            $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_mobile.'" alt="">';
+                                        $output .= '</div>';
+                                    $output .= '</a>';                
                                 } else{
-                                    $output .= '<div class="portfolio-item">';
-                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
-                                    $output .= '</div>';
-                                }
-                $output .= '</a>';                
+                                    $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'">';
+                                        $output .= '<div class="portfolio-item">';
+                                            $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
+                                        $output .= '</div>';
+                                    $output .= '</a>';              
+                                }                
                 $output .= '<span class="mt-4">'. $dataFilter->nama_aplikasi .'</span>';            
                 $output .= '</div>';                  
         }

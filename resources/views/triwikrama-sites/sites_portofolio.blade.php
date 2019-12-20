@@ -135,7 +135,7 @@
         <div class="container-fluid">
           <div class="row">
             <div class="col-md-6 col-sm-12 col-xs-12 col-first">
-              <div id="owl-con1" class="portfolio-slide">
+              <div id="owl-con2" class="portfolio-slide">
                 <div id="port3" class="owl-carousel owl-theme port1">
                                    
                 </div>
@@ -218,12 +218,26 @@
                 var _html = "";
                 $.each(response, function(index, value){
                   
-                    _html += '<div class="col-3 p-col list mt-5">';
+                  _html += '<div class="p-col list mt-5 mr-3">';
+                    if(value.platform == "Mobile Application"){
+                    
                       _html += '<a href="#" id="show" data-id="'+ value.id +'">';
-                        _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
+                        _html += '<div class="portfolio-mobile">';
+                          _html += '<img src="{{ URL::to("/") }}/resizedImages/'+ value.gambarMobile +'" alt="">';
+                        _html += '</div>';
                       _html += '</a>';
-                      _html += '<span class="mt-4">'+ value.nama_aplikasi +'</span>';
-                    _html += '</div>';
+                      
+                    
+                    }else{
+                      _html += '<a href="#" id="show" data-id="'+ value.id +'">';
+                        _html += '<div class="portfolio-item">';
+                          _html += '<img src="{{ URL::to("/") }}/resizedImages/'+ value.gambarWebsite +'" alt="">';
+                        _html += '</div>';
+                      _html += '</a>';
+                    }
+                    _html += '<span class="mt-4">'+ value.nama_aplikasi +'</span>';
+                  _html += '</div>';
+                    
                   
                 });
 
@@ -289,7 +303,7 @@
           $('body').on('click', '#show2', function(event){
             event.preventDefault();
             var mid = $(this).data('id');
-            $('#owl-con1').html('<div id="port1" class="owl-carousel owl-theme port1"></div>');
+            $('#owl-con2').html('<div id="port3" class="owl-carousel owl-theme port1"></div>');
             // $('.owl-con').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
 
             $.ajax({
