@@ -119,7 +119,7 @@
                                         </select>
                                         <div class="input-group-btn">
                                             <a href="##" class="mt-5" id="btn-danger3">
-                                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
+                                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px" style="margin-top:35px;"/>
                                             </a>
                                         </div>
                                     </div>                                    

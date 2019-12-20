@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Portofolio;
 use App\TipeAplikasiPortofolio;
 use App\GambarPortofolio;
+use App\GambarMobilePortofolio;
 class SitesPortofolioController extends Controller
 {
     public function index(){
@@ -19,14 +20,28 @@ class SitesPortofolioController extends Controller
         {
         
             $output = "";
+            $output2 = "";
+            $output3 = "";
             $ambilFoto = GambarPortofolio::where('portofolio_id',$id)->get();
+            $tipeApp = TipeAplikasiPortofolio::where('portofolio_id',$id)->get();
+            $ambilFotoMobile = GambarMobilePortofolio::where('portofolio_id',$id)->get();
             $total_row = $ambilFoto->count();
             foreach($ambilFoto as $foto)
             {
                 $output .='<div class="item"><img src="/resizedImages/'. $foto->gambar_website .'" alt=""></div>';
             }
+
+            foreach($ambilFotoMobile as $fotoMobile)
+            {
+                $output2 .='<div class="item"><img src="/resizedImages/'. $fotoMobile->gambar_mobile .'" alt=""></div>';
+            }
+
+            foreach($tipeApp as $tipeAplikasi)
+            {
+                $output3 .='<p class="ml-3">' . $tipeAplikasi->tipe_website. '</p>';
+            }
             $data= Portofolio::all()->find($id);
-            return response()->json(['data' => $data, 'ambilFoto' =>$output, 'jumlah' =>$total_row]);
+            return response()->json(['data' => $data, 'ambilFoto' =>$output, 'jumlah' =>$total_row, 'ambilFotoMobile' =>$output2, 'tipeApp' =>$output3]);
         }        
     }
 

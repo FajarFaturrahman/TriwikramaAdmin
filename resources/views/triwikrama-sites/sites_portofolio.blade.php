@@ -29,7 +29,7 @@
                 @foreach($portofolio as $row)                                  
                     <div class="p-col list mt-5 mr-3">                      
                         @if($row->platform == "Mobile Application")
-                        <a href="#" id="showMobile" data-id="{{ $row->id }}">
+                        <a href="#" id="show2" data-id="{{ $row->id }}">
                           <div class="portfolio-mobile">
                             @foreach($row->GambarMobile->take(1) as $gambarm)
                               <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarm->gambar_mobile }}" alt="">
@@ -61,7 +61,7 @@
     </div>
   </section>
 
-  
+  <!-- Modal For Web -->
   <div class="modal fade modal-portfolio" id="pModal" style="display: none;" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -98,7 +98,7 @@
                 <h6>Company Information</h6>
                 <div class="row">
                   <div class="col-4">Website Type</div>
-                  <div class="col-8" id="websiteType">: </div>
+                  <div class="col-8 row" id="websiteType">: </div>
                   <div class="col-4">Domain</div>
                   <div class="col-8" id="domain">: </div>
                   <div class="col-4">Project Created</div>
@@ -119,6 +119,63 @@
       </div>
     </div>
   </div>
+
+  <!-- Modal For Mobile -->
+
+  <div class="modal fade modal-portfolio" id="pMobile">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6 col-sm-12 col-xs-12 col-first">
+              <div id="owl-con1" class="portfolio-slide">
+                <div id="port3" class="owl-carousel owl-theme port1">
+                                   
+                </div>
+              </div>
+
+
+
+
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 col-last">
+              <h5 class="top">MOBILE APP</h5>
+              <h4 class="top" id="namaMobileApp"></h4>
+              <br>
+              <div class="attribut clearfix">
+              </div>
+              <h6>Company Information</h6>
+              <div class="row">
+                <div class="col-4">Mobile App Type</div>
+                <div class="col-8 row" id="mobileAppType">:</div>
+                <div class="col-4">Domain</div>
+                <div class="col-8" id="mobileDomain">: </div>
+                <div class="col-4">Project Created</div>
+                <div class="col-8" id="mobileProjectCreated">: </div>
+
+              </div>
+              <br>
+              <h6>Description</h6>
+              <p id="mobile_deskripsi"></p>
+
+              <a href="#" class="btn btn-danger">Visit Website</a>
+            </div>
+
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
   
 
 
@@ -188,6 +245,8 @@
             })
           });        
 
+
+          // Web        
           $('body').on('click', '#show', function(event){
             event.preventDefault();
             var mid = $(this).data('id');
@@ -212,11 +271,49 @@
                   items: data.jumlah,
                   navigation: true
                 });   
-                $('#websiteType').text(data.data.tipe_website);
+                $('#websiteType').html(data.tipeApp);
                 $('#domain').text(data.data.domain_portofolio);
                 $('#projectCreated').text(data.data.tanggal_dibuat);
                 $('#deskripsi').text(data.data.description);
                 $('#pModal').modal('show');
+                
+              },
+              error:function(xhr){
+                console.log(xhr.responseText);
+              }
+            });
+
+          });
+
+          // Mobile
+          $('body').on('click', '#show2', function(event){
+            event.preventDefault();
+            var mid = $(this).data('id');
+            $('#owl-con1').html('<div id="port1" class="owl-carousel owl-theme port1"></div>');
+            // $('.owl-con').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
+
+            $.ajax({
+              type: "GET",
+              url: "{{ url('/sites-portofolio') }}" + '/' +mid,
+              data: {id:mid},
+              dataType: "json",
+              success:function(data){
+                console.log(data);
+                $('#namaMobileApp').text(data.data.nama_aplikasi);                
+                $('#port3').html(data.ambilFotoMobile);
+                var slidercode;
+                var owl = $("#port2");
+                owl.owlCarousel({
+                  autoplayTimeout:1000,
+                  autoplay: true,
+                  items: data.jumlah,
+                  navigation: true
+                });   
+                $('#mobileAppType').html(data.tipeApp);
+                $('#mobileDomain').text(data.data.domain_portofolio);
+                $('#mobileProjectCreated').text(data.data.tanggal_dibuat);
+                $('#mobile_deskripsi').text(data.data.description);
+                $('#pMobile').modal('show');
                 
               },
               error:function(xhr){

@@ -120,9 +120,9 @@
                                                 Web App</option>
                                         </select>
                                         <div class="input-group-btn">
-                                            <button class="btn btn-danger mt-3" id="btn-danger3" type="button">
-                                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
-                                            </button>
+                                            <a href="##" class="mt-5" id="btn-danger3">
+                                                <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px" style="margin-top:35px;"/>
+                                            </a>
                                         </div>
                                     </div>                                    
                                 </div>
