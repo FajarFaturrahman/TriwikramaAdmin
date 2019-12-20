@@ -36,6 +36,14 @@
                             @endforeach
                           </div>
                         </a>    
+                        @elseif($row->platform == "Responsive Web Application")
+                        <a href="#" id="show" data-id="{{ $row->id }}">
+                          <div class="portfolio-item">
+                            @foreach($row->GambarWeb->take(1) as $gambarw)
+                              <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
+                            @endforeach
+                          </div>
+                        </a>
                         @else
                         <a href="#" id="show" data-id="{{ $row->id }}">
                           <div class="portfolio-item">
@@ -82,7 +90,7 @@
                   <div class="responsive-slide" id="resImg">                                                                   
                   </div>
                 </div>
-                <div class="owl-con">
+                <div class="owl-con" id="owl1">
                   <div id="port2" class="owl-carousel owl-theme hidden port2">
                     
                   </div>
@@ -140,10 +148,6 @@
                                    
                 </div>
               </div>
-
-
-
-
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 col-last">
               <h5 class="top">MOBILE APP</h5>
@@ -264,8 +268,8 @@
           $('body').on('click', '#show', function(event){
             event.preventDefault();
             var mid = $(this).data('id');
-            $('#owl-con1').html('<div id="port1" class="owl-carousel owl-theme port1"></div>');
-            $('.owl-con').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
+            $('#owl-con1').html('<div id="port1" class="owl-carousel owl-theme port1"></div><div class="port-con"></div>');
+            $('#owl1').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
 
             $.ajax({
               type: "GET",
@@ -277,6 +281,12 @@
                 $('#namaApp').text(data.data.nama_aplikasi);
                 $('#port2').html(data.ambilFoto);
                 $('#port1').html(data.ambilFoto);
+                if(data.data.platform == "Responsive Web Application"){
+                  $('.port-con').html('<div class="responsive-slide" id="resImg"></div>');
+                  $('#resImg').html(data.fotomr);
+                }else{
+
+                }
                 var slidercode;
                 var owl = $("#port2");
                 owl.owlCarousel({
@@ -304,7 +314,6 @@
             event.preventDefault();
             var mid = $(this).data('id');
             $('#owl-con2').html('<div id="port3" class="owl-carousel owl-theme port1"></div>');
-            // $('.owl-con').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
 
             $.ajax({
               type: "GET",
@@ -315,14 +324,6 @@
                 console.log(data);
                 $('#namaMobileApp').text(data.data.nama_aplikasi);                
                 $('#port3').html(data.ambilFotoMobile);
-                var slidercode;
-                var owl = $("#port2");
-                owl.owlCarousel({
-                  autoplayTimeout:1000,
-                  autoplay: true,
-                  items: data.jumlah,
-                  navigation: true
-                });   
                 $('#mobileAppType').html(data.tipeApp);
                 $('#mobileDomain').text(data.data.domain_portofolio);
                 $('#mobileProjectCreated').text(data.data.tanggal_dibuat);
@@ -336,6 +337,45 @@
             });
 
           });
+
+          // //Responsive
+          // $('body').on('click', '#show1', function(event){
+          //   event.preventDefault();
+          //   var mid = $(this).data('id');
+          //   $('#owl-con1').html('<div id="port1" class="owl-carousel owl-theme port1"></div><div class="responsive-slide" id="resImg1"></div>');
+          //   $('#owl1').html('<div id="port2" class="owl-carousel owl-theme hidden port2 "></div>');
+
+          //   $.ajax({
+          //     type: "GET",
+          //     url: "{{ url('/sites-portofolio') }}" + '/' +mid,
+          //     data: {id:mid},
+          //     dataType: "json",
+          //     success:function(data){
+          //       console.log(data);
+          //       $('#namaResponsiveApp').text(data.data.nama_aplikasi);                
+          //       $('#port2').html(data.ambilFoto);
+          //       $('#port1').html(data.ambilFoto);
+          //       $('#resImg1').html(data.fotomr);
+          //       var owl2 = $("#port2");
+          //       owl2.owlCarousel({
+          //         autoplayTimeout:1000,
+          //         autoplay: true,
+          //         items: data.jumlah,
+          //         navigation: true
+          //       });   
+          //       $('#responsiveAppType').html(data.tipeApp);
+          //       $('#responsiveDomain').text(data.data.domain_portofolio);
+          //       $('#responsiveProjectCreated').text(data.data.tanggal_dibuat);
+          //       $('#responsive_deskripsi').text(data.data.description);
+          //       $('#pResponsive').modal('show');
+                
+          //     },
+          //     error:function(xhr){
+          //       console.log(xhr.responseText);
+          //     }
+          //   });
+
+          // });
 
           //Filter Data With Ajax
           $('body').on('change', '#pfilter', function(e){
