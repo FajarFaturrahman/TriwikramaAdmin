@@ -222,12 +222,26 @@
                 var _html = "";
                 $.each(response, function(index, value){
                   
-                    _html += '<div class="col-3 p-col list mt-5">';
+                  _html += '<div class="p-col list mt-5 mr-3">';
+                    if(value.platform == "Mobile Application"){
+                    
                       _html += '<a href="#" id="show" data-id="'+ value.id +'">';
-                        _html += '<img src="http://triwikrama.co.id/images/project.png" alt="">';
+                        _html += '<div class="portfolio-mobile">';
+                          _html += '<img src="{{ URL::to("/") }}/resizedImages/'+ value.gambarMobile +'" alt="">';
+                        _html += '</div>';
                       _html += '</a>';
-                      _html += '<span class="mt-4">'+ value.nama_aplikasi +'</span>';
-                    _html += '</div>';
+                      
+                    
+                    }else{
+                      _html += '<a href="#" id="show" data-id="'+ value.id +'">';
+                        _html += '<div class="portfolio-item">';
+                          _html += '<img src="{{ URL::to("/") }}/resizedImages/'+ value.gambarWebsite +'" alt="">';
+                        _html += '</div>';
+                      _html += '</a>';
+                    }
+                    _html += '<span class="mt-4">'+ value.nama_aplikasi +'</span>';
+                  _html += '</div>';
+                    
                   
                 });
 
