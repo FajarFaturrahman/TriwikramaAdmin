@@ -15,7 +15,7 @@
 //     return view('auth/login');
 // });
 
-
+Auth::routes();
 //Admin Route
 
 // portofolio
@@ -27,6 +27,7 @@ Route::get('/portofolio/{id}/edit', 'PortofolioController@edit');
 Route::patch('/portofolio/{id}', 'PortofolioController@update');
 Route::delete('/portofolio/delete/image/{id}', 'PortofolioController@delete_image')->name('delete_image_portofolio');
 Route::delete('/portofolio/delete/image2/{id}', 'PortofolioController@delete_image2')->name('delete_image_portofolio2');
+Route::delete('/portofolio/delete/tipe/{id}', 'PortofolioController@delete_tipe')->name('delete_tipe_portofolio');
 Route::delete('/portofolio/{id}', 'PortofolioController@destroy');
 
 
@@ -48,15 +49,13 @@ Route::post('/inbox/filter/{status}', 'InboxController@filter')->name('inbox.fil
 // home
 Route::get('/home', 'homeController@index')->name('home');
 
-Auth::routes();
-
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Logout
-Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout')->name('logout');
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 
 //login
-Route::get('login', '\App\Http\Controllers\Auth\LoginController@index')->name('login');
+
 
 //end of admin route
 

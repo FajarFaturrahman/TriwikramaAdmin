@@ -189,6 +189,7 @@ body::before{
 
   #upload-image{
       max-height: 440px;       
+      height: 440px;
       border-bottom-right-radius: 60px;
       
   }

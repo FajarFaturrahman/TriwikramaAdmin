@@ -68,10 +68,13 @@
 
                                 <table class="border-0 mt-4">
                                     <tr>
-                                        <td><strong>Website Type</strong></td>
-                                        @foreach($portofolios->tipeAplikasi as $tipe)
-                                            <td>{{ $tipe->tipe_website}}</td>
-                                        @endforeach
+                                        <td><strong>Website Type</strong></td>                                        
+                                            <td class="row">
+                                            @foreach($portofolios->tipeAplikasi as $tipe)                                        
+                                                <p class="mt-3 ml-3" style="border-radius:100px;">{{$tipe->tipe_website}}</p>
+                                            @endforeach
+                                            </td>
+                                        
                                     </tr>
 
                                     <tr>

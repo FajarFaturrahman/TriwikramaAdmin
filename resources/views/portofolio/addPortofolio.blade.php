@@ -80,21 +80,26 @@
                                 <label for="tipe_website">
                                     <h5>Application type</h5>
                                 </label>
+                                @foreach($ambilTipe as $aT)
+                                    <div class="row mt-1 ml-2">
+                                        <div>
+                                            <p>{{ $aT->tipe_website }}</p>
+                                        </div>    
+                                            <a href="#" data-toggle="modal" data-target="#ModalUpdateTipe{{ isset($EditModal3) ? ++$EditModal3 : $EditModal3=1 }}">
+                                            <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
+                                        </a>
+                                    </div>
+                                @endforeach
+
                                 <select class="form-control input-group rounded border-0 pb-2 pt-2 mt-3 increment3"
                                     style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
                                     <option value="*" disabled selected>-- Choose Type --</option>
-                                    <option value="Corporate"
-                                        {{ old('tipe_website', @$portofolio->tipe_website) == 'Corporate' ? 'selected' : '' }}>
+                                    <option value="Corporate">
                                         Corporate</option>
-                                    <option value="E-Commerce"
-                                        {{ old('tipe_website', @$portofolio->tipe_website) == 'E-Commerce' ? 'selected' : '' }}>
+                                    <option value="E-Commerce">
                                         E-Commerce</option>
-                                    <option value="Mobile App"
-                                        {{ old('tipe_website', @$portofolio->tipe_website) == 'Mobile App' ? 'selected' : '' }}>
-                                        Mobile App</option>
-                                    <option value="Web App"
-                                        {{ old('tipe_website', @$portofolio->tipe_website) == 'Web App' ? 'selected' : '' }}>
-                                        Web App</option>                                        
+                                    <option value="Mobile App">Mobile App</option>
+                                    <option value="Web App">Web App</option>                                        
                                 </select>
 
                                     <div class="input-group-btn">
@@ -106,23 +111,16 @@
                                         <select class="form-control rounded border-0 pb-2 pt-2 mt-3 control-group"
                                             style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
                                             <option value="*" disabled selected>-- Choose Type --</option>
-                                            <option value="Corporate"
-                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'Corporate' ? 'selected' : '' }}>
+                                            <option value="Corporate">
                                                 Corporate</option>
-                                            <option value="E-Commerce"
-                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'E-Commerce' ? 'selected' : '' }}>
-                                                E-Commerce</option>
-                                            <option value="Mobile App"
-                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'Mobile App' ? 'selected' : '' }}>
-                                                Mobile App</option>
-                                            <option value="Web App"
-                                                {{ old('tipe_website', @$portofolio->tipe_website) == 'Web App' ? 'selected' : '' }}>
-                                                Web App</option>
+                                            <option value="E-Commerce">E-Commerce</option>
+                                            <option value="Mobile App">Mobile App</option>
+                                            <option value="Web App">Web App</option>
                                         </select>
                                         <div class="input-group-btn">
-                                            <button class="btn btn-danger mt-3" id="btn-danger" type="button">
+                                            <a href="##" class="mt-5" id="btn-danger3">
                                                 <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
-                                            </button>
+                                            </a>
                                         </div>
                                     </div>                                    
                                 </div>
@@ -262,13 +260,11 @@
                                     </label>
                                     <select class="form-control rounded border-0 pb-2 pt-2 mt-3"
                                         style="background-color:#EFF2F4;height:50px" name="id_client" id="id_client">
-                                        <option value=""
-                                            {{ old('id_client', @$portofolio->id_client) == '' ? 'selected' : '' }}>
-                                            Choose Client</option>
-                                        @foreach($client as $client)
-                                        <option value="{{ $client->id }}"
-                                            {{ old('id_client', @$portofolio->id_client) == '@$client->nama_client' ? 'selected' : '' }}>
-                                            {{ $client->nama_client }}</option>
+                                        <option value="">Choose Client</option>
+                                        @foreach($client as $clients)
+                                        <option value="{{ $clients->id }}" {{ (old("id", @$portofolio->id_client) == $clients->id ? "selected":"") }}>
+                                            {{ $clients->nama_client }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -306,6 +302,46 @@
     </form>
 </div>
 
+@foreach($ambilTipe as $aT)
+<div class="modal fade" id="ModalUpdateTipe{{ isset($EditModal33) ? ++$EditModal33 : $EditModal33=1 }}" tabindex="-1"
+    role="dialog" aria-labelledby="ModalUpdateTipeLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header bg-primary text-white">
+                <h5 class="modal-title" id="ModalUpdateGambarLabel">Update Tipe (ID :
+                    {{ $aT->id }})</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table>
+                    <tr>
+                        <td> <i class="fa fa-eye"></i> Views</td>
+                    </tr>
+                    <tr>
+                        <td><p>{{ $aT->tipe_website }}</p></td>
+                    </tr>
+                    <tr>
+                        <td>Anda Yakin Ingin Menghapus Tipe ?</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <form action="{{ route('delete_tipe_portofolio', $aT->id) }}" method="post">
+                    @method('DELETE')
+                    @csrf
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@endforeach
+
+<!-- End Of Edit Gambar Website -->
+
 <!-- Modal Edit Gambar Website -->
 
 @foreach($ambilFoto as $aF)
@@ -339,7 +375,7 @@
                 <form action="{{ route('delete_image_portofolio', $aF->id) }}" method="post">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
                 </form>
             </div>
         </div>
@@ -381,7 +417,7 @@
                 <form action="{{ route('delete_image_portofolio2', $aFM->id) }}" method="post">
                     @method('DELETE')
                     @csrf
-                    <button type="submit" class="btn btn-primary">Yes</button>
+                    <button type="submit" class="btn btn-primary">Delete</button>
                 </form>
             </div>
         </div>

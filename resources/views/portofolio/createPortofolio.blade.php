@@ -82,10 +82,7 @@
                                 </label>
                                 <select class="form-control input-group rounded border-0 pb-2 pt-2 mt-3 increment3"
                                     style="background-color:#EFF2F4;height:50px" name="tipe_website[]" id="tipe_website">
-<<<<<<< HEAD
                                     <option value="*" disabled selected>-- Choose Type --</option>
-=======
->>>>>>> 46a1e4ce126b9836101afbf1a8d2f1cf379c12bc
                                     <option value="Corporate"
                                         {{ old('tipe_website', @$portofolio->tipe_website) == 'Corporate' ? 'selected' : '' }}>
                                         Corporate</option>
@@ -123,7 +120,7 @@
                                                 Web App</option>
                                         </select>
                                         <div class="input-group-btn">
-                                            <button class="btn btn-danger mt-3" id="btn-danger" type="button">
+                                            <button class="btn btn-danger mt-3" id="btn-danger3" type="button">
                                                 <img src="/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-3" width="10px"/>
                                             </button>
                                         </div>
@@ -172,8 +169,7 @@
 
                         <div class="clone1 d-none">
                             <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="gambar_website[]" class="form-con
-                                trol">
+                                <input type="file" name="gambar_website[]" class="form-control">
                                 <input type="hidden" name="hidden_image" value="">
                                 <div class="input-group-btn">
                                     <button class="btn btn-danger" id="btn-danger" type="button"><i
@@ -248,9 +244,9 @@
                                             {{ old('id_client', @$portofolio->id_client) == '' ? 'selected' : '' }}>
                                             Choose Client</option>
                                         @foreach($client as $client)
-                                        <option value="{{ $client->id }}"
-                                            {{ old('id_client', @$portofolio->id_client) == '@$client->nama_client' ? 'selected' : '' }}>
-                                            {{ $client->nama_client }}</option>
+                                        <option value="{{ $client->id }}" {{ old('id_client', @$portofolio->id_client) == '@$client->nama_client' ? 'selected' : '' }}>
+                                            {{ $client->nama_client }}
+                                        </option>
                                         @endforeach
                                     </select>
                                 </div>

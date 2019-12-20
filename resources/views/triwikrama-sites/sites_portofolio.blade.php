@@ -27,22 +27,25 @@
             <div class="reload-data"></div>            
             <div class="row myPortofolio">
                 @foreach($portofolio as $row)                                  
-                    <div class="p-col list mt-5 mr-3">
-                      <a href="#" id="show" data-id="{{ $row->id }}">
+                    <div class="p-col list mt-5 mr-3">                      
                         @if($row->platform == "Mobile Application")
+                        <a href="#" id="showMobile" data-id="{{ $row->id }}">
                           <div class="portfolio-mobile">
                             @foreach($row->GambarMobile->take(1) as $gambarm)
                               <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarm->gambar_mobile }}" alt="">
                             @endforeach
                           </div>
+                        </a>    
                         @else
+                        <a href="#" id="show" data-id="{{ $row->id }}">
                           <div class="portfolio-item">
                             @foreach($row->GambarWeb->take(1) as $gambarw)
                               <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
                             @endforeach
                           </div>
+                        </a>  
                         @endif
-                      </a>
+                      
                       <span class="mt-4">{{ $row->nama_aplikasi }}</span>                      
                     </div>                 
                 @endforeach                

@@ -73,7 +73,7 @@
                                     </div>
 
                                     <div class="form-group justify-content-center">
-                                    <button type="submit" class="btn text-white font-weight-bold pt-3 pb-3" id="btnLogin">LOGIN</button>                                                                                                            
+                                    <button type="submit" class="btn text-white font-weight-bold pt-3 pb-3" id="btnLogin">LOGIN</button> 
                                     </div>
                                     
                                     @if (Route::has('password.request'))
