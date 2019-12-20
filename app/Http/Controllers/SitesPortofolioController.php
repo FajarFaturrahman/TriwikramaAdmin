@@ -53,21 +53,22 @@ class SitesPortofolioController extends Controller
             ->leftJoin('tipe_aplikasi_portofolio', 'tipe_aplikasi_portofolio.portofolio_id', '=', 'portofolio.id')
             ->select('portofolio.id', 'portofolio.nama_aplikasi', 'portofolio.platform', 'gambar_portofolio.gambar_website', 'gambar_mobile_portofolio.gambar_mobile', 'tipe_aplikasi_portofolio.tipe_website')
             ->where(['tipe_aplikasi_portofolio.tipe_website' => $status])
+            ->groupBy('portofolio.nama_aplikasi')
             ->get();
 
-            return Response::json($data);
+
         }
         foreach($data as $dataFilter){
 
-                $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-col list mt-5">
+                $output .= '<div class="p-col list mt-5 mr-3">
                             <a href="#" id="show" data-id="'. $dataFilter->id .'">';
                                 if($dataFilter->platform == "Mobile Application"){
                                     $output .= '<div class="portfolio-mobile">';
-                                        $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$dataFilter->gambar_mobile->take(1).' }}" alt="">';
+                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_mobile.'" alt="">';
                                     $output .= '</div>';
                                 } else{
                                     $output .= '<div class="portfolio-item">';
-                                        $output .= '<img src="{{ URL::to("/") }}/resizedImages/{{ '.$dataFilter->gambar_website->take(1).' }}" alt="">';
+                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
                                     $output .= '</div>';
                                 }
                 $output .= '</a>';                
