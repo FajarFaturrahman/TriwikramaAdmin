@@ -268,8 +268,8 @@
                 $('#port2').html(data.ambilFoto);
                 $('#port1').html(data.ambilFoto);
                 if(data.data.platform == "Responsive Web Application"){
-                  $('.port-con').html('<div class="responsive-slide" id="resImg"></div>');
-                  $('#resImg').html(data.fotomr);
+                  $('.port-con').html('<div class="responsive-slide" id="resImg1"></div>');
+                  $('#resImg1').html(data.fotomr);
                 }else{
 
                 }
