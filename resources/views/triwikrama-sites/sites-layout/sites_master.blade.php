@@ -117,8 +117,8 @@ img {
         </li>
 			</ul>
       <ul class="list-inline social-list">
-        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-        <li><a href="#"><i class="fa fa-instagram"></i></a></li>
+        <li><a href="https://www.facebook.com/triwikrama3/"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="https://www.instagram.com/triwikramacorp/"><i class="fa fa-instagram"></i></a></li>
         <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
       </ul>
 		</div>

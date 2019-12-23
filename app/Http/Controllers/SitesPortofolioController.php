@@ -54,11 +54,51 @@ class SitesPortofolioController extends Controller
 
     public function more_data(Request $request)
     {
+        $output = "";
         if($request->ajax()){
             $skip=$request->skip;
             $take=4;
-            $portofolio=Portofolio::skip($skip)->take($take)->orderBy('portofolio_highlight','desc')->orderBy('id','desc')->get();
-            return response()->json($portofolio);
+            $portofolio=  \DB::table('portofolio')
+            ->leftJoin('gambar_portofolio', 'gambar_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->leftJoin('gambar_mobile_portofolio', 'gambar_mobile_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->leftJoin('tipe_aplikasi_portofolio', 'tipe_aplikasi_portofolio.portofolio_id', '=', 'portofolio.id')
+            ->select('portofolio.id', 'portofolio.nama_aplikasi', 'portofolio.platform', 'gambar_portofolio.gambar_website', 'gambar_mobile_portofolio.gambar_mobile', 'tipe_aplikasi_portofolio.tipe_website')
+            ->take($take)
+            ->orderBy('portofolio_highlight','desc')
+            ->orderBy('id','desc')
+            ->groupBy('portofolio.nama_aplikasi')
+            ->skip($skip)
+            ->get();
+
+            foreach($portofolio as $portofolios){
+
+                $output .= '<div class="p-col list mt-5 mr-3">';
+                    if($portofolios->platform == "Mobile Application"){
+                        $output .= '<a href="#" id="show2" data-id="'. $portofolios->id .'">';
+                            $output .= 'div class="portfolio-mobile">';
+                                $output .= '<img src="0/resizedImages/'.$portofolios->gambar_mobile.'" alt="">';
+                            $output .= '</div>';
+                        $output .= '</a>';                        
+                    }elseif($portofolios->platform == "Responsive Web Application"){
+                        $output .= '<a href="#" id="show" data-id="'. $portofolios->id .'">';
+                            $output .= '<div class="portfolio-item">';
+                                $output .= '<img src="http:/resizedImages/'.$portofolios->gambar_website.'" alt="">';
+                            $output .= '</div>';
+                        $output .= '</a>';
+                    }else{
+                        $output .= '<a href="#" id="show" data-id="'. $portofolios->id .'">';
+                            $output .= '<div class="portfolio-item">';
+                                $output .= '<img src="/resizedImages/'.$portofolios->gambar_website.'" alt="">';
+                            $output .= '</div>';
+                        $output .= '</a>';
+                    }
+
+                        $output .= '<span class="mt-4">'. $portofolios->nama_aplikasi .'</span>';
+                    $output .= '</div>';
+                    
+            }
+            
+            return Response::json($output);
         }else{
             return response()->json('Direct Access Not Allowed!!');
         }
@@ -86,19 +126,19 @@ class SitesPortofolioController extends Controller
                             if($dataFilter->platform == "Mobile Application"){
                                 $output .= '<a href="#" id="show2" data-id="'. $dataFilter->id .'">';
                                     $output .= '<div class="portfolio-mobile">';
-                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_mobile.'" alt="">';
+                                        $output .= '<img src="/resizedImages/'.$dataFilter->gambar_mobile.'" alt="">';
                                     $output .= '</div>';
                                 $output .= '</a>';
                             }elseif($dataFilter->platform == "Responsive Web Application"){
                                 $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'">';
                                     $output .= '<div class="portfolio-item">';
-                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
+                                        $output .= '<img src="/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
                                     $output .= '</div>';
                                 $output .= '</a>';
                             }else{
                                 $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'">';
                                     $output .= '<div class="portfolio-item">';
-                                        $output .= '<img src="http://127.0.0.1:8000/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
+                                        $output .= '<img src="/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
                                     $output .= '</div>';
                                 $output .= '</a>';
                             }
