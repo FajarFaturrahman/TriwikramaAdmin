@@ -135,7 +135,7 @@ class clientController extends Controller
                 $data = Client::find($request->hidden_id);
                 $data->nama_client          = $request->nama_client;
                 $data->gambar_client        = $image_name;
-                $data->client_highlight     = $request->client_highlight;
+                $data->client_highlight     = $request->has('client_highlight');
             
                 $data->save();
                 return response()->json($data);        
