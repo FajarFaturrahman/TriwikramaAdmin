@@ -8,7 +8,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="box col-md-6">
-                    <form action="{{ url('client') }}" method="GET">
+                <form action="{{ url('client') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
                         <input type="text" name="cari" id="search" placeholder="search">                    
@@ -43,8 +43,7 @@
                             </div>
 
                             <div class="col-4">                                                            
-                                <a href="#" id="delete" data-id="{{ $row->id }}" class="delete"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""><a>
-                                
+                                <a href="#" id="delete" data-id="{{ $row->id }}" class="delete"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""><a>                                
                             </div>
                         </div>
                     </div>
@@ -55,9 +54,11 @@
             @endforeach          
         </div>
         
-        <div class="row justify-content-center">
+        
+        <div class="row justify-content-center mt-2">
             {{ $client->links() }}
-        </div>    
+        </div>
+        
     </div>
 
 

@@ -102,7 +102,7 @@
         </div>
 
         <div class="row justify-content-center mt-2">
-        {{ $portofolio->links() }}
+            {{ $portofolio->links() }}
         </div>
         
     </div>
