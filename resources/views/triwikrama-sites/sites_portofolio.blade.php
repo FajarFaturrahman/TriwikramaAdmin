@@ -27,7 +27,7 @@
             <div class="reload-data"></div>            
             <div class="row myPortofolio">
                 @foreach($portofolio as $row)                                  
-                    <div class="p-col list mt-5 mr-3">                      
+                    <div class="p-col list mt-5 mr-3">
                         @if($row->platform == "Mobile Application")
                         <a href="#" id="show2" data-id="{{ $row->id }}">
                           <div class="portfolio-mobile">
@@ -55,7 +55,7 @@
                         @endif
                       
                       <span class="mt-4">{{ $row->nama_aplikasi }}</span>                      
-                    </div>                 
+                    </div>            
                 @endforeach                
             </div>
             <center class="c-div" style="margin-top: 40px;">
@@ -218,35 +218,9 @@
               beforeSend:function(){
                 $('.btn-loadmore').html('loading...');
               },
-              success:function(response){
-                var _html = "";
-                $.each(response, function(index, value){
-                  
-                  _html += '<div class="p-col list mt-5 mr-3">';
-                    if(value.platform == "Mobile Application"){
-                    
-                      _html += '<a href="#" id="show" data-id="'+ value.id +'">';
-                        _html += '<div class="portfolio-mobile">';
-                          _html += '<img src="{{ URL::to("/") }}/resizedImages/'+ value.gambarMobile +'" alt="">';
-                        _html += '</div>';
-                      _html += '</a>';
-                      
-                    
-                    }else{
-                      _html += '<a href="#" id="show" data-id="'+ value.id +'">';
-                        _html += '<div class="portfolio-item">';
-                          _html += '<img src="{{ URL::to("/") }}/resizedImages/'+ value.gambarWebsite +'" alt="">';
-                        _html += '</div>';
-                      _html += '</a>';
-                    }
-                    _html += '<span class="mt-4">'+ value.nama_aplikasi +'</span>';
-                  _html += '</div>';
-                    
-                  
-                });
-
+              success:function(data){                           
                 
-                $('.myPortofolio').append(_html);
+                $('.myPortofolio').append(data);
                 var _totalCurrentResult = $('.list').length;
                 var _totalResult = parseInt($(".btn-loadmore").attr('data-totalResult'));
                 console.log(_totalCurrentResult);
