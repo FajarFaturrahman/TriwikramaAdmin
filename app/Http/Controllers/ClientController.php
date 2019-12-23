@@ -32,7 +32,7 @@ class clientController extends Controller
         }else{
             $data = Client::orderBy('client_highlight','desc')->orderBy('id','desc')->paginate(12);
         }
-        return view('client',['client' => $data] );
+        return view('client',['client' => $data]);
     }
     
     public function store(Request $request)
