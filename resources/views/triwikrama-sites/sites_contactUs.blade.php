@@ -12,7 +12,7 @@
 
           <div class="col-md-6">
             <h4><strong>Input your question below for information about our company:</strong></h4>
-            <form action="{{ url('sites-contact') }}" method="post">
+            <form action="{{ url('contact') }}" method="post">
             @csrf
               <div class="input-group">
                 <input type="text" class="form-control" name="name" id="name" placeholder="Name">

@@ -22,10 +22,10 @@
 
                             <div class="col-md-4">
                                 <div class="row float-right mr-2">
-                                    <a href="{{  url('/portofolio/' . $portofolio->id . '/edit') }}" class="btn mr-2" id="btnEditPortfolio">
+                                    <a href="{{  url('/admin-portofolio/' . $portofolio->id . '/edit') }}" class="btn mr-2" id="btnEditPortfolio">
                                         <img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt="" class="mt-2">
                                     </a>
-                                    <form action="{{ url('/portofolio', $portofolio->id) }}" method="POST">
+                                    <form action="{{ url('/admin-portofolio', $portofolio->id) }}" method="POST">
 				                        @method('DELETE')
 				                        @csrf
                                         <button class="btn btn-danger" type="submit" id="rounded-btn">

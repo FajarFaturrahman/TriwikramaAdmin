@@ -47,7 +47,7 @@
                 <ul class="navbar-nav" id="navbar-nav">
                     <!-- Home Button -->
                     <li class="nav-item ml-5" id="nav-item">
-                        <a href="{{ route('home') }}" data-toggle="tooltip" data-placement="bottom" title="Home">
+                        <a href="{{ route('admin-home') }}" data-toggle="tooltip" data-placement="bottom" title="Home">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;" id="nav-img">
                             </div>
@@ -56,7 +56,7 @@
                     
                     <!-- Portofolio Button -->
                     <li class="nav-item ml-5" id="nav-item2">
-                        <a href="{{ url('/portofolio') }}" data-toggle="tooltip" data-placement="bottom" title="Portofolio">
+                        <a href="{{ url('/admin-portofolio') }}" data-toggle="tooltip" data-placement="bottom" title="Portofolio">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img2">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png')}}" alt="" width="20px" height="20px"  id="nav-img2">
                             </div>
@@ -65,7 +65,7 @@
 
                     <!-- Product Button -->
                     <li class="nav-item ml-5" id="nav-item3">
-                        <a href="{{ url('/product') }}" data-toggle="tooltip" data-placement="bottom" title="Product">
+                        <a href="{{ url('/admin-product') }}" data-toggle="tooltip" data-placement="bottom" title="Product">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img3">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/desktop-monitor2.png')}}" alt="" width="20px" height="20px"  id="nav-img3">
                             </div>
@@ -74,7 +74,7 @@
 
                     <!-- Inbox Button -->
                     <li class="nav-item ml-5" id="nav-item4">
-                        <a href="{{ url('/inbox') }}" data-toggle="tooltip" data-placement="bottom" title="Inbox">
+                        <a href="{{ url('/admin-inbox') }}" data-toggle="tooltip" data-placement="bottom" title="Inbox">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img4">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/email2.png')}}" alt="" width="20px" height="20px"  id="nav-img4">
                             </div>
@@ -83,7 +83,7 @@
 
                     <!-- Client Button -->
                     <li class="nav-item ml-5" id="nav-item5">
-                        <a href="{{  url('/client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
+                        <a href="{{  url('/admin-client') }}" data-toggle="tooltip" data-placement="bottom" title="Client">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img5">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/businessman2.png')}}" alt="" width="20px" height="20px"  id="nav-img5">
                             </div>

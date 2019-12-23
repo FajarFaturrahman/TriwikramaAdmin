@@ -231,9 +231,9 @@ class PortofolioController extends Controller
                     }
                 }
             }
-            return redirect('/portofolio')->with('success', 'Data berhasil ditambahkan');
+            return redirect('/admin-portofolio')->with('success', 'Data berhasil ditambahkan');
     	}else{
-    		return redirect('/portofolio/create')->with('error', 'Data gagal ditambahkan');
+    		return redirect('/admin-portofolio/create')->with('error', 'Data gagal ditambahkan');
     	}
     }
 
@@ -432,9 +432,9 @@ class PortofolioController extends Controller
                 }
             }
             
-    		return redirect('/portofolio')->with('success', 'Data berhasil ditambahkan');
+    		return redirect('/admin-portofolio')->with('success', 'Data berhasil ditambahkan');
     	}else{
-    		return redirect('/portofolio/create')->with('error', 'Data gagal ditambahkan');
+    		return redirect('/admin-portofolio/create')->with('error', 'Data gagal ditambahkan');
     	}
     }
 
@@ -444,9 +444,9 @@ class PortofolioController extends Controller
         $status = $portofolio->delete();
 
         if($status){
-            return redirect('/portofolio')->with('success','Data Berhasil di hapus');
+            return redirect('/admin-portofolio')->with('success','Data Berhasil di hapus');
         }else{
-            return redirect('/portofolio/detailPortofolio')->with('error','Data gagal dihapus');
+            return redirect('/admin-portofolio/detailPortofolio')->with('error','Data gagal dihapus');
         }
     }
 

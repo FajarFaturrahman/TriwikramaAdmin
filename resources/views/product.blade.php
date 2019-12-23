@@ -7,7 +7,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="box col-md-6">
-                <form action="{{ url('product') }}" method="GET">
+                <form action="{{ url('admin-product') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
                         <input type="text" name="cari" id="search" placeholder="search">                    
@@ -32,7 +32,7 @@
                                         @foreach($row->gambarProduct as $gambar)                                    
                                             <div class="col-md-12">           
                                                 <div class="row justify-content-center">
-                                                    <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_product }}" width="280px" height="200px" alt=""> 
+                                                    <img src="{{ URL::to('/') }}/resizedImages/{{ $gambar->gambar_product }}" class="card-img-top" width="240px" alt=""> 
                                                 </div>                                
                                             </div>                                
                                         @endforeach                
@@ -277,7 +277,7 @@
                 if($('#action').val() == 'Add')
                 {
                     $.ajax({
-                        url: "{{ route('product.store') }}",
+                        url: "{{ route('admin-product.store') }}",
                         method: "POST",
                         data: new FormData(this),
                         contentType: false,
@@ -312,7 +312,7 @@
                 if($('#action').val() == 'Edit')
                 {
                     $.ajax({
-                        url: "{{ route('product.update') }}",
+                        url: "{{ route('admin-product.update') }}",
                         method: "POST",
                         data: new FormData(this),
                         contentType: false,
@@ -353,7 +353,7 @@
                 var mid = $(this).data('id');
                 $('#form_result').html('');
                 $.ajax({                    
-                    url: "/product/"+mid+"/edit",
+                    url: "/admin-product/"+mid+"/edit",
                     dataType: 'json',
                     success:function(html){
                         console.log(html);
@@ -380,7 +380,7 @@
                 if(conf == true){
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ url('product') }}" + '/' + mid,
+                        url: "{{ url('admin-product') }}" + '/' + mid,
                         data: {id:mid},
                         dataType: "json",
                         success:function(response){
@@ -404,7 +404,7 @@
                 if(conf == true){
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ url('product/delete') }}" + '/' + id,
+                        url: "{{ url('admin-product/delete') }}" + '/' + id,
                         data: {id:id},
                         dataType: "json",
                         success:function(response){

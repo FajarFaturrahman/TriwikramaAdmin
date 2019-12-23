@@ -24,7 +24,7 @@
         </ul>
     </div>
     @endif
-    <form id="file-upload-form" action="{{ url('portofolio', @$portofolio->id) }}" class="uploader" method="post"
+    <form id="file-upload-form" action="{{ url('admin-portofolio', @$portofolio->id) }}" class="uploader" method="post"
         accept-charset="utf-8" enctype="multipart/form-data">
         @csrf
         @if(!empty($portofolio))
@@ -270,9 +270,9 @@
                                 </div>
 
                                 <div class="row float-right mt-4 mr-3">
-                                    <button class="btn btn-link text-dark mr-3">Cancel</button>
+                                    <a href="{{ url('/admin-portofolio') }}" class="btn btn-link text-dark mr-3">Cancel</a>
                                     <button type="submit" class="btn pr-4 pl-4"
-                                        style="border-radius:100px;background:#550E99;color:white">ADD</button>
+                                        style="border-radius:100px;background:#550E99;color:white">Add</button>
                                 </div>
                             </div>
                         </div>

@@ -8,7 +8,7 @@
         <div class="row justify-content-center">
             
             <div class="box col-md-6">
-                <form action="{{ url('inbox') }}" method="GET">
+                <form action="{{ url('admin-inbox') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
                         <input type="text" name="cari" id="search" placeholder="search">                    
@@ -146,7 +146,7 @@
             event.preventDefault();
 
             $.ajax({
-                url: "{{ route('inbox.update') }}",
+                url: "{{ route('admin-inbox.update') }}",
                 method: "POST",
                 data: new FormData(this),
                 contentType: false,
@@ -170,7 +170,7 @@
 
             $.ajax({
                 type: "GET",
-                url: "{{ url('inbox') }}" + '/' + mid,
+                url: "{{ url('admin-inbox') }}" + '/' + mid,
                 data: {id:mid},
                 dataType: "json",
                 success:function(data){
@@ -200,7 +200,7 @@
             if(r == true){
                 $.ajax({
                     type: "DELETE",
-                    url: "{{ url('inbox') }}" + '/' + mid,
+                    url: "{{ url('admin-inbox') }}" + '/' + mid,
                     data: {id:mid},
                     dataType: "json",
                     success:function(response){
@@ -224,7 +224,7 @@
              $.ajax({
                 type: "post",
                 data: {status:filter},
-                url: "{{ url('inbox/filter') }}" + '/' + filter,
+                url: "{{ url('admin-inbox/filter') }}" + '/' + filter,
                 dataType: "json",
                 beforeSend: function(){
                     $(".reload-data").html('<center><div class="text-white">Reload data ... </div></center>');

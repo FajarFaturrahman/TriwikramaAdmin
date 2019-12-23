@@ -46,7 +46,7 @@
                 <ul class="navbar-nav" id="navbar-nav">
                     <!-- Home Button -->
                     <li class="nav-item ml-5" id="nav-item">
-                        <a href="{{ route('home') }}" data-toggle="tooltip" data-placement="bottom" title="Home">
+                        <a href="{{ route('admin-home') }}" data-toggle="tooltip" data-placement="bottom" title="Home">
                             <div class="rounded-circle justify-content-center" style="width: 40px; height: 40px; display: flex; align-items: center;" id="nav-container-img">
                                 <img class="img-fluid" src="{{ asset('img/IconTriwikramaAppAdmin/white/home3.png')}}" alt="" width="20px" height="20px" style="margin: 0 auto;" id="nav-img">
                             </div>

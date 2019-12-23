@@ -247,7 +247,7 @@
 
             $.ajax({
               type: "GET",
-              url: "{{ url('/sites-portofolio') }}" + '/' +mid,
+              url: "{{ url('/portofolio') }}" + '/' +mid,
               data: {id:mid},
               dataType: "json",
               success:function(data){
@@ -291,7 +291,7 @@
 
             $.ajax({
               type: "GET",
-              url: "{{ url('/sites-portofolio') }}" + '/' +mid,
+              url: "{{ url('/portofolio') }}" + '/' +mid,
               data: {id:mid},
               dataType: "json",
               success:function(data){
@@ -362,7 +362,7 @@
               $.ajax({
                 type: "post",
                 data: {status:filter},
-                url: "{{ url('/sites-portofolio/filter') }}" + '/' + filter,
+                url: "{{ url('/portofolio/filter') }}" + '/' + filter,
                 dataType: "json",
                 beforeSend: function(){
                     $(".reload-data").html('<div class="row justify-content-center"><div class="text-dark">Reload data ... </div></div>');
