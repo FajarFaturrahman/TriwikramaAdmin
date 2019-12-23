@@ -27,9 +27,9 @@
             <div class="reload-data"></div>            
             <div class="row myPortofolio">
                 @foreach($portofolio as $row)                                  
-                    <div class="p-col list mt-5 mr-3">
+                    <div class="col-md-3 col-sm-4 col-xs-12 p-con list">
                         @if($row->platform == "Mobile Application")
-                        <a href="#" id="show2" data-id="{{ $row->id }}">
+                        <a href="#" id="show2" data-id="{{ $row->id }}" class="p-col">
                           <div class="portfolio-mobile">
                             @foreach($row->GambarMobile->take(1) as $gambarm)
                               <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarm->gambar_mobile }}" alt="">
@@ -37,7 +37,7 @@
                           </div>
                         </a>    
                         @elseif($row->platform == "Responsive Web Application")
-                        <a href="#" id="show" data-id="{{ $row->id }}">
+                        <a href="#" id="show" data-id="{{ $row->id }}" class="p-col">
                           <div class="portfolio-item">
                             @foreach($row->GambarWeb->take(1) as $gambarw)
                               <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
@@ -45,7 +45,7 @@
                           </div>
                         </a>
                         @else
-                        <a href="#" id="show" data-id="{{ $row->id }}">
+                        <a href="#" id="show" data-id="{{ $row->id }}" class="p-col">
                           <div class="portfolio-item">
                             @foreach($row->GambarWeb->take(1) as $gambarw)
                               <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
