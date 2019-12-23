@@ -15,13 +15,10 @@
                     </div>                    
                 </form>    
             </div>
-            
-
             <div class="col-md-6">
                 <button type="button" class="btn float-right text-white btn-add" name="create_data" id="create_data" style="width: 150px; height: 40px; border-radius: 100px; margin-top: 10px; font-size: 14px;"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="16px" height="16px" alt="" class="mr-2">ADD CLIENT</button>
             </div>
         </div>
-
         <div class="row mt-3" id="tampil">
             @foreach($client as $row)
             <div class="col-md-3 mt-4" id="show_client_{{ $row->id }}">
@@ -31,24 +28,20 @@
                             <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block card-img-top" style="padding: 60px;" alt="">
                         </div>
                     </div>
-
                     <div class="overlay">
                         <div class="row mx-auto" id="slideup">
                             <div class="col-4">
                                 <a href="#" name="edit" data-id="{{ $row->id }}" class="edit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
-
                             <div class="col-4">
                                 <a href="{{ url('/portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
-
                             <div class="col-4">                                                            
                                 <a href="#" id="delete" data-id="{{ $row->id }}" class="delete"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""><a>                                
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <p class="text-center text-white mt-4" style="font-size: 18px;">{{ $row->nama_client }}</p>
             </div>  
             @endforeach          
@@ -61,60 +54,54 @@
         
     </div>
 
-
     <!-- Modal For Add/Edit Client -->
 
-        <div class="modal fade" id="formModal" role="dialog">
-            <div class="modal-dialog modal-lg modal-dialog-centered">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">ADD CLIENT</h4>
-                        <button type="button" class="close" data-dismiss="modal" arial-label="Close" id="iconCancel">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>                    
-                    <div class="modal-body">                        
-                        <span id="form_result"></span>
-                        <form method="post" id="sample_form" enctype="multipart/form-data">    
-                            @csrf
-                            <input type="hidden" name="_token" value="{{ csrf_token() }}" id="">
-                            <div class="row">
-                                <div class="col-md-5">
+    <div class="modal fade" id="formModal" role="dialog">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">ADD CLIENT</h4>
+                    <button type="button" class="close" data-dismiss="modal" arial-label="Close" id="iconCancel">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>                    
+                <div class="modal-body">                        
+                    <span id="form_result"></span>
+                    <form method="post" id="sample_form" enctype="multipart/form-data">    
+                        @csrf
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" id="">
+                        <div class="row">
+                            <div class="col-md-5">
+                                <div class="row justify-content-center">                                        
+                                    <span id="store_image"><img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" /></span>
+                                </div>      
+                                <div class="row" style="position: absolute; bottom: 0;">
+                                    <div class="col-3">
+                                        <label class="btn-file-lab p-3 mt-2" id="con">
+                                            <img id="img-client" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/photo2.png" width="25px" alt="">
+                                            <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
+                                        </label>
+                                    </div>
+                                    <div class="col-9 p-4">
+                                        <span id="file-selected" class="">click the button to add a file</span>
+                                    </div>
+                                </div>
+                            </div>  
+                            <div class="col-md-7">                                                    
+                                <div class="form-group">
+                                    <label for="nama_client">Client Name</label>
+                                    <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="nama_client" id="nama_client">
+                                </div>
+                                <div class="form-group">                                        
+                                    <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" value="1" name="client_highlight" id="highlight">
+                                    <label for="highlight">Highlight</label>
+                                </div>
+                                <div class="form group">
+                                    <label for="portfolio_info">Portfolio Info</label>
                                     <div class="row justify-content-center">                                        
-                                        <span id="store_image"><img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" /></span>
+                                        <span id="store_portofolio"></span>
                                     </div>
-                                        
-                                    <div class="row">
-                                        <div class="col-3">
-                                            <label class="btn-file-lab p-3 mt-2" id="con">
-                                                <img id="img-client" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/photo2.png" width="25px" alt="">
-                                                <input type="file" style="display: none;" id="gambar_client" name="gambar_client">
-                                            </label>
-                                        </div>
-                                        <div class="col-9 p-4">
-                                            <span id="file-selected" class="">click the button to add a file</span>
-                                        </div>
-                                    </div>
-                                </div>  
-
-                                <div class="col-md-7">                                                    
-                                    <div class="form-group">
-                                        <label for="nama_client">Client Name</label>
-                                        <input  class="form-control mt-3 rounded border-0" style="background-color:#EFF2F4;" type="text" name="nama_client" id="nama_client">
-                                    </div>
-
-                                    <div class="form-group">                                        
-                                        <input class="switch-input mt-3 rounded border-0" style="background-color:#EFF2F4;" type="checkbox" value="1" name="client_highlight" id="highlight">
-                                        <label for="highlight">Highlight</label>
-                                    </div>
-
-                                    <div class="form group">
-                                        <label for="portfolio_info">Portfolio Info</label>
-                                        <div class="row justify-content-center">                                        
-                                            <span id="store_portofolio"></span>
-                                        </div>
-
-                                    <div class="row float-right mr-3 mb-0 mt-5">                                        
+                                    <div class="row float-right mr-3 mt-5">                                        
                                         <button class="btn btn-link text-dark mr-3" data-dismiss="modal" id="buttonCancel">CANCEL</button>
                                         <input type="hidden" name="action" id="action">
                                         <input type="hidden" name="hidden_id" id="hidden_id">
@@ -152,6 +139,7 @@
                 $("#store_image").html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
                 $("#file-selected").html('click the button to add a file');
                 $("#store-portofolio").html('');
+                $(".alert").remove();
             });
 
             $("#iconCancel").click(function(){
