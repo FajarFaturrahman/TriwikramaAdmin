@@ -12,8 +12,7 @@
                     <div class="card-header">
                         <div class="row justify-content-center">
                             <div class="col-md-8">
-                                <div class="row">
-                                    
+                                <div class="row ml-3">
                                     <h4>{{ $portofolio->nama_aplikasi }}</h4>                        
                                     <pre><h4> || </h4></pre>
                                     <h4 class="text-danger">{{ $portofolio->platform }}</h4>
@@ -81,7 +80,7 @@
 
                                 <tr>
                                     <td><strong>STATUS</strong></td>
-                                    <td><p class="bg-light mt-3" style="border-radius:100px;">{{ $portofolio->status }}</p></td>
+                                    <td><p class="mt-3">{{ $portofolio->status }}</p></td>
                                 </tr>
                             </table>
                         </div>
