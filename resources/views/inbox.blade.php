@@ -74,7 +74,7 @@
             </div>
         </div>
 
-        <div class="row justify-content-center mt-3">
+        <div class="row justify-content-center mt-4">
             {{ $message->links() }}
         </div>
 

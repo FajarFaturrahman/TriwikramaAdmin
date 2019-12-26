@@ -43,7 +43,7 @@ class ProductController extends Controller
             'nama_product'      => 'required',
             'deskripsi'         => 'required',
             'gambar_product'    => 'required',
-            'gambar_product.*'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+            'gambar_product.*'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         );
 
         $error = Validator::make($request->all(), $rules);
@@ -115,6 +115,7 @@ class ProductController extends Controller
         $rules = array(
             'nama_product'  => 'required',
             'deskripsi'     => 'required',
+            'gambar_product.*'  => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         );
 
         $error = Validator::make($request->all(), $rules);

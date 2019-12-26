@@ -60,9 +60,9 @@ class PortofolioController extends Controller
             'tanggal_dibuat' => 'required',
             'portofolio_highlight' => '',
             // 'gambar_website' => 'required',
-            // 'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:20480',
+            'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             // 'gambar_mobile'  => 'required',
-            // 'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     	];
 		$this->validate($request,$rule);
 
@@ -265,6 +265,8 @@ class PortofolioController extends Controller
             'description' => 'required',
             'id_client' => 'required',
             'tanggal_dibuat' => 'required',
+            'gambar_website.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'gambar_mobile.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
     	];
 		$this->validate($request,$rule);
 

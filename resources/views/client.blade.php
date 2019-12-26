@@ -11,47 +11,57 @@
                 <form action="{{ url('admin-client') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
-                        <input type="text" name="cari" id="search" placeholder="search">                    
-                    </div>                    
-                </form>    
+                        <input type="text" name="cari" id="search" placeholder="search">
+                    </div>
+                </form>
             </div>
+
             <div class="col-md-6">
-                <button type="button" class="btn float-right text-white btn-add" name="create_data" id="create_data" style="width: 150px; height: 40px; border-radius: 100px; margin-top: 10px; font-size: 14px;"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="16px" height="16px" alt="" class="mr-2">ADD CLIENT</button>
+                <button type="button" class="btn float-right text-white btn-add" name="create_data" id="create_data" style="width: 150px; height: 40px; border-radius: 100px; margin-top: 10px; font-size: 14px;">
+                    <img src="{{ asset('img/IconTriwikramaAppAdmin/white/add2.png') }}" width="16px" height="16px" alt="" class="mr-2">ADD CLIENT
+                </button>
             </div>
         </div>
+
         <div class="row mt-3" id="tampil">
             @foreach($client as $row)
-            <div class="col-md-3 mt-4" id="show_client_{{ $row->id }}">
-                <div class="card border-0" id="cardOverlay">
-                    <div class="row justify-content-center" style="height: 240px;">
-                        <div class="col-12">
-                            <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block card-img-top" style="padding: 60px;" alt="">
-                        </div>
-                    </div>
-                    <div class="overlay">
-                        <div class="row mx-auto" id="slideup">
-                            <div class="col-4">
-                                <a href="#" name="edit" data-id="{{ $row->id }}" class="edit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-                            <div class="col-4">
-                                <a href="{{ url('/admin-portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
-                            </div>
-                            <div class="col-4">                                                            
-                                <a href="#" id="delete" data-id="{{ $row->id }}" class="delete"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""><a>                                
+                <div class="col-md-3 mt-4" id="show_client_{{ $row->id }}">
+                    <div class="card border-0" id="cardOverlay">
+                        <div class="row justify-content-center" s style="height: 240px;">
+                            <div class="col-9">
+                                <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="d-block card-img-top p-absolute" style="padding: 20px;top:0;right:0;left:0;bottom:0;" alt="">
                             </div>
                         </div>
+                        <div class="overlay">
+                            <div class="row mx-auto" id="slideup">
+                                <div class="col-4">
+                                    <a href="##" name="edit" data-id="{{ $row->id }}" class="edit">
+                                        <img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="col-4">
+                                    <a href="{{ url('/admin-portofolio/' . $row->id . '/portofolio') }}">
+                                        <img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt="">
+                                    </a>
+                                </div>
+
+                                <div class="col-4">
+                                    <a href="##" id="delete" data-id="{{ $row->id }}" class="delete">
+                                        <img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
                     </div>
+                    <p class="text-center text-white mt-4" style="font-size: 18px;">{{ $row->nama_client }}</p>
                 </div>
-                <p class="text-center text-white mt-4" style="font-size: 18px;">{{ $row->nama_client }}</p>
-            </div>  
-            @endforeach          
+            @endforeach
         </div>
-        
-        
-        <div class="row justify-content-center mt-2">
+
+        <div class="row justify-content-center mt-4">
             {{ $client->links() }}
         </div>
-        
     </div>
 
     <!-- Modal For Add/Edit Client -->
@@ -83,7 +93,7 @@
                                         </label>
                                     </div>
                                     <div class="col-9 p-4">
-                                        <span id="file-selected" class="">click the button to add a file</span>
+                                        <span id="file-selected" class="">click the button to add a file (Max: 2048 KB)</span>
                                     </div>
                                 </div>
                             </div>  
@@ -137,7 +147,7 @@
             $("#buttonCancel").click(function(){
                 $("#sample_form")[0].reset();
                 $("#store_image").html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
-                $("#file-selected").html('click the button to add a file');
+                $("#file-selected").html('click the button to add a file (Max: 2048 KB)');
                 $("#store-portofolio").html('');
                 $(".alert").remove();
             });
@@ -145,7 +155,7 @@
             $("#iconCancel").click(function(){
                 $("#sample_form")[0].reset();
                 $("#store_image").html('<img src="{{ URL::to("/") }}/img/IconTriwikramaAppAdmin/black/photo.png" width="160" style="opacity: 40%;" class="img-thumbnail p-4" />');
-                $("#file-selected").html('click the button to add a file');
+                $("#file-selected").html('click the button to add a file (Max: 2048 KB)');
             });
 
             $('#create_data').click(function(){

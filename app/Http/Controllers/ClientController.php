@@ -39,7 +39,7 @@ class clientController extends Controller
     {
         $rules = array(
             'nama_client'   => 'required',
-            'gambar_client' => 'required|mimes:jpeg,jpg,png|max:100000',
+            'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
         );
 
         $error  = Validator::make($request->all(), $rules);
@@ -99,7 +99,7 @@ class clientController extends Controller
         {
             $rules = array(
                 'nama_client'   => 'required',
-                'gambar_client' => 'required|mimes:jpeg,jpg,png|max:100000',
+                'gambar_client' => 'required|mimes:jpeg,jpg,png|max:2048',
             );
             $error = Validator::make($request->all(), $rules);
             if($error->fails())

@@ -74,7 +74,7 @@
             @endforeach    
         </div>
 
-        <div class="row justify-content-center">
+        <div class="row justify-content-center mt-4">
             {{ $product->links() }}
         </div>        
     </div>
@@ -167,6 +167,7 @@
                                             <div class="row justify-content-center mt-4">
                                                 <button id="button-add-more-image" class="btn" style="background: #550E99; color: #fff;" type="button"><img class="mr-2" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/add2.png" width="14px" />Add More Image</button>
                                             </div>
+                                            <p class="mt-2">(File Max: 2048 KB)</p>
                                         </div>                                        
                                     </div>
                                     <hr class="">   

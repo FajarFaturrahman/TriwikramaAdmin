@@ -157,25 +157,27 @@
                     </div>
 
                     <div class="card-body overflow-auto">
-
                         <div class="input-group control-group increment1">
-                            <input type="file" name="gambar_website[]" class="form-control">
-                            <input type="hidden" name="hidden_image" value="@$portofolio->gambarWeb">
-                            <div class="input-group-btn">
-                                <button class="btn btn-success" id="btn-success" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i>Add</button>
-                            </div>
+                            <input type="file" name="gambar_website[]">
+                            <input type="hidden" name="hidden_image" value="@$portofolio->gambarWeb">                            
                         </div>
 
                         <div class="clone1 d-none">
-                            <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="gambar_website[]" class="form-control">
-                                <input type="hidden" name="hidden_image" value="">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-danger" id="btn-danger" type="button"><i
-                                            class="glyphicon glyphicon-remove"></i>Remove</button>
+                            <div class="control-group row input-group" style="margin-top:10px">
+                                <div class="col-10">
+                                    <input type="file" name="gambar_website[]">
+                                    <input type="hidden" name="hidden_image" value="">
+                                </div>
+                                <div class="input-group-btn col-2">
+                                    <a style="width: 20px; height: 20px; padding: 2px;" id="btn-danger" type="button">
+                                        <img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-2" width="10px" alt="">
+                                    </a>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-4">
+                            <button id="btn-success" class="btn" style="background: #550E99; color: #fff;" type="button"><img class="mr-2" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/add2.png" width="14px" />Add More Image</button>
                         </div>
                     </div>
                 </div>
@@ -187,21 +189,24 @@
 
                     <div class="card-body overflow-auto">
                         <div class="input-group control-group increment2">
-                            <input type="file" name="gambar_mobile[]" class="form-control">
-                            <div class="input-group-btn">
-                                <button class="btn btn-success" id="btn-success2" type="button"><i
-                                        class="glyphicon glyphicon-plus"></i>Add</button>
-                            </div>
+                            <input type="file" name="gambar_mobile[]">                            
                         </div>
 
                         <div class="clone2 d-none">
-                            <div class="control-group input-group" style="margin-top:10px">
-                                <input type="file" name="gambar_mobile[]" class="form-control">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-danger" id="btn-danger2" type="button"><i
-                                            class="glyphicon glyphicon-remove"></i> Remove</button>
+                            <div class="control-group row input-group" style="margin-top:10px">
+                                <div class="col-10">
+                                    <input type="file" name="gambar_mobile[]">
+                                </div>                                  
+                                <div class="input-group-btn col-2">
+                                    <a style="width: 20px; height: 20px; padding: 2px;" id="btn-danger2" type="button">
+                                        <img src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/red/close-cross (1).png" class="ml-2" width="10px" alt="">
+                                    </a>
                                 </div>
                             </div>
+                        </div>
+
+                        <div class="row justify-content-center mt-4">
+                            <button id="btn-success2" class="btn" style="background: #550E99; color: #fff;" type="button"><img class="mr-2" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/add2.png" width="14px" />Add More Image</button>
                         </div>
                     </div>
                 </div>
