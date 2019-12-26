@@ -32,7 +32,7 @@
                         <a href="#" id="show2" data-id="{{ $row->id }}" class="p-col">
                           <div class="portfolio-mobile">
                             @foreach($row->GambarMobile->take(1) as $gambarm)
-                              <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarm->gambar_mobile }}" alt="">
+                              <img class="img-fluid" src="{{ URL::to('/') }}/resizedImages/{{ $gambarm->gambar_mobile }}" alt="">
                             @endforeach
                           </div>
                         </a>    
@@ -40,7 +40,7 @@
                         <a href="#" id="show" data-id="{{ $row->id }}" class="p-col">
                           <div class="portfolio-item">
                             @foreach($row->GambarWeb->take(1) as $gambarw)
-                              <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
+                              <img class="img-fluid" src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
                             @endforeach
                           </div>
                         </a>
@@ -48,7 +48,7 @@
                         <a href="#" id="show" data-id="{{ $row->id }}" class="p-col">
                           <div class="portfolio-item">
                             @foreach($row->GambarWeb->take(1) as $gambarw)
-                              <img src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
+                              <img class="img-fluid" src="{{ URL::to('/') }}/resizedImages/{{ $gambarw->gambar_website }}" alt="">
                             @endforeach
                           </div>
                         </a>  
