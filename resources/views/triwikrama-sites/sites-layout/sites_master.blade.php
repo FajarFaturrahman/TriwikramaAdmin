@@ -94,26 +94,26 @@ img {
 			</a>
 			<ul class="nav navbar-nav side-list">
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('sitesHome') }}">Service</a>
+          <a class="nav-link active" href="{{ route('home') }}">Service</a>
         </li>
 				<li class="nav-item">
-					<a class="nav-link " href="{{ route('sitesAbout') }}">About Us</a>
+					<a class="nav-link " href="{{ route('about') }}">About Us</a>
 				</li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('sitesClient') }}">Our Client</a>
+          <a class="nav-link " href="{{ route('client') }}">Our Client</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('sitesPortofolio') }}">Portfolio</a>
+          <a class="nav-link " href="{{ route('portofolio') }}">Portfolio</a>
         </li>
 
 		<li class="nav-item">
-			<a class="nav-link " href="{{ route('sitesProduct') }}">Product</a>
+			<a class="nav-link " href="{{ route('product') }}">Product</a>
 		</li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="http://triwikrama.co.id/?page=maintenance">Blog</a>
 				</li> -->
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('sitesContact') }}">Contact Us</a>
+          <a class="nav-link " href="{{ route('contact') }}">Contact Us</a>
         </li>
 			</ul>
       <ul class="list-inline social-list">

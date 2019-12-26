@@ -8,7 +8,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="box col-md-6">
-                    <form action="{{ url('client') }}" method="GET">
+                <form action="{{ url('admin-client') }}" method="GET">
                     <div class="forSearch">
                         <span class="icon"><i class="fa fa-search fa-1x"></i></span>
                         <input type="text" name="cari" id="search" placeholder="search">                    
@@ -34,7 +34,7 @@
                                 <a href="#" name="edit" data-id="{{ $row->id }}" class="edit"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/pencil-edit-button2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
                             <div class="col-4">
-                                <a href="{{ url('/portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
+                                <a href="{{ url('/admin-portofolio/' . $row->id . '/portofolio') }}"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/list2.png') }}" width="20px" height="20px" alt=""></a>
                             </div>
                             <div class="col-4">                                                            
                                 <a href="#" id="delete" data-id="{{ $row->id }}" class="delete"><img src="{{ asset('img/IconTriwikramaAppAdmin/white/rubbish-bin2.png') }}" width="20px" height="20px" alt=""><a>                                
@@ -45,10 +45,13 @@
                 <p class="text-center text-white mt-4" style="font-size: 18px;">{{ $row->nama_client }}</p>
             </div>  
             @endforeach          
-        </div>       
-        <div class="row justify-content-center">
+        </div>
+        
+        
+        <div class="row justify-content-center mt-2">
             {{ $client->links() }}
-        </div>    
+        </div>
+        
     </div>
 
     <!-- Modal For Add/Edit Client -->
@@ -157,7 +160,7 @@
                 if($('#action').val() == 'Add')
                 {
                     $.ajax({
-                        url : "{{ route('client.store') }}",
+                        url : "{{ route('admin-client.store') }}",
                         method: "POST",
                         data : new FormData(this),
                         contentType: false,
@@ -193,7 +196,7 @@
                 if($('#action').val() == 'Edit')
                 {
                     $.ajax({
-                        url: "{{ route('client.update') }}",
+                        url: "{{ route('admin-client.update') }}",
                         method: "POST",
                         data: new FormData(this),
                         contentType: false,
@@ -232,7 +235,7 @@
                 var mid = $(this).data('id');            
                 $('#form_result').html('');
                 $.ajax({                    
-                    url:"/client/"+mid+"/edit",
+                    url:"/admin-client/"+mid+"/edit",
                     dataType: 'json',
                     success:function(html){
                         console.log(html);                        
@@ -261,7 +264,7 @@
                 if(conf == true){
                     $.ajax({
                         type: "DELETE",
-                        url: "{{ url('client') }}" + '/' + mid,
+                        url: "{{ url('admin-client') }}" + '/' + mid,
                         data: {id:mid},
                         dataType: 'json',
                         success:function(response){

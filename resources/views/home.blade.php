@@ -15,7 +15,7 @@
                     <img class="card-img-top" src="{{ asset('img/ImageTriwikramajpg/compressed/forPortofolio.jpg') }}" alt="image 1">
                     <div class="card-body">
                         <h4 class="card-title">Set Your Portfolio</h4>
-                        <a href="{{ route('portofolio') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart" style="background-color: #D91E18;color: white;border-radius: 100px;padding-right: 35px;padding-left: 35px;padding-top: 10px;padding-bottom: 10px;">START</a>
+                        <a href="{{ route('admin-portofolio') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart" style="background-color: #D91E18;color: white;border-radius: 100px;padding-right: 35px;padding-left: 35px;padding-top: 10px;padding-bottom: 10px;">START</a>
                     </div>
                 </div>
             </div>
@@ -25,7 +25,7 @@
                     <img class="card-img-top" src="{{ asset('img/ImageTriwikramajpg/compressed/forProduct.jpg') }}" alt="image 1">
                     <div class="card-body">
                         <h4 class="card-title">Set Your Product</h4>
-                        <a href="{{ url('product') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart" style="background-color: #D91E18;color: white;border-radius: 100px;padding-right: 35px;padding-left: 35px;padding-top: 10px;padding-bottom: 10px;">START</a>
+                        <a href="{{ url('admin-product') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart" style="background-color: #D91E18;color: white;border-radius: 100px;padding-right: 35px;padding-left: 35px;padding-top: 10px;padding-bottom: 10px;">START</a>
                     </div>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                     <img class="card-img-top" src="{{ asset('img/ImageTriwikramajpg/compressed/forInbox.jpg') }}" alt="image 1">
                     <div class="card-body">
                         <h4 class="card-title">See Your Inbox</h4>
-                        <a href="{{ url('/inbox') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart" style="background-color: #D91E18;color: white;border-radius: 100px;padding-right: 35px;padding-left: 35px;padding-top: 10px;padding-bottom: 10px;">START</a>
+                        <a href="{{ url('/admin-inbox') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart" style="background-color: #D91E18;color: white;border-radius: 100px;padding-right: 35px;padding-left: 35px;padding-top: 10px;padding-bottom: 10px;">START</a>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                     <img class="card-img-top" src="{{ asset('img/ImageTriwikramajpg/compressed/forClient.jpg') }}" alt="image 1">
                     <div class="card-body">
                         <h4 class="card-title">See Your Client</h4>
-                        <a href="{{ url('/client') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart">START</a>
+                        <a href="{{ url('/admin-client') }}" class="btn float-right mt-5 font-weight-bold" id="btnStart">START</a>
                     </div>
                 </div>
             </div>

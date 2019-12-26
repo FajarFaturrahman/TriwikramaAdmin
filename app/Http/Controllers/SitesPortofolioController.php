@@ -72,21 +72,21 @@ class SitesPortofolioController extends Controller
 
             foreach($portofolio as $portofolios){
 
-                $output .= '<div class="p-col list mt-5 mr-3">';
+                $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-con list">';
                     if($portofolios->platform == "Mobile Application"){
-                        $output .= '<a href="#" id="show2" data-id="'. $portofolios->id .'">';
+                        $output .= '<a href="#" id="show2" data-id="'. $portofolios->id .'" class="p-col">';
                             $output .= 'div class="portfolio-mobile">';
                                 $output .= '<img src="0/resizedImages/'.$portofolios->gambar_mobile.'" alt="">';
                             $output .= '</div>';
                         $output .= '</a>';                        
                     }elseif($portofolios->platform == "Responsive Web Application"){
-                        $output .= '<a href="#" id="show" data-id="'. $portofolios->id .'">';
+                        $output .= '<a href="#" id="show" data-id="'. $portofolios->id .'" class="p-col">';
                             $output .= '<div class="portfolio-item">';
                                 $output .= '<img src="http:/resizedImages/'.$portofolios->gambar_website.'" alt="">';
                             $output .= '</div>';
                         $output .= '</a>';
                     }else{
-                        $output .= '<a href="#" id="show" data-id="'. $portofolios->id .'">';
+                        $output .= '<a href="#" id="show" data-id="'. $portofolios->id .'" class="p-col">';
                             $output .= '<div class="portfolio-item">';
                                 $output .= '<img src="/resizedImages/'.$portofolios->gambar_website.'" alt="">';
                             $output .= '</div>';
@@ -122,21 +122,21 @@ class SitesPortofolioController extends Controller
         }
         foreach($data as $dataFilter){
 
-                $output .= '<div class="p-col list mt-5 mr-3">';
+                $output .= '<div class="col-md-3 col-sm-4 col-xs-12 p-con list">';
                             if($dataFilter->platform == "Mobile Application"){
-                                $output .= '<a href="#" id="show2" data-id="'. $dataFilter->id .'">';
+                                $output .= '<a href="#" id="show2" data-id="'. $dataFilter->id .'" class="p-col">';
                                     $output .= '<div class="portfolio-mobile">';
                                         $output .= '<img src="/resizedImages/'.$dataFilter->gambar_mobile.'" alt="">';
                                     $output .= '</div>';
                                 $output .= '</a>';
                             }elseif($dataFilter->platform == "Responsive Web Application"){
-                                $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'">';
+                                $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'" class="p-col">';
                                     $output .= '<div class="portfolio-item">';
                                         $output .= '<img src="/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
                                     $output .= '</div>';
                                 $output .= '</a>';
                             }else{
-                                $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'">';
+                                $output .= '<a href="#" id="show" data-id="'. $dataFilter->id .'" class="p-col">';
                                     $output .= '<div class="portfolio-item">';
                                         $output .= '<img src="/resizedImages/'.$dataFilter->gambar_website.'" alt="">';
                                     $output .= '</div>';

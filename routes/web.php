@@ -19,37 +19,37 @@ Auth::routes();
 //Admin Route
 
 // portofolio
-Route::get('/portofolio', 'PortofolioController@index')->name('portofolio');
-Route::get('/portofolio/create', 'PortofolioController@create');
-Route::get('/portofolio/{id}/detailPortofolio', 'PortofolioController@show');
-Route::post('/portofolio', 'PortofolioController@store');
-Route::get('/portofolio/{id}/edit', 'PortofolioController@edit');
-Route::patch('/portofolio/{id}', 'PortofolioController@update');
-Route::delete('/portofolio/delete/image/{id}', 'PortofolioController@delete_image')->name('delete_image_portofolio');
-Route::delete('/portofolio/delete/image2/{id}', 'PortofolioController@delete_image2')->name('delete_image_portofolio2');
-Route::delete('/portofolio/delete/tipe/{id}', 'PortofolioController@delete_tipe')->name('delete_tipe_portofolio');
-Route::delete('/portofolio/{id}', 'PortofolioController@destroy');
+Route::get('/admin-portofolio', 'PortofolioController@index')->name('admin-portofolio');
+Route::get('/admin-portofolio/create', 'PortofolioController@create');
+Route::get('/admin-portofolio/{id}/detailPortofolio', 'PortofolioController@show');
+Route::post('/admin-portofolio', 'PortofolioController@store');
+Route::get('/admin-portofolio/{id}/edit', 'PortofolioController@edit');
+Route::patch('/admin-portofolio/{id}', 'PortofolioController@update');
+Route::delete('/admin-portofolio/delete/image/{id}', 'PortofolioController@delete_image')->name('delete_image_portofolio');
+Route::delete('/admin-portofolio/delete/image2/{id}', 'PortofolioController@delete_image2')->name('delete_image_portofolio2');
+Route::delete('/admin-portofolio/delete/tipe/{id}', 'PortofolioController@delete_tipe')->name('delete_tipe_portofolio');
+Route::delete('admin-portofolio/{id}', 'PortofolioController@destroy');
 
 
 // product
-Route::resource('product', 'ProductController');
-Route::post('product/update', 'ProductController@update')->name('product.update');
-Route::delete('product/delete/{id}', 'ProductController@destroyImage')->name('product.delete');
+Route::resource('admin-product', 'ProductController');
+Route::post('admin-product/update', 'ProductController@update')->name('admin-product.update');
+Route::delete('admin-product/delete/{id}', 'ProductController@destroyImage')->name('admin-product.delete');
 
 // client
-Route::resource('client', 'ClientController');
-Route::post('client/update', 'ClientController@update')->name('client.update');
-Route::get('/portofolio/{id}/portofolio', 'ClientController@showPortofolio');
+Route::resource('admin-client', 'ClientController');
+Route::post('admin-client/update', 'ClientController@update')->name('admin-client.update');
+Route::get('/admin-portofolio/{id}/portofolio', 'ClientController@showPortofolio');
 // Route::get('client/destroy/{id}', 'ClientController@destroy');
 
 // inbox
-Route::resource('/inbox', 'InboxController');
-Route::post('inbox/update', 'InboxController@update')->name('inbox.update');
-Route::post('/inbox/filter/{status}', 'InboxController@filter')->name('inbox.filter');
+Route::resource('/admin-inbox', 'InboxController');
+Route::post('admin-inbox/update', 'InboxController@update')->name('admin-inbox.update');
+Route::post('/admin-inbox/filter/{status}', 'InboxController@filter')->name('admin-inbox.filter');
 // home
-Route::get('/home', 'homeController@index')->name('home');
+Route::get('/admin-home', 'homeController@index')->name('admin-home');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin-home', 'HomeController@index')->name('admin-home');
 
 // Logout
 Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
@@ -65,22 +65,24 @@ Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 //sites route
 
 //home
-Route::get('/sites-home', 'SitesHomeController@index')->name('sitesHome');
+Route::get('/home', 'SitesHomeController@index')->name('home');
 
 //about
-Route::get('/sites-about', 'SitesAboutUsController@index')->name('sitesAbout');
+Route::get('/about', 'SitesAboutUsController@index')->name('about');
 
 //client
-Route::get('/sites-client', 'SitesClientController@index')->name('sitesClient');
+Route::get('/client', 'SitesClientController@index')->name('client');
 Route::get('load-more-data','SitesClientController@more_data');
 
 //portofolio
-Route::get('/sites-portofolio', 'SitesPortofolioController@index')->name('sitesPortofolio');
-Route::get('/sites-portofolio/{id}', 'SitesPortofolioController@show');
+Route::get('/portofolio', 'SitesPortofolioController@index')->name('portofolio');
+Route::get('/portofolio/{id}', 'SitesPortofolioController@show');
 Route::get('load-more-data-port','SitesPortofolioController@more_data');
-Route::post('/sites-portofolio/filter/{status}', 'SitesPortofolioController@filter')->name('sitePortofolio.filter');
+Route::post('/portofolio/filter/{status}', 'SitesPortofolioController@filter')->name('portofolio.filter');
 
 //product
-Route::get('/sites-product', 'SitesProductController@index')->name('sitesProduct');
-Route::get('/sites-contact', 'SitesContactUsController@index')->name('sitesContact');
-Route::post('/sites-contact', 'SitesContactUsController@store')->name('sitesContact.store');
+Route::get('/product', 'SitesProductController@index')->name('product');
+
+// Contact
+Route::get('/contact', 'SitesContactUsController@index')->name('contact');
+Route::post('/contact', 'SitesContactUsController@store')->name('contact.store');
