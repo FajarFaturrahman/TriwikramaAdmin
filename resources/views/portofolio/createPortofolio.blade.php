@@ -179,6 +179,7 @@
                         <div class="row justify-content-center mt-4">
                             <button id="btn-success" class="btn" style="background: #550E99; color: #fff;" type="button"><img class="mr-2" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/add2.png" width="14px" />Add More Image</button>
                         </div>
+                        <p class="mt-2">(File Max: 2048 KB)</p>
                     </div>
                 </div>
 
@@ -208,6 +209,7 @@
                         <div class="row justify-content-center mt-4">
                             <button id="btn-success2" class="btn" style="background: #550E99; color: #fff;" type="button"><img class="mr-2" src="{{ URL::to('/') }}/img/IconTriwikramaAppAdmin/white/add2.png" width="14px" />Add More Image</button>
                         </div>
+                        <p class="mt-2">(File Max: 2048 KB)</p>
                     </div>
                 </div>
             </div>
