@@ -266,7 +266,8 @@
                 });
                 if(data.data.platform == "Responsive Web Application"){
                   var i = 0;
-                  var x = Array(data.fotomr);
+                  var x = data.fotomr;
+                  console.log(x.length);
 
                   $('.port-con').html('<div class="responsive-slide" id="resImg"></div>');
                   $('#resImg').html("<img src={{ URL::to('/') }}/resizedImages/" + data.fotomr[i].gambar_mobile + " class='photo-responsive' />");
@@ -278,10 +279,11 @@
                       $('#resImg').html("<img src={{ URL::to('/') }}/resizedImages/" + data.fotomr[i].gambar_mobile + " class='photo-responsive' />");
                     });
                     i++;
-                    if(i > x.length){
+                    if(i >= x.length){
                       i = 0;
                     }  
                   });
+                  
                 }else{
 
                 }   

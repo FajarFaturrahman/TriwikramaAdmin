@@ -8,11 +8,11 @@
     <ul class="list-inline myclient row">
     
       @foreach($client as $row)
-      <li class="list">
-        <a href="#" style="text-align: center;">
+      <li class="list" style="max-height: 100px; display: table;">
+        <a href="#" style="display: table-cell; vertical-align: middle">
             <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}">
-        </a>
-        <h4 class="mt-5">{{ $row->nama_client }}</h4>        
+            <h4 class="">{{ $row->nama_client }}</h4>
+        </a>        
       </li>
       @endforeach
 

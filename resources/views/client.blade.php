@@ -27,9 +27,9 @@
             @foreach($client as $row)
                 <div class="col-md-3 mt-4" id="show_client_{{ $row->id }}">
                     <div class="card border-0" id="cardOverlay">
-                        <div class="row justify-content-center" s style="height: 240px;">
-                            <div class="col-9">
-                                <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="d-block card-img-top p-absolute" style="padding: 20px;top:0;right:0;left:0;bottom:0;" alt="">
+                        <div class="row justify-content-center" style="height: 240px; max-height: 240px; display: table;">
+                            <div class="col-9" style="display: table-cell; vertical-align: middle">
+                                <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block" style="max-width:160px; padding: 20px;top:0;right:0;left:0;bottom:0;" alt="">
                             </div>
                         </div>
                         <div class="overlay">
