@@ -255,20 +255,36 @@
                 $('#namaApp').text(data.data.nama_aplikasi);
                 $('#port2').html(data.ambilFoto);
                 $('#port1').html(data.ambilFoto);
-                if(data.data.platform == "Responsive Web Application"){
-                  $('.port-con').html('<div class="responsive-slide" id="resImg1"></div>');
-                  $('#resImg1').html(data.fotomr);
-                }else{
-
-                }
                 var slidercode;
                 var owl = $("#port2");
+                var port = $("#port1");
                 owl.owlCarousel({
                   autoplayTimeout:1000,
                   autoplay: true,
                   items: data.jumlah,
                   navigation: true
-                });   
+                });
+                if(data.data.platform == "Responsive Web Application"){
+                  var i = 0;
+                  var x = Array(data.fotomr);
+
+                  $('.port-con').html('<div class="responsive-slide" id="resImg"></div>');
+                  $('#resImg').html("<img src={{ URL::to('/') }}/resizedImages/" + data.fotomr[i].gambar_mobile + " class='photo-responsive' />");
+                  port.on('changed.owl.carousel', function(event){
+                    console.log(i);
+                    var image = $("#resImg img");  
+                    image.fadeOut('fast', function () {
+                      image.fadeIn('fast');
+                      $('#resImg').html("<img src={{ URL::to('/') }}/resizedImages/" + data.fotomr[i].gambar_mobile + " class='photo-responsive' />");
+                    });
+                    i++;
+                    if(i > x.length){
+                      i = 0;
+                    }  
+                  });
+                }else{
+
+                }   
                 $('#websiteType').html(data.tipeApp);
                 $('#domain').text(data.data.domain_portofolio);
                 $('#projectCreated').text(data.data.tanggal_dibuat);

@@ -26,6 +26,7 @@ class SitesPortofolioController extends Controller
             $ambilFoto = GambarPortofolio::where('portofolio_id',$id)->get();
             $tipeApp = TipeAplikasiPortofolio::where('portofolio_id',$id)->get();
             $ambilFotoMobile = GambarMobilePortofolio::where('portofolio_id',$id)->get();
+            $ambilFotoMobile2 = GambarMobilePortofolio::select('gambar_mobile')->where('portofolio_id', $id)->get();
             $total_row = $ambilFoto->count();
             $total_row2 = $ambilFotoMobile->count();
             foreach($ambilFoto as $foto)
@@ -38,17 +39,12 @@ class SitesPortofolioController extends Controller
                 $output2 .='<div class="item"><img src="/resizedImages/'. $fotoMobile->gambar_mobile .'" alt=""></div>';
             }
 
-            foreach($ambilFotoMobile->take(1) as $fotomr)
-            {
-                $output4 .='<img src="/resizedImages/'. $fotomr->gambar_mobile .'" alt="">';
-            }
-
             foreach($tipeApp as $tipeAplikasi)
             {
                 $output3 .='<p class="ml-3">' . $tipeAplikasi->tipe_website. '</p>';
             }
             $data= Portofolio::all()->find($id);
-            return response()->json(['data' => $data, 'ambilFoto' =>$output, 'jumlah' =>$total_row, 'jumlah2' =>$total_row2, 'ambilFotoMobile' =>$output2, 'fotomr' =>$output4,'tipeApp' =>$output3]);
+            return response()->json(['data' => $data, 'ambilFoto' =>$output, 'jumlah' =>$total_row, 'jumlah2' =>$total_row2, 'ambilFotoMobile' =>$output2, 'fotomr' =>$ambilFotoMobile2,'tipeApp' =>$output3]);
         }        
     }
 

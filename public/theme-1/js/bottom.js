@@ -170,12 +170,11 @@ $("#pModal").on('shown.bs.modal',function(){
     var src = $(property.target).find(".owl-item").eq(current).find("img").attr('src');
     // var str_sub = src.substr(src.lastIndexOf(".jpg"));
     // var res = src.replace(str_sub, "-r.jpg");
-    var image = $("#resImg img");
-    // alert(res);
-    image.fadeOut('fast', function () {
-      image.attr('src', res);
-      image.fadeIn('fast');
-    });
+    // var image = $("#resImg img");
+    // // alert(res);
+    // image.fadeOut('fast', function () {
+    //   image.fadeIn('fast');
+    // });
   });
 });
 $("#pModal").on('show.bs.modal',function(){
