@@ -57,6 +57,7 @@
     <script src="{{ asset('theme-1/js/jquery.js') }}"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 
     <script src="{{ asset('theme-1/js/bootstrap.min.js') }}"></script>
 
@@ -188,9 +189,10 @@ img {
     <script src="{{ asset('theme-1/js/animation.js') }}"></script>
     <script src="{{ asset('theme-1/js/bottom.js') }}"></script>
 
-    <script src='https://www.google.com/recaptcha/api.js'></script>
+    
 
   <script>
+
   </script>
     
   <script>

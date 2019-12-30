@@ -12,7 +12,7 @@
 
           <div class="col-md-6">
             <h4><strong>Input your question below for information about our company:</strong></h4>
-            <form action="{{ url('contact') }}" method="post">
+            <form action="{{ url('contact') }}" method="post" id="form-contact">
             @csrf
               <div class="input-group">
                 <input type="text" class="form-control" name="name" id="name" placeholder="Name">
@@ -24,13 +24,18 @@
                 <textarea class="form-control" name="message" placeholder="message"></textarea>
               </div>
               <div class="input-group">
-                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
-                @if($errors->has('g-recaptcha-response'))
-                  <span class="invalid-feedback" style="display-block">
-                    <strong>{{ $errors->first('g-captcha->response') }}</strong>
-                  </span>
-                @endif
-                </div>
+                <div class="g-recaptcha" data-sitekey="6Lft9MoUAAAAAAMSE7XRWwlXMHfnpagmmPHbXhOV"></div>
+                    @if(count($errors) > 0)
+                    <div class="alert alert-danger">
+                      <strong>Perhatian</strong>
+                      <br/>
+                      <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                      </ul>
+                    </div>
+                    @endif             
               </div>
               <button class="btn btn-inverse col-md-12 wow flipInX" data-wow-delay="3s" type="submit">Submit</button>
             </form>
@@ -80,4 +85,18 @@
      </div>
 </div>
 
+@endsection
+
+@section('js')
+
+  <script>
+     $(function(){
+      $('#form-contact').submit(function(event){
+        var verified = grecaptcha.getResponse();
+        if(verified.length === 0){
+          event.preventDefault();
+        }
+      });
+    });
+  </script>
 @endsection
