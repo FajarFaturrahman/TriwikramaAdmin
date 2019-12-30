@@ -72,6 +72,8 @@
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
+    
+
 </script>
 
 </head>
@@ -94,26 +96,49 @@ img {
 			</a>
 			<ul class="nav navbar-nav side-list">
         <li class="nav-item">
-          <a class="nav-link active" href="{{ route('home') }}">Service</a>
+          @if(Request::url() === route('home'))
+            <a class="nav-link active" href="{{ route('home') }}">Service</a>
+          @else
+            <a class="nav-link" href="{{ route('home') }}">Service</a>
+          @endif
         </li>
 				<li class="nav-item">
-					<a class="nav-link " href="{{ route('about') }}">About Us</a>
+        @if(Request::url() === route('about'))
+          <a class="nav-link active" href="{{ route('about') }}">About Us</a>
+        @else
+          <a class="nav-link" href="{{ route('about') }}">About Us</a>
+        @endif
 				</li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('client') }}">Our Client</a>
+        @if(Request::url() === route('client'))
+          <a class="nav-link active" href="{{ route('client') }}">Our Client</a>
+        @else
+          <a class="nav-link" href="{{ route('client') }}">Our Client</a>
+        @endif
         </li>
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('portofolio') }}">Portfolio</a>
+        @if(Request::url() === route('portofolio'))
+          <a class="nav-link active" href="{{ route('portofolio') }}">Portfolio</a>
+        @else
+          <a class="nav-link" href="{{ route('portofolio') }}">Portfolio</a>
+        @endif
         </li>
-
-		<li class="nav-item">
-			<a class="nav-link " href="{{ route('product') }}">Product</a>
-		</li>
+        <li class="nav-item">
+        @if(Request::url() === route('product'))
+          <a class="nav-link active" href="{{ route('product') }}">Product</a>
+        @else
+          <a class="nav-link" href="{{ route('product') }}">Product</a>
+        @endif
+        </li>
 				<!-- <li class="nav-item">
 					<a class="nav-link" href="http://triwikrama.co.id/?page=maintenance">Blog</a>
 				</li> -->
         <li class="nav-item">
-          <a class="nav-link " href="{{ route('contact') }}">Contact Us</a>
+        @if(Request::url() === route('contact'))
+          <a class="nav-link active" href="{{ route('contact') }}">Contact Us</a>
+        @else
+          <a class="nav-link" href="{{ route('contact') }}">Contact Us</a>
+        @endif
         </li>
 			</ul>
       <ul class="list-inline social-list">
@@ -163,7 +188,8 @@ img {
     <script src="{{ asset('theme-1/js/animation.js') }}"></script>
     <script src="{{ asset('theme-1/js/bottom.js') }}"></script>
 
-  <script>
+  <script>   
+   
   </script>
     
   <script>
