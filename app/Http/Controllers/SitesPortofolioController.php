@@ -103,7 +103,7 @@ class SitesPortofolioController extends Controller
     public function filter(Request $request, $status = ""){
         $output = "";
         if($status == "semua"){
-            $data = \DB::table('portofolio')->orderBy('id','asc')->get();
+            $data = \DB::table('portofolio')->orderBy('id','desc')->get();
         } else{                
             $data = \DB::table('portofolio')
             ->leftJoin('gambar_portofolio', 'gambar_portofolio.portofolio_id', '=', 'portofolio.id')

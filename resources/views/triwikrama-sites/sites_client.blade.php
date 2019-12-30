@@ -8,11 +8,19 @@
     <ul class="list-inline myclient row">
     
       @foreach($client as $row)
-      <li class="list" style="max-height: 100px; display: table;">
-        <a href="#" style="display: table-cell; vertical-align: middle">
-            <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}">
-            <h4 class="">{{ $row->nama_client }}</h4>
-        </a>        
+      <li class="list" >
+        <div class="row justify-content-center">
+          <div class="col-9" style="height: 115px; display: table;">    
+            <a href="#" style="display: table-cell; vertical-align: middle">
+                <img src="{{ URL::to('/') }}/resizedImages/{{ $row->gambar_client }}" class="img-fluid mx-auto d-block" style="max-width:115px; padding: 10px;">
+            </a>
+          </div>
+        </div>
+        <div class="row justify-content-center">
+          <div class="col-9">
+            <h4>{{ $row->nama_client }}</h4>
+          </div>
+        </div>        
       </li>
       @endforeach
 
@@ -47,11 +55,19 @@
             var _html = "";
             $.each(response, function(index, value){
               _html += '<li class="list">';
-                _html += '<a href="#/">'
-                  _html += '<img src="{{ URL::to("/") }}/resizedImages/'+value.gambar_client+'">';
-                _html += '</a>';
-                _html += '<h4 class="mt-5">'+value.nama_client+'</h4>';
-              _html += '</li>'
+                _html +='<div class="row justify-content-center">';
+                  _html += '<div class="col-9" style="height: 115px; display: table;">';
+                    _html += '<a href="#/" style="display: table-cell; vertical-align: middle">'
+                      _html += '<img src="{{ URL::to("/") }}/resizedImages/'+value.gambar_client+'" class="img-fluid mx-auto d-block" style="max-width:115px; padding: 10px;">';
+                    _html += '</a>';                      
+                  _html += '</div>';
+                _html += '</div>';
+                _html+='<div class="row justify-content-center">';
+                  _html += '<div class="col-9">';
+                    _html += '<h4>'+value.nama_client+'</h4>';
+                  _html += '</div>';    
+                _html += '</div>';    
+              _html += '</li>';
             });
             $('.myclient').append(_html);
             var _totalCurrentResult = $('.list').length;

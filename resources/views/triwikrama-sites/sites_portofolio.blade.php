@@ -10,8 +10,7 @@
             <div class="fl-left">
               <h2 class="ttl1">PORTFOLIO <br><small>THE PROJECT WE'VE DONE</small></h2>
               <div class="fselect">
-                <select name="filter[]" id="pfilter" class="form-control btn-filter">
-                  <option value="*" disabled selected>-- Filter --</option>
+                <select name="filter[]" id="pfilter" class="form-control btn-filter">                  
                   <option value="semua">All</option>
                   <option value="Corporate">Corporate</option>
                   <option value="E-Commerce">E-Commerce</option>

@@ -32,7 +32,7 @@ class ProductController extends Controller
             $data = Product::where('nama_product','LIKE','%'.$request->cari.'%')->paginate(5);
             $data->appends(['cari' => $request->cari]);
         }else{
-            $data = Product::paginate(5);
+            $data = Product::orderBy('id','desc')->paginate(5);
         }
         return view('product',['product' => $data] );
     }
