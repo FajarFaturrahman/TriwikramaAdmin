@@ -23,6 +23,15 @@
               <div class="input-group">
                 <textarea class="form-control" name="message" placeholder="message"></textarea>
               </div>
+              <div class="input-group">
+                <div class="g-recaptcha" data-sitekey="{{env('CAPTCHA_KEY')}}">
+                @if($errors->has('g-recaptcha-response'))
+                  <span class="invalid-feedback" style="display-block">
+                    <strong>{{ $errors->first('g-captcha->response') }}</strong>
+                  </span>
+                @endif
+                </div>
+              </div>
               <button class="btn btn-inverse col-md-12 wow flipInX" data-wow-delay="3s" type="submit">Submit</button>
             </form>
           </div>

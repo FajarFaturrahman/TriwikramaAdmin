@@ -163,6 +163,8 @@ img {
     <script src="{{ asset('theme-1/js/animation.js') }}"></script>
     <script src="{{ asset('theme-1/js/bottom.js') }}"></script>
 
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
   <script>
   </script>
     
